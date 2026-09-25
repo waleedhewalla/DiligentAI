@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { caseStudies, getCaseStudy } from "@/content/case-studies";
-import { productColorClasses, products } from "@/content/products";
+import { accentClasses, getOffering, type Offering } from "@/content/catalog";
 import { testimonials } from "@/content/proof";
 import { href, pageMetadata } from "@/lib/seo";
 import { caseStudySchema } from "@/lib/schema";
@@ -77,11 +77,14 @@ export default function CaseStudyPage({ params }: { params: { locale: Locale; sl
       >
         <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-white/80">
           <span className="font-semibold text-white">{dict.common.productsUsed}:</span>
-          {cs.products.map((p) => (
-            <Link key={p} href={href(locale, `/${p}`)} className="rounded-full bg-white/10 px-3 py-1 hover:bg-white/20">
-              {products[p].name[locale]}
-            </Link>
-          ))}
+          {cs.offerings
+            .map(getOffering)
+            .filter((o): o is Offering => Boolean(o))
+            .map((o) => (
+              <Link key={o.slug} href={href(locale, `/solutions/${o.slug}`)} className="rounded-full bg-white/10 px-3 py-1 hover:bg-white/20">
+                {o.title[locale]}
+              </Link>
+            ))}
         </div>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row print:hidden">
           <DownloadButton
@@ -118,13 +121,20 @@ export default function CaseStudyPage({ params }: { params: { locale: Locale; sl
           <h2 className="text-2xl font-bold text-brand-navy md:text-3xl">{labels.solution[locale]}</h2>
           <div className="mt-6 space-y-5">
             {cs.solution.map((s) => {
-              const prod = products[s.product];
-              const c = productColorClasses[prod.color];
+              const o = getOffering(s.offering);
+              if (!o) return null;
+              const c = accentClasses[o.accent];
               return (
-                <div key={s.product} className={cn("rounded-2xl border-s-4 bg-surface-subtle p-6", c.border)}>
+                <div key={s.offering} className={cn("rounded-2xl border-s-4 bg-surface-subtle p-6", c.border)}>
                   <h3 className={cn("text-lg font-bold", c.text)}>
-                    <Link href={href(locale, `/${prod.slug}`)} className="hover:underline">
-                      <span className="ltr-run">{prod.name[locale]}</span> — {prod.category[locale]}
+                    <Link href={href(locale, `/solutions/${o.slug}`)} className="hover:underline">
+                      {o.title[locale]}
+                      {o.brand ? (
+                        <>
+                          {" "}
+                          (<span className="ltr-run">{o.brand}</span>)
+                        </>
+                      ) : null}
                     </Link>
                   </h3>
                   <p className="mt-2 text-muted-foreground">{s.body[locale]}</p>

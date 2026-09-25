@@ -2,6 +2,7 @@ import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { site } from "@/lib/site";
 import { SupportForm } from "@/components/portal/support-form";
+import { launchableOfferings } from "@/content/catalog";
 
 export const dynamic = "force-dynamic";
 
@@ -16,7 +17,11 @@ export default function SupportPage({ params, searchParams }: { params: { locale
         {s.subtitle} · <a href={`mailto:${site.supportEmail}`} className="text-brand-purple hover:underline">{site.supportEmail}</a>
       </p>
       <div className="mt-6 max-w-2xl">
-        <SupportForm dict={dict} locale={params.locale} defaultProduct={product} />
+        <SupportForm
+          dict={dict}
+          defaultProduct={product}
+          products={launchableOfferings().map((o) => ({ value: o.launch, label: o.brand ?? o.title[params.locale] }))}
+        />
       </div>
     </div>
   );

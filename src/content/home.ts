@@ -1,74 +1,68 @@
 import type { L10n } from "@/i18n/config";
 
+/**
+ * Homepage copy. Structural lists (service models, categories, capabilities)
+ * are NOT here — the homepage renders them straight from the catalog, so new
+ * offerings appear without touching this file. Only editorial copy lives here.
+ */
 export const home = {
   seo: {
     title: {
-      en: "Diligent AI Transformation | AI Operating System for MENA Manufacturers",
-      ar: "Diligent AI | برنامج ذكاء اصطناعي للصناعة المصرية والخليجية",
+      en: "Diligent AI | AI Solutions & System Integration for Manufacturers in Egypt & the Gulf",
+      ar: "Diligent AI | حلول الذكاء الاصطناعي وتكامل الأنظمة للمصانع في مصر والخليج",
     },
     description: {
-      en: "IPE + CEO OS + Nexus AI: the first Arabic-native AI Operating System for Egyptian and Gulf manufacturers. Deployed. Proven. Book a demo today.",
-      ar: "IPE وCEO OS وNexus AI: أول نظام تشغيل بالذكاء الاصطناعي عربي أصيل للمصانع المصرية والخليجية. مُطبّق. مُثبت. احجز عرضاً توضيحياً اليوم.",
+      en: "AI consulting, pre-built AI tools, custom models and ERP integration for manufacturers — production planning, forecasting, quality and supply chain. Arabic-first. Book a 30-minute call.",
+      ar: "استشارات وأدوات ذكاء اصطناعي جاهزة ونماذج مخصصة وتكامل مع ERP للمصانع — تخطيط الإنتاج والتنبؤ والجودة وسلاسل الإمداد. بالعربية أولاً. احجز مكالمة مدتها 30 دقيقة.",
     },
     keywords: {
-      en: ["AI manufacturing software Egypt", "AI operating system MENA", "production scheduling AI", "Arabic AI"],
-      ar: ["برنامج ذكاء اصطناعي للصناعة المصرية", "نظام تشغيل ذكاء اصطناعي", "جدولة الإنتاج بالذكاء الاصطناعي", "ذكاء اصطناعي عربي"],
+      en: ["AI manufacturing software Egypt", "AI consulting manufacturing", "ERP AI integration", "production planning AI", "AI quality control"],
+      ar: ["برنامج ذكاء اصطناعي للصناعة المصرية", "استشارات الذكاء الاصطناعي للتصنيع", "تكامل الذكاء الاصطناعي مع ERP", "تخطيط الإنتاج بالذكاء الاصطناعي", "ضبط الجودة بالذكاء الاصطناعي"],
     },
   },
   badges: {
-    en: ["Deployed at Star Trans", "Arabic-native", "8-week go-live"],
-    ar: ["مُطبّق في ستار ترانس", "عربي أصيل", "تشغيل خلال 8 أسابيع"],
+    en: ["Deployed at Star Trans", "Arabic-native", "SAP-experienced team"],
+    ar: ["مُطبّق في ستار ترانس", "عربي أصيل", "فريق بخبرة SAP"],
   } as L10n<string[]>,
+  // Three coloured headline lines (white / teal / orange), same visual as before.
   h1: {
-    en: ["Your Factory Plans Itself.", "Your CEO Always Knows.", "Your Arabic Content Writes Itself."],
-    ar: ["مصنعك يخطط لنفسه.", "رئيسك التنفيذي يعرف دائماً.", "محتواك العربي يكتب نفسه."],
+    en: ["AI for Manufacturing.", "Built on Your Data.", "Inside Your ERP."],
+    ar: ["ذكاء اصطناعي للتصنيع.", "مبني على بياناتك.", "داخل نظام ERP."],
   } as L10n<string[]>,
   h2: {
-    en: "Diligent AI — the first AI Operating System built for Egyptian and MENA manufacturers.",
-    ar: "Diligent AI — أول نظام تشغيل بالذكاء الاصطناعي مصمم للمصانع في مصر والمنطقة العربية.",
+    en: "We consult, build and integrate AI for manufacturers in Egypt and the Gulf — from production planning and quality to supply chain and the boardroom.",
+    ar: "نقدم الاستشارات ونبني ونُكامل حلول الذكاء الاصطناعي للمصانع في مصر والخليج — من تخطيط الإنتاج والجودة إلى سلاسل الإمداد ومجلس الإدارة.",
   },
   trustedBy: { en: "Trusted by", ar: "موثوق من" },
   trustFacts: {
-    en: ["Cairo-based", "24 years' experience", "3 products live"],
-    ar: ["مقرنا القاهرة", "خبرة 24 عاماً", "3 منتجات قيد التشغيل"],
+    en: ["Cairo-based", "24 years' experience", "55+ SAP projects"],
+    ar: ["مقرنا القاهرة", "خبرة 24 عاماً", "أكثر من 55 مشروع SAP"],
   } as L10n<string[]>,
   problem: {
     eyebrow: { en: "The pain you already know", ar: "الألم الذي تعرفه جيداً" },
-    title: { en: "Your company runs on yesterday's information.", ar: "شركتك تُدار بمعلومات الأمس." },
-    cards: [
-      {
-        persona: { en: "Operations", ar: "العمليات" },
-        title: { en: "Your schedule: built in 3 days. Wrong by Tuesday.", ar: "جدولك: يُبنى في 3 أيام. خاطئ يوم الثلاثاء." },
-        body: {
-          en: "One machine stops or one shipment slips, and the plan your team spent half the week building is obsolete. OTD misses target again.",
-          ar: "تتوقف ماكينة أو تتأخر شحنة، فتصبح الخطة التي قضى فريقك نصف الأسبوع في بنائها بلا قيمة. ويفوت هدف التسليم في الموعد مرة أخرى.",
-        },
-      },
-      {
-        persona: { en: "CEO", ar: "الرئيس التنفيذي" },
-        title: { en: "Your CEO intelligence: a PDF on Monday morning.", ar: "معلومات الرئيس التنفيذي: ملف PDF صباح الاثنين." },
-        body: {
-          en: "By the time the weekly report reaches you, the decisions it should have informed are already made. And the board wants AI ROI proof.",
-          ar: "حين يصلك التقرير الأسبوعي، تكون القرارات التي كان يجب أن يدعمها قد اتُخذت بالفعل. ومجلس الإدارة يريد دليلاً على عائد الذكاء الاصطناعي.",
-        },
-      },
-      {
-        persona: { en: "Commercial", ar: "التجاري" },
-        title: { en: "Arabic content: 3 agencies, 2 weeks, EGP 50K per campaign.", ar: "المحتوى العربي: 3 وكالات، أسبوعان، 50 ألف جنيه للحملة." },
-        body: {
-          en: "Scaling your Arabic presence means scaling the agency bill — and the ROI is still impossible to measure.",
-          ar: "توسيع حضورك العربي يعني مضاعفة فاتورة الوكالة — ويبقى قياس العائد مستحيلاً.",
-        },
-      },
-    ],
-  },
-  products: {
-    eyebrow: { en: "One operating system. Three products.", ar: "نظام تشغيل واحد. ثلاثة منتجات." },
-    title: { en: "The MENA Intelligence Ecosystem", ar: "منظومة ذكاء المنطقة" },
+    title: { en: "Your plant runs on yesterday's information.", ar: "مصنعك يُدار بمعلومات الأمس." },
     lead: {
-      en: "Start with the pain that costs you most. Each product stands alone — together they share one login, one data layer and one Arabic-first team.",
-      ar: "ابدأ بالمشكلة الأكثر تكلفة. كل منتج يعمل مستقلاً — ومعاً يتشاركون دخولاً واحداً وطبقة بيانات واحدة وفريقاً عربياً واحداً.",
+      en: "The same problems show up in every factory we walk into. Each one is a use case AI now solves reliably.",
+      ar: "المشكلات نفسها تظهر في كل مصنع نزوره. وكل واحدة منها حالة استخدام يحلها الذكاء الاصطناعي اليوم بموثوقية.",
     },
+    /** Capability slugs whose `problem` line is shown as a pain card (CONFIGURABLE). */
+    capabilities: ["production-scheduling", "quality-control", "supply-chain-optimization"],
+  },
+  services: {
+    eyebrow: { en: "How we work", ar: "كيف نعمل" },
+    title: { en: "Consult. Build. Integrate.", ar: "نستشير. نبني. نُكامل." },
+    lead: {
+      en: "Engage us for one step or all three. Most clients start with a short assessment and move to build and integration once the business case is proven.",
+      ar: "تعامل معنا في خطوة واحدة أو في الثلاث. يبدأ معظم عملائنا بتقييم قصير ثم ينتقلون إلى البناء والتكامل بعد إثبات الجدوى.",
+    },
+  },
+  catalog: {
+    eyebrow: { en: "What we deliver", ar: "ما الذي نقدمه" },
+    title: { en: "AI solutions for the whole plant", ar: "حلول ذكاء اصطناعي للمصنع كله" },
+  },
+  capabilities: {
+    eyebrow: { en: "Manufacturing use cases", ar: "حالات استخدام في التصنيع" },
+    title: { en: "Start from the problem, not the product", ar: "ابدأ من المشكلة، لا من المنتج" },
   },
   proof: {
     eyebrow: { en: "Case study", ar: "دراسة حالة" },
@@ -79,34 +73,34 @@ export const home = {
   },
   why: {
     eyebrow: { en: "Why Diligent AI", ar: "لماذا Diligent AI" },
-    title: { en: "Built for how MENA companies actually work", ar: "مصمم لطريقة عمل شركات المنطقة فعلاً" },
+    title: { en: "Built for how MENA manufacturers actually work", ar: "مصمم لطريقة عمل مصانع المنطقة فعلاً" },
     items: [
       {
         title: { en: "Arabic-native, not translated", ar: "عربي أصيل، لا مترجم" },
         body: {
-          en: "Western software offers an Arabic UI. We built Arabic reasoning, reports and content from day one.",
-          ar: "البرمجيات الغربية تقدم واجهة عربية. نحن بنينا التحليل والتقارير والمحتوى بالعربية منذ اليوم الأول.",
+          en: "Screens, reports and AI reasoning built in Arabic for the shop floor and the boardroom.",
+          ar: "شاشات وتقارير وتحليل بالذكاء الاصطناعي مبنية بالعربية لأرض المصنع ولمجلس الإدارة.",
         },
       },
       {
-        title: { en: "8 weeks, not 18 months", ar: "8 أسابيع، لا 18 شهراً" },
+        title: { en: "Weeks, not 18 months", ar: "أسابيع، لا 18 شهراً" },
         body: {
-          en: "Global APS suites take 12–18 months and a large SI partner. IPE goes live in 8 weeks with our Cairo team.",
-          ar: "أنظمة APS العالمية تحتاج 12–18 شهراً وشريك تنفيذ كبير. IPE يعمل خلال 8 أسابيع مع فريقنا في القاهرة.",
+          en: "Global suites take 12–18 months and a large SI partner. We deliver in phases measured in weeks, with a local team.",
+          ar: "الأنظمة العالمية تحتاج 12–18 شهراً وشريك تنفيذ كبير. نحن نسلّم على مراحل تُقاس بالأسابيع، بفريق محلي.",
         },
       },
       {
-        title: { en: "Your ERP stays the system of record", ar: "نظام ERP يبقى المرجع" },
+        title: { en: "Integration is our home ground", ar: "التكامل هو ملعبنا" },
         body: {
-          en: "SAP-aware by design — our founder has delivered 55+ SAP projects. We integrate; we don't rip and replace.",
-          ar: "متوافق مع SAP بالتصميم — مؤسسنا نفّذ أكثر من 55 مشروع SAP. نحن نتكامل ولا نستبدل.",
+          en: "55+ SAP projects behind the team. We connect AI to the systems you run — we don't rip and replace.",
+          ar: "خلف الفريق أكثر من 55 مشروع SAP. نربط الذكاء الاصطناعي بأنظمتك — ولا نستبدلها.",
         },
       },
       {
-        title: { en: "Local data, local contract, EGP pricing", ar: "بيانات محلية، عقد محلي، تسعير بالجنيه" },
+        title: { en: "Local data, contract and pricing", ar: "بيانات وعقد وتسعير محلي" },
         body: {
-          en: "Egypt-hosted option for data sovereignty, an Egyptian company behind the contract, and pricing that ignores currency swings.",
-          ar: "خيار استضافة داخل مصر لسيادة البيانات، وشركة مصرية وراء العقد، وتسعير لا يتأثر بتقلبات العملة.",
+          en: "Egypt-hosted option, an Egyptian company behind the contract, and EGP pricing.",
+          ar: "خيار استضافة داخل مصر، وشركة مصرية وراء العقد، وتسعير بالجنيه.",
         },
       },
     ],
@@ -124,10 +118,10 @@ export const home = {
     role: { en: "Founder & CEO", ar: "المؤسس والرئيس التنفيذي" },
   },
   finalCta: {
-    title: { en: "Ready to see your factory plan itself?", ar: "مستعد لترى مصنعك يخطط لنفسه؟" },
+    title: { en: "Tell us the problem. We'll show you the AI.", ar: "أخبرنا بالمشكلة. وسنريك الحل." },
     body: {
-      en: "30 minutes. Your industry, your constraints, Arabic or English. No contract required.",
-      ar: "30 دقيقة. قطاعك وقيودك، بالعربية أو الإنجليزية. دون أي التزام تعاقدي.",
+      en: "30 minutes with a senior consultant. Your plant, your systems, Arabic or English. No contract required.",
+      ar: "30 دقيقة مع مستشار أول. مصنعك وأنظمتك، بالعربية أو الإنجليزية. دون أي التزام تعاقدي.",
     },
   },
 };

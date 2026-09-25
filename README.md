@@ -1,6 +1,6 @@
 # Diligent AI — Website & Customer Portal
 
-Bilingual (Arabic-first / English) marketing site and customer portal for **Diligent AI**, the MENA AI operating system: **IPE** (Operations Intelligence), **CEO OS** (Executive Intelligence) and **Nexus AI** (Commercial Intelligence).
+Bilingual (Arabic-first / English) website and customer portal for **Diligent AI** — AI solutions and system integration for manufacturers in Egypt and the Gulf. The site is catalog-driven: **service models** (Consult · Build · Integrate), **AI products & solutions**, **system integration services** and **manufacturing capabilities** are all data, so new offerings need no page or component changes.
 
 **Stack:** Next.js 14 (App Router) · TypeScript · Tailwind CSS + shadcn/ui · Supabase (Postgres, Auth, RLS) · Vercel + Cloudflare.
 
@@ -27,20 +27,42 @@ The marketing site builds and runs with **no environment variables**. Auth, the 
 src/
   app/
     [locale]/                 ar | en — html lang/dir set here
-      (marketing)/            Home, /ipe, /ceo-os, /nexus, /case-studies, /demo, /contact, /about, /blog, legal
+      (marketing)/            Home, /solutions(/[slug]), /services, /capabilities(/[slug]), /case-studies, /demo, /contact, /about, /blog, legal
       (auth)/                 /login, /register (invite-only), /forgot-password, /reset-password
       portal/                 Dashboard, product launchers, /account (MFA, passkeys, users, audit), /support
       opengraph-image.tsx     Per-locale OG image
     api/v1/                   demo/request · nexus/generate · portal/launch/[product] · auth/passkey/*
     auth/                     callback (PKCE + email links) · signout
     sitemap.ts · robots.ts
-  content/                    ALL copy, bilingual — products, case studies, blog, proof metrics, legal
+  content/
+    catalog/                  ★ service models, categories, offerings, capabilities (see "Catalog" below)
+    home.ts, case-studies.ts, blog.ts, proof.ts, legal.ts   editorial copy, bilingual
   i18n/                       locale config + UI dictionaries
   lib/                        seo, schema.org, supabase clients, auth actions, scoped tokens, analytics, rate limit
   components/{ui,site,auth,portal,seo,analytics}
 supabase/migrations/          schema + RLS + custom access token hook
 supabase/seed.sql             example tenant (Star Trans)
 ```
+
+### Catalog — adding products and services
+
+Everything sold on the site lives in `src/content/catalog/`:
+
+| File | What it holds | Where it shows up |
+| --- | --- | --- |
+| `service-models.ts` | **Consult · Build · Integrate** — tagline, deliverables, duration, engagement steps | Homepage "How we work", `/services`, mega menu, every offering/capability page, demo form |
+| `categories.ts` | The three groupings: AI Products & Solutions · System Integration · Manufacturing Capabilities | Mega menu columns, homepage & `/solutions` sections, footer |
+| `offerings.ts` | Products and services (pre-built tools, consulting, custom AI, ERP/legacy/data integration) | Cards, `/solutions/[slug]`, portal (if `launch` is set), sitemap, JSON-LD, demo form |
+| `capabilities.ts` | Manufacturing use cases written problem-first (scheduling, demand, forecasting, quality, supply chain, maintenance, executive intelligence) | `/capabilities/[slug]`, homepage pain cards, cross-links |
+| `index.ts` | The only import surface (`listOfferings`, `getCapability`, `offeringsForCapability`, …) + a build-time integrity check | — |
+
+**To add an offering:** append one object to `offerings.ts`. Required fields build the card, menu entry and page hero; optional fields (`metrics`, `steps`, `roi`, `faqs`, `integrations`, `deployment`, `caseStudy`, `download`, `demo`) each add a page section only when present. Link it to use cases with `capabilities: ["quality-control", …]` — the capability pages link back automatically. A typo in a slug fails the build with a readable message.
+
+**To add a use case:** append to `capabilities.ts`, then reference its slug from the relevant offerings.
+
+**To move the catalog to a CMS/Supabase:** change the functions in `catalog/index.ts`; pages and components never import the data files directly.
+
+Former product URLs (`/ipe`, `/ceo-os`, `/nexus`) 308-redirect to their catalog pages. The portal still launches IPE, CEO OS and Nexus AI through each offering's `launch` key.
 
 ### Editing content
 
@@ -72,10 +94,12 @@ GA4 loads with **Consent Mode v2** (analytics denied until the visitor accepts t
 
 | KPI | Event |
 | --- | --- |
-| Demo requests | `generate_lead` (form) · `demo_booked` (Calendly `event_scheduled`) |
-| MQLs | `mql` — work email + target industry (also stored as `demo_requests.is_mql`) |
+| Demo requests | `generate_lead` (form, with `interest` = service model and `area` = catalog slug) · `demo_booked` (Calendly `event_scheduled`) |
+| MQLs | `mql` — work email + target industry or a chosen service model (also stored as `demo_requests.is_mql`) |
 | Case-study downloads | `case_study_download` · `tech_brief_download` |
-| Funnel | `cta_click` (with `location`), `whatsapp_click`, `nexus_generate`, `language_switch` |
+| Funnel | `cta_click` (with `location`, `solution`, `interest`), `whatsapp_click`, `nexus_generate`, `language_switch` |
+
+Any link can pre-fill the demo form: `/en/demo?interest=integrate&area=quality-control`.
 
 Mark `generate_lead`, `demo_booked` and `case_study_download` as key events in GA4.
 

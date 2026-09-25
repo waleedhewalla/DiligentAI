@@ -3,7 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { getPortalContext } from "@/lib/auth";
 import { mintLaunchToken } from "@/lib/scoped-token";
 import { audit } from "@/lib/audit";
-import type { ProductKey } from "@/content/products";
+import type { ProductKey } from "@/content/catalog";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";

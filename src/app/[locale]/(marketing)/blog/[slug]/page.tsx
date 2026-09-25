@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getPost, getPosts, type Block } from "@/content/blog";
-import { products } from "@/content/products";
+import { getOffering } from "@/content/catalog";
 import { getCaseStudy } from "@/content/case-studies";
 import { href, pageMetadata } from "@/lib/seo";
 import { articleSchema } from "@/lib/schema";
@@ -54,28 +54,28 @@ function RenderBlock({ block, locale }: { block: Block; locale: Locale }) {
     case "quote":
       return <blockquote>{block.text}</blockquote>;
     case "cta": {
-      const p = products[block.product];
+      // Inline CTA for any catalog offering; silently skipped if the slug was removed.
+      const o = getOffering(block.offering);
+      if (!o) return null;
       return (
         <aside className="not-prose my-10 rounded-2xl bg-brand-navy p-7 text-white">
-          <p className="text-sm font-semibold text-brand-teal">
-            <span className="ltr-run">{p.name[locale]}</span> · {p.category[locale]}
-          </p>
-          <p className="mt-2 text-xl font-bold">{p.tagline[locale]}</p>
+          <p className="text-sm font-semibold text-brand-teal">{o.brand ? <span className="ltr-run">{o.brand}</span> : o.title[locale]}</p>
+          <p className="mt-2 text-xl font-bold">{o.summary[locale]}</p>
           <p className="mt-2 text-white/80">
             {locale === "ar" ? "نطبّق هذا في ستار ترانس — احجز عرضاً توضيحياً." : "We deploy this at Star Trans — book a demo."}
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
             <Button asChild>
               <TrackedLink
-                href={href(locale, "/demo") + `?product=${p.key}`}
-                event={{ name: "cta_click", params: { cta: "book_demo", location: "blog_inline", product: p.key } }}
+                href={href(locale, "/demo") + `?area=${o.slug}&interest=${o.serviceModels[0]}`}
+                event={{ name: "cta_click", params: { cta: "book_demo", location: "blog_inline", solution: o.slug } }}
               >
                 {locale === "ar" ? "احجز عرضاً" : "Book a demo"}
                 <ArrowRight className="btn-icon" />
               </TrackedLink>
             </Button>
             <Button asChild variant="inverse">
-              <Link href={href(locale, `/${p.slug}`)}>{p.cardCta[locale]}</Link>
+              <Link href={href(locale, `/solutions/${o.slug}`)}>{o.title[locale]}</Link>
             </Button>
           </div>
         </aside>

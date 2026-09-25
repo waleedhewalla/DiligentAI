@@ -1,5 +1,4 @@
 import type { L10n } from "@/i18n/config";
-import type { ProductSlug } from "./products";
 import { starTransMetrics, type Metric } from "./proof";
 
 export type CaseStudy = {
@@ -8,7 +7,10 @@ export type CaseStudy = {
   clientAr: string;
   industry: L10n;
   location: L10n;
-  products: ProductSlug[];
+  /** Offering slugs used (CONFIGURABLE — must exist in catalog/offerings.ts). */
+  offerings: string[];
+  /** Capability slugs this story demonstrates; drives links from /capabilities pages. */
+  capabilities: string[];
   title: L10n;
   summary: L10n;
   publishedAt: string;
@@ -17,7 +19,7 @@ export type CaseStudy = {
   pdf?: string;
   metrics: Metric[];
   challenge: L10n<string[]>;
-  solution: { product: ProductSlug; body: L10n }[];
+  solution: { offering: string; body: L10n }[];
   results: { period: L10n; body: L10n }[];
 };
 
@@ -28,14 +30,15 @@ export const caseStudies: CaseStudy[] = [
     clientAr: "ستار ترانس",
     industry: { en: "Logistics & Transport", ar: "اللوجستيات والنقل" },
     location: { en: "Cairo, Egypt", ar: "القاهرة، مصر" },
-    products: ["ipe", "ceo-os", "nexus"],
+    offerings: ["ai-production-scheduling", "executive-intelligence", "arabic-commercial-content"],
+    capabilities: ["production-scheduling", "executive-decision-intelligence"],
     title: {
       en: "How Star Trans Eliminated Manual Planning in 8 Weeks",
       ar: "كيف تخلّصت ستار ترانس من التخطيط اليدوي خلال 8 أسابيع",
     },
     summary: {
-      en: "From a 3-day manual planning cycle in Excel to automated schedules, a live executive view and an Arabic content engine — all three Diligent AI products live in one company.",
-      ar: "من دورة تخطيط يدوية على Excel تستغرق 3 أيام إلى جداول تلقائية، ورؤية تنفيذية لحظية، ومحرك محتوى عربي — منتجات Diligent AI الثلاثة تعمل في شركة واحدة.",
+      en: "From a 3-day manual planning cycle in Excel to automated schedules, a live executive view and an Arabic content engine — three Diligent AI solutions live in one company.",
+      ar: "من دورة تخطيط يدوية على Excel تستغرق 3 أيام إلى جداول تلقائية، ورؤية تنفيذية لحظية، ومحرك محتوى عربي — ثلاثة حلول من Diligent AI تعمل في شركة واحدة.",
     },
     publishedAt: "2026-09-20",
     updatedAt: "2026-09-25",
@@ -55,21 +58,21 @@ export const caseStudies: CaseStudy[] = [
     },
     solution: [
       {
-        product: "ipe",
+        offering: "ai-production-scheduling",
         body: {
           en: "IPE was connected to Star Trans' order and resource data and modelled their real constraints. The planning team now generates a full schedule in under a minute and re-plans on the spot when something changes.",
           ar: "رُبط IPE ببيانات الطلبيات والموارد في ستار ترانس ونُمذجت قيودهم الفعلية. أصبح فريق التخطيط يُنتج جدولاً كاملاً في أقل من دقيقة، ويعيد التخطيط فوراً عند أي تغيير.",
         },
       },
       {
-        product: "ceo-os",
+        offering: "executive-intelligence",
         body: {
           en: "CEO OS brought operational KPIs from IPE together with finance and commercial data into a single Arabic executive view, replacing the Monday PDF.",
           ar: "جمع CEO OS مؤشرات العمليات من IPE مع البيانات المالية والتجارية في رؤية تنفيذية عربية واحدة، بدلاً من ملف PDF يوم الاثنين.",
         },
       },
       {
-        product: "nexus",
+        offering: "arabic-commercial-content",
         body: {
           en: "Nexus AI took over first drafts of Arabic LinkedIn content and proposals, with the commercial team reviewing instead of writing from scratch.",
           ar: "تولّى Nexus AI كتابة المسودات الأولى لمحتوى لينكدإن والعروض بالعربية، وأصبح دور الفريق التجاري المراجعة بدلاً من الكتابة من الصفر.",
@@ -94,8 +97,8 @@ export const caseStudies: CaseStudy[] = [
       {
         period: { en: "Day 90", ar: "اليوم 90" },
         body: {
-          en: "80% reduction in planning time, with all three products in daily use across operations, leadership and commercial teams.",
-          ar: "انخفاض وقت التخطيط بنسبة 80%، مع استخدام المنتجات الثلاثة يومياً في العمليات والإدارة والفرق التجارية.",
+          en: "80% reduction in planning time, with all three solutions in daily use across operations, leadership and commercial teams.",
+          ar: "انخفاض وقت التخطيط بنسبة 80%، مع استخدام الحلول الثلاثة يومياً في العمليات والإدارة والفرق التجارية.",
         },
       },
     ],

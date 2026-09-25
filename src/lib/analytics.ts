@@ -6,12 +6,13 @@
  */
 
 export type AnalyticsEvent =
-  | { name: "cta_click"; params: { cta: string; location: string; product?: string } }
-  | { name: "generate_lead"; params: { form: "demo_request" | "contact"; product: string; industry?: string } }
-  | { name: "mql"; params: { product: string; industry?: string } }
-  | { name: "demo_booked"; params: { source: "calendly"; product?: string } }
+  // `solution` = catalog offering/capability slug; `interest` = service model.
+  | { name: "cta_click"; params: { cta: string; location: string; solution?: string; interest?: string } }
+  | { name: "generate_lead"; params: { form: "demo_request" | "contact"; interest: string; area?: string; industry?: string } }
+  | { name: "mql"; params: { interest: string; area?: string; industry?: string } }
+  | { name: "demo_booked"; params: { source: "calendly"; interest?: string; area?: string } }
   | { name: "case_study_download"; params: { case_study: string } }
-  | { name: "tech_brief_download"; params: { product: string } }
+  | { name: "tech_brief_download"; params: { solution: string } }
   | { name: "nexus_generate"; params: { content_type: string } }
   | { name: "language_switch"; params: { to: string } }
   | { name: "whatsapp_click"; params: { location: string } };

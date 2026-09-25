@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { locales, type Locale } from "@/i18n/config";
 
-export const alt = "Diligent AI — MENA Intelligence";
+export const alt = "Diligent AI — AI solutions for manufacturing";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -12,7 +12,7 @@ export function generateStaticParams() {
 // Latin-only text: the default OG font has no Arabic glyphs, so both locales
 // share the English wordmark and product line.
 export default function OgImage({ params }: { params: { locale: Locale } }) {
-  const tagline = params.locale === "ar" ? "Arabic-native AI Operating System · Egypt & GCC" : "The AI Operating System for MENA Manufacturers";
+  const tagline = params.locale === "ar" ? "Arabic-first AI for manufacturers · Egypt & GCC" : "AI solutions & system integration for MENA manufacturers";
   return new ImageResponse(
     (
       <div
@@ -33,11 +33,11 @@ export default function OgImage({ params }: { params: { locale: Locale } }) {
           <div style={{ fontSize: 44, fontWeight: 700 }}>Diligent AI</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-          <div style={{ fontSize: 60, fontWeight: 800, lineHeight: 1.1 }}>Your Factory Plans Itself.</div>
-          <div style={{ fontSize: 60, fontWeight: 800, lineHeight: 1.1, color: "#2CA6A4" }}>Your CEO Always Knows.</div>
-          <div style={{ fontSize: 60, fontWeight: 800, lineHeight: 1.1, color: "#E97730" }}>Your Arabic Content Writes Itself.</div>
+          <div style={{ fontSize: 64, fontWeight: 800, lineHeight: 1.1 }}>AI for Manufacturing.</div>
+          <div style={{ fontSize: 64, fontWeight: 800, lineHeight: 1.1, color: "#2CA6A4" }}>Built on Your Data.</div>
+          <div style={{ fontSize: 64, fontWeight: 800, lineHeight: 1.1, color: "#E97730" }}>Inside Your ERP.</div>
         </div>
-        <div style={{ display: "flex", fontSize: 28, color: "rgba(255,255,255,0.75)" }}>{`${tagline} — IPE · CEO OS · Nexus AI`}</div>
+        <div style={{ display: "flex", fontSize: 28, color: "rgba(255,255,255,0.75)" }}>{`${tagline} — Consult · Build · Integrate`}</div>
       </div>
     ),
     size,

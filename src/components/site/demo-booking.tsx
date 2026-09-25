@@ -3,41 +3,52 @@
 import { useSearchParams } from "next/navigation";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
-import { productKeys } from "@/lib/validation";
+import { interests } from "@/lib/validation";
 import { CalendlyEmbed } from "./calendly";
-import { DemoForm } from "./demo-form";
+import { DemoForm, type AreaOptionGroup } from "./demo-form";
 
 /**
- * Calendly is the primary, zero-friction path (spec §3.6). The short form is
- * the fallback for visitors who prefer to be contacted, and the only path
- * when Calendly isn't configured.
+ * Calendly is the primary, zero-friction path (spec §3.6); the short form is
+ * the fallback. Links pre-fill the form with `?interest=<service model>` and
+ * `?area=<offering or capability slug>` from anywhere in the catalog.
  */
 export function DemoBooking({
   locale,
   dict,
   calendlyUrl,
   calendlyCeoUrl,
+  areaOptions,
 }: {
   locale: Locale;
   dict: Dictionary;
   calendlyUrl: string;
   calendlyCeoUrl: string;
+  areaOptions: AreaOptionGroup[];
 }) {
   const params = useSearchParams();
-  const raw = params.get("product") ?? "all";
-  const product = (productKeys as readonly string[]).includes(raw) ? raw : "all";
-  const intent = params.get("intent") ?? undefined;
-  // CEOs get the 15-minute slot (spec journey 2).
-  const url = product === "ceo_os" && calendlyCeoUrl ? calendlyCeoUrl : calendlyUrl;
+  const rawInterest = params.get("interest") ?? "unsure";
+  const interest = (interests as readonly string[]).includes(rawInterest) ? rawInterest : "unsure";
+  const rawArea = params.get("area") ?? "";
+  const known = areaOptions.some((g) => g.options.some((o) => o.value === rawArea));
+  const area = known ? rawArea : "";
+  // Executives asking about decision intelligence get the short 15-minute slot (spec journey 2).
+  const url = area === "executive-intelligence" || area === "executive-decision-intelligence" ? calendlyCeoUrl || calendlyUrl : calendlyUrl;
 
   return (
     <div className="grid gap-8">
-      {url ? <CalendlyEmbed url={url} locale={locale} product={product} /> : null}
+      {url ? <CalendlyEmbed url={url} locale={locale} interest={interest} area={area} /> : null}
       <div className="rounded-2xl border bg-card p-6 md:p-8">
         <h2 className="text-xl font-bold text-brand-navy">{dict.demoForm.title}</h2>
         <p className="mt-1 text-sm text-muted-foreground">{dict.demoForm.subtitle}</p>
         <div className="mt-6">
-          <DemoForm locale={locale} dict={dict} defaultProduct={product} source={intent ? `demo:${intent}` : "demo"} />
+          <DemoForm
+            locale={locale}
+            dict={dict}
+            areaOptions={areaOptions}
+            defaultInterest={interest}
+            defaultArea={area}
+            source={params.get("intent") ? `demo:${params.get("intent")}` : "demo"}
+          />
         </div>
       </div>
     </div>

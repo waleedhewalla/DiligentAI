@@ -6,7 +6,8 @@ import { usePathname } from "next/navigation";
 import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
-import { productList, productColorClasses } from "@/content/products";
+import { accentClasses } from "@/content/catalog/accents";
+import type { NavModel } from "@/lib/nav";
 import { href } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -18,15 +19,15 @@ import { TrackedLink } from "./tracked-link";
 // The static GitHub Pages preview has no auth pages.
 const showLogin = process.env.NEXT_PUBLIC_PREVIEW !== "1";
 
-export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
+export function Header({ locale, dict, nav }: { locale: Locale; dict: Dictionary; nav: NavModel }) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [productsOpen, setProductsOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMobileOpen(false);
-    setProductsOpen(false);
+    setMenuOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -37,20 +38,22 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   }, [mobileOpen]);
 
   useEffect(() => {
-    if (!productsOpen) return;
+    if (!menuOpen) return;
     const onDown = (e: MouseEvent) => {
-      if (!menuRef.current?.contains(e.target as Node)) setProductsOpen(false);
+      if (!menuRef.current?.contains(e.target as Node)) setMenuOpen(false);
     };
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setProductsOpen(false);
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMenuOpen(false);
     document.addEventListener("mousedown", onDown);
     document.addEventListener("keydown", onKey);
     return () => {
       document.removeEventListener("mousedown", onDown);
       document.removeEventListener("keydown", onKey);
     };
-  }, [productsOpen]);
+  }, [menuOpen]);
 
   const links = [
+    { href: href(locale, "/services"), label: dict.nav.services },
+    { href: href(locale, "/capabilities"), label: dict.nav.capabilities },
     { href: href(locale, "/case-studies"), label: dict.nav.caseStudies },
     { href: href(locale, "/about"), label: dict.nav.about },
     { href: href(locale, "/blog"), label: dict.nav.blog },
@@ -77,50 +80,55 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               <button
                 type="button"
                 className="inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium hover:bg-muted"
-                aria-expanded={productsOpen}
-                aria-controls="products-menu"
-                onClick={() => setProductsOpen((v) => !v)}
+                aria-expanded={menuOpen}
+                aria-controls="solutions-menu"
+                onClick={() => setMenuOpen((v) => !v)}
               >
-                {dict.nav.products}
-                <ChevronDown className={cn("h-4 w-4 transition-transform", productsOpen && "rotate-180")} aria-hidden />
+                {dict.nav.solutions}
+                <ChevronDown className={cn("h-4 w-4 transition-transform", menuOpen && "rotate-180")} aria-hidden />
               </button>
-              {productsOpen ? (
+              {menuOpen ? (
+                // Mega menu: one column per catalog category, then the service models.
+                // Content is data-driven (see lib/nav.ts) — nothing here is hardcoded.
                 <div
-                  id="products-menu"
-                  className="absolute start-0 top-full mt-2 grid w-[640px] grid-cols-2 gap-2 rounded-xl border bg-background p-3 shadow-xl animate-fade-up"
+                  id="solutions-menu"
+                  className="fixed inset-x-0 top-[calc(100%+0.5rem)] mx-auto grid w-[min(1100px,calc(100vw-2rem))] grid-cols-4 gap-4 rounded-xl border bg-background p-5 shadow-xl animate-fade-up"
                 >
-                  {productList.map((p) => (
-                    <Link
-                      key={p.slug}
-                      href={href(locale, `/${p.slug}`)}
-                      className="group flex gap-3 rounded-lg p-3 hover:bg-muted"
-                    >
-                      <span
-                        className={cn(
-                          "flex h-10 w-10 shrink-0 items-center justify-center rounded-lg",
-                          productColorClasses[p.color].softBg,
-                          productColorClasses[p.color].text,
-                        )}
-                      >
-                        <Icon name={p.icon} className="h-5 w-5" />
-                      </span>
-                      <span>
-                        <span className="block font-semibold">
-                          <span className="ltr-run">{p.name[locale]}</span> — {p.category[locale]}
-                        </span>
-                        <span className="block text-sm text-muted-foreground">{p.tagline[locale]}</span>
-                      </span>
-                    </Link>
+                  {nav.solutions.map((group) => (
+                    <div key={group.title}>
+                      <Link href={group.href} className="text-xs font-semibold uppercase tracking-wide text-muted-foreground hover:text-foreground">
+                        {group.title}
+                      </Link>
+                      <ul className="mt-3 space-y-1">
+                        {group.items.map((item) => (
+                          <li key={item.href}>
+                            <Link href={item.href} className="flex items-start gap-2 rounded-md p-2 text-sm hover:bg-muted">
+                              <Icon name={item.icon} className={cn("mt-0.5 h-4 w-4 shrink-0", accentClasses[item.accent].text)} />
+                              <span className="font-medium leading-snug">{item.label}</span>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   ))}
-                  <Link
-                    href={href(locale, "/demo")}
-                    className="flex flex-col justify-center rounded-lg bg-brand-navy p-3 text-white hover:bg-brand-navy-dark"
-                  >
-                    <span className="font-semibold">{dict.nav.bookDemo}</span>
-                    <span className="mt-1 inline-flex items-center gap-1 text-sm text-white/80">
-                      {dict.cta.bookDemo} <ArrowRight className="btn-icon h-4 w-4" aria-hidden />
-                    </span>
-                  </Link>
+                  <div className="rounded-lg bg-brand-navy p-4 text-white">
+                    <Link href={href(locale, "/services")} className="text-xs font-semibold uppercase tracking-wide text-white/70 hover:text-white">
+                      {dict.nav.services}
+                    </Link>
+                    <ul className="mt-3 space-y-3">
+                      {nav.services.map((m) => (
+                        <li key={m.href}>
+                          <Link href={m.href} className="block rounded-md hover:text-brand-teal">
+                            <span className="flex items-center gap-2 font-semibold">
+                              <Icon name={m.icon} className="h-4 w-4" />
+                              {m.label}
+                            </span>
+                            <span className="mt-0.5 block text-xs text-white/70">{m.description}</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               ) : null}
             </div>
@@ -180,17 +188,14 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <Link href={href(locale)} className="rounded-md px-3 py-3 font-medium hover:bg-muted">
               {dict.nav.home}
             </Link>
-            {productList.map((p) => (
-              <Link
-                key={p.slug}
-                href={href(locale, `/${p.slug}`)}
-                className="flex items-center gap-3 rounded-md px-3 py-3 font-medium hover:bg-muted"
-              >
-                <span className={cn("h-2.5 w-2.5 rounded-full", productColorClasses[p.color].bg)} />
-                <span className="ltr-run">{p.name[locale]}</span>
-                <span className="text-sm text-muted-foreground">{p.category[locale]}</span>
+            {/* Mobile: catalog categories (data-driven), then the fixed site links. */}
+            <p className="mt-2 px-3 text-xs font-semibold uppercase text-muted-foreground">{dict.nav.solutions}</p>
+            {nav.solutions.map((g) => (
+              <Link key={g.href} href={g.href} className="rounded-md px-3 py-3 font-medium hover:bg-muted">
+                {g.title}
               </Link>
             ))}
+            <hr className="my-2" />
             {links.map((l) => (
               <Link key={l.href} href={l.href} className="rounded-md px-3 py-3 font-medium hover:bg-muted">
                 {l.label}

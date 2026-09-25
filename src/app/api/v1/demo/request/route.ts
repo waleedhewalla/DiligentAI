@@ -33,8 +33,9 @@ export async function POST(request: Request) {
   const emailLimit = rateLimit(`demo-email:${data.email}`, 3, DAY);
   if (!emailLimit.ok) return NextResponse.json({ error: "rate_limited" }, { status: 429 });
 
-  // MQL definition: verified work email (enforced above) from a target industry.
-  const isMql = data.industry !== "other";
+  // MQL definition: verified work email (enforced above) from a target industry,
+  // or a lead that already knows which service model it wants.
+  const isMql = data.industry !== "other" || data.interest !== "unsure";
 
   const admin = createAdminClient();
   if (admin) {
@@ -51,7 +52,8 @@ export async function POST(request: Request) {
       email: data.email,
       company: data.company,
       industry: data.industry,
-      product: data.product,
+      interest: data.interest,
+      area: data.area || null,
       language: data.language,
       source: data.source ?? null,
       is_mql: isMql,
@@ -63,7 +65,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "server_error" }, { status: 500 });
     }
   } else {
-    console.warn("Supabase not configured — demo request not persisted", { company: data.company, product: data.product });
+    console.warn("Supabase not configured — demo request not persisted", { company: data.company, interest: data.interest });
   }
 
   const webhook = process.env.DEMO_REQUEST_WEBHOOK_URL;
@@ -73,7 +75,7 @@ export async function POST(request: Request) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        text: `New demo request: ${data.name} — ${data.company} (${data.industry}) · ${data.product} · ${data.language.toUpperCase()}`,
+        text: `New demo request: ${data.name} — ${data.company} (${data.industry}) · ${data.interest}${data.area ? ` / ${data.area}` : ""} · ${data.language.toUpperCase()}`,
         ...data,
         website: undefined,
         is_mql: isMql,

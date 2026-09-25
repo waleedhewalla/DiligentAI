@@ -1,5 +1,21 @@
 import {
   BarChart3,
+  Blocks,
+  Cable,
+  CalendarClock,
+  ClipboardCheck,
+  Code2,
+  Compass,
+  Cpu,
+  Database,
+  Lightbulb,
+  Network,
+  Package,
+  ScanSearch,
+  TrendingUp,
+  Truck,
+  Workflow,
+  Wrench,
   Brain,
   Briefcase,
   Clock,
@@ -17,7 +33,7 @@ import {
   Users,
   type LucideIcon,
 } from "lucide-react";
-import type { IconName } from "@/content/products";
+import type { IconName } from "@/content/catalog";
 
 export const icons: Record<IconName, LucideIcon> = {
   factory: Factory,
@@ -36,6 +52,22 @@ export const icons: Record<IconName, LucideIcon> = {
   shield: ShieldCheck,
   users: Users,
   chart: BarChart3,
+  truck: Truck,
+  trending: TrendingUp,
+  scan: ScanSearch,
+  wrench: Wrench,
+  package: Package,
+  database: Database,
+  workflow: Workflow,
+  lightbulb: Lightbulb,
+  code: Code2,
+  cable: Cable,
+  clipboard: ClipboardCheck,
+  cpu: Cpu,
+  compass: Compass,
+  blocks: Blocks,
+  calendar: CalendarClock,
+  network: Network,
 };
 
 export function Icon({ name, className }: { name: IconName; className?: string }) {

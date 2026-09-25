@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { locales } from "@/i18n/config";
-import { productList } from "@/content/products";
+import { listCapabilities, listOfferings } from "@/content/catalog";
 import { caseStudies } from "@/content/case-studies";
 import { getPosts } from "@/content/blog";
 import { href, languageAlternates } from "@/lib/seo";
@@ -12,7 +12,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getPosts();
   const entries: Entry[] = [
     { path: "/", priority: 1, changeFrequency: "weekly" },
-    ...productList.map((p) => ({ path: `/${p.slug}`, priority: 0.9, changeFrequency: "monthly" as const })),
+    // Dynamic: every catalog offering and capability gets a URL automatically.
+    { path: "/solutions", priority: 0.9, changeFrequency: "monthly" },
+    { path: "/services", priority: 0.9, changeFrequency: "monthly" },
+    { path: "/capabilities", priority: 0.9, changeFrequency: "monthly" },
+    ...listOfferings().map((o) => ({ path: `/solutions/${o.slug}`, priority: 0.8, changeFrequency: "monthly" as const })),
+    ...listCapabilities().map((c) => ({ path: `/capabilities/${c.slug}`, priority: 0.8, changeFrequency: "monthly" as const })),
     { path: "/case-studies", priority: 0.8, changeFrequency: "monthly" },
     ...caseStudies.map((c) => ({ path: `/case-studies/${c.slug}`, priority: 0.8, changeFrequency: "monthly" as const, lastModified: c.updatedAt })),
     { path: "/demo", priority: 0.9, changeFrequency: "yearly" },

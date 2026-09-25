@@ -2,7 +2,7 @@ import type { Locale } from "@/i18n/config";
 import { absoluteUrl } from "@/lib/utils";
 import { founderName, site } from "@/lib/site";
 import { href } from "@/lib/seo";
-import type { Product } from "@/content/products";
+import type { Capability, Offering } from "@/content/catalog";
 import type { Post } from "@/content/blog";
 import type { CaseStudy } from "@/content/case-studies";
 
@@ -18,7 +18,8 @@ export function organizationSchema(locale: Locale) {
     url: absoluteUrl(href(locale)),
     logo: absoluteUrl("/logo.svg"),
     email: site.email,
-    slogan: locale === "ar" ? "ذكاء المنطقة" : "MENA Intelligence",
+    slogan: locale === "ar" ? "حلول الذكاء الاصطناعي للتصنيع" : "AI solutions for manufacturing",
+    knowsAbout: ["Artificial intelligence", "Manufacturing", "ERP integration", "Production planning", "Quality control", "Supply chain"],
     foundingLocation: { "@type": "Place", name: "Cairo, Egypt" },
     address: { "@type": "PostalAddress", addressLocality: "Cairo", addressCountry: "EG" },
     areaServed: ["EG", "SA", "AE", "QA", "KW", "BH", "OM"].map((c) => ({ "@type": "Country", name: c })),
@@ -52,19 +53,31 @@ export function breadcrumbSchema(items: { name: string; path: string }[], locale
   };
 }
 
-export function productSchema(p: Product, locale: Locale) {
-  return {
+/**
+ * Offerings describe themselves: `kind: "product"` → SoftwareApplication,
+ * `kind: "service"` → Service. Adding an offering needs no schema changes.
+ */
+export function offeringSchema(o: Offering, locale: Locale) {
+  const base = {
     "@context": "https://schema.org",
+    name: o.brand ? `${o.brand} — ${o.title[locale]}` : o.title[locale],
+    description: o.seo.description[locale],
+    url: absoluteUrl(href(locale, `/solutions/${o.slug}`)),
+    provider: { "@id": ORG_ID },
+    areaServed: ["EG", "SA", "AE", "QA", "KW", "BH", "OM"],
+    audience: { "@type": "BusinessAudience", audienceType: "Manufacturers" },
+  };
+  if (o.kind === "service") {
+    return { ...base, "@type": "Service", serviceType: o.title.en, category: o.category };
+  }
+  return {
+    ...base,
     "@type": "SoftwareApplication",
     additionalType: "https://schema.org/Product",
-    name: `${p.name[locale]} — ${p.category[locale]}`,
-    description: p.seo.description[locale],
-    url: absoluteUrl(href(locale, `/${p.slug}`)),
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
     inLanguage: ["ar", "en"],
     brand: { "@type": "Brand", name: site.name },
-    publisher: { "@id": ORG_ID },
     offers: {
       "@type": "Offer",
       availability: "https://schema.org/InStock",
@@ -72,6 +85,33 @@ export function productSchema(p: Product, locale: Locale) {
       priceCurrency: "EGP",
       description: locale === "ar" ? "التسعير حسب الطلب — احجز عرضاً توضيحياً" : "Pricing on request — book a demo",
     },
+  };
+}
+
+export function capabilitySchema(c: Capability, locale: Locale) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: c.title[locale],
+    description: c.seo.description[locale],
+    serviceType: c.title.en,
+    url: absoluteUrl(href(locale, `/capabilities/${c.slug}`)),
+    provider: { "@id": ORG_ID },
+    audience: { "@type": "BusinessAudience", audienceType: "Manufacturers" },
+  };
+}
+
+/** A list of catalog items for hub pages (/solutions, /capabilities). */
+export function itemListSchema(items: { name: string; path: string }[], locale: Locale) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: items.map((it, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: it.name,
+      url: absoluteUrl(href(locale, it.path)),
+    })),
   };
 }
 

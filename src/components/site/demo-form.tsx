@@ -12,15 +12,26 @@ import { Label } from "@/components/ui/label";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
+/**
+ * Area-of-interest options are built on the server from the catalog (see
+ * `demoAreaOptions`) and passed in, so the full catalog isn't shipped to the
+ * browser and new offerings/capabilities appear here automatically.
+ */
+export type AreaOptionGroup = { label: string; options: { value: string; label: string }[] };
+
 export function DemoForm({
   locale,
   dict,
-  defaultProduct = "all",
+  areaOptions = [],
+  defaultInterest = "unsure",
+  defaultArea = "",
   source,
 }: {
   locale: Locale;
   dict: Dictionary;
-  defaultProduct?: string;
+  areaOptions?: AreaOptionGroup[];
+  defaultInterest?: string;
+  defaultArea?: string;
   source?: string;
 }) {
   const f = dict.demoForm;
@@ -51,8 +62,8 @@ export function DemoForm({
         setStatus("error");
         return;
       }
-      track("generate_lead", { form: "demo_request", product: payload.product, industry: payload.industry });
-      if (json.mql) track("mql", { product: payload.product, industry: payload.industry });
+      track("generate_lead", { form: "demo_request", interest: payload.interest, area: payload.area, industry: payload.industry });
+      if (json.mql) track("mql", { interest: payload.interest, area: payload.area, industry: payload.industry });
       setStatus("success");
     } catch {
       setMessage(f.error);
@@ -100,21 +111,37 @@ export function DemoForm({
           </p>
         ) : null}
       </div>
+      {/* Primary question: which service model (Consult / Build / Integrate). */}
+      <div className="grid gap-2">
+        <Label htmlFor="df-interest">{f.interest}</Label>
+        <NativeSelect id="df-interest" name="interest" defaultValue={defaultInterest}>
+          {Object.entries(f.interests).map(([v, label]) => (
+            <option key={v} value={v}>
+              {label}
+            </option>
+          ))}
+        </NativeSelect>
+      </div>
       <div className="grid gap-4 sm:grid-cols-3">
         <div className="grid gap-2">
-          <Label htmlFor="df-industry">{f.industry}</Label>
-          <NativeSelect id="df-industry" name="industry" defaultValue="manufacturing">
-            {Object.entries(f.industries).map(([v, label]) => (
-              <option key={v} value={v}>
-                {label}
-              </option>
+          <Label htmlFor="df-area">{f.area}</Label>
+          <NativeSelect id="df-area" name="area" defaultValue={defaultArea}>
+            <option value="">{f.areaAny}</option>
+            {areaOptions.map((g) => (
+              <optgroup key={g.label} label={g.label}>
+                {g.options.map((o) => (
+                  <option key={o.value} value={o.value}>
+                    {o.label}
+                  </option>
+                ))}
+              </optgroup>
             ))}
           </NativeSelect>
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="df-product">{f.product}</Label>
-          <NativeSelect id="df-product" name="product" defaultValue={defaultProduct}>
-            {Object.entries(f.products).map(([v, label]) => (
+          <Label htmlFor="df-industry">{f.industry}</Label>
+          <NativeSelect id="df-industry" name="industry" defaultValue="manufacturing">
+            {Object.entries(f.industries).map(([v, label]) => (
               <option key={v} value={v}>
                 {label}
               </option>

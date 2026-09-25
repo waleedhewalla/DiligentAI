@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { caseStudies } from "@/content/case-studies";
-import { products } from "@/content/products";
+import { getOffering } from "@/content/catalog";
 import { visibleMetrics } from "@/content/proof";
 import { href, pageMetadata } from "@/lib/seo";
 import { Badge } from "@/components/ui/badge";
@@ -17,8 +17,8 @@ const copy = {
     ar: "تطبيقات حقيقية وأرقام حقيقية. كل مؤشر في هذه الصفحة مُقاس لدى العميل، لا مُقدّر.",
   },
   description: {
-    en: "How manufacturers and logistics companies in Egypt use IPE, CEO OS and Nexus AI. Star Trans: 80% less planning time in 8 weeks.",
-    ar: "كيف تستخدم شركات التصنيع واللوجستيات في مصر IPE وCEO OS وNexus AI. ستار ترانس: انخفاض وقت التخطيط 80% خلال 8 أسابيع.",
+    en: "How manufacturers and logistics companies in Egypt use AI for planning, executive decisions and commercial content. Star Trans: 80% less planning time in 8 weeks.",
+    ar: "كيف تستخدم شركات التصنيع واللوجستيات في مصر الذكاء الاصطناعي في التخطيط والقرار التنفيذي والمحتوى التجاري. ستار ترانس: انخفاض وقت التخطيط 80% خلال 8 أسابيع.",
   },
   next: {
     en: "Your company could be the next case study.",
@@ -66,11 +66,14 @@ export default function CaseStudiesPage({ params }: { params: { locale: Locale }
                 </h2>
                 <p className="mt-3 text-muted-foreground">{cs.summary[locale]}</p>
                 <div className="mt-5 flex flex-wrap gap-2">
-                  {cs.products.map((p) => (
-                    <Badge key={p} variant="muted">
-                      {products[p].name[locale]}
-                    </Badge>
-                  ))}
+                  {cs.offerings.map((slug) => {
+                    const o = getOffering(slug);
+                    return o ? (
+                      <Badge key={slug} variant="muted">
+                        {o.title[locale]}
+                      </Badge>
+                    ) : null;
+                  })}
                 </div>
                 <span className="mt-6 inline-flex items-center gap-1 font-semibold text-brand-teal-dark">
                   {dict.cta.readCaseStudy} <ArrowRight className="btn-icon h-4 w-4" aria-hidden />

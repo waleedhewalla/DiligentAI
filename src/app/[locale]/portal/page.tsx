@@ -3,7 +3,7 @@ import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getPortalContext } from "@/lib/auth";
 import { createClient } from "@/lib/supabase/server";
-import { productList, productColorClasses } from "@/content/products";
+import { accentClasses, launchableOfferings } from "@/content/catalog";
 import { cn } from "@/lib/utils";
 import { LaunchButton } from "@/components/portal/launch-button";
 
@@ -52,13 +52,15 @@ export default async function PortalDashboard({ params }: { params: { locale: Lo
           {dict.portal.yourProducts}
         </h2>
         <div className="mt-4 grid gap-4 md:grid-cols-3">
-          {productList.map((p) => {
-            const grant = ctx.access.find((a) => a.product === p.key);
-            const c = productColorClasses[p.color];
+          {/* Dynamic: cards come from catalog offerings that customers can launch. */}
+          {launchableOfferings().map((p) => {
+            const grant = ctx.access.find((a) => a.product === p.launch);
+            const c = accentClasses[p.accent];
+            const name = p.brand ?? p.title[locale];
             return (
-              <div key={p.key} className={cn("flex flex-col rounded-xl border-t-4 bg-background p-5 shadow-sm", c.border)}>
-                <p className={cn("text-lg font-bold", c.text)}>{p.name[locale]}</p>
-                <p className="text-sm text-muted-foreground">{p.category[locale]}</p>
+              <div key={p.launch} className={cn("flex flex-col rounded-xl border-t-4 bg-background p-5 shadow-sm", c.border)}>
+                <p className={cn("text-lg font-bold", c.text)}>{name}</p>
+                <p className="text-sm text-muted-foreground">{p.title[locale]}</p>
                 <p className="mt-3 flex items-center gap-2 text-sm">
                   <span className={cn("h-2 w-2 rounded-full", grant ? "bg-brand-green" : "bg-muted-foreground/40")} />
                   {grant ? dict.portal.active : dict.portal.notLicensed}
@@ -66,13 +68,13 @@ export default async function PortalDashboard({ params }: { params: { locale: Lo
                 <div className="mt-5">
                   {grant ? (
                     <LaunchButton
-                      product={p.key}
-                      label={`${dict.portal.open} ${p.name[locale]}`}
+                      product={p.launch}
+                      label={`${dict.portal.open} ${name}`}
                       launchingLabel={dict.portal.launching}
                       errorLabel={dict.portal.launchError}
                     />
                   ) : (
-                    <Link href={`/${locale}/portal/support?product=${p.key}`} className="text-sm font-medium text-brand-purple hover:underline">
+                    <Link href={`/${locale}/portal/support?product=${p.launch}`} className="text-sm font-medium text-brand-purple hover:underline">
                       {dict.portal.requestAccess}
                     </Link>
                   )}

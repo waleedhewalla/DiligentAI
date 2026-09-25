@@ -3,7 +3,7 @@ import { ArrowRight, PlayCircle, Star } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { home } from "@/content/home";
-import { productList } from "@/content/products";
+import { getCapability, type Capability } from "@/content/catalog";
 import { starTransMetrics } from "@/content/proof";
 import { getPosts } from "@/content/blog";
 import { href, pageMetadata } from "@/lib/seo";
@@ -12,9 +12,10 @@ import { formatDate } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { HeroVisual } from "@/components/site/hero-visual";
-import { FinalCta, MetricsBar, ProductCard, SectionHeading } from "@/components/site/sections";
+import { FinalCta, MetricsBar, SectionHeading } from "@/components/site/sections";
 import { TrackedLink } from "@/components/site/tracked-link";
 import { FounderSection } from "@/components/site/founder";
+import { CatalogShowcase, ServiceModelGrid } from "@/components/site/catalog";
 
 export function generateMetadata({ params }: { params: { locale: Locale } }) {
   const l = params.locale;
@@ -32,10 +33,12 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
   const locale = params.locale;
   const dict = getDictionary(locale);
   const posts = (await getPosts()).slice(0, 3);
+  // Pain cards are driven by capability data (home.problem.capabilities picks which).
+  const painCards = home.problem.capabilities.map(getCapability).filter((c): c is Capability => Boolean(c));
 
   return (
     <>
-      {/* HERO */}
+      {/* HERO — same design as before; copy repositioned to "AI for manufacturing". */}
       <section className="hero-bg relative overflow-hidden text-white">
         <div className="grid-pattern absolute inset-0" aria-hidden />
         <div className="container relative grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[1.15fr_1fr]">
@@ -74,7 +77,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                 </Button>
               ) : (
                 <Button asChild size="lg" variant="inverse">
-                  <Link href={href(locale, "/case-studies/star-trans")}>{dict.cta.readCaseStudy}</Link>
+                  <Link href={href(locale, "/solutions")}>{dict.nav.allSolutions}</Link>
                 </Button>
               )}
             </div>
@@ -94,36 +97,51 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
         </div>
       </section>
 
-      {/* PROBLEM */}
+      {/* PROBLEM — manufacturing pain first, each card links to its use case. */}
       <section className="section">
         <div className="container">
-          <SectionHeading eyebrow={home.problem.eyebrow[locale]} title={home.problem.title[locale]} />
+          <SectionHeading eyebrow={home.problem.eyebrow[locale]} title={home.problem.title[locale]} lead={home.problem.lead[locale]} />
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {home.problem.cards.map((c, i) => (
-              <article key={i} className="rounded-2xl border bg-surface-subtle p-7">
-                <p className="text-sm font-semibold text-brand-red">{c.persona[locale]}</p>
-                <h3 className="mt-3 text-xl font-bold text-brand-navy">{c.title[locale]}</h3>
-                <p className="mt-3 text-muted-foreground">{c.body[locale]}</p>
-              </article>
+            {painCards.map((c) => (
+              <Link
+                key={c.slug}
+                href={href(locale, `/capabilities/${c.slug}`)}
+                className="group rounded-2xl border bg-surface-subtle p-7 transition-shadow hover:shadow-md"
+              >
+                <p className="text-sm font-semibold text-brand-red">{c.title[locale]}</p>
+                <h3 className="mt-3 text-xl font-bold text-brand-navy">{c.problem[locale]}</h3>
+                <p className="mt-3 text-muted-foreground">{c.summary[locale]}</p>
+                <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-teal-dark">
+                  {dict.common.learnMore} <ArrowRight className="btn-icon h-4 w-4" aria-hidden />
+                </span>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* PRODUCTS */}
-      <section className="section bg-surface-subtle" id="products">
+      {/* SERVICE MODELS — primary offer: Consult / Build / Integrate. */}
+      <section className="section bg-surface-subtle" id="services">
         <div className="container">
-          <SectionHeading eyebrow={home.products.eyebrow[locale]} title={home.products.title[locale]} lead={home.products.lead[locale]} />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {productList.map((p) => (
-              <ProductCard key={p.slug} product={p} locale={locale} dict={dict} />
-            ))}
+          <SectionHeading eyebrow={home.services.eyebrow[locale]} title={home.services.title[locale]} lead={home.services.lead[locale]} />
+          <div className="mt-12">
+            <ServiceModelGrid locale={locale} dict={dict} />
+          </div>
+        </div>
+      </section>
+
+      {/* CATALOG — every category and its items, straight from the catalog data. */}
+      <section className="section" id="solutions">
+        <div className="container">
+          <SectionHeading eyebrow={home.catalog.eyebrow[locale]} title={home.catalog.title[locale]} />
+          <div className="mt-12">
+            <CatalogShowcase locale={locale} dict={dict} limit={3} />
           </div>
         </div>
       </section>
 
       {/* STAR TRANS PROOF */}
-      <section className="section">
+      <section className="section pt-0">
         <div className="container">
           <div className="overflow-hidden rounded-3xl bg-brand-navy text-white">
             <div className="grid gap-10 p-8 md:p-12 lg:grid-cols-[1fr_1.2fr] lg:items-center">
@@ -163,7 +181,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
 
       <FounderSection locale={locale} dict={dict} />
 
-      {/* LATEST INSIGHTS — internal links into the blog silo */}
+      {/* LATEST INSIGHTS */}
       <section className="section">
         <div className="container">
           <div className="flex items-end justify-between gap-4">

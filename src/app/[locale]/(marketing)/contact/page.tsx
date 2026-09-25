@@ -6,14 +6,15 @@ import { site, whatsappHref } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { Breadcrumbs, PageHero } from "@/components/site/sections";
 import { DemoForm } from "@/components/site/demo-form";
+import { demoAreaOptions } from "@/lib/demo-options";
 import { LinkedInIcon, WhatsAppIcon } from "@/components/site/icons";
 import { TrackedAnchor } from "@/components/site/tracked-link";
 
 const copy = {
   title: { en: "Contact Diligent AI — Cairo, Egypt", ar: "تواصل مع Diligent AI — القاهرة، مصر" },
   description: {
-    en: "Talk to the Diligent AI team in Cairo about IPE, CEO OS and Nexus AI. WhatsApp, email or a short form — we reply within one business day.",
-    ar: "تحدث مع فريق Diligent AI في القاهرة عن IPE وCEO OS وNexus AI. واتساب أو بريد إلكتروني أو نموذج قصير — نرد خلال يوم عمل واحد.",
+    en: "Talk to the Diligent AI team in Cairo about AI consulting, solutions and ERP integration for your plant. WhatsApp, email or a short form — we reply within one business day.",
+    ar: "تحدث مع فريق Diligent AI في القاهرة عن استشارات وحلول الذكاء الاصطناعي والتكامل مع ERP لمصنعك. واتساب أو بريد إلكتروني أو نموذج قصير — نرد خلال يوم عمل واحد.",
   },
   h1: { en: "Talk to a person, not a ticket queue", ar: "تحدث مع شخص، لا مع قائمة انتظار" },
   lead: {
@@ -53,7 +54,7 @@ export default function ContactPage({ params }: { params: { locale: Locale } }) 
             <h2 className="text-xl font-bold text-brand-navy">{dict.demoForm.title}</h2>
             <p className="mt-1 text-sm text-muted-foreground">{dict.demoForm.subtitle}</p>
             <div className="mt-6">
-              <DemoForm locale={locale} dict={dict} source="contact" />
+              <DemoForm locale={locale} dict={dict} areaOptions={demoAreaOptions(locale, dict)} source="contact" />
             </div>
           </div>
           <aside className="space-y-4">

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import type { ProductKey } from "@/content/products";
+import type { ProductKey } from "@/content/catalog";
 
 /** Requests a scoped launch token and hands the user to the product app (spec §9.2). */
 export function LaunchButton({

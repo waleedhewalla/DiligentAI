@@ -8,7 +8,7 @@ import type { Locale } from "@/i18n/config";
  * Calendly inline embed. The widget script loads only when the embed scrolls
  * into view, keeping the demo page fast. Bookings fire the `demo_booked` KPI.
  */
-export function CalendlyEmbed({ url, locale, product }: { url: string; locale: Locale; product?: string }) {
+export function CalendlyEmbed({ url, locale, interest, area }: { url: string; locale: Locale; interest?: string; area?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const [load, setLoad] = useState(false);
 
@@ -41,15 +41,15 @@ export function CalendlyEmbed({ url, locale, product }: { url: string; locale: L
     const onMessage = (e: MessageEvent) => {
       if (e.origin !== "https://calendly.com") return;
       const data = e.data as { event?: string };
-      if (data?.event === "calendly.event_scheduled") track("demo_booked", { source: "calendly", product });
+      if (data?.event === "calendly.event_scheduled") track("demo_booked", { source: "calendly", interest, area });
     };
     window.addEventListener("message", onMessage);
     return () => window.removeEventListener("message", onMessage);
-  }, [product]);
+  }, [interest, area]);
 
   const src = `${url}${url.includes("?") ? "&" : "?"}hide_gdpr_banner=1&locale=${locale}${
-    product ? `&utm_content=${encodeURIComponent(product)}` : ""
-  }`;
+    interest ? `&utm_campaign=${encodeURIComponent(interest)}` : ""
+  }${area ? `&utm_content=${encodeURIComponent(area)}` : ""}`;
 
   return (
     <div ref={ref} className="min-h-[700px] overflow-hidden rounded-2xl border bg-background">

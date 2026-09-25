@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
-import { productColorClasses, type Product } from "@/content/products";
+import { accentClasses, type Capability, type Offering, type ServiceModel } from "@/content/catalog";
 import { visibleMetrics, type Metric, type Testimonial } from "@/content/proof";
 import { href } from "@/lib/seo";
 import { whatsappHref } from "@/lib/site";
@@ -37,60 +37,143 @@ export function SectionHeading({
   );
 }
 
-export function ProductCard({ product: p, locale, dict }: { product: Product; locale: Locale; dict: Dictionary }) {
-  const c = productColorClasses[p.color];
-  const isNavy = p.color === "navy";
+/**
+ * Generic catalog card. Renders ANY offering (product or service) from
+ * catalog/offerings.ts — colour, icon, brand badge and copy all come from data.
+ * `featured` gives the navy treatment the CEO OS card used to have.
+ */
+export function OfferingCard({
+  offering: o,
+  locale,
+  dict,
+  featured = false,
+}: {
+  offering: Offering;
+  locale: Locale;
+  dict: Dictionary;
+  featured?: boolean;
+}) {
+  const c = accentClasses[o.accent];
   return (
     <article
       className={cn(
         "group relative flex flex-col rounded-2xl border p-7 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg",
-        isNavy ? "border-brand-navy bg-brand-navy text-white" : cn("border-s-4 bg-card", c.border),
+        featured ? "border-brand-navy bg-brand-navy text-white" : cn("border-s-4 bg-card", c.border),
       )}
     >
-      <div className="flex items-center gap-3">
+      <div className="flex items-start gap-3">
         <span
           className={cn(
-            "flex h-11 w-11 items-center justify-center rounded-xl",
-            isNavy ? "bg-white/10 text-white" : cn(c.softBg, c.text),
+            "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl",
+            featured ? "bg-white/10 text-white" : cn(c.softBg, c.text),
           )}
         >
-          <Icon name={p.icon} className="h-6 w-6" />
+          <Icon name={o.icon} className="h-6 w-6" />
         </span>
-        <div>
-          <h3 className={cn("text-2xl font-bold", isNavy ? "text-white" : c.text)}>
-            <span className="ltr-run">{p.name[locale]}</span>
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-center gap-2">
+            {o.brand ? (
+              <span className={cn("rounded-md px-1.5 py-0.5 text-[11px] font-bold", featured ? "bg-white/15" : cn(c.softBg, c.text))}>
+                <span className="ltr-run">{o.brand}</span>
+              </span>
+            ) : null}
+            {o.status === "pilot" ? (
+              <span className="rounded-md bg-brand-amber/15 px-1.5 py-0.5 text-[11px] font-bold text-brand-amber">{dict.common.pilot}</span>
+            ) : null}
+          </div>
+          <h3 className={cn("mt-1 text-xl font-bold leading-snug", featured ? "text-white" : "text-brand-navy")}>
+            <Link href={href(locale, `/solutions/${o.slug}`)} className="after:absolute after:inset-0">
+              {o.title[locale]}
+            </Link>
           </h3>
-          <p className={cn("text-sm font-medium", isNavy ? "text-white/70" : "text-muted-foreground")}>
-            {p.category[locale]}
-          </p>
         </div>
       </div>
-      <p className={cn("mt-5 text-lg font-semibold", isNavy ? "text-white" : "text-foreground")}>{p.tagline[locale]}</p>
-      <ul className="mt-4 flex-1 space-y-2.5">
-        {p.benefits[locale].map((b) => (
-          <li key={b} className={cn("flex gap-2 text-sm", isNavy ? "text-white/85" : "text-muted-foreground")}>
-            <Check className={cn("mt-0.5 h-4 w-4 shrink-0", isNavy ? "text-brand-teal" : c.text)} aria-hidden />
-            {b}
+      <p className={cn("mt-4 flex-1 text-sm", featured ? "text-white/80" : "text-muted-foreground")}>{o.summary[locale]}</p>
+      <ul className="mt-5 flex flex-wrap gap-1.5" aria-label={dict.common.serviceModels}>
+        {o.serviceModels.map((m) => (
+          <li
+            key={m}
+            className={cn(
+              "rounded-full px-2.5 py-0.5 text-xs font-medium",
+              featured ? "bg-white/10 text-white/90" : "bg-muted text-muted-foreground",
+            )}
+          >
+            {dict.demoForm.interests[m].split(" — ")[0]}
           </li>
         ))}
       </ul>
-      <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-        <Button asChild className={cn("w-full sm:w-auto", isNavy ? "bg-white text-brand-navy hover:bg-white/90" : c.button)}>
+      <span className={cn("mt-5 inline-flex items-center gap-1 text-sm font-semibold", featured ? "text-brand-teal" : c.text)}>
+        {dict.common.learnMore}
+        <ArrowRight className="btn-icon h-4 w-4" aria-hidden />
+      </span>
+    </article>
+  );
+}
+
+/** Primary service-model card (Consult / Build / Integrate) — data from catalog/service-models.ts. */
+export function ServiceModelCard({ model: m, locale, dict, index }: { model: ServiceModel; locale: Locale; dict: Dictionary; index: number }) {
+  const c = accentClasses[m.accent];
+  return (
+    <article className={cn("flex flex-col rounded-2xl border-t-4 bg-card p-7 shadow-sm", c.border)}>
+      <div className="flex items-center justify-between">
+        <span className={cn("flex h-12 w-12 items-center justify-center rounded-xl", c.softBg, c.text)}>
+          <Icon name={m.icon} className="h-6 w-6" />
+        </span>
+        <span className="text-sm font-bold text-muted-foreground/60" dir="ltr">
+          0{index + 1}
+        </span>
+      </div>
+      <h3 className="mt-5 text-2xl font-bold text-brand-navy">{m.title[locale]}</h3>
+      <p className="mt-2 font-semibold">{m.tagline[locale]}</p>
+      <p className="mt-3 text-sm text-muted-foreground">{m.description[locale]}</p>
+      <ul className="mt-5 flex-1 space-y-2">
+        {m.deliverables[locale].map((d) => (
+          <li key={d} className="flex gap-2 text-sm">
+            <Check className={cn("mt-0.5 h-4 w-4 shrink-0", c.text)} aria-hidden />
+            {d}
+          </li>
+        ))}
+      </ul>
+      <p className="mt-5 text-xs text-muted-foreground">
+        {dict.common.typicalDuration}: {m.duration[locale]}
+      </p>
+      <div className="mt-5 flex flex-wrap items-center gap-3">
+        <Button asChild size="sm" className={c.button}>
           <TrackedLink
-            href={href(locale, `/${p.slug}`)}
-            event={{ name: "cta_click", params: { cta: "product_card", location: "product_grid", product: p.key } }}
+            href={href(locale, "/demo") + `?interest=${m.id}`}
+            event={{ name: "cta_click", params: { cta: "service_model", location: "service_card", interest: m.id } }}
           >
-            {p.cardCta[locale]}
+            {m.cta[locale]}
             <ArrowRight className="btn-icon" />
           </TrackedLink>
         </Button>
-        <Link
-          href={href(locale, "/demo") + `?product=${p.key}`}
-          className={cn("text-sm font-medium underline-offset-4 hover:underline", isNavy ? "text-white/80" : "text-brand-teal-dark")}
-        >
-          {dict.nav.bookDemo}
+        <Link href={href(locale, `/services#${m.id}`)} className="text-sm font-medium text-brand-teal-dark hover:underline">
+          {dict.common.learnMore}
         </Link>
       </div>
+    </article>
+  );
+}
+
+/** Manufacturing use-case card — data from catalog/capabilities.ts. */
+export function CapabilityCard({ capability: cap, locale, dict }: { capability: Capability; locale: Locale; dict: Dictionary }) {
+  const c = accentClasses[cap.accent];
+  return (
+    <article className="group relative flex flex-col rounded-2xl border bg-card p-6 transition-shadow hover:shadow-md">
+      <span className={cn("flex h-10 w-10 items-center justify-center rounded-lg", c.softBg, c.text)}>
+        <Icon name={cap.icon} className="h-5 w-5" />
+      </span>
+      <h3 className="mt-4 text-lg font-bold text-brand-navy group-hover:text-brand-teal-dark">
+        <Link href={href(locale, `/capabilities/${cap.slug}`)} className="after:absolute after:inset-0">
+          {cap.title[locale]}
+        </Link>
+      </h3>
+      <p className="mt-2 text-sm font-medium text-brand-red/90">“{cap.problem[locale]}”</p>
+      <p className="mt-2 flex-1 text-sm text-muted-foreground">{cap.summary[locale]}</p>
+      <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-teal-dark">
+        {dict.common.learnMore}
+        <ArrowRight className="btn-icon h-4 w-4" aria-hidden />
+      </span>
     </article>
   );
 }
@@ -145,16 +228,18 @@ export function FinalCta({
   dict,
   title,
   body,
-  product,
+  query,
   location,
 }: {
   locale: Locale;
   dict: Dictionary;
   title: string;
   body?: string;
-  product?: string;
+  /** Pre-fills the demo form, e.g. { area: "quality-control", interest: "build" }. */
+  query?: { area?: string; interest?: string };
   location: string;
 }) {
+  const qs = query ? "?" + new URLSearchParams(Object.entries(query).filter(([, v]) => v) as [string, string][]).toString() : "";
   const wa = whatsappHref(locale === "ar" ? "مرحباً وليد، أود معرفة المزيد عن Diligent AI" : "Hi Waleed, I'd like to learn more about Diligent AI");
   return (
     <section className="hero-bg relative overflow-hidden text-white">
@@ -165,8 +250,8 @@ export function FinalCta({
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Button asChild size="lg" className="w-full sm:w-auto">
             <TrackedLink
-              href={href(locale, "/demo") + (product ? `?product=${product}` : "")}
-              event={{ name: "cta_click", params: { cta: "book_demo", location, product } }}
+              href={href(locale, "/demo") + qs}
+              event={{ name: "cta_click", params: { cta: "book_demo", location, solution: query?.area, interest: query?.interest } }}
             >
               {dict.cta.bookDemo}
               <ArrowRight className="btn-icon" />

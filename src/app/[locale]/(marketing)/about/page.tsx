@@ -1,17 +1,17 @@
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
-import { productList } from "@/content/products";
 import { pageMetadata } from "@/lib/seo";
-import { Breadcrumbs, FinalCta, PageHero, ProductCard, SectionHeading } from "@/components/site/sections";
+import { Breadcrumbs, FinalCta, PageHero, SectionHeading } from "@/components/site/sections";
+import { ServiceModelGrid } from "@/components/site/catalog";
 import { FounderSection } from "@/components/site/founder";
 
 const copy = {
-  title: { en: "About Diligent AI — MENA Intelligence", ar: "عن Diligent AI — ذكاء المنطقة" },
+  title: { en: "About Diligent AI — AI Solutions for Manufacturing", ar: "عن Diligent AI — حلول الذكاء الاصطناعي للتصنيع" },
   description: {
-    en: "Diligent AI is a Cairo-based company building the Arabic-native AI operating system for manufacturers and logistics companies in Egypt and the Gulf.",
-    ar: "Diligent AI شركة مقرها القاهرة تبني نظام تشغيل بالذكاء الاصطناعي عربياً أصيلاً لشركات التصنيع واللوجستيات في مصر والخليج.",
+    en: "Diligent AI is a Cairo-based AI solutions and system-integration company for manufacturers in Egypt and the Gulf: consulting, pre-built AI tools, custom models and ERP integration.",
+    ar: "Diligent AI شركة مقرها القاهرة لحلول الذكاء الاصطناعي وتكامل الأنظمة للمصانع في مصر والخليج: استشارات، وأدوات جاهزة، ونماذج مخصصة، وتكامل مع ERP.",
   },
-  eyebrow: { en: "MENA Intelligence", ar: "ذكاء المنطقة" },
+  eyebrow: { en: "AI for manufacturing", ar: "ذكاء اصطناعي للتصنيع" },
   h1: {
     en: "Intelligence built in the region, for the region.",
     ar: "ذكاء صُنع في المنطقة، من أجل المنطقة.",
@@ -56,7 +56,7 @@ const copy = {
       },
     },
   ],
-  ecosystem: { en: "The MENA Intelligence Ecosystem", ar: "منظومة ذكاء المنطقة" },
+  ecosystem: { en: "How we work with manufacturers", ar: "كيف نعمل مع المصانع" },
   cta: { en: "Meet the team behind the platform.", ar: "تعرّف على الفريق وراء المنصة." },
 };
 
@@ -107,10 +107,9 @@ export default function AboutPage({ params }: { params: { locale: Locale } }) {
       <section className="section">
         <div className="container">
           <SectionHeading title={copy.ecosystem[locale]} />
-          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {productList.map((p) => (
-              <ProductCard key={p.slug} product={p} locale={locale} dict={dict} />
-            ))}
+          <div className="mt-10">
+            {/* Service models from the catalog (Consult / Build / Integrate). */}
+            <ServiceModelGrid locale={locale} dict={dict} />
           </div>
         </div>
       </section>

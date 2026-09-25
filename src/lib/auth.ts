@@ -2,7 +2,7 @@ import "server-only";
 import { cache } from "react";
 import { createClient } from "@/lib/supabase/server";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
-import type { ProductKey } from "@/content/products";
+import type { ProductKey } from "@/content/catalog";
 
 export type Role = "super_admin" | "admin" | "power_user" | "user" | "viewer" | "trial";
 

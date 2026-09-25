@@ -1,6 +1,6 @@
 import "server-only";
 import { SignJWT } from "jose";
-import type { ProductKey } from "@/content/products";
+import type { ProductKey } from "@/content/catalog";
 
 /**
  * Cross-product SSO (spec §9.2). The portal mints a short-lived JWT scoped to

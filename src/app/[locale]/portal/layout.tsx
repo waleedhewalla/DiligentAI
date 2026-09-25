@@ -10,6 +10,7 @@ import { Logo } from "@/components/site/logo";
 import { LocaleSwitcher } from "@/components/site/locale-switcher";
 import { PortalNav } from "@/components/portal/sidebar";
 import { site } from "@/lib/site";
+import { launchableOfferings } from "@/content/catalog";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Portal", robots: { index: false, follow: false } };
@@ -44,7 +45,12 @@ export default async function PortalLayout({ children, params }: { children: Rea
       </header>
       <div className="mx-auto grid max-w-7xl gap-6 px-4 py-6 sm:px-6 lg:grid-cols-[220px_1fr]">
         <aside className="lg:sticky lg:top-24 lg:h-fit">
-          <PortalNav locale={locale} dict={dict} orgName={ctx.org?.name ?? ""} />
+          <PortalNav
+            locale={locale}
+            dict={dict}
+            orgName={ctx.org?.name ?? ""}
+            products={launchableOfferings().map((o) => ({ slug: o.slug, label: o.brand ?? o.title[locale], accent: o.accent }))}
+          />
         </aside>
         <main id="main" className="min-w-0">
           {mfaMissingForAdmin ? (

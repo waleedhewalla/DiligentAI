@@ -11,7 +11,8 @@ export function isWorkEmail(email: string) {
   return Boolean(domain) && !PERSONAL_DOMAINS.has(domain!);
 }
 
-export const productKeys = ["ipe", "ceo_os", "nexus", "all"] as const;
+/** Primary service models a lead can pick (mirrors catalog ServiceModelId + "unsure"). */
+export const interests = ["consult", "build", "integrate", "unsure"] as const;
 export const industries = ["manufacturing", "logistics", "fmcg", "other"] as const;
 
 export const demoRequestSchema = z.object({
@@ -24,7 +25,13 @@ export const demoRequestSchema = z.object({
     .refine(isWorkEmail, { message: "work_email_required" }),
   company: z.string().trim().min(1).max(120),
   industry: z.enum(industries).default("manufacturing"),
-  product: z.enum(productKeys).default("all"),
+  interest: z.enum(interests).default("unsure"),
+  /** Offering or capability slug from the catalog; free of markup by construction. */
+  area: z
+    .string()
+    .max(80)
+    .regex(/^[a-z0-9-]*$/)
+    .optional(),
   language: z.enum(["ar", "en"]).default("ar"),
   source: z.string().max(200).optional(),
   // Honeypot: real users never fill this.

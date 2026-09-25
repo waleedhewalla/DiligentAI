@@ -2,14 +2,22 @@
 
 import { useFormState } from "react-dom";
 import type { Dictionary } from "@/i18n/dictionaries";
-import type { Locale } from "@/i18n/config";
 import { submitTicket, type PortalActionState } from "@/lib/portal-actions";
 import { Input, NativeSelect, Textarea } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SubmitButton } from "@/components/auth/submit-button";
-import { productList } from "@/content/products";
 
-export function SupportForm({ dict, locale, defaultProduct }: { dict: Dictionary; locale: Locale; defaultProduct?: string }) {
+
+export function SupportForm({
+  dict,
+  defaultProduct,
+  products,
+}: {
+  dict: Dictionary;
+  defaultProduct?: string;
+  /** Supportable products (launchable catalog offerings), built on the server. */
+  products: { value: string; label: string }[];
+}) {
   const s = dict.portal.support;
   const [state, action] = useFormState<PortalActionState, FormData>(submitTicket, null);
   if (state?.ok) {
@@ -26,9 +34,9 @@ export function SupportForm({ dict, locale, defaultProduct }: { dict: Dictionary
           <Label htmlFor="product">{s.product}</Label>
           <NativeSelect id="product" name="product" defaultValue={defaultProduct ?? "general"}>
             <option value="general">—</option>
-            {productList.map((p) => (
-              <option key={p.key} value={p.key}>
-                {p.name[locale]}
+            {products.map((o) => (
+              <option key={o.value} value={o.value}>
+                {o.label}
               </option>
             ))}
           </NativeSelect>

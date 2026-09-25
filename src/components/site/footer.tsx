@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
-import { productList } from "@/content/products";
+import { listCategories, listServiceModels } from "@/content/catalog";
 import { href } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { Logo } from "./logo";
@@ -10,9 +10,17 @@ import { LinkedInIcon } from "./icons";
 export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const year = new Date().getFullYear();
   const columns = [
+    // Dynamic: solution categories and service models come from the catalog.
     {
-      title: dict.footer.products,
-      links: productList.map((p) => ({ href: href(locale, `/${p.slug}`), label: `${p.name[locale]} — ${p.category[locale]}` })),
+      title: dict.footer.solutions,
+      links: [
+        ...listCategories().map((c) => ({ href: href(locale, c.href), label: c.title[locale] })),
+        { href: href(locale, "/solutions"), label: dict.nav.allSolutions },
+      ],
+    },
+    {
+      title: dict.footer.services,
+      links: listServiceModels().map((m) => ({ href: href(locale, `/services#${m.id}`), label: m.title[locale] })),
     },
     {
       title: dict.footer.company,
@@ -40,8 +48,8 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
   return (
     <footer className="border-t bg-surface-subtle">
-      <div className="container grid gap-10 py-14 md:grid-cols-5">
-        <div className="md:col-span-2">
+      <div className="container grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-6">
+        <div className="sm:col-span-2">
           <Logo />
           <p className="mt-4 max-w-sm text-sm text-muted-foreground">{dict.footer.blurb}</p>
           <p className="mt-4 text-sm font-medium">{site.city[locale]}</p>

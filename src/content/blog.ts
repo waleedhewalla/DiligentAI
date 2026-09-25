@@ -1,5 +1,4 @@
 import type { L10n } from "@/i18n/config";
-import type { ProductSlug } from "./products";
 import { founderName } from "@/lib/site";
 
 /**
@@ -16,7 +15,8 @@ export type Block =
   | { type: "h2"; text: string }
   | { type: "ul"; items: string[] }
   | { type: "quote"; text: string }
-  | { type: "cta"; product: ProductSlug };
+  /** Inline call-to-action for a catalog offering (slug from catalog/offerings.ts). */
+  | { type: "cta"; offering: string };
 
 export type Post = {
   slug: string;
@@ -25,8 +25,8 @@ export type Post = {
   author: L10n;
   readingMinutes: number;
   category: L10n;
-  /** Internal links: related products and case studies for SEO silos. */
-  related: { products: ProductSlug[]; caseStudies: string[] };
+  /** Internal links (CONFIGURABLE): catalog offerings, capabilities and case studies for SEO silos. */
+  related: { offerings: string[]; capabilities: string[]; caseStudies: string[] };
   title: L10n;
   excerpt: L10n;
   keywords: L10n<string[]>;
@@ -43,7 +43,7 @@ const posts: Post[] = [
     author,
     readingMinutes: 6,
     category: { en: "Operations", ar: "العمليات" },
-    related: { products: ["ipe"], caseStudies: ["star-trans"] },
+    related: { offerings: ["ai-production-scheduling"], capabilities: ["production-scheduling"], caseStudies: ["star-trans"] },
     title: {
       en: "Why Egyptian Factories Miss On-Time Delivery — and It Isn't the Machines",
       ar: "لماذا تتأخر المصانع المصرية في التسليم؟ المشكلة ليست في الماكينات",
@@ -68,7 +68,7 @@ const posts: Post[] = [
         { type: "quote", text: "Your schedule: built in 3 days, wrong by Tuesday. It doesn't have to be." },
         { type: "h2", text: "Where to start" },
         { type: "ul", items: ["Measure your current planning cycle in hours, honestly.", "List the top five disruptions that broke last month's schedules.", "Check whether your ERP holds routings and capacities accurately — that is the data an APS engine needs."] },
-        { type: "cta", product: "ipe" },
+        { type: "cta", offering: "ai-production-scheduling" },
       ],
       ar: [
         { type: "p", text: "اسأل أي مدير عمليات في القاهرة أو العاشر من رمضان عن سبب انخفاض نسبة التسليم في الموعد، وستسمع عن أعطال الماكينات وتأخر الخامات وتغييرات العملاء في اللحظة الأخيرة. كلها حقيقية، لكن أياً منها ليس السبب الجذري." },
@@ -81,7 +81,7 @@ const posts: Post[] = [
         { type: "quote", text: "جدولك: يُبنى في 3 أيام، ويصبح خاطئاً يوم الثلاثاء. لا يجب أن يكون الأمر كذلك." },
         { type: "h2", text: "من أين تبدأ" },
         { type: "ul", items: ["قِس دورة التخطيط الحالية بالساعات، بصدق.", "اكتب أكثر خمسة أعطال كسرت جداول الشهر الماضي.", "تحقق من دقة مسارات التشغيل والطاقات في نظام ERP — فهذه هي البيانات التي يحتاجها محرك APS."] },
-        { type: "cta", product: "ipe" },
+        { type: "cta", offering: "ai-production-scheduling" },
       ],
     },
   },
@@ -92,7 +92,7 @@ const posts: Post[] = [
     author,
     readingMinutes: 5,
     category: { en: "Leadership", ar: "القيادة" },
-    related: { products: ["ceo-os"], caseStudies: ["star-trans"] },
+    related: { offerings: ["executive-intelligence"], capabilities: ["executive-decision-intelligence"], caseStudies: ["star-trans"] },
     title: {
       en: "The CEO AI Operating System: How Forward-Thinking MENA CEOs Gain an Edge",
       ar: "نظام التشغيل الذكي للرئيس التنفيذي: كيف يتفوق القادة في منطقتنا",
@@ -113,7 +113,7 @@ const posts: Post[] = [
         { type: "p", text: "Generic BI tools can answer these, eventually, after months of setup and a team to maintain them. A CEO operating system arrives configured for exactly these questions, in Arabic, with every figure linked to its source." },
         { type: "h2", text: "Board reporting is the fastest ROI" },
         { type: "p", text: "The board pack is the most expensive document most CEOs produce: two days of collecting, reconciling and formatting each quarter. Generating it in under five minutes is the quickest, most visible proof of AI value you can give your board." },
-        { type: "cta", product: "ceo-os" },
+        { type: "cta", offering: "executive-intelligence" },
       ],
       ar: [
         { type: "p", text: "يعرف معظم الرؤساء التنفيذيين في مصر والخليج أداء شركاتهم في الأسبوع الماضي من ملف PDF صباح الاثنين. وحينها تكون القرارات المهمة قد اتُخذت بالفعل — أو فاتت." },
@@ -122,7 +122,7 @@ const posts: Post[] = [
         { type: "p", text: "يمكن لأدوات BI العامة الإجابة عن هذه الأسئلة في النهاية، بعد شهور من الإعداد وفريق لصيانتها. أما نظام تشغيل الرئيس التنفيذي فيصل مهيأً لهذه الأسئلة تحديداً، بالعربية، مع ربط كل رقم بمصدره." },
         { type: "h2", text: "تقارير المجلس هي أسرع عائد" },
         { type: "p", text: "حزمة مجلس الإدارة هي أغلى وثيقة يُعدّها معظم الرؤساء التنفيذيين: يومان من التجميع والمطابقة والتنسيق كل ربع سنة. إعدادها في أقل من خمس دقائق هو أسرع وأوضح دليل على قيمة الذكاء الاصطناعي يمكنك تقديمه لمجلسك." },
-        { type: "cta", product: "ceo-os" },
+        { type: "cta", offering: "executive-intelligence" },
       ],
     },
   },
@@ -133,7 +133,7 @@ const posts: Post[] = [
     author,
     readingMinutes: 4,
     category: { en: "Marketing", ar: "التسويق" },
-    related: { products: ["nexus"], caseStudies: ["star-trans"] },
+    related: { offerings: ["arabic-commercial-content"], capabilities: [], caseStudies: ["star-trans"] },
     title: {
       en: "Arabic Content Should Be Conceived, Not Translated",
       ar: "المحتوى العربي يجب أن يُكتب بالعربية، لا أن يُترجم إليها",
@@ -154,7 +154,7 @@ const posts: Post[] = [
         { type: "p", text: "Content conceived in Arabic, with the right register for the audience — Modern Standard, Egyptian or Gulf — earns attention that translated copy cannot." },
         { type: "h2", text: "Scaling without scaling the agency budget" },
         { type: "p", text: "The goal is not to remove humans. It is to move your team from writing first drafts to reviewing and sharpening them. That shift is where the cost per piece drops by around 90%." },
-        { type: "cta", product: "nexus" },
+        { type: "cta", offering: "arabic-commercial-content" },
       ],
       ar: [
         { type: "p", text: "يبدأ معظم محتوى الشركات العربي في المنطقة حياته بالإنجليزية، ثم يُترجم ويُراجع ويُصحح ويُعتمد — دورة مدتها أسبوعان تكلّف عشرات الآلاف من الجنيهات، ويبقى النص في النهاية مترجماً." },
@@ -163,7 +163,7 @@ const posts: Post[] = [
         { type: "p", text: "المحتوى الذي يُكتب بالعربية من البداية، وبالمستوى اللغوي المناسب للجمهور — فصحى أو مصري أو خليجي — ينال انتباهاً لا يناله النص المترجم." },
         { type: "h2", text: "التوسع دون مضاعفة ميزانية الوكالة" },
         { type: "p", text: "الهدف ليس الاستغناء عن البشر، بل نقل فريقك من كتابة المسودات الأولى إلى مراجعتها وصقلها. في هذا التحول تنخفض تكلفة القطعة الواحدة بنحو 90%." },
-        { type: "cta", product: "nexus" },
+        { type: "cta", offering: "arabic-commercial-content" },
       ],
     },
   },

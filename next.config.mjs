@@ -56,6 +56,19 @@ const nextConfig = {
         async headers() {
           return [{ source: "/:path*", headers: securityHeaders }];
         },
+        // Former product URLs → their catalog offerings (keeps links and SEO equity).
+        async redirects() {
+          const moved = {
+            ipe: "ai-production-scheduling",
+            "ceo-os": "executive-intelligence",
+            nexus: "arabic-commercial-content",
+          };
+          return Object.entries(moved).map(([from, to]) => ({
+            source: `/:locale(ar|en)/${from}`,
+            destination: `/:locale/solutions/${to}`,
+            permanent: true,
+          }));
+        },
       }),
 };
 
