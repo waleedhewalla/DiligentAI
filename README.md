@@ -4,6 +4,8 @@ Bilingual (Arabic-first / English) website and customer portal for **Diligent AI
 
 **Stack:** Next.js 14 (App Router) · TypeScript · Tailwind CSS + shadcn/ui · Supabase (Postgres, Auth, RLS) · Vercel + Cloudflare.
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fwaleedhewalla%2FDiligentAI&project-name=diligent-ai&repository-name=diligent-ai&env=NEXT_PUBLIC_SITE_URL&envDescription=Public%20site%20URL%2C%20e.g.%20https%3A%2F%2Fdiligentai.com.%20All%20other%20variables%20are%20optional%20%E2%80%94%20see%20.env.example&envLink=https%3A%2F%2Fgithub.com%2Fwaleedhewalla%2FDiligentAI%2Fblob%2Fclaude%2Fgreat-maxwell-0ue8bi%2F.env.example)
+
 ## Quick start
 
 ```bash
@@ -156,7 +158,7 @@ Mark `generate_lead`, `demo_booked` and `case_study_download` as key events in G
 
 ## Deployment (Vercel + Cloudflare)
 
-1. Import the repo in Vercel; framework preset **Next.js**; add env vars from `.env.example` (Production + Preview).
+1. Click **Deploy with Vercel** above (or import the repo at vercel.com/new), choose branch `claude/great-maxwell-0ue8bi`, set `NEXT_PUBLIC_SITE_URL`, deploy. Functions run in `fra1` (Frankfurt, next to the EU Supabase region) per `vercel.json`. Add the remaining variables from `.env.example` as each service goes live.
 2. Domain on Cloudflare → CNAME to Vercel, proxy on; SSL **Full (strict)**, **Always Use HTTPS**, min TLS 1.2 (1.3 enabled), HSTS.
 3. Cloudflare WAF managed rules + Bot Fight Mode; rate-limit rules for `/api/v1/*` and `/*/login`; Turnstile keys to Supabase CAPTCHA.
 4. Product apps (IPE, CEO OS, Nexus) each receive their own `*_SECRET_KEY` and verify launch tokens with `aud = diligentai:<product>`.
