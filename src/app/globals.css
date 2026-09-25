@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Brand (spec §7.1) */
+    --color-primary: 222 51% 25%; /* Navy */
+    --color-accent: 179 57% 41%; /* Teal */
+    --color-cta: 22 79% 56%; /* Orange */
+
+    /* shadcn/ui semantic tokens */
+    --background: 0 0% 100%;
+    --foreground: 222 47% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 14%;
+    --primary: var(--color-primary);
+    --primary-foreground: 0 0% 100%;
+    --secondary: 179 57% 41%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 216 33% 97%;
+    --muted-foreground: 218 15% 38%;
+    --accent: 179 57% 94%;
+    --accent-foreground: 222 51% 25%;
+    --destructive: 7 83% 41%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 22% 88%;
+    --input: 214 22% 84%;
+    --ring: 179 57% 41%;
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Arabic: Noto Sans Arabic first, looser leading for connected script */
+  html[lang^="ar"] body {
+    font-family: var(--font-arabic), var(--font-inter), system-ui, sans-serif;
+    line-height: 1.8;
+  }
+  html[lang^="ar"] :is(h1, h2, h3, h4) {
+    line-height: 1.45;
+    letter-spacing: 0;
+  }
+
+  /* Latin runs inside Arabic text (product names, numbers) stay LTR-shaped */
+  .ltr-run {
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* spec §7.2: directional icons flip in RTL */
+  [dir="rtl"] .btn-icon {
+    transform: scaleX(-1);
+  }
+
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .eyebrow {
+    @apply text-sm font-semibold uppercase tracking-wider text-brand-teal-dark;
+  }
+  html[lang^="ar"] .eyebrow {
+    @apply normal-case tracking-normal;
+  }
+
+  .h-display {
+    @apply text-4xl font-bold leading-[1.1] tracking-tight md:text-5xl lg:text-6xl;
+  }
+  .h-section {
+    @apply text-3xl font-bold tracking-tight md:text-4xl;
+  }
+
+  .hero-bg {
+    background:
+      radial-gradient(ellipse 80% 60% at 85% 0%, rgb(44 166 164 / 0.35), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 0% 100%, rgb(233 119 48 / 0.18), transparent 60%),
+      linear-gradient(160deg, #0d1a33 0%, #1f3864 55%, #1a4d63 100%);
+  }
+
+  .grid-pattern {
+    background-image:
+      linear-gradient(rgb(255 255 255 / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  }
+}
+
+@media print {
+  header,
+  footer,
+  #mobile-menu,
+  [role="region"] {
+    display: none !important;
+  }
+  .hero-bg {
+    background: #1f3864 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .section {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+}
