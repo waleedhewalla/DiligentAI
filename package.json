@@ -4,9 +4,9 @@
   "private": true,
   "description": "Diligent AI — bilingual (AR/EN) marketing site and customer portal",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3300",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3300",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write src"

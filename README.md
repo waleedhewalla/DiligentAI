@@ -9,7 +9,7 @@ Bilingual (Arabic-first / English) marketing site and customer portal for **Dili
 ```bash
 npm install
 cp .env.example .env.local   # fill in what you have; everything is optional for local dev
-npm run dev                  # http://localhost:3000 → redirects to /ar
+npm run dev                  # http://localhost:3300 → redirects to /ar
 ```
 
 The marketing site builds and runs with **no environment variables**. Auth, the portal, demo-request storage, analytics and live Nexus generation switch on as their variables are set.
