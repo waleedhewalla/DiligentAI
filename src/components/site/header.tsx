@@ -15,6 +15,9 @@ import { Icon } from "./icons";
 import { LocaleSwitcher } from "./locale-switcher";
 import { TrackedLink } from "./tracked-link";
 
+// The static GitHub Pages preview has no auth pages.
+const showLogin = process.env.NEXT_PUBLIC_PREVIEW !== "1";
+
 export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
@@ -138,9 +141,11 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
           <div className="hidden items-center gap-2 lg:flex">
             <LocaleSwitcher locale={locale} label={dict.locale.switchTo} />
-            <Link href={href(locale, "/login")} className="rounded-md px-3 py-2 text-sm font-medium hover:bg-muted">
-              {dict.nav.login}
-            </Link>
+            {showLogin ? (
+              <Link href={href(locale, "/login")} className="rounded-md px-3 py-2 text-sm font-medium hover:bg-muted">
+                {dict.nav.login}
+              </Link>
+            ) : null}
             <Button asChild size="sm">
               <TrackedLink
                 href={href(locale, "/demo")}
@@ -208,9 +213,11 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                   <ArrowRight className="btn-icon" />
                 </TrackedLink>
               </Button>
-              <Button asChild size="lg" variant="secondary">
-                <Link href={href(locale, "/login")}>{dict.nav.login}</Link>
-              </Button>
+              {showLogin ? (
+                <Button asChild size="lg" variant="secondary">
+                  <Link href={href(locale, "/login")}>{dict.nav.login}</Link>
+                </Button>
+              ) : null}
             </div>
           </nav>
         </div>

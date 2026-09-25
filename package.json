@@ -9,7 +9,8 @@
     "start": "next start -p 3300",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "format": "prettier --write src"
+    "format": "prettier --write src",
+    "preview:export": "bash scripts/export-preview.sh"
   },
   "engines": {
     "node": ">=18.18"

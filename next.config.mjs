@@ -32,19 +32,31 @@ const securityHeaders = [
   { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
 ];
 
+// PREVIEW_EXPORT=1 builds a static, server-less copy of the marketing pages for
+// GitHub Pages (see scripts/export-preview.sh). Headers/middleware/API don't apply there.
+const isPreviewExport = process.env.PREVIEW_EXPORT === "1";
+
 const nextConfig = {
+  ...(isPreviewExport
+    ? { output: "export", basePath: process.env.PREVIEW_BASE_PATH ?? "", trailingSlash: true }
+    : {}),
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
   images: {
     formats: ["image/avif", "image/webp"],
+    unoptimized: isPreviewExport,
   },
   experimental: {
     optimizePackageImports: ["lucide-react"],
   },
-  async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
-  },
+  ...(isPreviewExport
+    ? {}
+    : {
+        async headers() {
+          return [{ source: "/:path*", headers: securityHeaders }];
+        },
+      }),
 };
 
 export default nextConfig;

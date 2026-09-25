@@ -4,6 +4,10 @@ import { useState } from "react";
 import { Copy, Sparkles } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { track } from "@/lib/analytics";
+import { sampleOutput } from "@/content/nexus-samples";
+
+// Static previews (GitHub Pages) have no API; show the curated sample instead.
+const isPreview = process.env.NEXT_PUBLIC_PREVIEW === "1";
 import { Button } from "@/components/ui/button";
 import { NativeSelect, Textarea } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -60,6 +64,11 @@ export function NexusWidget({ locale }: { locale: Locale }) {
     setError(null);
     setCopied(false);
     track("nexus_generate", { content_type: String(body.type) });
+    if (isPreview) {
+      setResult({ text: sampleOutput(body.type as "linkedin" | "email" | "proposal"), live: false });
+      setLoading(false);
+      return;
+    }
     try {
       const res = await fetch("/api/v1/nexus/generate", {
         method: "POST",

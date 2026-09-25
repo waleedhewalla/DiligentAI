@@ -52,7 +52,8 @@ export function pageMetadata(m: PageMeta): Metadata {
       ...(m.modifiedTime ? { modifiedTime: m.modifiedTime } : {}),
     },
     twitter: { card: "summary_large_image", title: m.title, description: m.description, images: [ogImage] },
-    robots: m.noindex ? { index: false, follow: false } : { index: true, follow: true },
+    // The GitHub Pages preview must never compete with the real domain in search.
+    robots: m.noindex || process.env.NEXT_PUBLIC_PREVIEW === "1" ? { index: false, follow: false } : { index: true, follow: true },
   };
 }
 

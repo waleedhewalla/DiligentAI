@@ -19,7 +19,10 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       links: [
         { href: href(locale, "/about"), label: dict.nav.about },
         { href: href(locale, "/case-studies"), label: dict.nav.caseStudies },
-        { href: href(locale, "/case-studies/star-trans"), label: locale === "ar" ? "دراسة حالة ستار ترانس" : "Star Trans case study" },
+        {
+          href: href(locale, "/case-studies/star-trans"),
+          label: locale === "ar" ? "دراسة حالة ستار ترانس" : "Star Trans case study",
+        },
         { href: href(locale, "/blog"), label: dict.nav.blog },
         { href: href(locale, "/demo"), label: dict.nav.bookDemo },
         { href: href(locale, "/contact"), label: dict.nav.contact },
@@ -30,7 +33,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       links: [
         { href: href(locale, "/privacy-policy"), label: dict.footer.privacy },
         { href: href(locale, "/terms-of-service"), label: dict.footer.terms },
-        { href: href(locale, "/login"), label: dict.footer.portal },
+        ...(process.env.NEXT_PUBLIC_PREVIEW === "1" ? [] : [{ href: href(locale, "/login"), label: dict.footer.portal }]),
       ],
     },
   ];

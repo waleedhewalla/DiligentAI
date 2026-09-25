@@ -1,0 +1,17 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+Disallow: /auth/
+Disallow: /ar/portal
+Disallow: /en/portal
+Disallow: /ar/login
+Disallow: /en/login
+Disallow: /ar/register
+Disallow: /en/register
+Disallow: /ar/forgot-password
+Disallow: /en/forgot-password
+Disallow: /ar/reset-password
+Disallow: /en/reset-password
+
+Host: https://waleedhewalla.github.io/DiligentAI/
+Sitemap: https://waleedhewalla.github.io/DiligentAI/sitemap.xml
