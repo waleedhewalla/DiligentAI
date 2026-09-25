@@ -9,6 +9,45 @@ import type { Capability } from "./types";
 
 export const capabilities: Capability[] = [
   {
+    slug: "energy-carbon-reporting",
+    icon: "gauge",
+    accent: "teal",
+    title: { en: "Energy, Carbon & CBAM Reporting", ar: "تقارير الطاقة والكربون وآلية CBAM" },
+    summary: {
+      en: "Turn meter, MES and ERP data into verified plant emissions — for EU CBAM, ESG filings and lower energy bills.",
+      ar: "حوّل بيانات العدادات وMES وERP إلى انبعاثات موثقة للمصنع — لآلية CBAM الأوروبية وتقارير الاستدامة وخفض فواتير الطاقة.",
+    },
+    problem: {
+      en: "Your EU customers now need verified emissions per shipment, and your data lives in meters and spreadsheets.",
+      ar: "عملاؤك في أوروبا يحتاجون الآن انبعاثات موثقة لكل شحنة، وبياناتك موزعة بين العدادات والجداول.",
+    },
+    symptoms: {
+      en: ["Emissions estimated once a year in Excel", "Risk of default values that overstate your emissions", "ESG reports assembled by hand from five departments"],
+      ar: ["تقدير الانبعاثات مرة سنوياً على Excel", "خطر القيم الافتراضية التي تبالغ في انبعاثاتك", "تقارير الاستدامة تُجمع يدوياً من خمسة أقسام"],
+    },
+    approach: {
+      en: ["Automatic capture of energy, fuel and material data from meters, SCADA and ERP", "Emissions calculated per product and per shipment with a full audit trail", "Anomaly detection on energy use to cut cost as well as carbon"],
+      ar: ["التقاط تلقائي لبيانات الطاقة والوقود والخامات من العدادات وSCADA وERP", "حساب الانبعاثات لكل منتج ولكل شحنة مع سجل تدقيق كامل", "اكتشاف الشذوذ في استهلاك الطاقة لخفض التكلفة والكربون معاً"],
+    },
+    outcomes: {
+      en: ["Verifier-ready emissions data instead of defaults", "Bilingual ESG and climate disclosures", "Lower energy cost per ton"],
+      ar: ["بيانات انبعاثات جاهزة للتحقق بدلاً من القيم الافتراضية", "إفصاحات استدامة ومناخ ثنائية اللغة", "تكلفة طاقة أقل لكل طن"],
+    },
+    dataSources: {
+      en: ["Electricity, gas and fuel meters", "SCADA / MES production counts", "ERP material and shipment records"],
+      ar: ["عدادات الكهرباء والغاز والوقود", "عدادات الإنتاج في SCADA / MES", "سجلات الخامات والشحنات في ERP"],
+    },
+    serviceModels: ["consult", "build", "integrate"],
+    seo: {
+      title: { en: "CBAM & Carbon Reporting for Egyptian Exporters — Steel, Cement, Fertiliser", ar: "تقارير CBAM والكربون للمصدّرين المصريين — الصلب والأسمنت والأسمدة" },
+      description: {
+        en: "Capture verified plant emissions from meters, SCADA and ERP for EU CBAM, FRA ESG disclosures and energy savings. Arabic and English reporting.",
+        ar: "التقط انبعاثات موثقة للمصنع من العدادات وSCADA وERP لآلية CBAM الأوروبية وإفصاحات الاستدامة وتوفير الطاقة. تقارير بالعربية والإنجليزية.",
+      },
+      keywords: { en: ["CBAM Egypt", "carbon reporting steel Egypt", "ESG reporting manufacturing"], ar: ["آلية CBAM مصر", "تقارير الكربون للصلب", "تقارير الاستدامة للمصانع"] },
+    },
+  },
+  {
     slug: "production-scheduling",
     icon: "calendar",
     accent: "orange",

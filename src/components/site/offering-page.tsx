@@ -27,6 +27,8 @@ import { TrackedLink } from "./tracked-link";
 import { StickyCta } from "./sticky-cta";
 import { DownloadButton } from "./download-button";
 import { NexusWidget } from "./nexus-widget";
+import { RoiCalculator } from "./roi-calculator";
+import { CommitmentBlock, FundingBlock, ModelChoiceBlock, PackagesSection } from "./catalog-blocks";
 
 /**
  * Generic detail page for ANY catalog offering (product or service).
@@ -87,7 +89,7 @@ export async function OfferingPage({ offering: o, locale }: { offering: Offering
               <Button asChild size="lg" className={o.accent === "teal" ? c.button : undefined}>
                 {o.demo ? (
                   <a href="#try">
-                    {dict.common.tryIt}
+                    {o.demo === "roi-calculator" ? dict.sections.roiTitle : dict.common.tryIt}
                     <ArrowRight className="btn-icon" />
                   </a>
                 ) : (
@@ -112,6 +114,10 @@ export async function OfferingPage({ offering: o, locale }: { offering: Offering
                 <Button asChild size="lg" variant="inverse">
                   <Link href={demoHref}>{dict.cta.bookDemoShort}</Link>
                 </Button>
+              ) : o.packages?.length ? (
+                <Button asChild size="lg" variant="inverse">
+                  <a href="#packages">{dict.sections.packages}</a>
+                </Button>
               ) : null}
             </div>
           </div>
@@ -120,10 +126,11 @@ export async function OfferingPage({ offering: o, locale }: { offering: Offering
       </section>
 
       {/* OPTIONAL INTERACTIVE DEMO — registry of widgets keyed by `offering.demo`. */}
-      {o.demo === "arabic-content-generator" ? (
+      {o.demo ? (
         <section id="try" className="section scroll-mt-20">
           <div className="container">
-            <NexusWidget locale={locale} />
+            {o.demo === "arabic-content-generator" ? <NexusWidget locale={locale} /> : null}
+            {o.demo === "roi-calculator" ? <RoiCalculator locale={locale} dict={dict} /> : null}
           </div>
         </section>
       ) : null}
@@ -179,6 +186,9 @@ export async function OfferingPage({ offering: o, locale }: { offering: Offering
         </div>
       </section>
 
+      {/* PACKAGES (optional, gap 1 & 8) — fixed-scope, fixed-price EGP packages. */}
+      <PackagesSection offering={o} locale={locale} dict={dict} />
+
       {/* BEFORE / AFTER (optional) */}
       {o.roi ? (
         <section className="section">
@@ -225,6 +235,15 @@ export async function OfferingPage({ offering: o, locale }: { offering: Offering
           </div>
         </section>
       ) : null}
+
+      {/* PILOT-TO-PRODUCTION COMMITMENT (optional, gap 2) */}
+      {o.pilotToProduction ? <CommitmentBlock locale={locale} dict={dict} tone="subtle" /> : null}
+
+      {/* MODEL & HOSTING CHOICE (optional, gap 5) */}
+      {o.sovereignModels ? <ModelChoiceBlock locale={locale} dict={dict} /> : null}
+
+      {/* FUNDING ROUTES (optional, gap 6) */}
+      {o.fundingRoutes?.length ? <FundingBlock ids={o.fundingRoutes} locale={locale} dict={dict} /> : null}
 
       {/* SERVICE MODELS this offering is delivered through */}
       <section className="section">

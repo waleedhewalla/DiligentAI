@@ -16,6 +16,7 @@ import { FinalCta, MetricsBar, SectionHeading } from "@/components/site/sections
 import { TrackedLink } from "@/components/site/tracked-link";
 import { FounderSection } from "@/components/site/founder";
 import { CatalogShowcase, ServiceModelGrid } from "@/components/site/catalog";
+import { CommitmentBlock, ComplianceBand } from "@/components/site/catalog-blocks";
 
 export function generateMetadata({ params }: { params: { locale: Locale } }) {
   const l = params.locale;
@@ -129,6 +130,12 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
           </div>
         </div>
       </section>
+
+      {/* PILOT-TO-PRODUCTION COMMITMENT (gap 2) */}
+      <CommitmentBlock locale={locale} dict={dict} />
+
+      {/* COMPLIANCE DEADLINES (gap 3) — from catalog/compliance.ts */}
+      <ComplianceBand locale={locale} dict={dict} />
 
       {/* CATALOG — every category and its items, straight from the catalog data. */}
       <section className="section" id="solutions">

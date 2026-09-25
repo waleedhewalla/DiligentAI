@@ -6,6 +6,7 @@ import { itemListSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/json-ld";
 import { Breadcrumbs, FinalCta, PageHero } from "@/components/site/sections";
 import { CatalogShowcase } from "@/components/site/catalog";
+import { ComparisonSection } from "@/components/site/catalog-blocks";
 
 // Editorial copy only — the page body is generated from the catalog.
 const copy = {
@@ -59,6 +60,7 @@ export default function SolutionsPage({ params }: { params: { locale: Locale } }
           <CatalogShowcase locale={locale} dict={dict} headingLevel="h2" />
         </div>
       </section>
+      <ComparisonSection locale={locale} dict={dict} />
       <FinalCta locale={locale} dict={dict} title={copy.cta[locale]} query={{ interest: "consult" }} location="solutions_hub" />
     </>
   );

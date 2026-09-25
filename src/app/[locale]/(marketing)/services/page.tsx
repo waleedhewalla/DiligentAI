@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Breadcrumbs, FinalCta, OfferingCard, PageHero } from "@/components/site/sections";
 import { Icon } from "@/components/site/icons";
 import { TrackedLink } from "@/components/site/tracked-link";
+import { CommitmentBlock } from "@/components/site/catalog-blocks";
 
 const copy = {
   title: { en: "AI Consulting, Build & Integration Services for Manufacturers", ar: "خدمات استشارات وبناء وتكامل الذكاء الاصطناعي للمصانع" },
@@ -125,6 +126,9 @@ export default function ServicesPage({ params }: { params: { locale: Locale } })
           </section>
         );
       })}
+
+      {/* Gap 2: every Build engagement runs under the Pilot-to-Production commitment. */}
+      <CommitmentBlock locale={locale} dict={dict} tone="subtle" />
 
       <FinalCta locale={locale} dict={dict} title={copy.cta[locale]} location="services_page" />
     </>

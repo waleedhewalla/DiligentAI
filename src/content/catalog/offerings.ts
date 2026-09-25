@@ -15,6 +15,179 @@ import type { Offering } from "./types";
 
 export const offerings: Offering[] = [
   // ─── AI Products & Solutions ──────────────────────────────────────────
+  // ─── Gap 1: Egypt mid-market entry — fixed-price EGP starter packs ────
+  {
+    slug: "plant-ai-starter",
+    category: "ai-solutions",
+    kind: "service",
+    status: "available",
+    icon: "blocks",
+    accent: "orange",
+    title: { en: "Plant AI Starter Packs", ar: "باقات بداية الذكاء الاصطناعي للمصانع" },
+    summary: {
+      en: "One use case, one line, 8 weeks, a fixed EGP price — AI results before a big commitment.",
+      ar: "حالة استخدام واحدة، وخط واحد، و8 أسابيع، وسعر ثابت بالجنيه — نتائج قبل أي التزام كبير.",
+    },
+    lead: {
+      en: "Global planning suites cost six figures in dollars and take months. Our starter packs put one proven AI use case live on one line in about 8 weeks — scoped, priced in Egyptian pounds and agreed before we start.",
+      ar: "أنظمة التخطيط العالمية تكلف مئات الآلاف من الدولارات وتستغرق شهوراً. باقاتنا تشغّل حالة استخدام مجرّبة على خط واحد خلال نحو 8 أسابيع — بنطاق محدد، وسعر بالجنيه المصري، متفق عليه قبل البدء.",
+    },
+    serviceModels: ["build", "integrate"],
+    capabilities: ["production-scheduling", "demand-planning", "quality-control", "predictive-maintenance"],
+    problems: {
+      en: ["AI budgets quoted in USD after the pound's devaluation", "No appetite for an 18-month transformation", "Leadership wants proof on one line before scaling"],
+      ar: ["ميزانيات الذكاء الاصطناعي تُسعّر بالدولار بعد تخفيض الجنيه", "لا رغبة في مشروع تحول مدته 18 شهراً", "الإدارة تريد إثباتاً على خط واحد قبل التوسع"],
+    },
+    features: [
+      { icon: "target", title: { en: "One use case, done properly", ar: "حالة استخدام واحدة، بإتقان" }, body: { en: "Scheduling, forecasting, quality or machine health — chosen with you on day one.", ar: "الجدولة أو التنبؤ أو الجودة أو صحة الماكينات — نختارها معك من اليوم الأول." } },
+      { icon: "clock", title: { en: "About 8 weeks to live", ar: "نحو 8 أسابيع حتى التشغيل" }, body: { en: "Data mapping, model, integration and training inside a fixed plan.", ar: "ربط البيانات والنموذج والتكامل والتدريب ضمن خطة ثابتة." } },
+      { icon: "shield", title: { en: "Fixed EGP price", ar: "سعر ثابت بالجنيه" }, body: { en: "No currency surprises, no open-ended consulting hours.", ar: "لا مفاجآت في العملة، ولا ساعات استشارية مفتوحة." } },
+    ],
+    // TODO(Waleed): set priceFromEGP for each pack once approved; null shows "quoted in EGP".
+    packages: [
+      {
+        id: "assess",
+        name: { en: "Assess", ar: "التقييم" },
+        scope: { en: "Two-week plant and data assessment with a ranked use-case shortlist.", ar: "تقييم للمصنع والبيانات لمدة أسبوعين مع قائمة مرتبة بحالات الاستخدام." },
+        duration: { en: "2 weeks", ar: "أسبوعان" },
+        priceFromEGP: null,
+        unit: { en: "one-off", ar: "مرة واحدة" },
+        includes: {
+          en: ["On-site workshop", "Data readiness check", "Business case for the top use case"],
+          ar: ["ورشة عمل ميدانية", "فحص جاهزية البيانات", "دراسة جدوى لأهم حالة استخدام"],
+        },
+      },
+      {
+        id: "starter",
+        name: { en: "Starter", ar: "البداية" },
+        scope: { en: "One AI use case live on one line or site, integrated with your ERP.", ar: "حالة استخدام واحدة تعمل على خط أو موقع واحد، ومتكاملة مع نظام ERP." },
+        duration: { en: "About 8 weeks", ar: "نحو 8 أسابيع" },
+        priceFromEGP: null,
+        unit: { en: "per line or site", ar: "لكل خط أو موقع" },
+        includes: {
+          en: ["Baseline and KPI agreed in writing", "ERP / Excel data connection", "Arabic screens and reports", "User training and 90-day review"],
+          ar: ["خط أساس ومؤشر متفق عليهما كتابياً", "ربط بيانات ERP / Excel", "شاشات وتقارير عربية", "تدريب المستخدمين ومراجعة بعد 90 يوماً"],
+        },
+        recommended: true,
+      },
+      {
+        id: "scale",
+        name: { en: "Scale", ar: "التوسع" },
+        scope: { en: "Roll the proven use case out to more lines and sites, plus a second use case.", ar: "تعميم حالة الاستخدام المثبتة على خطوط ومواقع أكثر، مع حالة استخدام ثانية." },
+        duration: { en: "8–12 weeks", ar: "8–12 أسبوعاً" },
+        priceFromEGP: null,
+        unit: { en: "per site", ar: "لكل موقع" },
+        includes: {
+          en: ["Multi-site roll-out", "Second use case", "Executive dashboard in Arabic", "Support SLA"],
+          ar: ["تعميم على عدة مواقع", "حالة استخدام ثانية", "لوحة تنفيذية بالعربية", "اتفاقية مستوى دعم"],
+        },
+      },
+    ],
+    demo: "roi-calculator",
+    pilotToProduction: true,
+    regions: ["eg"],
+    caseStudy: "star-trans",
+    faqs: [
+      { q: { en: "Why is the price in Egyptian pounds?", ar: "لماذا السعر بالجنيه المصري؟" }, a: { en: "Because your budget is. EGP pricing removes currency risk from the decision.", ar: "لأن ميزانيتك كذلك. التسعير بالجنيه يزيل مخاطر العملة من القرار." } },
+      { q: { en: "What if the pilot doesn't hit the KPI?", ar: "ماذا لو لم تحقق التجربة المؤشر؟" }, a: { en: "Go/no-go is decided on the agreed baseline. You only scale what worked.", ar: "قرار الاستمرار يُتخذ على خط الأساس المتفق عليه. لا تتوسع إلا فيما نجح." } },
+    ],
+    seo: {
+      title: { en: "Fixed-Price AI Starter Packs for Egyptian Manufacturers (EGP)", ar: "باقات ذكاء اصطناعي بسعر ثابت بالجنيه للمصانع المصرية" },
+      description: {
+        en: "Put one AI use case live on one line in about 8 weeks at a fixed EGP price — scheduling, forecasting, quality or machine health.",
+        ar: "شغّل حالة استخدام واحدة للذكاء الاصطناعي على خط واحد خلال نحو 8 أسابيع بسعر ثابت بالجنيه — الجدولة أو التنبؤ أو الجودة أو صحة الماكينات.",
+      },
+      keywords: { en: ["AI for factories Egypt price", "AI pilot manufacturing EGP", "manufacturing AI starter package"], ar: ["سعر الذكاء الاصطناعي للمصانع", "تجربة ذكاء اصطناعي للمصانع", "باقة ذكاء اصطناعي للتصنيع"] },
+    },
+  },
+  // ─── Gap 2: pilot purgatory — a written path from pilot to production ─
+  {
+    slug: "pilot-to-production",
+    category: "ai-solutions",
+    kind: "service",
+    status: "available",
+    icon: "workflow",
+    accent: "teal",
+    title: { en: "Pilot-to-Production Program", ar: "برنامج من التجربة إلى الإنتاج" },
+    summary: {
+      en: "Rescue a stalled AI pilot — or start a new one — with a written baseline and a committed go-live.",
+      ar: "أنقذ تجربة ذكاء اصطناعي متعثرة — أو ابدأ واحدة جديدة — بخط أساس مكتوب والتزام بالتشغيل.",
+    },
+    lead: {
+      en: "Across the Gulf, most companies use AI somewhere but few see financial returns. The gap is the step from proof-of-concept to production. This program is built around that step: a KPI agreed in writing, a fixed-scope pilot, a go/no-go on the numbers and a real hand-over.",
+      ar: "في الخليج، تستخدم معظم الشركات الذكاء الاصطناعي في مكان ما، لكن قلة ترى عائداً مالياً. الفجوة هي الانتقال من إثبات المفهوم إلى الإنتاج. هذا البرنامج مبني حول هذه الخطوة: مؤشر متفق عليه كتابياً، وتجربة بنطاق محدد، وقرار بالأرقام، وتسليم حقيقي.",
+    },
+    serviceModels: ["consult", "build", "integrate"],
+    capabilities: ["production-scheduling", "demand-planning", "production-forecasting", "quality-control", "predictive-maintenance"],
+    problems: {
+      en: ["Pilots that impressed in a demo but never reached the floor", "No agreed baseline, so no one can prove value", "Models built outside the ERP that users ignore"],
+      ar: ["تجارب أبهرت في العرض ولم تصل أبداً إلى المصنع", "لا خط أساس متفق عليه، فلا أحد يستطيع إثبات القيمة", "نماذج بُنيت خارج ERP فتجاهلها المستخدمون"],
+    },
+    features: [
+      { icon: "clipboard", title: { en: "Pilot health check", ar: "فحص صحة التجربة" }, body: { en: "For stalled pilots: we review data, model and adoption and tell you what it takes to go live — or to stop.", ar: "للتجارب المتعثرة: نراجع البيانات والنموذج والاستخدام ونخبرك بما يلزم للتشغيل — أو للتوقف." } },
+      { icon: "target", title: { en: "KPI contract", ar: "عقد المؤشر" }, body: { en: "Baseline, target and measurement method signed before work starts.", ar: "خط الأساس والهدف وطريقة القياس موقعة قبل بدء العمل." } },
+      { icon: "plug", title: { en: "Built inside your systems", ar: "مبني داخل أنظمتك" }, body: { en: "Results land in the ERP and the screens people already use.", ar: "النتائج تصل إلى ERP والشاشات التي يستخدمها الناس فعلاً." } },
+    ],
+    pilotToProduction: true,
+    caseStudy: "star-trans",
+    seo: {
+      title: { en: "AI Pilot-to-Production Program for Manufacturers", ar: "برنامج نقل تجارب الذكاء الاصطناعي إلى الإنتاج للمصانع" },
+      description: {
+        en: "Move AI from proof-of-concept to production with a written baseline, fixed-scope pilot and committed go-live — or rescue a stalled pilot.",
+        ar: "انقل الذكاء الاصطناعي من إثبات المفهوم إلى الإنتاج بخط أساس مكتوب وتجربة بنطاق محدد والتزام بالتشغيل — أو أنقذ تجربة متعثرة.",
+      },
+      keywords: { en: ["AI pilot to production", "AI proof of concept manufacturing", "scale AI factory"], ar: ["من التجربة إلى الإنتاج", "إثبات مفهوم الذكاء الاصطناعي", "توسيع الذكاء الاصطناعي في المصانع"] },
+    },
+  },
+  // ─── Gap 3: compliance-driven demand (CBAM, PDPL, ESG) ─────────────────
+  {
+    slug: "cbam-emissions-reporting",
+    category: "ai-solutions",
+    kind: "service",
+    status: "available",
+    icon: "gauge",
+    accent: "navy",
+    title: { en: "CBAM & Emissions Reporting", ar: "تقارير الانبعاثات وآلية CBAM" },
+    summary: {
+      en: "Verified plant emissions for EU CBAM and ESG filings, captured automatically from your meters, SCADA and ERP.",
+      ar: "انبعاثات موثقة للمصنع لآلية CBAM وتقارير الاستدامة، تُلتقط تلقائياً من العدادات وSCADA وERP.",
+    },
+    lead: {
+      en: "The EU's carbon border mechanism entered its definitive period on 1 January 2026. Importers of steel, cement, aluminium and fertilisers need verified emissions — or pay on default values that can overstate yours. We connect your plant data and produce verifier-ready reports.",
+      ar: "دخلت آلية تعديل حدود الكربون الأوروبية مرحلتها النهائية في 1 يناير 2026. مستوردو الصلب والأسمنت والألومنيوم والأسمدة يحتاجون انبعاثات موثقة — أو يدفعون وفق قيم افتراضية قد تبالغ في انبعاثاتك. نحن نربط بيانات مصنعك ونُعد تقارير جاهزة للتحقق.",
+    },
+    serviceModels: ["consult", "build", "integrate"],
+    capabilities: ["energy-carbon-reporting"],
+    problems: {
+      en: ["EU buyers asking for embedded emissions per shipment", "Default values that make your product look dirtier than it is", "ESG and TCFD disclosures compiled by hand"],
+      ar: ["مشترون أوروبيون يطلبون الانبعاثات المضمنة لكل شحنة", "قيم افتراضية تُظهر منتجك أكثر تلويثاً مما هو عليه", "إفصاحات الاستدامة وTCFD تُجمع يدوياً"],
+    },
+    features: [
+      { icon: "cable", title: { en: "Automatic data capture", ar: "التقاط تلقائي للبيانات" }, body: { en: "Meters, SCADA, MES and ERP connected once — no spreadsheets to chase.", ar: "ربط العدادات وSCADA وMES وERP مرة واحدة — دون ملاحقة الجداول." } },
+      { icon: "clipboard", title: { en: "Verifier-ready reports", ar: "تقارير جاهزة للتحقق" }, body: { en: "Emissions per installation, product and shipment with a full audit trail.", ar: "الانبعاثات لكل منشأة ومنتج وشحنة مع سجل تدقيق كامل." } },
+      { icon: "languages", title: { en: "Arabic & English disclosures", ar: "إفصاحات بالعربية والإنجليزية" }, body: { en: "FRA ESG and climate reports alongside your EU customer data.", ar: "تقارير الاستدامة والمناخ للهيئة إلى جانب بيانات عملائك الأوروبيين." } },
+      { icon: "trending", title: { en: "Energy savings", ar: "توفير الطاقة" }, body: { en: "The same data flags energy waste, so compliance pays for itself.", ar: "البيانات نفسها تكشف هدر الطاقة، فيسدد الامتثال تكلفته." } },
+    ],
+    sovereignModels: true,
+    regions: ["eg"],
+    integrations: ["SCADA", "OPC UA", "Energy meters", "SAP", "Oracle", "Odoo", "Excel"],
+    deployment: {
+      en: ["Plant data audit in 2 weeks", "First verified report in about 8 weeks", "Egypt-hosted option", "Annual reporting support"],
+      ar: ["تدقيق بيانات المصنع خلال أسبوعين", "أول تقرير موثق خلال نحو 8 أسابيع", "خيار الاستضافة داخل مصر", "دعم التقارير السنوية"],
+    },
+    faqs: [
+      { q: { en: "Which products does CBAM cover?", ar: "ما المنتجات التي تشملها آلية CBAM؟" }, a: { en: "Iron and steel, cement, aluminium, fertilisers, electricity and hydrogen imported into the EU.", ar: "الحديد والصلب والأسمنت والألومنيوم والأسمدة والكهرباء والهيدروجين المستوردة إلى الاتحاد الأوروبي." } },
+      { q: { en: "Do you replace our accredited verifier?", ar: "هل تحلون محل جهة التحقق المعتمدة لدينا؟" }, a: { en: "No. We produce the data and reports your verifier needs; verification stays independent.", ar: "لا. نحن نُعد البيانات والتقارير التي تحتاجها جهة التحقق؛ ويبقى التحقق مستقلاً." } },
+    ],
+    seo: {
+      title: { en: "EU CBAM Emissions Reporting for Egyptian Steel, Cement & Fertiliser Exporters", ar: "تقارير انبعاثات CBAM للمصدّرين المصريين للصلب والأسمنت والأسمدة" },
+      description: {
+        en: "Automatic, verifier-ready plant emissions data for EU CBAM and FRA ESG disclosures. Connected to meters, SCADA and ERP. Egypt-hosted option.",
+        ar: "بيانات انبعاثات تلقائية وجاهزة للتحقق لآلية CBAM وإفصاحات الاستدامة. متصلة بالعدادات وSCADA وERP. خيار استضافة داخل مصر.",
+      },
+      keywords: { en: ["CBAM reporting Egypt", "embedded emissions steel", "CBAM cement exporter"], ar: ["تقارير CBAM", "الانبعاثات المضمنة للصلب", "مصدري الأسمنت CBAM"] },
+    },
+  },
   {
     slug: "ai-readiness-assessment",
     category: "ai-solutions",
@@ -113,6 +286,7 @@ export const offerings: Offering[] = [
     ],
     caseStudy: "star-trans",
     download: { path: "/downloads/ipe-technical-brief.pdf", label: { en: "Download the Technical Brief", ar: "حمّل الملخص التقني" } },
+    pilotToProduction: true,
     seo: {
       title: { en: "AI Production Scheduling Software for MENA Manufacturers", ar: "برنامج جدولة الإنتاج بالذكاء الاصطناعي للمصانع في مصر والخليج" },
       description: {
@@ -120,6 +294,184 @@ export const offerings: Offering[] = [
         ar: "جداول إنتاج تلقائية في أقل من 60 ثانية. مصمم للمصانع المصرية والخليجية. عربي أصيل، متكامل مع SAP، وتشغيل خلال 8 أسابيع.",
       },
       keywords: { en: ["production scheduling software Egypt", "APS software MENA", "AI production planning"], ar: ["برنامج جدولة الإنتاج", "تخطيط الإنتاج بالذكاء الاصطناعي", "برنامج تخطيط المصانع مصر"] },
+    },
+  },
+  // ─── Gap 8: plant-wide vision & machine health, priced per site in EGP ─
+  {
+    slug: "vision-quality-control",
+    category: "ai-solutions",
+    kind: "product",
+    status: "available",
+    icon: "scan",
+    accent: "teal",
+    title: { en: "Vision Quality Control", ar: "ضبط الجودة بالرؤية الحاسوبية" },
+    summary: {
+      en: "Camera-based defect detection priced per station or per site in EGP — results written back to MES and ERP.",
+      ar: "اكتشاف العيوب بالكاميرات بسعر لكل محطة أو لكل موقع بالجنيه — مع كتابة النتائج في MES وERP.",
+    },
+    lead: {
+      en: "Self-service vision tools leave cameras, integration and model upkeep to you, and per-device dollar pricing adds up fast. We deliver inspection end to end — cameras, models, operator alerts and root-cause links — at a fixed price per station or per site.",
+      ar: "أدوات الرؤية ذاتية الخدمة تترك لك الكاميرات والتكامل وصيانة النماذج، والتسعير بالدولار لكل جهاز يتراكم بسرعة. نحن نقدم الفحص من البداية للنهاية — الكاميرات والنماذج وتنبيهات المشغلين وربط الأسباب الجذرية — بسعر ثابت لكل محطة أو لكل موقع.",
+    },
+    serviceModels: ["build", "integrate"],
+    capabilities: ["quality-control"],
+    problems: {
+      en: ["Visual inspection that varies by shift and inspector", "Defects found by the customer, not the line", "Vision pilots that never connected to MES or ERP"],
+      ar: ["فحص بصري يختلف حسب الوردية والمفتش", "العيوب يكتشفها العميل لا الخط", "تجارب رؤية لم تتصل أبداً بـ MES أو ERP"],
+    },
+    features: [
+      { icon: "scan", title: { en: "Trained on your defects", ar: "مدرب على عيوبك" }, body: { en: "Models built from your own images and defect catalogue.", ar: "نماذج مبنية من صورك وكتالوج عيوبك." } },
+      { icon: "plug", title: { en: "Closed loop", ar: "حلقة مغلقة" }, body: { en: "Rejects, alerts and NCRs flow into MES, QMS and ERP.", ar: "الرفض والتنبيهات وتقارير عدم المطابقة تتدفق إلى MES ونظام الجودة وERP." } },
+      { icon: "shield", title: { en: "Runs at the edge", ar: "يعمل على الطرف" }, body: { en: "On-premise inference — images never need to leave the plant.", ar: "استدلال داخل المصنع — لا حاجة لخروج الصور من المصنع." } },
+    ],
+    // TODO(Waleed): per-site EGP prices; null shows "quoted in EGP".
+    packages: [
+      {
+        id: "one-station",
+        name: { en: "One inspection station", ar: "محطة فحص واحدة" },
+        scope: { en: "Camera-based defect detection on one station of one line.", ar: "اكتشاف العيوب بالكاميرا على محطة واحدة في خط واحد." },
+        duration: { en: "6–8 weeks", ar: "6–8 أسابيع" },
+        priceFromEGP: null,
+        unit: { en: "per station", ar: "لكل محطة" },
+        includes: {
+          en: ["Camera & lighting spec (or use yours)", "Model trained on your defects", "Alerts to operators", "Results written to MES / ERP"],
+          ar: ["مواصفات الكاميرا والإضاءة (أو استخدم كاميراتك)", "نموذج مدرب على عيوبك", "تنبيهات للمشغلين", "كتابة النتائج في MES / ERP"],
+        },
+      },
+      {
+        id: "site",
+        name: { en: "Whole site", ar: "الموقع بالكامل" },
+        scope: { en: "Inspection across the site's critical stations with one dashboard.", ar: "فحص عبر المحطات الحرجة في الموقع مع لوحة واحدة." },
+        duration: { en: "8–12 weeks", ar: "8–12 أسبوعاً" },
+        priceFromEGP: null,
+        unit: { en: "per site", ar: "لكل موقع" },
+        includes: {
+          en: ["Up to an agreed number of stations", "Root-cause links to batch, shift and machine", "Arabic quality dashboard", "Model monitoring and retraining"],
+          ar: ["حتى عدد متفق عليه من المحطات", "ربط السبب الجذري بالتشغيلة والوردية والماكينة", "لوحة جودة بالعربية", "مراقبة النموذج وإعادة تدريبه"],
+        },
+        recommended: true,
+      },
+    ],
+    pilotToProduction: true,
+    integrations: ["MES", "QMS", "SAP", "Odoo", "OPC UA"],
+    seo: {
+      title: { en: "AI Visual Inspection & Quality Control — Priced per Site in EGP", ar: "الفحص البصري وضبط الجودة بالذكاء الاصطناعي — بسعر لكل موقع بالجنيه" },
+      description: {
+        en: "End-to-end AI visual inspection for manufacturers: cameras, defect models, operator alerts and MES/ERP write-back, at a fixed price per station or site.",
+        ar: "فحص بصري بالذكاء الاصطناعي من البداية للنهاية للمصانع: كاميرات ونماذج عيوب وتنبيهات للمشغلين وربط بـ MES وERP، بسعر ثابت لكل محطة أو موقع.",
+      },
+      keywords: { en: ["AI visual inspection Egypt", "defect detection camera factory", "quality control AI price"], ar: ["الفحص البصري بالذكاء الاصطناعي", "اكتشاف العيوب بالكاميرا", "سعر ضبط الجودة بالذكاء الاصطناعي"] },
+    },
+  },
+  {
+    slug: "machine-health",
+    category: "ai-solutions",
+    kind: "product",
+    status: "available",
+    icon: "wrench",
+    accent: "orange",
+    title: { en: "Machine Health", ar: "صحة الماكينات" },
+    summary: {
+      en: "Predict failures on critical machines and schedule repairs around production — priced per site, not per machine.",
+      ar: "تنبأ بأعطال الماكينات الحرجة وجدول الإصلاحات حول الإنتاج — بسعر لكل موقع، لا لكل ماكينة.",
+    },
+    lead: {
+      en: "Per-machine monitoring subscriptions priced in dollars get expensive across a whole plant. Machine Health uses the PLC and sensor data you already have first, predicts failure risk and turns it into work orders in your maintenance system — at a fixed price per site.",
+      ar: "اشتراكات المراقبة لكل ماكينة بالدولار تصبح مكلفة عبر مصنع كامل. «صحة الماكينات» يستخدم بيانات PLC والحساسات الموجودة لديك أولاً، ويتنبأ بمخاطر الأعطال ويحولها إلى أوامر عمل في نظام الصيانة — بسعر ثابت لكل موقع.",
+    },
+    serviceModels: ["build", "integrate"],
+    capabilities: ["predictive-maintenance"],
+    problems: {
+      en: ["Bottleneck machines failing without warning", "Per-machine USD subscriptions that don't scale", "Alerts that never become work orders"],
+      ar: ["ماكينات الاختناق تتعطل دون إنذار", "اشتراكات بالدولار لكل ماكينة لا تتوسع", "تنبيهات لا تتحول أبداً إلى أوامر عمل"],
+    },
+    features: [
+      { icon: "cpu", title: { en: "Existing data first", ar: "البيانات الموجودة أولاً" }, body: { en: "Starts from PLC and SCADA signals; adds sensors only where they pay back.", ar: "يبدأ من إشارات PLC وSCADA؛ ويضيف حساسات فقط حيث تسترد تكلفتها." } },
+      { icon: "calendar", title: { en: "Planned with production", ar: "مخطط مع الإنتاج" }, body: { en: "Maintenance windows proposed around the production schedule.", ar: "نوافذ الصيانة مقترحة حول جدول الإنتاج." } },
+      { icon: "clipboard", title: { en: "Into your CMMS", ar: "داخل نظام الصيانة" }, body: { en: "Predictions become work orders in your CMMS or ERP.", ar: "التنبؤات تصبح أوامر عمل في نظام الصيانة أو ERP." } },
+    ],
+    // TODO(Waleed): per-site EGP prices; null shows "quoted in EGP".
+    packages: [
+      {
+        id: "critical-assets",
+        name: { en: "Critical assets", ar: "الأصول الحرجة" },
+        scope: { en: "Failure-risk monitoring on your bottleneck machines.", ar: "مراقبة مخاطر الأعطال على ماكينات الاختناق لديك." },
+        duration: { en: "6–8 weeks", ar: "6–8 أسابيع" },
+        priceFromEGP: null,
+        unit: { en: "per site", ar: "لكل موقع" },
+        includes: {
+          en: ["Sensor plan (existing PLC data first)", "Failure-risk models", "Alerts in Arabic", "Work orders into your CMMS / ERP"],
+          ar: ["خطة الحساسات (بيانات PLC الموجودة أولاً)", "نماذج مخاطر الأعطال", "تنبيهات بالعربية", "أوامر عمل في نظام الصيانة / ERP"],
+        },
+        recommended: true,
+      },
+      {
+        id: "plant",
+        name: { en: "Whole plant", ar: "المصنع بالكامل" },
+        scope: { en: "Machine health across the plant, scheduled around production.", ar: "صحة الماكينات عبر المصنع، مجدولة حول الإنتاج." },
+        duration: { en: "10–14 weeks", ar: "10–14 أسبوعاً" },
+        priceFromEGP: null,
+        unit: { en: "per site", ar: "لكل موقع" },
+        includes: {
+          en: ["All agreed asset classes", "Maintenance windows planned with the schedule", "Spare-parts forecast", "Monthly reliability review"],
+          ar: ["كل فئات الأصول المتفق عليها", "نوافذ صيانة مخططة مع الجدول", "تنبؤ بقطع الغيار", "مراجعة شهرية للاعتمادية"],
+        },
+      },
+    ],
+    pilotToProduction: true,
+    integrations: ["OPC UA", "Modbus", "SCADA", "SAP PM", "CMMS"],
+    seo: {
+      title: { en: "Predictive Maintenance (Machine Health) — Priced per Site in EGP", ar: "الصيانة التنبؤية (صحة الماكينات) — بسعر لكل موقع بالجنيه" },
+      description: {
+        en: "Predict failures on critical machines from PLC and sensor data, plan repairs around production and create work orders — at a fixed price per site.",
+        ar: "تنبأ بأعطال الماكينات الحرجة من بيانات PLC والحساسات، وخطط الإصلاحات حول الإنتاج وأنشئ أوامر العمل — بسعر ثابت لكل موقع.",
+      },
+      keywords: { en: ["predictive maintenance Egypt price", "machine health monitoring", "PdM per site"], ar: ["الصيانة التنبؤية مصر", "مراقبة صحة الماكينات", "سعر الصيانة التنبؤية"] },
+    },
+  },
+  // ─── Gap 6: Saudi demand funded by public programmes ───────────────────
+  {
+    slug: "ksa-smart-factory-assessment",
+    category: "ai-solutions",
+    kind: "service",
+    status: "available",
+    icon: "clipboard",
+    accent: "navy",
+    // Say "SIRI-aligned" until accredited — see funding.ts → siriCertified.
+    title: { en: "Smart Factory Readiness Assessment (KSA)", ar: "تقييم جاهزية المصنع الذكي (السعودية)" },
+    summary: {
+      en: "A SIRI-aligned readiness assessment and funded roadmap for Saudi factories — the first step of the Future Factories journey.",
+      ar: "تقييم جاهزية متوافق مع مؤشر SIRI وخارطة طريق قابلة للتمويل للمصانع السعودية — الخطوة الأولى في رحلة مصانع المستقبل.",
+    },
+    lead: {
+      en: "Saudi Arabia is moving thousands of factories toward automation, and the journey starts with a Smart Industry Readiness Index (SIRI) assessment. We assess your plant against that framework, prioritise AI and automation use cases, and prepare a roadmap you can take to the funding programmes.",
+      ar: "تنقل المملكة آلاف المصانع نحو الأتمتة، وتبدأ الرحلة بتقييم مؤشر جاهزية الصناعة الذكية (SIRI). نقيّم مصنعك وفق هذا الإطار، ونرتب أولويات حالات استخدام الذكاء الاصطناعي والأتمتة، ونُعد خارطة طريق تقدمها لبرامج التمويل.",
+    },
+    serviceModels: ["consult"],
+    capabilities: ["production-scheduling", "quality-control", "predictive-maintenance", "energy-carbon-reporting"],
+    problems: {
+      en: ["Unsure where your factory stands on Industry 4.0", "Funding programmes need a credible, prioritised plan", "Vendors pitching technology before the assessment"],
+      ar: ["غير متأكد من موقع مصنعك في الصناعة 4.0", "برامج التمويل تحتاج خطة موثوقة ومرتبة الأولويات", "موردون يعرضون تقنيات قبل التقييم"],
+    },
+    features: [
+      { icon: "gauge", title: { en: "SIRI-aligned assessment", ar: "تقييم متوافق مع SIRI" }, body: { en: "Process, technology and organisation dimensions scored with your team on site.", ar: "تقييم أبعاد العمليات والتقنية والتنظيم مع فريقك ميدانياً." } },
+      { icon: "target", title: { en: "Prioritised use cases", ar: "حالات استخدام مرتبة" }, body: { en: "AI and automation opportunities ranked by value, readiness and fundability.", ar: "فرص الذكاء الاصطناعي والأتمتة مرتبة حسب القيمة والجاهزية وقابلية التمويل." } },
+      { icon: "file", title: { en: "Funding-ready roadmap", ar: "خارطة طريق جاهزة للتمويل" }, body: { en: "Business cases and a phased plan in Arabic and English for programme applications.", ar: "دراسات جدوى وخطة مرحلية بالعربية والإنجليزية لطلبات البرامج." } },
+    ],
+    regions: ["sa"],
+    fundingRoutes: ["future-factories", "sidf", "modon"],
+    sovereignModels: true,
+    deployment: {
+      en: ["Typically 3–4 weeks", "On-site in Saudi Arabia", "Arabic and English deliverables"],
+      ar: ["عادةً 3–4 أسابيع", "ميدانياً في المملكة", "مخرجات بالعربية والإنجليزية"],
+    },
+    seo: {
+      title: { en: "Smart Factory Readiness Assessment in Saudi Arabia (SIRI-aligned)", ar: "تقييم جاهزية المصنع الذكي في السعودية (متوافق مع SIRI)" },
+      description: {
+        en: "A SIRI-aligned smart-factory assessment and funding-ready AI roadmap for Saudi manufacturers — the first step toward Future Factories and SIDF financing.",
+        ar: "تقييم للمصنع الذكي متوافق مع SIRI وخارطة طريق للذكاء الاصطناعي جاهزة للتمويل للمصانع السعودية — الخطوة الأولى نحو مصانع المستقبل وتمويل الصندوق الصناعي.",
+      },
+      keywords: { en: ["SIRI assessment Saudi", "Future Factories program", "smart factory Saudi Arabia"], ar: ["تقييم SIRI", "برنامج مصانع المستقبل", "المصنع الذكي السعودية"] },
     },
   },
   {
@@ -131,8 +483,8 @@ export const offerings: Offering[] = [
     accent: "teal",
     title: { en: "Custom AI Models", ar: "نماذج ذكاء اصطناعي مخصصة" },
     summary: {
-      en: "Forecasting, vision inspection and maintenance models trained on your plant's own data.",
-      ar: "نماذج للتنبؤ والفحص البصري والصيانة مدربة على بيانات مصنعك.",
+      en: "Bespoke forecasting, vision and maintenance models for problems the packaged products don't cover.",
+      ar: "نماذج مخصصة للتنبؤ والرؤية والصيانة للمشكلات التي لا تغطيها المنتجات الجاهزة.",
     },
     lead: {
       en: "When no off-the-shelf tool fits, we build one. Our team designs, trains and deploys machine-learning models on your history — and runs them in production with monitoring, not in a slide deck.",
@@ -159,6 +511,7 @@ export const offerings: Offering[] = [
       en: ["Typically 6–12 weeks to production", "You own the model and data", "Arabic dashboards", "Optional managed operation"],
       ar: ["عادةً 6–12 أسبوعاً حتى الإنتاج", "تملك النموذج والبيانات", "لوحات عربية", "تشغيل مُدار اختياري"],
     },
+    pilotToProduction: true,
     seo: {
       title: { en: "Custom AI & Machine-Learning Development for Manufacturing", ar: "تطوير نماذج ذكاء اصطناعي وتعلم آلي مخصصة للتصنيع" },
       description: {
@@ -166,6 +519,50 @@ export const offerings: Offering[] = [
         ar: "نماذج مخصصة للتنبؤ والرؤية الحاسوبية والصيانة التنبؤية مدربة على بيانات مصنعك وتعمل إنتاجياً مع المراقبة.",
       },
       keywords: { en: ["custom AI manufacturing", "machine learning development Egypt", "computer vision factory"], ar: ["تطوير ذكاء اصطناعي مخصص", "تعلم آلي للمصانع", "رؤية حاسوبية للمصانع"] },
+    },
+  },
+  // ─── Gap 5: Arabic manufacturing workflows (model-agnostic) ───────────
+  {
+    slug: "shop-floor-arabic-copilot",
+    category: "ai-solutions",
+    kind: "product",
+    status: "pilot",
+    icon: "languages",
+    accent: "teal",
+    title: { en: "Shop-Floor Arabic Copilot", ar: "المساعد العربي لأرض المصنع" },
+    summary: {
+      en: "Supervisors ask in Arabic — “why is line 3 behind?” — and get answers from your MES, ERP and maintenance data.",
+      ar: "المشرفون يسألون بالعربية — «لماذا تأخر الخط 3؟» — ويحصلون على إجابات من بيانات MES وERP والصيانة.",
+    },
+    lead: {
+      en: "Global AI copilots are English-first. Your supervisors and operators aren't. This copilot answers questions, drafts shift reports and explains downtime in Arabic, using the model and hosting you choose — Egypt-hosted, in-Kingdom or on-premise.",
+      ar: "مساعدو الذكاء الاصطناعي العالميون يبدؤون بالإنجليزية. ومشرفوك ومشغلوك لا. هذا المساعد يجيب عن الأسئلة ويكتب تقارير الورديات ويشرح أسباب التوقف بالعربية، باستخدام النموذج والاستضافة التي تختارها — داخل مصر أو داخل المملكة أو داخل المصنع.",
+    },
+    serviceModels: ["build", "integrate"],
+    capabilities: ["production-forecasting", "predictive-maintenance", "quality-control"],
+    problems: {
+      en: ["Shift handovers lost in WhatsApp messages", "Supervisors can't query systems built in English", "Downtime reasons recorded inconsistently"],
+      ar: ["تسليم الورديات يضيع في رسائل واتساب", "المشرفون لا يستطيعون الاستعلام من أنظمة مبنية بالإنجليزية", "أسباب التوقف تُسجل بشكل غير متسق"],
+    },
+    features: [
+      { icon: "brain", title: { en: "Ask in Arabic", ar: "اسأل بالعربية" }, body: { en: "Egyptian, Gulf or Modern Standard Arabic questions answered from live plant data, with sources.", ar: "أسئلة باللهجة المصرية أو الخليجية أو الفصحى تُجاب من بيانات المصنع اللحظية، مع المصادر." } },
+      { icon: "file", title: { en: "Shift reports written for you", ar: "تقارير الورديات تُكتب لك" }, body: { en: "Output, scrap, downtime and open issues summarised at every handover.", ar: "الإنتاج والهالك والتوقف والمشكلات المفتوحة ملخصة عند كل تسليم." } },
+      { icon: "shield", title: { en: "Your model, your hosting", ar: "نموذجك واستضافتك" }, body: { en: "Runs on the Arabic model and in the location your data rules require.", ar: "يعمل على النموذج العربي وفي المكان الذي تتطلبه قواعد بياناتك." } },
+    ],
+    sovereignModels: true,
+    pilotToProduction: true,
+    integrations: ["MES", "SCADA", "SAP", "Odoo", "CMMS", "Microsoft Teams"],
+    deployment: {
+      en: ["Pilot on one plant", "Egypt-hosted or on-premise", "Read-only access to plant systems"],
+      ar: ["تجربة على مصنع واحد", "استضافة داخل مصر أو داخل المصنع", "صلاحية قراءة فقط لأنظمة المصنع"],
+    },
+    seo: {
+      title: { en: "Arabic AI Copilot for the Shop Floor — Egypt-Hosted or On-Premise", ar: "مساعد ذكاء اصطناعي عربي لأرض المصنع — مستضاف في مصر أو داخل المصنع" },
+      description: {
+        en: "An Arabic copilot for supervisors and operators: ask about output, downtime and quality, and get shift reports — on the Arabic model and hosting you choose.",
+        ar: "مساعد عربي للمشرفين والمشغلين: اسأل عن الإنتاج والتوقف والجودة، واحصل على تقارير الورديات — على النموذج العربي والاستضافة التي تختارها.",
+      },
+      keywords: { en: ["Arabic AI copilot manufacturing", "shop floor copilot Arabic", "Karnak ALLaM Jais factory"], ar: ["مساعد ذكاء اصطناعي عربي للمصانع", "مساعد أرض المصنع", "نماذج عربية للمصانع"] },
     },
   },
   {
@@ -207,6 +604,8 @@ export const offerings: Offering[] = [
       ar: ["تشغيل خلال 4 أسابيع", "تدريب تنفيذي مشمول", "استجابة للدعم خلال 24 ساعة", "بالعربية والإنجليزية"],
     },
     caseStudy: "star-trans",
+    pilotToProduction: true,
+    sovereignModels: true,
     seo: {
       title: { en: "Executive Intelligence & Board Reporting for Manufacturing CEOs", ar: "منصة الذكاء التنفيذي وتقارير مجلس الإدارة لرؤساء شركات التصنيع" },
       description: {
@@ -255,6 +654,7 @@ export const offerings: Offering[] = [
       en: ["Live in 1 day", "30-day free trial", "No credit card", "Arabic & English support"],
       ar: ["يعمل خلال يوم واحد", "تجربة مجانية 30 يوماً", "بلا بطاقة ائتمان", "دعم بالعربية والإنجليزية"],
     },
+    sovereignModels: true,
     seo: {
       title: { en: "Arabic Marketing & Proposal AI for Industrial B2B Companies", ar: "ذكاء اصطناعي للتسويق والعروض بالعربية للشركات الصناعية" },
       description: {
@@ -293,7 +693,7 @@ export const offerings: Offering[] = [
       { icon: "refresh", title: { en: "Write-back with approval", ar: "إعادة الكتابة مع الاعتماد" }, body: { en: "AI proposals return to the ERP only after a user approves them.", ar: "مقترحات الذكاء الاصطناعي تعود إلى ERP فقط بعد اعتماد المستخدم." } },
       { icon: "shield", title: { en: "Security & audit", ar: "الأمان والتدقيق" }, body: { en: "Least-privilege service users, encrypted transport and a full audit trail.", ar: "مستخدمو خدمة بأقل صلاحيات، ونقل مشفر، وسجل تدقيق كامل." } },
     ],
-    integrations: ["SAP S/4HANA", "SAP ECC", "Oracle E-Business Suite", "Oracle Fusion", "Microsoft Dynamics 365", "Odoo"],
+    integrations: ["SAP S/4HANA", "SAP ECC", "Oracle Fusion", "Oracle E-Business Suite", "Microsoft Dynamics 365", "Odoo"],
     deployment: {
       en: ["Typically 3–8 weeks", "No ERP core modification", "Documentation for your IT team", "Support SLA"],
       ar: ["عادةً 3–8 أسابيع", "دون تعديل نواة ERP", "توثيق لفريق تقنية المعلومات", "اتفاقية مستوى دعم"],
@@ -309,6 +709,132 @@ export const offerings: Offering[] = [
         ar: "اربط نماذج وأدوات الذكاء الاصطناعي بـ SAP وOracle وDynamics وOdoo بواجهات قياسية وإعادة كتابة معتمدة. خبرة أكثر من 55 مشروع SAP.",
       },
       keywords: { en: ["SAP AI integration", "ERP integration Egypt", "AI ERP"], ar: ["تكامل SAP", "تكامل أنظمة ERP", "الذكاء الاصطناعي وERP"] },
+    },
+  },
+  // ─── Gap 7: Odoo & Dynamics mid-market plants ────────────────────────
+  {
+    slug: "odoo-dynamics-connectors",
+    category: "system-integration",
+    kind: "product",
+    status: "pilot",
+    icon: "cable",
+    accent: "teal",
+    title: { en: "AI Connectors for Odoo & Dynamics 365", ar: "موصلات الذكاء الاصطناعي لـ Odoo وDynamics 365" },
+    summary: {
+      en: "Add AI scheduling and forecasting to the Odoo or Dynamics 365 you already run — no re-implementation.",
+      ar: "أضف الجدولة والتنبؤ بالذكاء الاصطناعي إلى Odoo أو Dynamics 365 لديك — دون إعادة تطبيق.",
+    },
+    lead: {
+      en: "Many mid-size manufacturers in Egypt and the Gulf run Odoo or Dynamics 365. Add-ons marketed as “AI” rarely go beyond reports. Our connectors read orders, stock and routings, and write optimised schedules and forecasts back into the ERP your team already uses.",
+      ar: "كثير من المصانع متوسطة الحجم في مصر والخليج تعمل على Odoo أو Dynamics 365. والإضافات التي تُسوّق على أنها «ذكاء اصطناعي» نادراً ما تتجاوز التقارير. موصلاتنا تقرأ الطلبيات والمخزون ومسارات التشغيل، وتعيد الجداول والتوقعات المُحسّنة إلى نظام ERP الذي يستخدمه فريقك.",
+    },
+    serviceModels: ["build", "integrate"],
+    capabilities: ["production-scheduling", "demand-planning", "supply-chain-optimization"],
+    problems: {
+      en: ["ERP runs the books, planning still runs in Excel", "“AI” add-ons that are really dashboards", "No budget to move to a tier-one ERP"],
+      ar: ["ERP يدير الحسابات والتخطيط ما زال على Excel", "إضافات «ذكاء اصطناعي» هي في الحقيقة لوحات معلومات", "لا ميزانية للانتقال إلى ERP من الفئة الأولى"],
+    },
+    features: [
+      { icon: "database", title: { en: "Reads your ERP", ar: "يقرأ نظامك" }, body: { en: "Sales and manufacturing orders, stock, BOMs and work centres through the ERP's API.", ar: "أوامر البيع والتصنيع والمخزون وقوائم المواد ومراكز العمل عبر واجهة النظام." } },
+      { icon: "refresh", title: { en: "Writes decisions back", ar: "يعيد القرارات" }, body: { en: "Approved schedules and forecasts appear inside the ERP screens.", ar: "الجداول والتوقعات المعتمدة تظهر داخل شاشات النظام." } },
+      { icon: "users", title: { en: "Partner-friendly", ar: "مناسب للشركاء" }, body: { en: "Your Odoo or Dynamics partner keeps the ERP scope; we add the AI.", ar: "شريك Odoo أو Dynamics لديك يحتفظ بنطاق ERP؛ ونحن نضيف الذكاء الاصطناعي." } },
+    ],
+    pilotToProduction: true,
+    integrations: ["Odoo", "Microsoft Dynamics 365", "Excel"],
+    deployment: {
+      en: ["Connector in pilot — early customers welcome", "No ERP customisation", "Works with your ERP partner"],
+      ar: ["الموصل في مرحلة تجريبية — نرحب بالعملاء الأوائل", "دون تخصيص لنظام ERP", "يعمل مع شريك ERP لديك"],
+    },
+    seo: {
+      title: { en: "AI Scheduling & Forecasting for Odoo and Dynamics 365 Manufacturers", ar: "الجدولة والتنبؤ بالذكاء الاصطناعي لمصانع Odoo وDynamics 365" },
+      description: {
+        en: "AI connectors that add production scheduling and demand forecasting to Odoo and Dynamics 365 — decisions written back into your ERP.",
+        ar: "موصلات ذكاء اصطناعي تضيف جدولة الإنتاج والتنبؤ بالطلب إلى Odoo وDynamics 365 — مع إعادة القرارات إلى نظامك.",
+      },
+      keywords: { en: ["Odoo AI scheduling", "Dynamics 365 manufacturing AI", "Odoo manufacturing Egypt"], ar: ["جدولة Odoo بالذكاء الاصطناعي", "ذكاء اصطناعي Dynamics 365", "Odoo للمصانع مصر"] },
+    },
+  },
+  // ─── Gap 4: incumbents' AI agents need data plumbing ──────────────────
+  {
+    slug: "ai-agent-readiness",
+    category: "system-integration",
+    kind: "service",
+    status: "available",
+    icon: "network",
+    accent: "orange",
+    title: { en: "AI Agent Readiness for SAP, Siemens & Planning Suites", ar: "تجهيز وكلاء الذكاء الاصطناعي لأنظمة SAP وSiemens والتخطيط" },
+    summary: {
+      en: "Make the AI agents in your SAP, Siemens or planning suite work — with clean, connected plant data.",
+      ar: "اجعل وكلاء الذكاء الاصطناعي في SAP أو Siemens أو نظام التخطيط يعملون فعلاً — ببيانات مصنع نظيفة ومتصلة.",
+    },
+    lead: {
+      en: "Your vendors are shipping AI agents: SAP Joule planning and shop-floor agents, Siemens Industrial Copilots, agent studios in planning suites. Every one of them is only as good as the ERP and shop-floor data it can reach. We connect, clean and govern that data — and add Arabic where the agent doesn't speak it.",
+      ar: "مورّدوك يطلقون وكلاء ذكاء اصطناعي: وكلاء التخطيط وأرض المصنع في SAP Joule، ومساعدو Siemens الصناعيون، واستوديوهات الوكلاء في أنظمة التخطيط. كل منهم لا يكون أفضل من بيانات ERP وأرض المصنع التي يصل إليها. نحن نربط هذه البيانات وننقيها ونحكمها — ونضيف العربية حيث لا يتحدثها الوكيل.",
+    },
+    serviceModels: ["consult", "integrate"],
+    capabilities: ["production-scheduling", "predictive-maintenance", "executive-decision-intelligence"],
+    problems: {
+      en: ["You licensed the AI features but they return poor answers", "Master data and shop-floor data don't match", "Agents that don't support Arabic for your users"],
+      ar: ["اشتريت ميزات الذكاء الاصطناعي لكن إجاباتها ضعيفة", "البيانات الرئيسية وبيانات أرض المصنع غير متطابقة", "وكلاء لا يدعمون العربية لمستخدميك"],
+    },
+    features: [
+      { icon: "clipboard", title: { en: "Agent readiness assessment", ar: "تقييم جاهزية الوكلاء" }, body: { en: "Which agents you own, which data they need and what's missing.", ar: "ما الوكلاء الذين تملكهم، وما البيانات التي يحتاجونها، وما الناقص." } },
+      { icon: "database", title: { en: "Data layer for agents", ar: "طبقة بيانات للوكلاء" }, body: { en: "Governed master data and live shop-floor feeds the agents can trust.", ar: "بيانات رئيسية محكومة وتدفقات لحظية من أرض المصنع يثق بها الوكلاء." } },
+      { icon: "languages", title: { en: "Arabic front end", ar: "واجهة عربية" }, body: { en: "Arabic summaries and reports on top of vendor agents.", ar: "ملخصات وتقارير عربية فوق وكلاء الموردين." } },
+    ],
+    integrations: ["SAP Joule", "SAP S/4HANA", "Siemens Industrial Copilot", "Siemens Opcenter", "Kinaxis", "o9", "Blue Yonder"],
+    deployment: {
+      en: ["Assessment in 2–3 weeks", "No change to vendor licences", "Works alongside your SI", "Arabic and English"],
+      ar: ["تقييم خلال 2–3 أسابيع", "دون تغيير تراخيص الموردين", "يعمل إلى جانب شريك التنفيذ لديك", "بالعربية والإنجليزية"],
+    },
+    seo: {
+      title: { en: "AI Agent Readiness: Make SAP Joule & Siemens Industrial Copilot Work", ar: "تجهيز وكلاء الذكاء الاصطناعي: اجعل SAP Joule ومساعد Siemens يعملان" },
+      description: {
+        en: "Connect, clean and govern the ERP and shop-floor data your SAP, Siemens and planning-suite AI agents need — with Arabic reporting on top.",
+        ar: "اربط ونقِّ واحكم بيانات ERP وأرض المصنع التي يحتاجها وكلاء الذكاء الاصطناعي في SAP وSiemens وأنظمة التخطيط — مع تقارير عربية.",
+      },
+      keywords: { en: ["SAP Joule integration", "Siemens Industrial Copilot data", "AI agents manufacturing"], ar: ["تكامل SAP Joule", "بيانات مساعد Siemens", "وكلاء الذكاء الاصطناعي للتصنيع"] },
+    },
+  },
+  {
+    slug: "aws-lookout-migration",
+    category: "system-integration",
+    kind: "service",
+    status: "available",
+    icon: "refresh",
+    accent: "teal",
+    title: { en: "AWS Lookout Migration", ar: "الترحيل من AWS Lookout" },
+    summary: {
+      en: "Move vision inspection and equipment monitoring off retired AWS Lookout services — without losing your history.",
+      ar: "انقل الفحص البصري ومراقبة المعدات من خدمات AWS Lookout المتوقفة — دون فقدان سجلك.",
+    },
+    lead: {
+      en: "AWS retired Lookout for Vision in October 2025 and Lookout for Equipment in October 2026. If your inspection or anomaly models ran there, we rebuild them on supported services or on-premise, and wire the results back into your MES and ERP.",
+      ar: "أوقفت AWS خدمة Lookout for Vision في أكتوبر 2025 وLookout for Equipment في أكتوبر 2026. إذا كانت نماذج الفحص أو اكتشاف الشذوذ لديك تعمل عليها، نعيد بناءها على خدمات مدعومة أو داخل المصنع، ونربط النتائج بأنظمة MES وERP.",
+    },
+    serviceModels: ["build", "integrate"],
+    capabilities: ["quality-control", "predictive-maintenance"],
+    problems: {
+      en: ["Inspection or anomaly models running on a retired service", "Training data and labels locked in the old setup", "Results never reached the MES or ERP anyway"],
+      ar: ["نماذج فحص أو اكتشاف شذوذ تعمل على خدمة متوقفة", "بيانات التدريب والتصنيفات حبيسة الإعداد القديم", "النتائج لم تكن تصل إلى MES أو ERP أصلاً"],
+    },
+    features: [
+      { icon: "database", title: { en: "Data & label recovery", ar: "استعادة البيانات والتصنيفات" }, body: { en: "Export images, sensor history and labels before access ends.", ar: "تصدير الصور وسجل الحساسات والتصنيفات قبل انتهاء الوصول." } },
+      { icon: "cpu", title: { en: "Model rebuild", ar: "إعادة بناء النماذج" }, body: { en: "Retrain on supported cloud services or on-premise edge devices.", ar: "إعادة التدريب على خدمات سحابية مدعومة أو أجهزة طرفية داخل المصنع." } },
+      { icon: "plug", title: { en: "Close the loop", ar: "إغلاق الحلقة" }, body: { en: "Defects and alerts written back to MES, CMMS and ERP.", ar: "كتابة العيوب والتنبيهات في MES ونظام الصيانة وERP." } },
+    ],
+    integrations: ["AWS", "Microsoft Azure", "On-premise edge", "MES", "CMMS"],
+    deployment: {
+      en: ["Fixed-scope migration", "Parallel run before cut-over", "Typically 4–8 weeks"],
+      ar: ["ترحيل بنطاق محدد", "تشغيل متوازٍ قبل التحويل", "عادةً 4–8 أسابيع"],
+    },
+    seo: {
+      title: { en: "AWS Lookout for Vision & Equipment Migration Service", ar: "خدمة الترحيل من AWS Lookout for Vision وLookout for Equipment" },
+      description: {
+        en: "Migrate vision inspection and equipment anomaly models off retired AWS Lookout services, with data recovery and MES/ERP write-back.",
+        ar: "رحّل نماذج الفحص البصري واكتشاف شذوذ المعدات من خدمات AWS Lookout المتوقفة، مع استعادة البيانات والربط بـ MES وERP.",
+      },
+      keywords: { en: ["AWS Lookout for Vision alternative", "Lookout for Equipment migration", "visual inspection migration"], ar: ["بديل AWS Lookout", "ترحيل Lookout for Equipment", "ترحيل الفحص البصري"] },
     },
   },
   {

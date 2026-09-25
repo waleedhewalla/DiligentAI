@@ -54,6 +54,7 @@ export function Header({ locale, dict, nav }: { locale: Locale; dict: Dictionary
   const links = [
     { href: href(locale, "/services"), label: dict.nav.services },
     { href: href(locale, "/capabilities"), label: dict.nav.capabilities },
+    { href: href(locale, "/pricing"), label: dict.nav.pricing },
     { href: href(locale, "/case-studies"), label: dict.nav.caseStudies },
     { href: href(locale, "/about"), label: dict.nav.about },
     { href: href(locale, "/blog"), label: dict.nav.blog },
@@ -96,7 +97,10 @@ export function Header({ locale, dict, nav }: { locale: Locale; dict: Dictionary
                 >
                   {nav.solutions.map((group) => (
                     <div key={group.title}>
-                      <Link href={group.href} className="text-xs font-semibold uppercase tracking-wide text-muted-foreground hover:text-foreground">
+                      <Link
+                        href={group.href}
+                        className="text-xs font-semibold uppercase tracking-wide text-muted-foreground hover:text-foreground"
+                      >
                         {group.title}
                       </Link>
                       <ul className="mt-3 space-y-1">
@@ -109,10 +113,21 @@ export function Header({ locale, dict, nav }: { locale: Locale; dict: Dictionary
                           </li>
                         ))}
                       </ul>
+                      {group.total > group.items.length ? (
+                        <Link
+                          href={group.href}
+                          className="mt-1 block px-2 text-xs font-semibold text-brand-teal-dark hover:underline"
+                        >
+                          {dict.common.viewAll} ({group.total})
+                        </Link>
+                      ) : null}
                     </div>
                   ))}
                   <div className="rounded-lg bg-brand-navy p-4 text-white">
-                    <Link href={href(locale, "/services")} className="text-xs font-semibold uppercase tracking-wide text-white/70 hover:text-white">
+                    <Link
+                      href={href(locale, "/services")}
+                      className="text-xs font-semibold uppercase tracking-wide text-white/70 hover:text-white"
+                    >
                       {dict.nav.services}
                     </Link>
                     <ul className="mt-3 space-y-3">
@@ -129,6 +144,13 @@ export function Header({ locale, dict, nav }: { locale: Locale; dict: Dictionary
                       ))}
                     </ul>
                   </div>
+                  <div className="col-span-4 flex flex-wrap gap-x-6 gap-y-2 border-t pt-4 text-sm">
+                    {nav.quickLinks.map((l) => (
+                      <Link key={l.href} href={l.href} className="font-medium text-muted-foreground hover:text-brand-teal-dark">
+                        {l.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               ) : null}
             </div>
@@ -138,7 +160,7 @@ export function Header({ locale, dict, nav }: { locale: Locale; dict: Dictionary
                 href={l.href}
                 aria-current={isActive(l.href) ? "page" : undefined}
                 className={cn(
-                  "rounded-md px-3 py-2 text-sm font-medium hover:bg-muted",
+                  "rounded-md px-2 py-2 text-sm font-medium hover:bg-muted xl:px-3",
                   isActive(l.href) && "text-brand-teal-dark",
                 )}
               >
@@ -193,6 +215,11 @@ export function Header({ locale, dict, nav }: { locale: Locale; dict: Dictionary
             {nav.solutions.map((g) => (
               <Link key={g.href} href={g.href} className="rounded-md px-3 py-3 font-medium hover:bg-muted">
                 {g.title}
+              </Link>
+            ))}
+            {nav.quickLinks.map((l) => (
+              <Link key={l.href} href={l.href} className="rounded-md px-3 py-3 font-medium hover:bg-muted">
+                {l.label}
               </Link>
             ))}
             <hr className="my-2" />

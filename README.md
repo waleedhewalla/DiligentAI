@@ -54,9 +54,24 @@ Everything sold on the site lives in `src/content/catalog/`:
 | `categories.ts` | The three groupings: AI Products & Solutions · System Integration · Manufacturing Capabilities | Mega menu columns, homepage & `/solutions` sections, footer |
 | `offerings.ts` | Products and services (pre-built tools, consulting, custom AI, ERP/legacy/data integration) | Cards, `/solutions/[slug]`, portal (if `launch` is set), sitemap, JSON-LD, demo form |
 | `capabilities.ts` | Manufacturing use cases written problem-first (scheduling, demand, forecasting, quality, supply chain, maintenance, executive intelligence) | `/capabilities/[slug]`, homepage pain cards, cross-links |
+| `commitment.ts` | The Pilot-to-Production commitment (steps, optional fee-at-risk %) | Homepage, `/services`, `/pricing`, every offering with `pilotToProduction: true` |
+| `models.ts` | Arabic model (Karnak, ALLaM, Jais, frontier) and hosting options with honest status | `/trust`, `/ksa`, every offering with `sovereignModels: true` |
+| `funding.ts` | Public funding programmes (Future Factories, SIDF, MODON) + `siriCertified` flag | `/ksa`, offerings with `fundingRoutes` |
+| `integrations.ts` | Systems we connect to, grouped, with support level (standard / packaged / pilot) | `/integrations` |
+| `partners.ts` | Partner tracks + `signedPartners` (empty until agreements are signed) | `/partners` |
+| `compliance.ts` | Live regulatory deadlines (CBAM, PDPL, FRA ESG) | Homepage compliance band, `/trust` |
 | `index.ts` | The only import surface (`listOfferings`, `getCapability`, `offeringsForCapability`, …) + a build-time integrity check | — |
 
 **To add an offering:** append one object to `offerings.ts`. Required fields build the card, menu entry and page hero; optional fields (`metrics`, `steps`, `roi`, `faqs`, `integrations`, `deployment`, `caseStudy`, `download`, `demo`) each add a page section only when present. Link it to use cases with `capabilities: ["quality-control", …]` — the capability pages link back automatically. A typo in a slug fails the build with a readable message.
+
+Optional offering fields added for the competitive gaps: `packages` (fixed-price EGP packages → Packages section + `/pricing`), `pilotToProduction`, `sovereignModels`, `regions` (`eg` / `sa` / `ae`), `fundingRoutes`, and `demo: "roi-calculator"`.
+
+**Placeholders to fill before launch** (search the code for `TODO(Waleed)`):
+- `priceFromEGP` on every package (`null` shows "Fixed EGP price, quoted after a 30-minute call").
+- `commitment.feeAtRiskPercent` (`null` shows a generic line without a number).
+- `status` of each Arabic model and hosting option in `models.ts`.
+- `siriCertified` in `funding.ts` (the site says "SIRI-aligned" until it is `true`).
+- `signedPartners` in `partners.ts` (the list stays hidden while empty).
 
 **To add a use case:** append to `capabilities.ts`, then reference its slug from the relevant offerings.
 

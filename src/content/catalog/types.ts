@@ -68,7 +68,28 @@ export type Category = {
 export type ProductKey = "ipe" | "ceo_os" | "nexus";
 
 /** Registry of optional interactive embeds an offering page can show. */
-export type DemoWidget = "arabic-content-generator";
+export type DemoWidget = "arabic-content-generator" | "roi-calculator";
+
+/** Markets an offering or capability is sold in (drives region pages like /ksa). */
+export type Region = "eg" | "sa" | "ae";
+
+/**
+ * A fixed-scope, fixed-price package (gap 1 & 8: EGP starter packs, per-site pricing).
+ * `priceFromEGP: null` renders "fixed price, quoted in EGP" — set real numbers when approved.
+ */
+export type Package = {
+  id: string;
+  name: L10n;
+  scope: L10n;
+  duration: L10n;
+  /** TODO(Waleed): starting price in EGP; null until approved. */
+  priceFromEGP: number | null;
+  /** Price unit, e.g. per site, per line, one-off. */
+  unit: L10n;
+  includes: L10n<string[]>;
+  /** Highlight as the recommended package. */
+  recommended?: boolean;
+};
 
 export type Offering = {
   slug: string;
@@ -107,6 +128,16 @@ export type Offering = {
   demo?: DemoWidget;
   /** Downloadable asset under /public; the button falls back to a request link until the file exists. */
   download?: { path: string; label: L10n };
+  /** Fixed-price packages (renders the Packages section and lists the offering on /pricing). */
+  packages?: Package[];
+  /** Delivered under the Pilot-to-Production commitment (renders the commitment block; see commitment.ts). */
+  pilotToProduction?: boolean;
+  /** Customer can choose the Arabic model and hosting (renders the model-choice block; see models.ts). */
+  sovereignModels?: boolean;
+  /** Markets where it is sold. Omit = all markets. */
+  regions?: Region[];
+  /** Funding programmes it can be financed through (ids from funding.ts). */
+  fundingRoutes?: string[];
   seo: { title: L10n; description: L10n; keywords: L10n<string[]> };
 };
 

@@ -10,8 +10,9 @@ import { href } from "@/lib/seo";
  * shipping the whole catalog to the browser.
  */
 export type NavItem = { href: string; label: string; description?: string; icon: IconName; accent: Accent; badge?: string };
-export type NavGroup = { title: string; href: string; items: NavItem[] };
-export type NavModel = { solutions: NavGroup[]; services: NavItem[] };
+export type NavGroup = { title: string; href: string; items: NavItem[]; total: number };
+export type NavLink = { href: string; label: string };
+export type NavModel = { solutions: NavGroup[]; services: NavItem[]; quickLinks: NavLink[] };
 
 /** Max items per menu column before we rely on the "view all" link. */
 const MAX_PER_GROUP = 5;
@@ -33,7 +34,7 @@ export function buildNav(locale: Locale, dict: Dictionary): NavModel {
             accent: o.accent,
             badge: o.brand,
           }));
-    return { title: cat.title[locale], href: href(locale, cat.href), items: items.slice(0, MAX_PER_GROUP) };
+    return { title: cat.title[locale], href: href(locale, cat.href), items: items.slice(0, MAX_PER_GROUP), total: items.length };
   });
   const services: NavItem[] = listServiceModels().map((m) => ({
     href: href(locale, `/services#${m.id}`),
@@ -42,6 +43,13 @@ export function buildNav(locale: Locale, dict: Dictionary): NavModel {
     icon: m.icon,
     accent: m.accent,
   }));
-  void dict;
-  return { solutions, services };
+  // Cross-cutting pages added for the competitive gaps (pricing, trust, partners, KSA, integrations).
+  const quickLinks: NavLink[] = [
+    { href: href(locale, "/pricing"), label: dict.nav.pricing },
+    { href: href(locale, "/integrations"), label: dict.nav.integrations },
+    { href: href(locale, "/trust"), label: dict.nav.trust },
+    { href: href(locale, "/ksa"), label: dict.nav.ksa },
+    { href: href(locale, "/partners"), label: dict.nav.partners },
+  ];
+  return { solutions, services, quickLinks };
 }

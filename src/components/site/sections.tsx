@@ -57,7 +57,7 @@ export function OfferingCard({
   return (
     <article
       className={cn(
-        "group relative flex flex-col rounded-2xl border p-7 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg",
+        "group relative flex w-full flex-col rounded-2xl border p-7 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg",
         featured ? "border-brand-navy bg-brand-navy text-white" : cn("border-s-4 bg-card", c.border),
       )}
     >

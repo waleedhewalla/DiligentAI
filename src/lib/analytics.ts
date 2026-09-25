@@ -15,7 +15,11 @@ export type AnalyticsEvent =
   | { name: "tech_brief_download"; params: { solution: string } }
   | { name: "nexus_generate"; params: { content_type: string } }
   | { name: "language_switch"; params: { to: string } }
-  | { name: "whatsapp_click"; params: { location: string } };
+  | { name: "whatsapp_click"; params: { location: string } }
+  // Gap-closure KPIs (see research report): packages, ROI estimates, partner applications.
+  | { name: "package_select"; params: { solution: string; package: string } }
+  | { name: "roi_calc"; params: { planners: number; hours: number } }
+  | { name: "partner_apply"; params: { track: string; country?: string } };
 
 type Gtag = (...args: unknown[]) => void;
 type Hotjar = (...args: unknown[]) => void;

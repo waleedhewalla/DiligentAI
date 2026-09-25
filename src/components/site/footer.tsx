@@ -26,6 +26,11 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       title: dict.footer.company,
       links: [
         { href: href(locale, "/about"), label: dict.nav.about },
+        { href: href(locale, "/pricing"), label: dict.nav.pricing },
+        { href: href(locale, "/integrations"), label: dict.nav.integrations },
+        { href: href(locale, "/partners"), label: dict.nav.partners },
+        { href: href(locale, "/ksa"), label: dict.nav.ksa },
+        { href: href(locale, "/trust"), label: dict.nav.trust },
         { href: href(locale, "/case-studies"), label: dict.nav.caseStudies },
         {
           href: href(locale, "/case-studies/star-trans"),

@@ -52,3 +52,17 @@ export const passwordSchema = z
   .string()
   .max(128)
   .refine((p) => Object.values(passwordRules).every((r) => r(p)), { message: "weak_password" });
+
+/** Partner programme application (gap 4 & 7). Track ids mirror catalog/partners.ts. */
+export const partnerTracksIds = ["erp", "automation", "cloud", "hardware"] as const;
+
+export const partnerApplicationSchema = z.object({
+  company: z.string().trim().min(2).max(120),
+  name: z.string().trim().min(2).max(80),
+  email: z.string().trim().toLowerCase().pipe(z.email().max(254)).refine(isWorkEmail, { message: "work_email_required" }),
+  track: z.enum(partnerTracksIds),
+  country: z.enum(["eg", "sa", "ae", "other"]).default("eg"),
+  message: z.string().trim().max(2000).optional(),
+  language: z.enum(["ar", "en"]).default("ar"),
+  website: z.string().max(0).optional().or(z.literal("")),
+});
