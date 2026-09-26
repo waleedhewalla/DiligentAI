@@ -151,6 +151,54 @@
   }
 }
 
+/* ── Home hero ─────────────────────────────────────────────────────────── */
+.hero-home {
+  background:
+    linear-gradient(180deg, #0b1630 0%, #13254a 45%, #0d1a33 100%);
+}
+/* Spotlight behind the headline + faint brand glows; the bottom fades into
+   the navy-deep numbers band so the two read as one stage. */
+.hero-home__spot {
+  background:
+    radial-gradient(60% 55% at 50% 38%, rgb(44 166 164 / 0.28), transparent 70%),
+    radial-gradient(35% 35% at 88% 12%, rgb(92 200 198 / 0.14), transparent 70%),
+    radial-gradient(30% 30% at 10% 90%, rgb(233 119 48 / 0.10), transparent 70%),
+    linear-gradient(180deg, transparent 70%, #0d1a33 100%);
+}
+.hero-home::before {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  z-index: -10;
+  pointer-events: none;
+  background:
+    radial-gradient(35% 30% at 70% 30%, rgb(92 200 198 / 0.14), transparent 70%),
+    radial-gradient(30% 25% at 25% 65%, rgb(248 166 106 / 0.10), transparent 70%);
+  animation: aurora 24s ease-in-out infinite alternate;
+}
+.hero-home .grid-pattern {
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 75%);
+}
+
+/* Twinkling light groups (see hero-lights.tsx): 4 groups × 2 s = 8 s loop. */
+.hero-light {
+  position: absolute;
+  border-radius: 9999px;
+  opacity: 0;
+  transform: scale(0.4);
+  animation: twinkle 8s ease-in-out infinite;
+}
+.hero-light--teal { background: #7fe3e1; box-shadow: 0 0 10px 3px rgb(92 200 198 / 0.75), 0 0 28px 8px rgb(44 166 164 / 0.35); }
+.hero-light--orange { background: #ffc08f; box-shadow: 0 0 10px 3px rgb(248 166 106 / 0.75), 0 0 28px 8px rgb(233 119 48 / 0.3); }
+.hero-light--white { background: #fff; box-shadow: 0 0 8px 2px rgb(255 255 255 / 0.7), 0 0 22px 6px rgb(255 255 255 / 0.2); }
+@keyframes twinkle {
+  0% { opacity: 0; transform: scale(0.4); }
+  6% { opacity: 1; transform: scale(1.15); }
+  12% { opacity: 0.85; transform: scale(1); }
+  20% { opacity: 0; transform: scale(0.5); }
+  100% { opacity: 0; transform: scale(0.4); }
+}
+
 @layer utilities {
   /* Hero headline lines rise in (transform only, so LCP is not delayed). */
   .rise {
@@ -211,7 +259,8 @@ html.motion main section[data-reveal] :is(.grid, ul, ol) > :nth-child(n + 6) { t
 @keyframes progress { to { transform: scaleX(1); } }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-bg::before, .rise, .scroll-progress { animation: none !important; }
+  .hero-bg::before, .hero-home::before, .rise, .scroll-progress { animation: none !important; }
+  .hero-light { animation: none !important; opacity: 0.35; transform: none; }
   .btn-shine::after { display: none; }
   .lift:hover { transform: none; }
 }

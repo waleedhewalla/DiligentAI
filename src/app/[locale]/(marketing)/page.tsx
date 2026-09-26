@@ -13,6 +13,7 @@ import { formatDate } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { StatsBand } from "@/components/site/stats-band";
+import { HeroLights } from "@/components/site/hero-lights";
 import { FinalCta, MetricsBar, SectionHeading } from "@/components/site/sections";
 import { TrackedLink } from "@/components/site/tracked-link";
 import { Variant } from "@/components/experiments/variant";
@@ -66,11 +67,13 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
 
   return (
     <>
-      {/* HERO — same design as before; copy repositioned to "AI for manufacturing". */}
-      <section className="hero-bg relative overflow-hidden text-white">
-        <div className="grid-pattern absolute inset-0" aria-hidden />
-        {/* Single centred column: the hero leads with the message; product screens live in "See the product". */}
-        <div className="container relative py-16 md:py-24">
+      {/* HERO — centred message on a deep-navy stage: spotlight glow, fading grid,
+          twinkling light groups (HeroLights) and a soft blend into the numbers band. */}
+      <section className="hero-home relative isolate overflow-hidden text-white">
+        <div className="hero-home__spot absolute inset-0 -z-10" aria-hidden />
+        <div className="grid-pattern absolute inset-0 -z-10" aria-hidden />
+        <HeroLights />
+        <div className="container relative py-20 md:py-28 lg:py-32">
           <div className="mx-auto max-w-4xl text-center">
             <ul className="flex flex-wrap justify-center gap-2">
               {home.badges[locale].map((b, i) => (
@@ -98,9 +101,9 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                 </Variant>
               ))}
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80 md:text-xl">{home.h2[locale]}</p>
-            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <Button asChild size="lg">
+            <p className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-white/80 md:text-xl">{home.h2[locale]}</p>
+            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Button asChild size="lg" className="w-full shadow-[0_10px_40px_-8px_rgb(233_119_48_/_0.55)] sm:w-auto">
                 <TrackedLink href={href(locale, "/demo")} event={{ name: "cta_click", params: { cta: "book_demo", location: "home_hero" } }}>
                   <CtaLabel locale={locale} />
                   <ArrowRight className="btn-icon" />
@@ -114,7 +117,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                   </a>
                 </Button>
               ) : (
-                <Button asChild size="lg" variant="inverse">
+                <Button asChild size="lg" variant="inverse" className="w-full border-white/30 bg-white/5 backdrop-blur hover:border-white sm:w-auto">
                   <Link href={href(locale, "/solutions")}>{dict.nav.allSolutions}</Link>
                 </Button>
               )}
