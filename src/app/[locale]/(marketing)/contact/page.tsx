@@ -13,13 +13,13 @@ import { TrackedAnchor } from "@/components/site/tracked-link";
 const copy = {
   title: { en: "Contact Diligent AI — Cairo, Egypt", ar: "تواصل مع Diligent AI — القاهرة، مصر" },
   description: {
-    en: "Talk to the Diligent AI team in Cairo about AI consulting, solutions and ERP integration for your plant. WhatsApp, email or a short form — we reply within one business day.",
-    ar: "تحدث مع فريق Diligent AI في القاهرة عن استشارات وحلول الذكاء الاصطناعي والتكامل مع ERP لمصنعك. واتساب أو بريد إلكتروني أو نموذج قصير — نرد خلال يوم عمل واحد.",
+    en: "Talk to the Diligent AI team in Cairo about AI consulting, solutions and ERP integration for your plant. WhatsApp, email or a short form — we reply the same business day.",
+    ar: "تحدث مع فريق Diligent AI في القاهرة عن استشارات وحلول الذكاء الاصطناعي والتكامل مع ERP لمصنعك. واتساب أو بريد إلكتروني أو نموذج قصير — نرد في يوم العمل نفسه.",
   },
   h1: { en: "Talk to a person, not a ticket queue", ar: "تحدث مع شخص، لا مع قائمة انتظار" },
   lead: {
-    en: "Our Cairo team replies within one business day — in Arabic or English.",
-    ar: "فريقنا في القاهرة يرد خلال يوم عمل واحد — بالعربية أو الإنجليزية.",
+    en: "Our Cairo team replies the same business day — in Arabic or English.",
+    ar: "فريقنا في القاهرة يرد في يوم العمل نفسه — بالعربية أو الإنجليزية.",
   },
   direct: { en: "Reach us directly", ar: "تواصل معنا مباشرة" },
 };

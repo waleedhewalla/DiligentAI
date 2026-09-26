@@ -22,8 +22,8 @@ const copy = {
   },
   missionTitle: { en: "Our mission", ar: "رسالتنا" },
   mission: {
-    en: "Give every manufacturer and logistics company in Egypt and the Gulf the planning, executive and commercial intelligence that global leaders take for granted — in Arabic, deployed in weeks, supported locally.",
-    ar: "أن نمنح كل شركة تصنيع ولوجستيات في مصر والخليج ذكاء التخطيط والقرار التنفيذي والتسويق الذي تعتبره الشركات العالمية أمراً مسلّماً به — بالعربية، وخلال أسابيع، وبدعم محلي.",
+    en: "Give every manufacturer in Egypt and the Gulf the planning, executive and commercial intelligence that global leaders take for granted — in Arabic, deployed in weeks, supported locally.",
+    ar: "أن نمنح كل شركة تصنيع في مصر والخليج ذكاء التخطيط والقرار التنفيذي والتسويق الذي تعتبره الشركات العالمية أمراً مسلّماً به — بالعربية، وخلال أسابيع، وبدعم محلي.",
   },
   principlesTitle: { en: "What we believe", ar: "ما نؤمن به" },
   principles: [

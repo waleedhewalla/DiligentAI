@@ -17,8 +17,8 @@ const copy = {
     ar: "تطبيقات حقيقية وأرقام حقيقية. كل مؤشر في هذه الصفحة مُقاس لدى العميل، لا مُقدّر.",
   },
   description: {
-    en: "How manufacturers and logistics companies in Egypt use AI for planning, executive decisions and commercial content. Star Trans: 80% less planning time in 8 weeks.",
-    ar: "كيف تستخدم شركات التصنيع واللوجستيات في مصر الذكاء الاصطناعي في التخطيط والقرار التنفيذي والمحتوى التجاري. ستار ترانس: انخفاض وقت التخطيط 80% خلال 8 أسابيع.",
+    en: "How manufacturers in Egypt use AI for planning, executive decisions and commercial content. Star Trans: 80% less planning time in 8 weeks.",
+    ar: "كيف تستخدم شركات التصنيع في مصر الذكاء الاصطناعي في التخطيط والقرار التنفيذي والمحتوى التجاري. ستار ترانس: انخفاض وقت التخطيط 80% خلال 8 أسابيع.",
   },
   next: {
     en: "Your company could be the next case study.",

@@ -103,7 +103,7 @@ const en = {
   },
   demoForm: {
     title: "Prefer we reach out?",
-    subtitle: "Leave your details and we'll confirm a slot within one business day.",
+    subtitle: "Leave your details and we'll confirm a slot the same business day.",
     firstName: "First name",
     email: "Work email",
     company: "Company name",
@@ -113,7 +113,7 @@ const en = {
     language: "Meeting language",
     submit: "Book my plant review",
     submitting: "Sending…",
-    success: "Thank you — we'll confirm your demo within one business day.",
+    success: "Thank you — we'll confirm your plant review the same business day.",
     error: "Something went wrong. Please try again or reach us on WhatsApp.",
     workEmailOnly: "Please use your work email address",
     required: "Required",
@@ -213,7 +213,7 @@ const en = {
     },
     support: {
       title: "Support",
-      subtitle: "Our Cairo team responds within one business day — in Arabic or English.",
+      subtitle: "Our Cairo team responds the same business day — in Arabic or English.",
       subject: "Subject",
       product: "Product",
       priority: "Priority",
@@ -382,7 +382,7 @@ const ar: Dictionary = {
   },
   demoForm: {
     title: "تفضّل أن نتواصل معك؟",
-    subtitle: "اترك بياناتك وسنؤكد موعدك خلال يوم عمل واحد.",
+    subtitle: "اترك بياناتك وسنؤكد موعدك في يوم العمل نفسه.",
     firstName: "الاسم الأول",
     email: "البريد الإلكتروني للعمل",
     company: "اسم الشركة",
@@ -392,7 +392,7 @@ const ar: Dictionary = {
     language: "لغة الاجتماع",
     submit: "احجز مراجعتي",
     submitting: "جارٍ الإرسال…",
-    success: "شكراً لك — سنؤكد موعد العرض خلال يوم عمل واحد.",
+    success: "شكراً لك — سنؤكد موعد مراجعة مصنعك في يوم العمل نفسه.",
     error: "حدث خطأ. حاول مرة أخرى أو تواصل معنا عبر واتساب.",
     workEmailOnly: "يرجى استخدام البريد الإلكتروني الخاص بالعمل",
     required: "مطلوب",
@@ -492,7 +492,7 @@ const ar: Dictionary = {
     },
     support: {
       title: "الدعم",
-      subtitle: "فريقنا في القاهرة يرد خلال يوم عمل واحد — بالعربية أو الإنجليزية.",
+      subtitle: "فريقنا في القاهرة يرد في يوم العمل نفسه — بالعربية أو الإنجليزية.",
       subject: "الموضوع",
       product: "المنتج",
       priority: "الأولوية",

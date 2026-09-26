@@ -10,8 +10,8 @@ import { Breadcrumbs, PageHero } from "@/components/site/sections";
 const copy = {
   title: { en: "Insights — AI for MENA Manufacturing & Leadership", ar: "رؤى — الذكاء الاصطناعي للصناعة والقيادة في المنطقة" },
   description: {
-    en: "Practical articles on production planning, executive intelligence and Arabic marketing for manufacturers and logistics companies in Egypt and the Gulf.",
-    ar: "مقالات عملية عن تخطيط الإنتاج والذكاء التنفيذي والتسويق بالعربية لشركات التصنيع واللوجستيات في مصر والخليج.",
+    en: "Practical articles on production planning, executive intelligence and Arabic marketing for manufacturers in Egypt and the Gulf.",
+    ar: "مقالات عملية عن تخطيط الإنتاج والذكاء التنفيذي والتسويق بالعربية لشركات التصنيع في مصر والخليج.",
   },
   h1: { en: "Insights", ar: "رؤى" },
   lead: {

@@ -35,7 +35,7 @@ const allCaseStudies: CaseStudy[] = [
     published: true,
     client: "Star Trans",
     clientAr: "ستار ترانس",
-    industry: { en: "Logistics & Transport", ar: "اللوجستيات والنقل" },
+    industry: { en: "Electrical Transformer Technology", ar: "تكنولوجيا المحولات الكهربائية" },
     location: { en: "Cairo, Egypt", ar: "القاهرة، مصر" },
     offerings: ["ai-production-scheduling", "executive-intelligence", "arabic-commercial-content"],
     capabilities: ["production-scheduling", "executive-decision-intelligence"],
@@ -53,12 +53,12 @@ const allCaseStudies: CaseStudy[] = [
     metrics: starTransMetrics,
     challenge: {
       en: [
-        "Every week, the planning team spent two to three days building the schedule by hand in Excel. By the time it was published, reality had already moved: a vehicle was down, a shipment was late, a customer changed priority.",
+        "Star Trans builds power, distribution and pad-mount transformers to order. Every week, the planning team spent two to three days building the schedule by hand in Excel. By the time it was published, reality had already moved: copper or core material arrived late, core-and-coil assembly was overloaded, a utility customer changed priority.",
         "Leadership saw performance in a weekly PDF, days after the fact. Commercial teams relied on agencies for Arabic content, waiting weeks for each campaign.",
         "Global planning suites were quoted at 12–18 months of implementation with English-only interfaces and no local support.",
       ],
       ar: [
-        "كل أسبوع، كان فريق التخطيط يقضي من يومين إلى ثلاثة أيام في بناء الجدول يدوياً على Excel. وعند نشره كان الواقع قد تغيّر: مركبة معطلة، شحنة متأخرة، عميل غيّر أولوياته.",
+        "تصنّع ستار ترانس محولات القدرة والتوزيع والمحولات المركّبة على قواعد حسب الطلب. كل أسبوع، كان فريق التخطيط يقضي من يومين إلى ثلاثة أيام في بناء الجدول يدوياً على Excel. وعند نشره كان الواقع قد تغيّر: تأخر وصول النحاس أو مواد القلب، حمل زائد على تجميع القلب والملفات، عميل من شركات الكهرباء غيّر أولوياته.",
         "كانت الإدارة ترى الأداء في ملف PDF أسبوعي، بعد وقوع الأحداث بأيام. واعتمدت الفرق التجارية على الوكالات في المحتوى العربي، منتظرةً أسابيع لكل حملة.",
         "أما أنظمة التخطيط العالمية فكانت عروضها تتطلب 12–18 شهراً للتنفيذ بواجهات إنجليزية فقط ودون دعم محلي.",
       ],
@@ -67,8 +67,8 @@ const allCaseStudies: CaseStudy[] = [
       {
         offering: "ai-production-scheduling",
         body: {
-          en: "IPE was connected to Star Trans' order and resource data and modelled their real constraints. The planning team now generates a full schedule in under a minute and re-plans on the spot when something changes.",
-          ar: "رُبط IPE ببيانات الطلبيات والموارد في ستار ترانس ونُمذجت قيودهم الفعلية. أصبح فريق التخطيط يُنتج جدولاً كاملاً في أقل من دقيقة، ويعيد التخطيط فوراً عند أي تغيير.",
+          en: "IPE was connected to Star Trans' manufacturing orders, materials and work-centre data and modelled their real constraints — core and coil assembly, tank fabrication and the test bay. The planning team now generates a full schedule in under a minute and re-plans on the spot when something changes.",
+          ar: "رُبط IPE بأوامر التصنيع والخامات ومراكز العمل في ستار ترانس ونُمذجت قيودهم الفعلية — تجميع القلب والملفات وتصنيع الخزانات ومحطة الاختبار. أصبح فريق التخطيط يُنتج جدولاً كاملاً في أقل من دقيقة، ويعيد التخطيط فوراً عند أي تغيير.",
         },
       },
       {
@@ -90,8 +90,8 @@ const allCaseStudies: CaseStudy[] = [
       {
         period: { en: "Day 30", ar: "اليوم 30" },
         body: {
-          en: "Planning cycle cut from days to minutes. Planners shift their time from building schedules to managing exceptions.",
-          ar: "تقلصت دورة التخطيط من أيام إلى دقائق. تحوّل وقت المخططين من بناء الجداول إلى إدارة الاستثناءات.",
+          en: "Planning cycle cut from days to minutes. Planners shift their time from building schedules to managing exceptions such as material shortages and capacity overloads.",
+          ar: "تقلصت دورة التخطيط من أيام إلى دقائق. تحوّل وقت المخططين من بناء الجداول إلى إدارة الاستثناءات مثل نقص الخامات والحمل الزائد على الطاقة.",
         },
       },
       {

@@ -15,7 +15,7 @@ export const site = {
   // Business WhatsApp (international format). Override per environment with NEXT_PUBLIC_WHATSAPP_NUMBER.
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "201065307007",
   // Booking: public Cal.com event (preferred over Calendly). Override per environment with NEXT_PUBLIC_BOOKING_URL.
-  // TODO(Waleed): the site promises a 30-minute review — point this at a 30-min event (or update the copy).
+  // TODO(Waleed): the site promises a 30-minute review — switch this to the 30-min Cal.com event once created.
   booking: process.env.NEXT_PUBLIC_BOOKING_URL || "https://cal.com/waleed-hewalla-trzjna/15min",
   calendly: process.env.NEXT_PUBLIC_CALENDLY_URL ?? "",
   calendlyCeo: process.env.NEXT_PUBLIC_CALENDLY_CEO_URL ?? process.env.NEXT_PUBLIC_CALENDLY_URL ?? "",
