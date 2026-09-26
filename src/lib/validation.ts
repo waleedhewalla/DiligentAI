@@ -15,6 +15,27 @@ export function isWorkEmail(email: string) {
 export const interests = ["consult", "build", "integrate", "unsure"] as const;
 export const industries = ["manufacturing", "logistics", "fmcg", "other"] as const;
 
+const touchSchema = z
+  .object({
+    utm_source: z.string().max(120).optional(),
+    utm_medium: z.string().max(120).optional(),
+    utm_campaign: z.string().max(120).optional(),
+    utm_term: z.string().max(120).optional(),
+    utm_content: z.string().max(120).optional(),
+    referrer: z.string().max(200).optional(),
+    landing: z.string().max(200).optional(),
+    at: z.string().max(40).optional(),
+  })
+  .strip();
+
+export const attributionSchema = z
+  .object({
+    first: touchSchema.optional(),
+    last: touchSchema.optional(),
+    pages: z.array(z.string().max(200)).max(10).optional(),
+  })
+  .strip();
+
 export const demoRequestSchema = z.object({
   name: z.string().trim().min(1).max(80),
   email: z
@@ -34,6 +55,8 @@ export const demoRequestSchema = z.object({
     .optional(),
   language: z.enum(["ar", "en"]).default("ar"),
   source: z.string().max(200).optional(),
+  /** First/last touch + pages viewed (lib/attribution.ts). Bounded; unknown keys dropped. */
+  attribution: attributionSchema.optional(),
   // Honeypot: real users never fill this.
   website: z.string().max(0).optional().or(z.literal("")),
 });

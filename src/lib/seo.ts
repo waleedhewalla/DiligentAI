@@ -29,11 +29,17 @@ type PageMeta = {
   noindex?: boolean;
   /** Absolute title (skips the "| Diligent AI" template). */
   absoluteTitle?: boolean;
+  /** Per-page social card (a sibling opengraph-image route). Defaults to the locale card. */
+  ogImage?: boolean;
 };
 
 export function pageMetadata(m: PageMeta): Metadata {
   const url = absoluteUrl(href(m.locale, m.path));
+  // Per-page cards (a sibling opengraph-image.tsx) exist on the real deployment only — the
+  // static preview strips them. Next injects their hashed URL itself, so we set no image then.
+  const perPage = m.ogImage && process.env.NEXT_PUBLIC_PREVIEW !== "1";
   const ogImage = absoluteUrl(`/${m.locale}/opengraph-image`);
+  const images = perPage ? {} : { images: [{ url: ogImage, width: 1200, height: 630, alt: m.title }] };
   return {
     title: m.absoluteTitle ? { absolute: m.title } : m.title,
     description: m.description,
@@ -47,11 +53,11 @@ export function pageMetadata(m: PageMeta): Metadata {
       siteName: site.name,
       locale: ogLocale[m.locale],
       alternateLocale: locales.filter((l) => l !== m.locale).map((l) => ogLocale[l]),
-      images: [{ url: ogImage, width: 1200, height: 630, alt: m.title }],
+      ...images,
       ...(m.publishedTime ? { publishedTime: m.publishedTime } : {}),
       ...(m.modifiedTime ? { modifiedTime: m.modifiedTime } : {}),
     },
-    twitter: { card: "summary_large_image", title: m.title, description: m.description, images: [ogImage] },
+    twitter: { card: "summary_large_image", title: m.title, description: m.description, ...(perPage ? {} : { images: [ogImage] }) },
     // The GitHub Pages preview must never compete with the real domain in search.
     robots: m.noindex || process.env.NEXT_PUBLIC_PREVIEW === "1" ? { index: false, follow: false } : { index: true, follow: true },
   };

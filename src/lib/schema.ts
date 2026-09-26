@@ -2,7 +2,7 @@ import type { Locale } from "@/i18n/config";
 import { absoluteUrl } from "@/lib/utils";
 import { founderName, site } from "@/lib/site";
 import { href } from "@/lib/seo";
-import type { Capability, Offering } from "@/content/catalog";
+import type { Capability, Department, Offering } from "@/content/catalog";
 import type { Post } from "@/content/blog";
 import type { CaseStudy } from "@/content/case-studies";
 
@@ -83,7 +83,7 @@ export function offeringSchema(o: Offering, locale: Locale) {
       availability: "https://schema.org/InStock",
       url: absoluteUrl(href(locale, "/demo")),
       priceCurrency: "EGP",
-      description: locale === "ar" ? "التسعير حسب الطلب — احجز عرضاً توضيحياً" : "Pricing on request — book a demo",
+      description: locale === "ar" ? "التسعير حسب الطلب — احجز مراجعة لمصنعك" : "Pricing on request — book a plant review",
     },
   };
 }
@@ -98,6 +98,20 @@ export function capabilitySchema(c: Capability, locale: Locale) {
     url: absoluteUrl(href(locale, `/capabilities/${c.slug}`)),
     provider: { "@id": ORG_ID },
     audience: { "@type": "BusinessAudience", audienceType: "Manufacturers" },
+  };
+}
+
+/** Department landing page: a Service aimed at that department's audience. */
+export function departmentSchema(d: Department, locale: Locale) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: d.seo.title[locale],
+    description: d.seo.description[locale],
+    serviceType: d.title.en,
+    url: absoluteUrl(href(locale, `/departments/${d.slug}`)),
+    provider: { "@id": ORG_ID },
+    audience: { "@type": "BusinessAudience", audienceType: d.owner[locale] },
   };
 }
 

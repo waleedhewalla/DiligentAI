@@ -42,6 +42,7 @@ export default function CapabilitiesPage({ params }: { params: { locale: Locale 
         }
       />
       <section className="section">
+        <h2 className="sr-only">{category.title[locale]}</h2>
         <div className="container grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {caps.map((c) => (
             <CapabilityCard key={c.slug} capability={c} locale={locale} dict={dict} />

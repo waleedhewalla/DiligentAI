@@ -18,6 +18,9 @@ tar -C "$ROOT" --exclude=./node_modules --exclude=./.next --exclude=./docs --exc
 ln -s "$ROOT/node_modules" "$TMP/node_modules"
 cd "$TMP"
 rm -rf src/middleware.ts src/app/api src/app/auth "src/app/[locale]/portal" "src/app/[locale]/(auth)" "src/app/[locale]/[...rest]"
+# Per-page social cards in nested dynamic routes aren't supported by `output: export`;
+# the preview falls back to the locale card (see ogImage in lib/seo.ts).
+find "src/app/[locale]/(marketing)" -mindepth 2 -name "opengraph-image.tsx" -delete
 
 PREVIEW_EXPORT=1 PREVIEW_BASE_PATH="$BASE" NEXT_PUBLIC_PREVIEW=1 \
   NEXT_PUBLIC_SITE_URL="https://${OWNER}.github.io${BASE}" \

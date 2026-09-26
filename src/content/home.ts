@@ -48,6 +48,36 @@ export const home = {
     /** Capability slugs whose `problem` line is shown as a pain card (CONFIGURABLE). */
     capabilities: ["production-scheduling", "quality-control", "supply-chain-optimization"],
   },
+  picker: {
+    tablist: { en: "Choose your department", ar: "اختر إدارتك" },
+    pains: { en: "Sound familiar?", ar: "هل يبدو هذا مألوفاً؟" },
+    solutions: { en: "Where to start", ar: "من أين تبدأ" },
+    seeAll: { en: "See all for this department", ar: "كل حلول هذه الإدارة" },
+  },
+  showcase: {
+    eyebrow: { en: "See the product", ar: "شاهد المنتج" },
+    title: { en: "Real software your teams use every day", ar: "برمجيات حقيقية تستخدمها فرقك كل يوم" },
+    lead: {
+      en: "IPE runs the plan; CEO OS runs the programme. Screens below are from the live products with sample data.",
+      ar: "IPE يدير الخطة، وCEO OS يدير البرنامج. الشاشات أدناه من المنتجين الفعليين ببيانات تجريبية.",
+    },
+    /** Offering slugs with `media` to feature (CONFIGURABLE). */
+    offerings: ["ai-production-scheduling", "executive-intelligence"],
+  },
+  tryIt: {
+    eyebrow: { en: "Try it now", ar: "جرّبه الآن" },
+    title: { en: "Estimate your savings, or generate Arabic content — no sign-up", ar: "احسب وفرك أو أنشئ محتوى عربياً — دون تسجيل" },
+    lead: {
+      en: "Two tools you can use right now, no sign-up. The savings calculator runs entirely in your browser.",
+      ar: "أداتان يمكنك استخدامهما الآن دون تسجيل. حاسبة الوفر تعمل بالكامل في متصفحك.",
+    },
+    nexusTitle: { en: "Arabic content in seconds", ar: "محتوى عربي في ثوانٍ" },
+    nexusBody: {
+      en: "Generate a product post, brochure paragraph or tender summary in Arabic and English from one brief.",
+      ar: "أنشئ منشوراً عن منتج أو فقرة كتيب أو ملخص مناقصة بالعربية والإنجليزية من وصف واحد.",
+    },
+  },
+  insightsTitle: { en: "Insights for plant leaders", ar: "رؤى لقادة المصانع" },
   services: {
     eyebrow: { en: "How we work", ar: "كيف نعمل" },
     title: { en: "Consult. Build. Integrate.", ar: "نستشير. نبني. نُكامل." },
@@ -112,8 +142,8 @@ export const home = {
       ar: ["24 عاماً في التحول المؤسسي", "أكثر من 55 مشروع SAP", "PMP", "SAP Activate"],
     } as L10n<string[]>,
     quote: {
-      en: "We are not an agency. We are not a platform. We are your operating partner.",
-      ar: "لسنا وكالة. ولسنا منصة. نحن شريكك في التشغيل.",
+      en: "We are not an agency, and not just a platform. We are your operating partner.",
+      ar: "لسنا وكالة، ولسنا مجرد منصة. نحن شريكك في التشغيل.",
     },
     role: { en: "Founder & CEO", ar: "المؤسس والرئيس التنفيذي" },
   },

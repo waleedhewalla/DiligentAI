@@ -5,6 +5,7 @@ import { dir, htmlLang, isLocale, locales, type Locale } from "@/i18n/config";
 import { metadataBase } from "@/lib/seo";
 import { Analytics } from "@/components/analytics/analytics";
 import { ConsentBanner } from "@/components/analytics/consent-banner";
+import { AttributionTracker } from "@/components/analytics/attribution-tracker";
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
@@ -63,6 +64,7 @@ export default function LocaleLayout({ children, params }: { children: React.Rea
         {children}
         <ConsentBanner locale={locale} />
         <Analytics />
+        <AttributionTracker />
       </body>
     </html>
   );

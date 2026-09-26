@@ -59,7 +59,7 @@ export function HeroVisual({ locale }: { locale: Locale }) {
     >
       <div className="flex items-center justify-between gap-3">
         <p className="text-sm font-semibold text-white">{c.title}</p>
-        <span className="rounded-full bg-brand-teal/20 px-2.5 py-1 text-xs font-medium text-brand-teal">● {c.status}</span>
+        <span className="rounded-full bg-brand-teal/20 px-2.5 py-1 text-xs font-medium text-brand-teal-light">● {c.status}</span>
       </div>
       <div className="mt-5 space-y-3">
         {c.lines.map((line, i) => (

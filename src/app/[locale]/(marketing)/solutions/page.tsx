@@ -1,7 +1,11 @@
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
-import { listCapabilities, listOfferings } from "@/content/catalog";
-import { pageMetadata } from "@/lib/seo";
+import Link from "next/link";
+import { accentClasses, listCapabilities, listDepartments, listOfferings } from "@/content/catalog";
+import { href, pageMetadata } from "@/lib/seo";
+import { cn } from "@/lib/utils";
+import { Icon } from "@/components/site/icons";
+import { MaturityLegend } from "@/components/site/maturity-badge";
 import { itemListSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/json-ld";
 import { Breadcrumbs, FinalCta, PageHero } from "@/components/site/sections";
@@ -55,8 +59,25 @@ export default function SolutionsPage({ params }: { params: { locale: Locale } }
           />
         }
       />
+      {/* Browse by department first — the primary way in (see catalog/departments.ts). */}
+      <section className="border-b bg-surface-subtle py-8">
+        <div className="container">
+          <p className="text-sm font-bold text-brand-navy">{dict.nav.departments}</p>
+          <ul className="mt-3 flex flex-wrap gap-2">
+            {listDepartments().map((d) => (
+              <li key={d.slug}>
+                <Link href={href(locale, `/departments/${d.slug}`)} className="inline-flex items-center gap-2 rounded-full border bg-background px-4 py-2 text-sm font-medium hover:bg-muted">
+                  <Icon name={d.icon} className={cn("h-4 w-4", accentClasses[d.accent].text)} />
+                  {d.title[locale]}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
       <section className="section">
         <div className="container">
+          <MaturityLegend dict={dict} className="mb-12" />
           <CatalogShowcase locale={locale} dict={dict} headingLevel="h2" />
         </div>
       </section>

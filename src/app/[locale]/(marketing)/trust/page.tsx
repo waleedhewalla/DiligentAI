@@ -6,6 +6,9 @@ import { complianceItems } from "@/content/catalog";
 import { pageMetadata } from "@/lib/seo";
 import { Breadcrumbs, FinalCta, PageHero, SectionHeading } from "@/components/site/sections";
 import { ModelChoiceBlock } from "@/components/site/catalog-blocks";
+import { certifications, serviceCommitments } from "@/content/trust";
+import { site } from "@/lib/site";
+import { Button } from "@/components/ui/button";
 
 // Gap 3 (PDPL) & gap 5 — where data lives and how it is protected. Controls listed
 // here mirror what the platform actually implements (see README → Security).
@@ -30,6 +33,24 @@ const copy = {
     { en: "Your data is never used to train shared models", ar: "لا تُستخدم بياناتك أبداً لتدريب نماذج مشتركة" },
   ],
   regsTitle: { en: "Regulations we design for", ar: "اللوائح التي نصمم وفقها" },
+  certTitle: { en: "Certifications roadmap", ar: "خارطة طريق الشهادات" },
+  certLead: {
+    en: "What we hold today and what is in progress — stated plainly, so your procurement team doesn't have to ask.",
+    ar: "ما لدينا اليوم وما هو قيد التنفيذ — بوضوح، حتى لا يضطر فريق المشتريات للسؤال.",
+  },
+  status: {
+    planned: { en: "Planned", ar: "مخطط" },
+    "in-progress": { en: "In progress", ar: "قيد التنفيذ" },
+    certified: { en: "Certified", ar: "معتمد" },
+  },
+  target: { en: "Target", ar: "المستهدف" },
+  slaTitle: { en: "Service commitments", ar: "التزامات الخدمة" },
+  dpaTitle: { en: "Data processing agreement", ar: "اتفاقية معالجة البيانات" },
+  dpaBody: {
+    en: "We sign a DPA with every customer, covering processing purposes, sub-processors, hosting location, breach notification and deletion. Ask for our template before the first call.",
+    ar: "نوقّع اتفاقية معالجة بيانات مع كل عميل تغطي أغراض المعالجة والمعالجين الفرعيين وموقع الاستضافة والإبلاغ عن الاختراقات والحذف. اطلب نموذجنا قبل المكالمة الأولى.",
+  },
+  dpaCta: { en: "Request the DPA template", ar: "اطلب نموذج الاتفاقية" },
   cta: { en: "Bring your IT and legal team to the first call.", ar: "أحضر فريق تقنية المعلومات والفريق القانوني إلى المكالمة الأولى." },
 };
 
@@ -81,7 +102,7 @@ export default function TrustPage({ params }: { params: { locale: Locale } }) {
             <ul className="mt-6 space-y-4">
               {complianceItems.map((c) => (
                 <li key={c.id} className="rounded-2xl border p-5">
-                  <p className="flex items-center gap-2 text-xs font-bold text-brand-orange">
+                  <p className="flex items-center gap-2 text-xs font-bold text-brand-orange-dark">
                     <MapPin className="h-3.5 w-3.5" aria-hidden />
                     {c.when[locale]}
                   </p>
@@ -90,6 +111,45 @@ export default function TrustPage({ params }: { params: { locale: Locale } }) {
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+      </section>
+      <section className="section bg-surface-subtle">
+        <div className="container">
+          <SectionHeading title={copy.certTitle[locale]} lead={copy.certLead[locale]} />
+          <ul className="mt-10 grid gap-4 md:grid-cols-3">
+            {certifications.map((c) => (
+              <li key={c.id} className="rounded-2xl border bg-background p-6">
+                <p className="font-bold text-brand-navy" dir="ltr">{c.name}</p>
+                <p className="mt-2 inline-flex rounded-md bg-muted px-2 py-0.5 text-xs font-bold text-foreground/80">
+                  {copy.status[c.status][locale]}
+                  {c.target ? ` · ${copy.target[locale]}: ${c.target[locale]}` : ""}
+                </p>
+                <p className="mt-3 text-sm text-muted-foreground">{c.body[locale]}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container grid gap-8 lg:grid-cols-[1.4fr_1fr]">
+          <div>
+            <h2 className="text-2xl font-bold text-brand-navy">{copy.slaTitle[locale]}</h2>
+            <dl className="mt-6 grid gap-4 sm:grid-cols-3">
+              {serviceCommitments.map((c) => (
+                <div key={c.title.en} className="rounded-2xl border p-5">
+                  <dt className="font-bold text-brand-navy">{c.title[locale]}</dt>
+                  <dd className="mt-2 text-sm text-muted-foreground">{c.body[locale]}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+          <div className="rounded-2xl bg-brand-navy p-6 text-white">
+            <h2 className="text-xl font-bold">{copy.dpaTitle[locale]}</h2>
+            <p className="mt-3 text-sm text-white/80">{copy.dpaBody[locale]}</p>
+            <Button asChild variant="inverse" className="mt-6">
+              <a href={`mailto:${site.email}?subject=${encodeURIComponent(locale === "ar" ? "طلب نموذج اتفاقية معالجة البيانات" : "DPA template request")}`}>{copy.dpaCta[locale]}</a>
+            </Button>
           </div>
         </div>
       </section>

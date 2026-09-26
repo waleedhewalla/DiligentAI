@@ -8,7 +8,8 @@ import { getOffering } from "@/content/catalog";
 import { getCaseStudy } from "@/content/case-studies";
 import { href, pageMetadata } from "@/lib/seo";
 import { articleSchema } from "@/lib/schema";
-import { formatDate } from "@/lib/utils";
+import { absoluteUrl, formatDate } from "@/lib/utils";
+import { ShareButtons } from "@/components/site/share-buttons";
 import { Button } from "@/components/ui/button";
 import { JsonLd } from "@/components/seo/json-ld";
 import { Breadcrumbs } from "@/components/site/sections";
@@ -27,6 +28,7 @@ export async function generateMetadata({ params }: { params: { locale: Locale; s
   const l = params.locale;
   return pageMetadata({
     locale: l,
+    ogImage: true,
     path: `/blog/${post.slug}`,
     title: post.title[l],
     description: post.excerpt[l],
@@ -59,10 +61,10 @@ function RenderBlock({ block, locale }: { block: Block; locale: Locale }) {
       if (!o) return null;
       return (
         <aside className="not-prose my-10 rounded-2xl bg-brand-navy p-7 text-white">
-          <p className="text-sm font-semibold text-brand-teal">{o.brand ? <span className="ltr-run">{o.brand}</span> : o.title[locale]}</p>
+          <p className="text-sm font-semibold text-brand-teal-light">{o.brand ? <span className="ltr-run">{o.brand}</span> : o.title[locale]}</p>
           <p className="mt-2 text-xl font-bold">{o.summary[locale]}</p>
           <p className="mt-2 text-white/80">
-            {locale === "ar" ? "نطبّق هذا في ستار ترانس — احجز عرضاً توضيحياً." : "We deploy this at Star Trans — book a demo."}
+            {locale === "ar" ? "نطبّق هذا في ستار ترانس — احجز مراجعة لمصنعك مدتها 30 دقيقة." : "We deploy this at Star Trans — book a 30-min plant review."}
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
             <Button asChild>
@@ -70,7 +72,7 @@ function RenderBlock({ block, locale }: { block: Block; locale: Locale }) {
                 href={href(locale, "/demo") + `?area=${o.slug}&interest=${o.serviceModels[0]}`}
                 event={{ name: "cta_click", params: { cta: "book_demo", location: "blog_inline", solution: o.slug } }}
               >
-                {locale === "ar" ? "احجز عرضاً" : "Book a demo"}
+                {locale === "ar" ? "احجز مراجعة لمصنعك" : "Book a plant review"}
                 <ArrowRight className="btn-icon" />
               </TrackedLink>
             </Button>
@@ -115,6 +117,15 @@ export default async function BlogPost({ params }: { params: { locale: Locale; s
               <time dateTime={post.publishedAt}>{formatDate(post.publishedAt, locale)}</time> · {post.readingMinutes}{" "}
               {dict.common.minutesRead}
             </p>
+            <div className="mt-6">
+              <ShareButtons
+                url={absoluteUrl(href(locale, `/blog/${post.slug}`))}
+                title={post.title[locale]}
+                label={dict.common.share}
+                copyLabel={dict.common.copyLink}
+                copiedLabel={dict.common.copied}
+              />
+            </div>
           </div>
         </header>
         <div className="container max-w-3xl py-12">

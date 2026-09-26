@@ -7,6 +7,7 @@ import {
   capabilitiesForOffering,
   getCategory,
   getServiceModel,
+  maturityOf,
   listOfferings,
   type Offering,
 } from "@/content/catalog";
@@ -25,6 +26,8 @@ import { Breadcrumbs, CapabilityCard, FinalCta, MetricsBar, OfferingCard, Sectio
 import { Icon } from "./icons";
 import { TrackedLink } from "./tracked-link";
 import { StickyCta } from "./sticky-cta";
+import { MaturityBadge } from "./maturity-badge";
+import { ProductGallery } from "./product-gallery";
 import { DownloadButton } from "./download-button";
 import { NexusWidget } from "./nexus-widget";
 import { RoiCalculator } from "./roi-calculator";
@@ -82,27 +85,30 @@ export async function OfferingPage({ offering: o, locale }: { offering: Offering
                   <span className="ltr-run">{o.brand}</span>
                 </Badge>
               ) : null}
+              <MaturityBadge maturity={maturityOf(o)} dict={dict} dark className="rounded-full px-3 py-1 text-xs" />
             </div>
             <h1 className="h-display mt-5">{o.title[locale]}</h1>
             <p className="mt-5 text-lg text-white/80 md:text-xl">{o.lead[locale]}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg" className={o.accent === "teal" ? c.button : undefined}>
-                {o.demo ? (
-                  <a href="#try">
-                    {o.demo === "roi-calculator" ? dict.sections.roiTitle : dict.common.tryIt}
-                    <ArrowRight className="btn-icon" />
-                  </a>
-                ) : (
-                  <TrackedLink
-                    href={demoHref}
-                    event={{ name: "cta_click", params: { cta: "book_demo", location: "offering_hero", solution: o.slug, interest: primaryModel } }}
-                  >
-                    {getServiceModel(primaryModel).cta[locale]}
-                    <ArrowRight className="btn-icon" />
-                  </TrackedLink>
-                )}
+                {/* Primary CTA is the same everywhere; the service model travels as ?interest=. */}
+                <TrackedLink
+                  href={demoHref}
+                  event={{ name: "cta_click", params: { cta: "book_demo", location: "offering_hero", solution: o.slug, interest: primaryModel } }}
+                >
+                  {dict.cta.bookDemo}
+                  <ArrowRight className="btn-icon" />
+                </TrackedLink>
               </Button>
-              {o.download ? (
+              {o.media?.length && !o.demo ? (
+                <Button asChild size="lg" variant="inverse">
+                  <a href="#product">{dict.common.seeTheProduct}</a>
+                </Button>
+              ) : o.demo ? (
+                <Button asChild size="lg" variant="inverse">
+                  <a href="#try">{o.demo === "roi-calculator" ? dict.sections.roiTitle : dict.common.tryIt}</a>
+                </Button>
+              ) : o.download ? (
                 downloadFile ? (
                   <DownloadButton file={downloadFile} label={o.download.label[locale]} event={{ name: "tech_brief_download", params: { solution: o.slug } }} />
                 ) : (
@@ -110,10 +116,6 @@ export async function OfferingPage({ offering: o, locale }: { offering: Offering
                     <Link href={`${demoHref}&intent=brief`}>{o.download.label[locale]}</Link>
                   </Button>
                 )
-              ) : o.demo ? (
-                <Button asChild size="lg" variant="inverse">
-                  <Link href={demoHref}>{dict.cta.bookDemoShort}</Link>
-                </Button>
               ) : o.packages?.length ? (
                 <Button asChild size="lg" variant="inverse">
                   <a href="#packages">{dict.sections.packages}</a>
@@ -124,6 +126,18 @@ export async function OfferingPage({ offering: o, locale }: { offering: Offering
           {o.metrics ? <MetricsBar metrics={o.metrics} locale={locale} tone="dark" className="mt-12" /> : null}
         </div>
       </section>
+
+      {/* PRODUCT SCREENSHOTS (optional) — real UI, sample data. */}
+      {o.media?.length ? (
+        <section id="product" className="section scroll-mt-20">
+          <div className="container max-w-5xl">
+            <SectionHeading eyebrow={o.brand ?? o.title[locale]} title={dict.common.seeTheProduct} />
+            <div className="mt-10">
+              <ProductGallery media={o.media} locale={locale} note={dict.common.sampleData} />
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {/* OPTIONAL INTERACTIVE DEMO — registry of widgets keyed by `offering.demo`. */}
       {o.demo ? (
@@ -288,9 +302,9 @@ export async function OfferingPage({ offering: o, locale }: { offering: Offering
             <div className="rounded-3xl bg-brand-navy p-8 text-white md:p-12">
               <div className="grid gap-8 lg:grid-cols-[1fr_1.3fr] lg:items-center">
                 <div>
-                  <p className="text-sm font-semibold text-brand-teal">{locale === "ar" ? caseStudy.clientAr : caseStudy.client}</p>
+                  <p className="text-sm font-semibold text-brand-teal-light">{locale === "ar" ? caseStudy.clientAr : caseStudy.client}</p>
                   <p className="mt-3 text-2xl font-bold">{caseStudy.title[locale]}</p>
-                  <Button asChild variant="ghost" className="mt-5 text-brand-teal">
+                  <Button asChild variant="ghost" className="mt-5 text-brand-teal-light">
                     <Link href={href(locale, `/case-studies/${caseStudy.slug}`)}>
                       {dict.cta.readCaseStudy}
                       <ArrowRight className="btn-icon" />

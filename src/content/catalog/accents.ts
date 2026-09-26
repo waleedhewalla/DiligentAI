@@ -7,11 +7,11 @@ import type { Accent } from "./types";
  */
 export const accentClasses: Record<Accent, { text: string; bg: string; border: string; softBg: string; button: string }> = {
   orange: {
-    text: "text-brand-orange",
+    text: "text-brand-orange-dark",
     bg: "bg-brand-orange",
     border: "border-brand-orange",
     softBg: "bg-brand-orange/10",
-    button: "bg-brand-orange hover:bg-brand-orange-dark text-white",
+    button: "bg-brand-orange-dark hover:bg-brand-orange-deep text-white",
   },
   navy: {
     text: "text-brand-navy",

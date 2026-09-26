@@ -6,6 +6,7 @@ import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { isWorkEmail } from "@/lib/validation";
 import { track } from "@/lib/analytics";
+import { getAttribution } from "@/lib/attribution";
 import { Button } from "@/components/ui/button";
 import { Input, NativeSelect } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -53,7 +54,7 @@ export function DemoForm({
       const res = await fetch("/api/v1/demo/request", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...payload, language: payload.language || locale, source }),
+        body: JSON.stringify({ ...payload, language: payload.language || locale, source, attribution: getAttribution() }),
       });
       const json = (await res.json().catch(() => ({}))) as { error?: string; mql?: boolean };
       if (!res.ok) {

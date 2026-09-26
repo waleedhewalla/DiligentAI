@@ -84,6 +84,8 @@ export type Package = {
   duration: L10n;
   /** TODO(Waleed): starting price in EGP; null until approved. */
   priceFromEGP: number | null;
+  /** Optional upper bound — renders a range ("EGP 250,000 – 400,000") instead of "from". */
+  priceToEGP?: number | null;
   /** Price unit, e.g. per site, per line, one-off. */
   unit: L10n;
   includes: L10n<string[]>;
@@ -100,6 +102,13 @@ export type Offering = {
   status: "available" | "pilot" | "coming-soon";
   icon: IconName;
   accent: Accent;
+  /**
+   * Delivery maturity badge (Live / Pilot / Assessment / Service). Optional —
+   * inferred by maturityOf() when omitted; set it to override.
+   */
+  maturity?: Maturity;
+  /** Real product screenshots (under /public/images/products) shown in a gallery on the page. */
+  media?: { src: string; width: number; height: number; alt: L10n; caption?: L10n }[];
   /** Optional product brand shown as a badge (e.g. "IPE"). Leave out for services. */
   brand?: string;
   /** Set when customers open this offering from the portal (scoped SSO launch). */
@@ -160,3 +169,38 @@ export type Capability = {
   serviceModels: ServiceModelId[];
   seo: { title: L10n; description: L10n; keywords: L10n<string[]> };
 };
+
+// ─── Departments (primary navigation) ───────────────────────────────────
+/**
+ * How manufacturers look for help: by the team that owns the problem.
+ * A department page is assembled from offerings + capabilities by slug, so
+ * adding an offering to a department is a one-line change here.
+ */
+export type Department = {
+  slug: string;
+  icon: IconName;
+  accent: Accent;
+  title: L10n;
+  /** Who owns it in the plant — shown under the title. */
+  owner: L10n;
+  summary: L10n;
+  /** Weekly pain, in the department's own words. */
+  pains: L10n<string[]>;
+  /** What changes when AI is in place (qualitative; numbers live in proof.ts). */
+  outcomes: L10n<string[]>;
+  /** KPIs this department is measured on — we report against these. */
+  kpis: L10n<string[]>;
+  /** Offering slugs, most relevant first. */
+  offerings: string[];
+  /** Capability (use-case) slugs. */
+  capabilities: string[];
+  /**
+   * Products we are co-developing with pilot customers. Shown honestly as
+   * "on the roadmap"; move to `offerings` once live.
+   */
+  roadmap?: { title: L10n; body: L10n }[];
+  seo: { title: L10n; description: L10n; keywords: L10n<string[]> };
+};
+
+/** Delivery maturity shown as a badge on every offering (assessment: be explicit about what is live). */
+export type Maturity = "live" | "pilot" | "assessment" | "service";

@@ -19,7 +19,10 @@ export type AnalyticsEvent =
   // Gap-closure KPIs (see research report): packages, ROI estimates, partner applications.
   | { name: "package_select"; params: { solution: string; package: string } }
   | { name: "roi_calc"; params: { planners: number; hours: number } }
-  | { name: "partner_apply"; params: { track: string; country?: string } };
+  | { name: "partner_apply"; params: { track: string; country?: string } }
+  // Assessment Track 1: sharing and form attribution.
+  | { name: "share"; params: { network: string } }
+  | { name: "department_pick"; params: { department: string } };
 
 type Gtag = (...args: unknown[]) => void;
 type Hotjar = (...args: unknown[]) => void;

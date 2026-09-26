@@ -18,3 +18,8 @@ export function formatDate(iso: string, locale: "ar" | "en") {
     day: "numeric",
   }).format(new Date(iso));
 }
+
+/** Prefix a /public asset path with the deployment base path (only non-empty in the GitHub Pages preview). */
+export function asset(path: string) {
+  return `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${path}`;
+}

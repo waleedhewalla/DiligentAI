@@ -8,15 +8,25 @@ import { cn } from "@/lib/utils";
 import { Breadcrumbs, FinalCta, PageHero } from "@/components/site/sections";
 import { CommitmentBlock, ComparisonSection, PackagePrice } from "@/components/site/catalog-blocks";
 import { Icon } from "@/components/site/icons";
+import { Button } from "@/components/ui/button";
+import { TrackedLink } from "@/components/site/tracked-link";
+import { MaturityLegend } from "@/components/site/maturity-badge";
 
 // Gap 1 — every offering with `packages` in catalog/offerings.ts appears here automatically.
 const copy = {
-  title: { en: "Pricing — Fixed-Price AI Packages in EGP", ar: "الأسعار — باقات ذكاء اصطناعي بسعر ثابت بالجنيه" },
+  title: { en: "Pricing — Fixed-Scope AI Packages in EGP", ar: "الأسعار — باقات ذكاء اصطناعي بنطاق محدد بالجنيه" },
   description: {
     en: "Fixed-scope, fixed-price AI packages for manufacturers, priced in Egyptian pounds: starter packs, vision quality control and machine health.",
     ar: "باقات ذكاء اصطناعي بنطاق وسعر ثابتين للمصانع، بالجنيه المصري: باقات البداية والفحص البصري للجودة وصحة الماكينات.",
   },
+  // The "fixed price" headline is shown only once every package has a published price;
+  // until then the page says what is actually true (assessment Track 1 #7).
   h1: { en: "Fixed scope. Fixed price. In Egyptian pounds.", ar: "نطاق ثابت. سعر ثابت. بالجنيه المصري." },
+  h1Quoted: { en: "Transparent pricing in Egyptian pounds.", ar: "تسعير واضح بالجنيه المصري." },
+  leadQuoted: {
+    en: "Every package has a defined scope and timeline. We confirm the EGP price within two business days of a 30-minute call — no six-figure dollar licences and no open-ended consulting.",
+    ar: "لكل باقة نطاق وجدول زمني محددان. نؤكد السعر بالجنيه خلال يومي عمل من مكالمة مدتها 30 دقيقة — لا تراخيص بمئات الآلاف من الدولارات ولا استشارات مفتوحة.",
+  },
   lead: {
     en: "No six-figure dollar licences and no open-ended consulting. Every package has a defined scope, a timeline and a price agreed before we start. Larger programmes are quoted per project.",
     ar: "لا تراخيص بمئات الآلاف من الدولارات ولا استشارات مفتوحة. لكل باقة نطاق محدد وجدول زمني وسعر متفق عليه قبل البدء. البرامج الأكبر تُسعّر لكل مشروع.",
@@ -33,11 +43,12 @@ export default function PricingPage({ params }: { params: { locale: Locale } }) 
   const locale = params.locale;
   const dict = getDictionary(locale);
   const offerings = listPackagedOfferings();
+  const allPriced = offerings.every((o) => o.packages!.every((p) => p.priceFromEGP !== null));
   return (
     <>
       <PageHero
-        title={copy.h1[locale]}
-        lead={copy.lead[locale]}
+        title={(allPriced ? copy.h1 : copy.h1Quoted)[locale]}
+        lead={(allPriced ? copy.lead : copy.leadQuoted)[locale]}
         breadcrumbs={
           <Breadcrumbs
             locale={locale}
@@ -47,7 +58,20 @@ export default function PricingPage({ params }: { params: { locale: Locale } }) 
             ]}
           />
         }
-      />
+      >
+        <Button asChild size="lg" className="mt-8">
+          <TrackedLink href={href(locale, "/demo") + "?interest=build&intent=quote"} event={{ name: "cta_click", params: { cta: "book_demo", location: "pricing_hero" } }}>
+            {dict.cta.bookDemo}
+            <ArrowRight className="btn-icon" />
+          </TrackedLink>
+        </Button>
+      </PageHero>
+
+      <section className="pt-10">
+        <div className="container">
+          <MaturityLegend dict={dict} />
+        </div>
+      </section>
 
       {offerings.map((o, idx) => {
         const c = accentClasses[o.accent];

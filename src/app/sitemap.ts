@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { locales } from "@/i18n/config";
-import { listCapabilities, listOfferings } from "@/content/catalog";
+import { listCapabilities, listDepartments, listOfferings } from "@/content/catalog";
 import { caseStudies } from "@/content/case-studies";
 import { getPosts } from "@/content/blog";
 import { href, languageAlternates } from "@/lib/seo";
@@ -13,6 +13,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const entries: Entry[] = [
     { path: "/", priority: 1, changeFrequency: "weekly" },
     // Dynamic: every catalog offering and capability gets a URL automatically.
+    { path: "/departments", priority: 0.9, changeFrequency: "monthly" },
+    ...listDepartments().map((d) => ({ path: `/departments/${d.slug}`, priority: 0.85, changeFrequency: "monthly" as const })),
     { path: "/solutions", priority: 0.9, changeFrequency: "monthly" },
     { path: "/services", priority: 0.9, changeFrequency: "monthly" },
     { path: "/capabilities", priority: 0.9, changeFrequency: "monthly" },

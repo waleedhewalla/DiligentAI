@@ -61,3 +61,26 @@ export const testimonials: Record<"operations" | "ceo", Testimonial> = {
 export function visibleMetrics(metrics: Metric[]) {
   return metrics.filter((m): m is Metric & { value: string } => m.value !== null);
 }
+
+/**
+ * Customer / pilot logos for the proof strip. Add a logo only with written
+ * permission (`approved: true`). The strip stays hidden until at least
+ * MIN_LOGOS are approved — one logo alone reads as thin proof.
+ * `src` is optional: without it the name is shown as a wordmark.
+ */
+export type CustomerLogo = { name: string; src?: string; approved: boolean; label?: L10n };
+export const MIN_LOGOS = 3;
+export const customerLogos: CustomerLogo[] = [
+  { name: "Star Trans", approved: true, label: { en: "Customer", ar: "عميل" } },
+  // TODO(Waleed): add pilot customers here once they approve being named.
+];
+
+/** Short video testimonials (YouTube/Vimeo embed URL). Hidden until approved. */
+export type VideoTestimonial = { id: string; embedUrl: string; approved: boolean; title: L10n; name: L10n; role: L10n };
+export const videoTestimonials: VideoTestimonial[] = [
+  // TODO(Waleed): add the 60-second Star Trans video once recorded and approved.
+];
+
+export function approvedTestimonials() {
+  return Object.values(testimonials).filter((t) => t.approved && t.quote.en);
+}

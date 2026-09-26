@@ -2,13 +2,14 @@ import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
-import { accentClasses, type Capability, type Offering, type ServiceModel } from "@/content/catalog";
+import { accentClasses, maturityOf, type Capability, type Offering, type ServiceModel } from "@/content/catalog";
 import { visibleMetrics, type Metric, type Testimonial } from "@/content/proof";
 import { href } from "@/lib/seo";
 import { whatsappHref } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Icon, WhatsAppIcon } from "./icons";
+import { MaturityBadge } from "./maturity-badge";
 import { TrackedAnchor, TrackedLink } from "./tracked-link";
 import { JsonLd } from "@/components/seo/json-ld";
 import { breadcrumbSchema } from "@/lib/schema";
@@ -73,13 +74,11 @@ export function OfferingCard({
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
             {o.brand ? (
-              <span className={cn("rounded-md px-1.5 py-0.5 text-[11px] font-bold", featured ? "bg-white/15" : cn(c.softBg, c.text))}>
+              <span className={cn("rounded-md px-1.5 py-0.5 text-[11px] font-bold", featured ? "bg-white/15" : cn(c.softBg, "text-brand-navy"))}>
                 <span className="ltr-run">{o.brand}</span>
               </span>
             ) : null}
-            {o.status === "pilot" ? (
-              <span className="rounded-md bg-brand-amber/15 px-1.5 py-0.5 text-[11px] font-bold text-brand-amber">{dict.common.pilot}</span>
-            ) : null}
+            <MaturityBadge maturity={maturityOf(o)} dict={dict} dark={featured} />
           </div>
           <h3 className={cn("mt-1 text-xl font-bold leading-snug", featured ? "text-white" : "text-brand-navy")}>
             <Link href={href(locale, `/solutions/${o.slug}`)} className="after:absolute after:inset-0">
@@ -102,7 +101,7 @@ export function OfferingCard({
           </li>
         ))}
       </ul>
-      <span className={cn("mt-5 inline-flex items-center gap-1 text-sm font-semibold", featured ? "text-brand-teal" : c.text)}>
+      <span className={cn("mt-5 inline-flex items-center gap-1 text-sm font-semibold", featured ? "text-brand-teal-light" : c.text)}>
         {dict.common.learnMore}
         <ArrowRight className="btn-icon h-4 w-4" aria-hidden />
       </span>
@@ -119,7 +118,7 @@ export function ServiceModelCard({ model: m, locale, dict, index }: { model: Ser
         <span className={cn("flex h-12 w-12 items-center justify-center rounded-xl", c.softBg, c.text)}>
           <Icon name={m.icon} className="h-6 w-6" />
         </span>
-        <span className="text-sm font-bold text-muted-foreground/60" dir="ltr">
+        <span className="text-sm font-bold text-muted-foreground" dir="ltr">
           0{index + 1}
         </span>
       </div>
@@ -318,7 +317,7 @@ export function PageHero({
       <div className="grid-pattern absolute inset-0" aria-hidden />
       <div className="container relative py-16 md:py-20">
         {breadcrumbs}
-        {eyebrow ? <p className="mt-6 text-sm font-semibold text-brand-teal">{eyebrow}</p> : null}
+        {eyebrow ? <p className="mt-6 text-sm font-semibold text-brand-teal-light">{eyebrow}</p> : null}
         <h1 className="h-display mt-3 max-w-4xl">{title}</h1>
         {lead ? <p className="mt-5 max-w-2xl text-lg text-white/80 md:text-xl">{lead}</p> : null}
         {children}

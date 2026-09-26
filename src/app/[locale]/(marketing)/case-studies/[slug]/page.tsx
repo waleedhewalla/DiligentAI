@@ -9,7 +9,8 @@ import { testimonials } from "@/content/proof";
 import { href, pageMetadata } from "@/lib/seo";
 import { caseStudySchema } from "@/lib/schema";
 import { publicAssetExists } from "@/lib/assets";
-import { cn } from "@/lib/utils";
+import { absoluteUrl, cn } from "@/lib/utils";
+import { ShareButtons } from "@/components/site/share-buttons";
 import { Button } from "@/components/ui/button";
 import { JsonLd } from "@/components/seo/json-ld";
 import { Breadcrumbs, FinalCta, MetricsBar, PageHero, TestimonialBlock } from "@/components/site/sections";
@@ -28,6 +29,7 @@ export function generateMetadata({ params }: { params: { locale: Locale; slug: s
   const l = params.locale;
   return pageMetadata({
     locale: l,
+    ogImage: true,
     path: `/case-studies/${cs.slug}`,
     title: cs.title[l],
     description: cs.summary[l],
@@ -43,8 +45,8 @@ const labels = {
   results: { en: "Results at 30 / 60 / 90 days", ar: "النتائج بعد 30 / 60 / 90 يوماً" },
   similar: { en: "In a similar situation?", ar: "هل تمر بموقف مشابه؟" },
   similarBody: {
-    en: "Book a 30-minute demo and we'll walk through how the Star Trans deployment maps to your operation.",
-    ar: "احجز عرضاً مدته 30 دقيقة وسنوضح كيف ينطبق تطبيق ستار ترانس على عملياتك.",
+    en: "Book a 30-min plant review and we'll walk through how the Star Trans deployment maps to your operation.",
+    ar: "احجز مراجعة لمصنعك مدتها 30 دقيقة وسنوضح كيف ينطبق تطبيق ستار ترانس على عملياتك.",
   },
 };
 
@@ -104,6 +106,15 @@ export default function CaseStudyPage({ params }: { params: { locale: Locale; sl
       <section className="section">
         <div className="container">
           <MetricsBar metrics={cs.metrics} locale={locale} />
+          <div className="mt-8 flex justify-center">
+            <ShareButtons
+              url={absoluteUrl(href(locale, `/case-studies/${cs.slug}`))}
+              title={cs.title[locale]}
+              label={dict.common.share}
+              copyLabel={dict.common.copyLink}
+              copiedLabel={dict.common.copied}
+            />
+          </div>
         </div>
       </section>
 

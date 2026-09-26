@@ -3,6 +3,7 @@
 import { Download, Printer } from "lucide-react";
 import { Button, type ButtonProps } from "@/components/ui/button";
 import { track, type AnalyticsEvent } from "@/lib/analytics";
+import { asset } from "@/lib/utils";
 
 /**
  * Tracked download. When the PDF hasn't been uploaded yet, falls back to the
@@ -23,7 +24,7 @@ export function DownloadButton({
   if (file) {
     return (
       <Button asChild size="lg" variant={variant}>
-        <a href={file} download onClick={fire}>
+        <a href={asset(file)} download onClick={fire}>
           <Download className="h-5 w-5" />
           {label}
         </a>

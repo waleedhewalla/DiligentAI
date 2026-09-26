@@ -1,6 +1,6 @@
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
-import { listCapabilities, listCategories, listOfferings, listServiceModels, type Accent, type IconName } from "@/content/catalog";
+import { listCapabilities, listCategories, listDepartments, listOfferings, listServiceModels, type Accent, type IconName } from "@/content/catalog";
 import { href } from "@/lib/seo";
 
 /**
@@ -12,12 +12,20 @@ import { href } from "@/lib/seo";
 export type NavItem = { href: string; label: string; description?: string; icon: IconName; accent: Accent; badge?: string };
 export type NavGroup = { title: string; href: string; items: NavItem[]; total: number };
 export type NavLink = { href: string; label: string };
-export type NavModel = { solutions: NavGroup[]; services: NavItem[]; quickLinks: NavLink[] };
+export type NavModel = { departments: NavGroup; solutions: NavGroup[]; services: NavItem[]; quickLinks: NavLink[] };
 
 /** Max items per menu column before we rely on the "view all" link. */
 const MAX_PER_GROUP = 5;
 
 export function buildNav(locale: Locale, dict: Dictionary): NavModel {
+  // Primary entry point: solutions grouped by the department that owns the problem.
+  const deptItems: NavItem[] = listDepartments().map((d) => ({
+    href: href(locale, `/departments/${d.slug}`),
+    label: d.title[locale],
+    icon: d.icon,
+    accent: d.accent,
+  }));
+  const departments: NavGroup = { title: dict.nav.departments, href: href(locale, "/departments"), items: deptItems, total: deptItems.length };
   const solutions: NavGroup[] = listCategories().map((cat) => {
     const items: NavItem[] =
       cat.source === "capabilities"
@@ -51,5 +59,5 @@ export function buildNav(locale: Locale, dict: Dictionary): NavModel {
     { href: href(locale, "/ksa"), label: dict.nav.ksa },
     { href: href(locale, "/partners"), label: dict.nav.partners },
   ];
-  return { solutions, services, quickLinks };
+  return { departments, solutions, services, quickLinks };
 }

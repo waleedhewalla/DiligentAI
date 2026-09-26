@@ -9,7 +9,7 @@ export function Logo({ className, inverted = false }: { className?: string; inve
         <circle cx="26" cy="11" r="3.2" fill="#E97730" />
       </svg>
       <span className={cn("text-lg font-bold tracking-tight", inverted ? "text-white" : "text-brand-navy")}>
-        Diligent <span className="text-brand-teal">AI</span>
+        Diligent <span className={inverted ? "text-brand-teal-light" : "text-brand-teal-dark"}>AI</span>
       </span>
     </span>
   );

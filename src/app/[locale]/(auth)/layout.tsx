@@ -25,7 +25,7 @@ export default function AuthLayout({ children, params }: { children: React.React
       <aside className="hero-bg relative hidden overflow-hidden lg:flex lg:items-end">
         <div className="grid-pattern absolute inset-0" aria-hidden />
         <div className="relative p-12 text-white">
-          <p className="text-sm font-semibold text-brand-teal">{dict.brand.tagline}</p>
+          <p className="text-sm font-semibold text-brand-teal-light">{dict.brand.tagline}</p>
           <p className="mt-3 max-w-md text-3xl font-bold leading-snug">
             {params.locale === "ar"
               ? "دخول واحد إلى IPE وCEO OS وNexus AI — بأمان مؤسسي."

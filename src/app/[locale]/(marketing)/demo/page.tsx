@@ -12,12 +12,12 @@ import { WhatsAppIcon } from "@/components/site/icons";
 import { TrackedAnchor } from "@/components/site/tracked-link";
 
 const copy = {
-  title: { en: "Book a 30-Minute AI Consultation for Your Plant", ar: "احجز استشارة ذكاء اصطناعي لمصنعك مدتها 30 دقيقة" },
+  title: { en: "Book a 30-Minute AI Plant Review", ar: "احجز مراجعة ذكاء اصطناعي لمصنعك مدتها 30 دقيقة" },
   description: {
     en: "30 minutes with a senior consultant: your problem, the right AI approach, and how it connects to your ERP. Arabic or English, no contract required.",
     ar: "30 دقيقة مع مستشار أول: مشكلتك، والنهج المناسب بالذكاء الاصطناعي، وكيف يتصل بنظام ERP. بالعربية أو الإنجليزية، دون أي التزام.",
   },
-  h1: { en: "Book Your 30-Minute Consultation", ar: "احجز استشارتك في 30 دقيقة" },
+  h1: { en: "Book Your 30-Minute Plant Review", ar: "احجز مراجعة لمصنعك في 30 دقيقة" },
   lead: {
     en: "Bring the problem — scheduling, forecasting, quality, supply chain or integration. We'll show you what AI can do about it. No sales pitch.",
     ar: "أحضر المشكلة — الجدولة أو التنبؤ أو الجودة أو سلاسل الإمداد أو التكامل. وسنريك ما يمكن للذكاء الاصطناعي فعله. بلا عرض بيعي.",

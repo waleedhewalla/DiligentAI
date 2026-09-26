@@ -19,11 +19,17 @@ const config: Config = {
           teal: "#2CA6A4",
           "teal-dark": "#1F7D7B",
           orange: "#E97730",
-          "orange-dark": "#C95F1C",
+          // Contrast-safe variants (WCAG AA 4.5:1): *-dark on light backgrounds,
+          // *-light on navy backgrounds. Keep the base tokens for large display text and fills.
+          "orange-dark": "#B8541A",
+          "orange-deep": "#9E4715",
+          "orange-light": "#F8A66A",
+          "teal-light": "#5CC8C6",
           purple: "#534AB7",
           green: "#3B6D11",
           red: "#BF2612",
           amber: "#E67E22",
+          "amber-dark": "#9A4A0B",
         },
         surface: {
           base: "#FFFFFF",

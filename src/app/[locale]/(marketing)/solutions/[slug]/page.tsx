@@ -17,6 +17,7 @@ export function generateMetadata({ params }: { params: { locale: Locale; slug: s
   const l = params.locale;
   return pageMetadata({
     locale: l,
+    ogImage: true,
     path: `/solutions/${o.slug}`,
     title: o.seo.title[l],
     description: o.seo.description[l],

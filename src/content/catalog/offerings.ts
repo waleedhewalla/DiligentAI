@@ -145,6 +145,8 @@ export const offerings: Offering[] = [
     category: "ai-solutions",
     kind: "service",
     status: "available",
+    // Announced; offered to early customers under Pilot-to-Production terms.
+    maturity: "pilot",
     icon: "gauge",
     accent: "navy",
     title: { en: "CBAM & Emissions Reporting", ar: "تقارير الانبعاثات وآلية CBAM" },
@@ -237,6 +239,23 @@ export const offerings: Offering[] = [
     accent: "orange",
     brand: "IPE",
     launch: "ipe",
+    // Real product screenshots (sample data). Add more under /public/images/products.
+    media: [
+      {
+        src: "/images/products/ipe-cockpit.webp",
+        width: 1045,
+        height: 655,
+        alt: { en: "IPE planning cockpit showing plan coverage, attention queue and weekly horizon", ar: "لوحة تخطيط IPE تعرض تغطية الخطة وقائمة التنبيهات والأفق الأسبوعي" },
+        caption: { en: "Planning cockpit", ar: "لوحة التخطيط" },
+      },
+      {
+        src: "/images/products/ipe-copilot.webp",
+        width: 1050,
+        height: 658,
+        alt: { en: "IPE copilot orchestrating demand, feasibility, production and procurement agents", ar: "مساعد IPE ينسق وكلاء الطلب والجدوى والإنتاج والمشتريات" },
+        caption: { en: "Multi-agent copilot", ar: "المساعد متعدد الوكلاء" },
+      },
+    ],
     title: { en: "AI Production Scheduling", ar: "جدولة الإنتاج بالذكاء الاصطناعي" },
     summary: {
       en: "Pre-built planning engine: optimised schedules in under 60 seconds, re-planned instantly.",
@@ -302,6 +321,8 @@ export const offerings: Offering[] = [
     category: "ai-solutions",
     kind: "product",
     status: "available",
+    // Announced; offered to early customers under Pilot-to-Production terms.
+    maturity: "pilot",
     icon: "scan",
     accent: "teal",
     title: { en: "Vision Quality Control", ar: "ضبط الجودة بالرؤية الحاسوبية" },
@@ -368,6 +389,8 @@ export const offerings: Offering[] = [
     category: "ai-solutions",
     kind: "product",
     status: "available",
+    // Announced; offered to early customers under Pilot-to-Production terms.
+    maturity: "pilot",
     icon: "wrench",
     accent: "orange",
     title: { en: "Machine Health", ar: "صحة الماكينات" },
@@ -574,6 +597,22 @@ export const offerings: Offering[] = [
     accent: "navy",
     brand: "CEO OS",
     launch: "ceo_os",
+    media: [
+      {
+        src: "/images/products/ceo-os-home.webp",
+        width: 1045,
+        height: 655,
+        alt: { en: "CEO OS home with active use cases, pending approvals, value tracked and portfolio health", ar: "الصفحة الرئيسية لـ CEO OS بحالات الاستخدام النشطة والموافقات المعلقة والقيمة المتابعة وصحة المحفظة" },
+        caption: { en: "CEO home", ar: "الصفحة الرئيسية للرئيس التنفيذي" },
+      },
+      {
+        src: "/images/products/ceo-os-brief.webp",
+        width: 1042,
+        height: 578,
+        alt: { en: "CEO OS weekly brief with do-now actions, portfolio picture and inbox", ar: "الملخص الأسبوعي في CEO OS بالإجراءات العاجلة وصورة المحفظة وصندوق الوارد" },
+        caption: { en: "Weekly brief", ar: "الملخص الأسبوعي" },
+      },
+    ],
     title: { en: "Executive Intelligence Platform", ar: "منصة الذكاء التنفيذي" },
     summary: {
       en: "Pre-built Arabic executive cockpit: live KPIs and board packs in under 5 minutes.",
@@ -760,6 +799,7 @@ export const offerings: Offering[] = [
     category: "system-integration",
     kind: "service",
     status: "available",
+    maturity: "assessment",
     icon: "network",
     accent: "orange",
     title: { en: "AI Agent Readiness for SAP, Siemens & Planning Suites", ar: "تجهيز وكلاء الذكاء الاصطناعي لأنظمة SAP وSiemens والتخطيط" },

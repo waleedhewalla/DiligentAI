@@ -25,7 +25,7 @@ const copy = {
 const supportStyle = {
   standard: "bg-brand-navy/10 text-brand-navy",
   packaged: "bg-brand-green/10 text-brand-green",
-  pilot: "bg-brand-amber/15 text-brand-amber",
+  pilot: "bg-brand-amber/15 text-brand-amber-dark",
 } as const;
 
 export function generateMetadata({ params }: { params: { locale: Locale } }) {

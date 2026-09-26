@@ -32,8 +32,11 @@ export function PackagePrice({ pkg, locale, dict }: { pkg: Package; locale: Loca
   if (pkg.priceFromEGP === null) return <p className="text-sm font-semibold text-brand-navy">{s.priceOnRequest}</p>;
   return (
     <p className="text-brand-navy">
-      <span className="text-sm text-muted-foreground">{s.from} </span>
-      <span className="text-2xl font-bold tabular-nums">{formatEgp(pkg.priceFromEGP, locale)}</span>
+      {pkg.priceToEGP ? null : <span className="text-sm text-muted-foreground">{s.from} </span>}
+      <span className="text-2xl font-bold tabular-nums">
+        {formatEgp(pkg.priceFromEGP, locale)}
+        {pkg.priceToEGP ? ` – ${formatEgp(pkg.priceToEGP, locale)}` : null}
+      </span>
       <span className="text-sm font-semibold"> {s.egp}</span>
       <span className="text-sm text-muted-foreground"> / {pkg.unit[locale]}</span>
     </p>
@@ -58,7 +61,7 @@ export function PackagesSection({ offering: o, locale, dict }: { offering: Offer
               )}
             >
               {p.recommended ? (
-                <span className="absolute -top-3 start-6 rounded-full bg-brand-orange px-3 py-1 text-xs font-bold text-white">{s.recommended}</span>
+                <span className="absolute -top-3 start-6 rounded-full bg-brand-orange-dark px-3 py-1 text-xs font-bold text-white">{s.recommended}</span>
               ) : null}
               <h3 className="text-xl font-bold text-brand-navy">{p.name[locale]}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{p.scope[locale]}</p>
@@ -227,15 +230,15 @@ export function ComplianceBand({ locale, dict }: { locale: Locale; dict: Diction
   return (
     <section className="section bg-brand-navy text-white" id="compliance">
       <div className="container">
-        <p className="text-sm font-semibold text-brand-teal">{s.complianceEyebrow}</p>
+        <p className="text-sm font-semibold text-brand-teal-light">{s.complianceEyebrow}</p>
         <h2 className="mt-2 text-3xl font-bold md:text-4xl">{s.complianceTitle}</h2>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {complianceItems.map((c) => (
             <Link key={c.id} href={href(locale, c.href)} className="group flex flex-col rounded-2xl bg-white/5 p-6 ring-1 ring-white/10 hover:bg-white/10">
-              <span className="w-fit rounded-full bg-brand-orange/20 px-3 py-1 text-xs font-bold text-brand-orange">{c.when[locale]}</span>
+              <span className="w-fit rounded-full bg-brand-orange-dark px-3 py-1 text-xs font-bold text-white">{c.when[locale]}</span>
               <h3 className="mt-4 text-lg font-bold">{c.title[locale]}</h3>
               <p className="mt-2 flex-1 text-sm text-white/75">{c.body[locale]}</p>
-              <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-teal group-hover:underline">
+              <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-teal-light group-hover:underline">
                 {dict.common.learnMore} <ArrowRight className="btn-icon h-4 w-4" aria-hidden />
               </span>
             </Link>

@@ -53,7 +53,6 @@ export function Header({ locale, dict, nav }: { locale: Locale; dict: Dictionary
 
   const links = [
     { href: href(locale, "/services"), label: dict.nav.services },
-    { href: href(locale, "/capabilities"), label: dict.nav.capabilities },
     { href: href(locale, "/pricing"), label: dict.nav.pricing },
     { href: href(locale, "/case-studies"), label: dict.nav.caseStudies },
     { href: href(locale, "/about"), label: dict.nav.about },
@@ -95,34 +94,44 @@ export function Header({ locale, dict, nav }: { locale: Locale; dict: Dictionary
                   id="solutions-menu"
                   className="fixed inset-x-0 top-[calc(100%+0.5rem)] mx-auto grid w-[min(1100px,calc(100vw-2rem))] grid-cols-4 gap-4 rounded-xl border bg-background p-5 shadow-xl animate-fade-up"
                 >
-                  {nav.solutions.map((group) => (
-                    <div key={group.title}>
-                      <Link
-                        href={group.href}
-                        className="text-xs font-semibold uppercase tracking-wide text-muted-foreground hover:text-foreground"
-                      >
-                        {group.title}
-                      </Link>
-                      <ul className="mt-3 space-y-1">
-                        {group.items.map((item) => (
-                          <li key={item.href}>
-                            <Link href={item.href} className="flex items-start gap-2 rounded-md p-2 text-sm hover:bg-muted">
-                              <Icon name={item.icon} className={cn("mt-0.5 h-4 w-4 shrink-0", accentClasses[item.accent].text)} />
-                              <span className="font-medium leading-snug">{item.label}</span>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                      {group.total > group.items.length ? (
-                        <Link
-                          href={group.href}
-                          className="mt-1 block px-2 text-xs font-semibold text-brand-teal-dark hover:underline"
-                        >
-                          {dict.common.viewAll} ({group.total})
+                  {/* Column 1–2: by department (primary way in). */}
+                  <div className="col-span-2">
+                    <Link
+                      href={nav.departments.href}
+                      className="text-xs font-semibold uppercase tracking-wide text-muted-foreground hover:text-foreground"
+                    >
+                      {nav.departments.title}
+                    </Link>
+                    <ul className="mt-3 grid grid-cols-2 gap-1">
+                      {nav.departments.items.map((item) => (
+                        <li key={item.href}>
+                          <Link href={item.href} className="flex items-start gap-2 rounded-md p-2 text-sm hover:bg-muted">
+                            <Icon name={item.icon} className={cn("mt-0.5 h-4 w-4 shrink-0", accentClasses[item.accent].text)} />
+                            <span className="font-medium leading-snug">{item.label}</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  {/* Column 3: by type (catalog categories). */}
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{dict.nav.byType}</p>
+                    <ul className="mt-3 space-y-1">
+                      {nav.solutions.map((group) => (
+                        <li key={group.href}>
+                          <Link href={group.href} className="flex items-center justify-between gap-2 rounded-md p-2 text-sm font-medium hover:bg-muted">
+                            {group.title}
+                            <span className="rounded-full bg-muted px-2 text-xs text-muted-foreground">{group.total}</span>
+                          </Link>
+                        </li>
+                      ))}
+                      <li>
+                        <Link href={href(locale, "/solutions")} className="mt-1 block px-2 text-xs font-semibold text-brand-teal-dark hover:underline">
+                          {dict.nav.allSolutions}
                         </Link>
-                      ) : null}
-                    </div>
-                  ))}
+                      </li>
+                    </ul>
+                  </div>
                   <div className="rounded-lg bg-brand-navy p-4 text-white">
                     <Link
                       href={href(locale, "/services")}
@@ -133,7 +142,7 @@ export function Header({ locale, dict, nav }: { locale: Locale; dict: Dictionary
                     <ul className="mt-3 space-y-3">
                       {nav.services.map((m) => (
                         <li key={m.href}>
-                          <Link href={m.href} className="block rounded-md hover:text-brand-teal">
+                          <Link href={m.href} className="block rounded-md hover:text-brand-teal-light">
                             <span className="flex items-center gap-2 font-semibold">
                               <Icon name={m.icon} className="h-4 w-4" />
                               {m.label}
@@ -191,6 +200,12 @@ export function Header({ locale, dict, nav }: { locale: Locale; dict: Dictionary
 
           <div className="flex items-center gap-1 lg:hidden">
             <LocaleSwitcher locale={locale} label={dict.locale.switchTo} />
+            {/* Mobile keeps the primary CTA in view (assessment Track 1 #3). */}
+            <Button asChild size="sm" className="hidden px-3 min-[380px]:inline-flex">
+              <TrackedLink href={href(locale, "/demo")} event={{ name: "cta_click", params: { cta: "book_demo", location: "header_mobile" } }}>
+                {locale === "ar" ? "احجز" : "Book"}
+              </TrackedLink>
+            </Button>
             <button
               type="button"
               className="inline-flex h-11 w-11 items-center justify-center rounded-md hover:bg-muted"
@@ -211,7 +226,13 @@ export function Header({ locale, dict, nav }: { locale: Locale; dict: Dictionary
               {dict.nav.home}
             </Link>
             {/* Mobile: catalog categories (data-driven), then the fixed site links. */}
-            <p className="mt-2 px-3 text-xs font-semibold uppercase text-muted-foreground">{dict.nav.solutions}</p>
+            <p className="mt-2 px-3 text-xs font-semibold uppercase text-muted-foreground">{nav.departments.title}</p>
+            {nav.departments.items.map((d) => (
+              <Link key={d.href} href={d.href} className="rounded-md px-3 py-2.5 font-medium hover:bg-muted">
+                {d.label}
+              </Link>
+            ))}
+            <p className="mt-2 px-3 text-xs font-semibold uppercase text-muted-foreground">{dict.nav.byType}</p>
             {nav.solutions.map((g) => (
               <Link key={g.href} href={g.href} className="rounded-md px-3 py-3 font-medium hover:bg-muted">
                 {g.title}

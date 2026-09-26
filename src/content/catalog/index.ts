@@ -8,7 +8,8 @@ import { categories } from "./categories";
 import { offerings } from "./offerings";
 import { serviceModels } from "./service-models";
 import { fundingRoutes } from "./funding";
-import type { Capability, CategoryId, Offering, ProductKey, Region, ServiceModelId } from "./types";
+import { departments } from "./departments";
+import type { Capability, CategoryId, Department, Maturity, Offering, ProductKey, Region, ServiceModelId } from "./types";
 
 export * from "./types";
 export { commitment } from "./commitment";
@@ -92,6 +93,37 @@ export function offeringByLaunchKey(key: ProductKey) {
 
 export { accentClasses } from "./accents";
 
+// ─── Departments ────────────────────────────────────────────────────────
+export function listDepartments() {
+  return departments;
+}
+
+export function getDepartment(slug: string) {
+  return departments.find((d) => d.slug === slug);
+}
+
+/** Visible offerings for a department, in the department's order. */
+export function offeringsForDepartment(d: Department): Offering[] {
+  return d.offerings.map(getOffering).filter((o): o is Offering => Boolean(o));
+}
+
+export function departmentsForOffering(o: Offering): Department[] {
+  return departments.filter((d) => d.offerings.includes(o.slug));
+}
+
+/**
+ * Delivery maturity badge. Explicit `maturity` wins; otherwise inferred:
+ * pilot status → "pilot", portal-launchable product → "live",
+ * consult-only work → "assessment", everything else → "service".
+ */
+export function maturityOf(o: Offering): Maturity {
+  if (o.maturity) return o.maturity;
+  if (o.status === "pilot") return "pilot";
+  if (o.launch) return "live";
+  if (o.serviceModels.length === 1 && o.serviceModels[0] === "consult") return "assessment";
+  return "service";
+}
+
 // ─── Integrity check ────────────────────────────────────────────────────
 // Runs at build time (module load). A typo in a slug fails the build with a
 // clear message instead of rendering a silently broken link.
@@ -111,6 +143,10 @@ export { accentClasses } from "./accents";
     o.fundingRoutes?.forEach((f) => !fundingIds.has(f) && errors.push(`offering "${o.slug}" → unknown funding route "${f}"`));
     const pkgIds = o.packages?.map((p) => p.id) ?? [];
     if (new Set(pkgIds).size !== pkgIds.length) errors.push(`offering "${o.slug}" has duplicate package ids`);
+  }
+  for (const d of departments) {
+    d.offerings.forEach((s) => !slugs.has(s) && errors.push(`department "${d.slug}" → unknown offering "${s}"`));
+    d.capabilities.forEach((c) => !capSlugs.has(c) && errors.push(`department "${d.slug}" → unknown capability "${c}"`));
   }
   const launchKeys = offerings.filter((o) => o.launch).map((o) => o.launch);
   if (new Set(launchKeys).size !== launchKeys.length) errors.push("two offerings share a portal launch key");

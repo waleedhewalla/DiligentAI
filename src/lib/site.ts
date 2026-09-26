@@ -6,6 +6,12 @@ export const site = {
   city: { en: "Cairo, Egypt", ar: "القاهرة، مصر" },
   founder: "Waleed Hewalla",
   linkedin: process.env.NEXT_PUBLIC_LINKEDIN_URL ?? "https://www.linkedin.com/in/waleedhewalla",
+  // Company channels — each icon appears only once its URL is set (TODO(Waleed): create the company page).
+  social: {
+    linkedinCompany: process.env.NEXT_PUBLIC_LINKEDIN_COMPANY_URL ?? "",
+    youtube: process.env.NEXT_PUBLIC_YOUTUBE_URL ?? "",
+    x: process.env.NEXT_PUBLIC_X_URL ?? "",
+  },
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "",
   calendly: process.env.NEXT_PUBLIC_CALENDLY_URL ?? "",
   calendlyCeo: process.env.NEXT_PUBLIC_CALENDLY_CEO_URL ?? process.env.NEXT_PUBLIC_CALENDLY_URL ?? "",
