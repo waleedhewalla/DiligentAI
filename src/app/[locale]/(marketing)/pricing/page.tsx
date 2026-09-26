@@ -89,7 +89,9 @@ export default function PricingPage({ params }: { params: { locale: Locale } }) 
                   </div>
                 </div>
                 <Link href={href(locale, `/solutions/${o.slug}`)} className="inline-flex items-center gap-1 text-sm font-semibold text-brand-teal-dark hover:underline">
-                  {dict.common.learnMore} <ArrowRight className="btn-icon h-4 w-4" aria-hidden />
+                  {dict.common.learnMore}
+                  <span className="sr-only"> — {o.title[locale]}</span>
+                  <ArrowRight className="btn-icon h-4 w-4" aria-hidden />
                 </Link>
               </div>
               <div className="mt-8 grid gap-4 md:grid-cols-3">

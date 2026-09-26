@@ -19,7 +19,7 @@ import { FounderSection } from "@/components/site/founder";
 import { ServiceModelGrid } from "@/components/site/catalog";
 import { DepartmentPicker, type PickerDepartment } from "@/components/site/department-picker";
 import { ProductGallery } from "@/components/site/product-gallery";
-import { RoiCalculator } from "@/components/site/roi-calculator";
+import { RoiCalculatorLazy } from "@/components/site/roi-calculator-lazy";
 import { ProofStrip } from "@/components/site/proof-strip";
 import { CommitmentBlock, ComplianceBand } from "@/components/site/catalog-blocks";
 
@@ -148,7 +148,9 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                         {o.brand ? <span className="ltr-run">{o.brand}</span> : null} · {o.title[locale]}
                       </p>
                       <Link href={href(locale, `/solutions/${o.slug}`)} className="inline-flex items-center gap-1 text-sm font-semibold text-brand-teal-dark hover:underline">
-                        {dict.common.learnMore} <ArrowRight className="btn-icon h-4 w-4" aria-hidden />
+                        {dict.common.learnMore}
+                        <span className="sr-only"> — {o.title[locale]}</span>
+                        <ArrowRight className="btn-icon h-4 w-4" aria-hidden />
                       </Link>
                     </div>
                   </div>
@@ -180,7 +182,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
         <div className="container">
           <SectionHeading eyebrow={home.tryIt.eyebrow[locale]} title={home.tryIt.title[locale]} lead={home.tryIt.lead[locale]} />
           <div className="mt-12 grid gap-8 lg:grid-cols-[1.6fr_1fr]">
-            <RoiCalculator locale={locale} dict={dict} />
+            <RoiCalculatorLazy locale={locale} dict={dict} />
             <div className="flex flex-col justify-between rounded-3xl bg-brand-navy p-8 text-white">
               <div>
                 <p className="text-sm font-semibold text-brand-teal-light">
@@ -269,6 +271,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
             <SectionHeading title={home.insightsTitle[locale]} align="start" />
             <Link href={href(locale, "/blog")} className="shrink-0 text-sm font-semibold text-brand-teal-dark hover:underline">
               {dict.cta.readMore}
+              <span className="sr-only"> — {home.insightsTitle[locale]}</span>
             </Link>
           </div>
           <div className="mt-8 grid gap-6 md:grid-cols-3">

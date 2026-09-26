@@ -171,6 +171,14 @@ Mark `generate_lead`, `demo_booked` and `case_study_download` as key events in G
 
 **Password hashing:** Supabase Auth (GoTrue) hashes passwords with **bcrypt**; it can *verify* imported Argon2 hashes but does not create them. If Argon2id at rest is contractually required, that needs either Supabase support confirmation for your plan or an auth layer you operate yourself — flagged for decision, not silently assumed. With SSO and passkeys, most enterprise users never set a password at all.
 
+## Go-live (Track 4)
+
+- `npm run launch:check` — lists blockers (exit 1), warnings and every `TODO(Waleed)` placeholder. Run it with the production variables (`vercel env pull .env.production.local`) before switching DNS.
+- **Real-user Web Vitals** (LCP, INP, CLS, FCP, TTFB) are sent to GA4 as events by `components/analytics/web-vitals.tsx`; build a GA4 exploration on those events to track "good on every page".
+- **Conversion reporting** — migration `20260929000000_lead_reporting.sql` adds three views on `demo_requests`: `lead_funnel_weekly` (leads, MQLs and MQL rate per week and channel), `lead_sources_monthly` (form/tool and area of interest) and `lead_campaigns` (UTM campaigns from the content kit). Query them in the Supabase SQL editor or connect a BI tool with the service role.
+- **CI** — `.github/workflows/ci.yml` runs lint, type-check and build on every push.
+- Lighthouse (mobile, simulated slow 4G, local build, Sep 2026): accessibility 100, SEO 100, best practices 96, performance 86–91 across the home, product, pricing, department, tool and article pages.
+
 ## Deployment (Vercel + Cloudflare)
 
 1. Click **Deploy with Vercel** above (or import the repo at vercel.com/new), choose branch `claude/great-maxwell-0ue8bi`, set `NEXT_PUBLIC_SITE_URL`, deploy. Functions run in `fra1` (Frankfurt, next to the EU Supabase region) per `vercel.json`. Add the remaining variables from `.env.example` as each service goes live.

@@ -10,7 +10,8 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write src",
-    "preview:export": "bash scripts/export-preview.sh"
+    "preview:export": "bash scripts/export-preview.sh",
+    "launch:check": "node scripts/launch-check.mjs"
   },
   "engines": {
     "node": ">=18.18"

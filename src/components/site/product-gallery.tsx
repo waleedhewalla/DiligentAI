@@ -7,6 +7,9 @@ import { asset, cn } from "@/lib/utils";
 
 type Media = NonNullable<Offering["media"]>[number];
 
+/** Every screenshot ships with a 640px-wide sibling (`name-640.webp`) for phones and thumbnails. */
+const small = (src: string) => src.replace(/\.webp$/, "-640.webp");
+
 /**
  * Real product screenshots with thumbnails. Images are plain <img> (static
  * export friendly), lazy below the fold, with explicit size to avoid layout shift.
@@ -27,6 +30,8 @@ export function ProductGallery({ media, locale, note, eager = false }: { media: 
         <img
           key={m.src}
           src={asset(m.src)}
+          srcSet={`${asset(small(m.src))} 640w, ${asset(m.src)} ${m.width}w`}
+          sizes="(min-width: 1024px) 560px, 100vw"
           width={m.width}
           height={m.height}
           alt={m.alt[locale]}
@@ -52,7 +57,7 @@ export function ProductGallery({ media, locale, note, eager = false }: { media: 
               className={cn("w-28 overflow-hidden rounded-lg border-2 transition", n === i ? "border-brand-orange-dark" : "border-transparent opacity-70 hover:opacity-100")}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={asset(x.src)} width={x.width} height={x.height} alt="" loading="lazy" className="block h-auto w-full" />
+              <img src={asset(small(x.src))} width={x.width} height={x.height} alt="" loading="lazy" className="block h-auto w-full" />
             </button>
           ))}
         </div>

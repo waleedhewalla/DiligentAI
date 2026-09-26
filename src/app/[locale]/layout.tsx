@@ -6,6 +6,7 @@ import { metadataBase } from "@/lib/seo";
 import { Analytics } from "@/components/analytics/analytics";
 import { ConsentBanner } from "@/components/analytics/consent-banner";
 import { AttributionTracker } from "@/components/analytics/attribution-tracker";
+import { WebVitals } from "@/components/analytics/web-vitals";
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
@@ -65,6 +66,7 @@ export default function LocaleLayout({ children, params }: { children: React.Rea
         <ConsentBanner locale={locale} />
         <Analytics />
         <AttributionTracker />
+        <WebVitals />
       </body>
     </html>
   );

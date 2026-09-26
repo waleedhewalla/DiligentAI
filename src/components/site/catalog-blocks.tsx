@@ -118,6 +118,7 @@ export function CommitmentBlock({ locale, dict, tone = "light" }: { locale: Loca
             <Button asChild variant="teal">
               <Link href={href(locale, "/solutions/pilot-to-production")}>
                 {dict.common.learnMore}
+                <span className="sr-only"> — {commitment.title[locale]}</span>
                 <ArrowRight className="btn-icon" />
               </Link>
             </Button>

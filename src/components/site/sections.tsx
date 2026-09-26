@@ -148,6 +148,7 @@ export function ServiceModelCard({ model: m, locale, dict, index }: { model: Ser
         </Button>
         <Link href={href(locale, `/services#${m.id}`)} className="text-sm font-medium text-brand-teal-dark hover:underline">
           {dict.common.learnMore}
+          <span className="sr-only"> — {m.title[locale]}</span>
         </Link>
       </div>
     </article>
