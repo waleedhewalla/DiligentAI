@@ -65,6 +65,7 @@ export function Header({ locale, dict, nav }: { locale: Locale; dict: Dictionary
   return (
     <>
       <header className="sticky top-0 z-40 border-b bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/75">
+        <span className="scroll-progress" aria-hidden />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:start-4 focus:top-4 focus:z-50 focus:rounded focus:bg-brand-navy focus:px-4 focus:py-2 focus:text-white"

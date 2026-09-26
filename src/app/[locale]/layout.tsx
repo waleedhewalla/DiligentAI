@@ -9,6 +9,7 @@ import { AttributionTracker } from "@/components/analytics/attribution-tracker";
 import { WebVitals } from "@/components/analytics/web-vitals";
 import { ExperimentTracker } from "@/components/analytics/experiment-tracker";
 import { ExperimentHead } from "@/components/experiments/experiment-head";
+import { MotionProvider } from "@/components/site/motion-provider";
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
@@ -73,6 +74,7 @@ export default function LocaleLayout({ children, params }: { children: React.Rea
         <AttributionTracker />
         <WebVitals />
         <ExperimentTracker />
+        <MotionProvider />
       </body>
     </html>
   );

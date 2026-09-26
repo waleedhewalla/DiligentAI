@@ -104,6 +104,26 @@
       linear-gradient(160deg, #0d1a33 0%, #1f3864 55%, #1a4d63 100%);
   }
 
+  /* ── Motion (Track 5 polish) ───────────────────────────────────────────
+     Everything below animates transform/opacity only (no layout shift) and is
+     switched off by prefers-reduced-motion. Scroll reveals apply only after
+     MotionProvider adds html.motion, so pages are complete without JS. */
+
+  /* Slow aurora drift behind every navy hero and CTA band. */
+  .hero-bg::before {
+    content: "";
+    position: absolute;
+    inset: -30%;
+    pointer-events: none;
+    background:
+      radial-gradient(40% 35% at 70% 30%, rgb(92 200 198 / 0.22), transparent 70%),
+      radial-gradient(35% 30% at 25% 70%, rgb(248 166 106 / 0.16), transparent 70%);
+    /* No filter: blur — the gradients are already soft, and a blurred layer
+       repainting every frame costs main-thread time on low-end phones. */
+    animation: aurora 22s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+
   .grid-pattern {
     background-image:
       linear-gradient(rgb(255 255 255 / 0.05) 1px, transparent 1px),
@@ -129,4 +149,76 @@
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
   }
+}
+
+@layer utilities {
+  /* Hero headline lines rise in (transform only, so LCP is not delayed). */
+  .rise {
+    animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  .float-soft {
+    animation: float-soft 7s ease-in-out infinite;
+  }
+}
+
+@keyframes aurora {
+  0% { transform: translate3d(-4%, -2%, 0) rotate(0deg) scale(1); }
+  50% { transform: translate3d(3%, 2%, 0) rotate(8deg) scale(1.08); }
+  100% { transform: translate3d(-2%, 4%, 0) rotate(-6deg) scale(1.02); }
+}
+@keyframes rise {
+  from { transform: translateY(18px); }
+  to { transform: none; }
+}
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0) rotate(-0.4deg); }
+  50% { transform: translateY(-10px) rotate(0.4deg); }
+}
+@keyframes shine {
+  from { transform: translateX(-120%) skewX(-20deg); }
+  to { transform: translateX(220%) skewX(-20deg); }
+}
+
+/* Primary buttons: a light sweep on hover. */
+.btn-shine { position: relative; overflow: hidden; isolation: isolate; }
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.35), transparent);
+  transform: translateX(-120%) skewX(-20deg);
+  pointer-events: none;
+}
+.btn-shine:hover::after, .btn-shine:focus-visible::after { animation: shine 0.8s ease-out; }
+
+/* Scroll reveal: sections rise in as they enter the viewport; grid items stagger. */
+/* Movement only (no fading): text keeps full contrast at every moment, so
+   accessibility checkers and search-engine audits see a complete page. */
+html.motion main section[data-reveal]:not(.is-visible) { transform: translateY(40px); }
+html.motion main section[data-reveal] { transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1); }
+html.motion main section[data-reveal]:not(.is-visible) :is(.grid, ul, ol) > * { transform: translateY(28px) scale(0.98); }
+html.motion main section[data-reveal] :is(.grid, ul, ol) > * { transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1); }
+html.motion main section[data-reveal] :is(.grid, ul, ol) > :nth-child(2) { transition-delay: 80ms; }
+html.motion main section[data-reveal] :is(.grid, ul, ol) > :nth-child(3) { transition-delay: 160ms; }
+html.motion main section[data-reveal] :is(.grid, ul, ol) > :nth-child(4) { transition-delay: 240ms; }
+html.motion main section[data-reveal] :is(.grid, ul, ol) > :nth-child(5) { transition-delay: 320ms; }
+html.motion main section[data-reveal] :is(.grid, ul, ol) > :nth-child(n + 6) { transition-delay: 400ms; }
+
+/* Cards lift and glow slightly on hover. */
+.lift { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.lift:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -18px rgb(31 56 100 / 0.35); }
+
+/* Reading progress along the top of the header (browsers with scroll timelines). */
+.scroll-progress { position: absolute; inset: auto 0 -1px 0; height: 2px; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, #1f7d7b, #5cc8c6, #f8a66a); }
+[dir="rtl"] .scroll-progress { transform-origin: 100% 50%; }
+@supports (animation-timeline: scroll()) {
+  .scroll-progress { animation: progress linear both; animation-timeline: scroll(root); }
+}
+@keyframes progress { to { transform: scaleX(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg::before, .float-soft, .rise, .scroll-progress { animation: none !important; }
+  .btn-shine::after { display: none; }
+  .lift:hover { transform: none; }
 }

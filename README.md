@@ -179,6 +179,10 @@ Mark `generate_lead`, `demo_booked` and `case_study_download` as key events in G
 - **CI** — `.github/workflows/ci.yml` runs lint, type-check and build on every push.
 - Lighthouse (mobile, simulated slow 4G, local build, Sep 2026): accessibility 100, SEO 100, best practices 96, performance 86–91 across the home, product, pricing, department, tool and article pages.
 
+## Motion
+
+`components/site/motion-provider.tsx` (scroll reveals, set up when the browser is idle) plus CSS in `globals.css`: aurora drift on navy heroes, hero headline rise, floating hero screenshot, count-up numbers (`count-up.tsx`), button shine, card lift and a reading-progress line under the header. Transform-only (no fading, no layout shift), and everything switches off for visitors with "reduce motion". The numbers band (`stats-band.tsx`, copy in `home.stats`) shows only verifiable figures; customers and partners appear automatically past the thresholds in `proof.ts`.
+
 ## A/B tests (Track 5)
 
 Tests live in `src/content/experiments.ts` (`hero`, `cta`, `homeorder`, `toolcta`). Wrap each version in `<Variant exp="<id>" v="a|b">`; both ship while a test is live, a tiny script in `<head>` picks the version before first paint (no flicker, static-page friendly) and CSS hides the other.

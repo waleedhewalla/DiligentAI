@@ -84,3 +84,7 @@ export const videoTestimonials: VideoTestimonial[] = [
 export function approvedTestimonials() {
   return Object.values(testimonials).filter((t) => t.approved && t.quote.en);
 }
+
+/** The numbers band under the home hero shows customers / partners only past these counts. */
+export const MIN_CUSTOMERS_STAT = 3;
+export const MIN_PARTNERS_STAT = 2;

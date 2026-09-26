@@ -38,11 +38,23 @@ export const home = {
     en: ["One plan for the whole plant.", "In Arabic.", "Live in 8 weeks."],
     ar: ["خطة واحدة للمصنع كله.", "بالعربية.", "تعمل خلال 8 أسابيع."],
   } as L10n<string[]>,
+  /**
+   * Numbers band under the hero. Every figure must be verifiable: counts come
+   * from the catalog; customers and partners appear only past the thresholds
+   * in proof.ts. Star Trans figures come from its case study.
+   */
+  stats: {
+    title: { en: "Diligent AI in numbers", ar: "Diligent AI بالأرقام" },
+    solutions: { en: "AI solutions & services", ar: "حلاً وخدمة ذكاء اصطناعي" },
+    departments: { en: "Plant departments covered", ar: "إدارات في المصنع نغطيها" },
+    erp: { en: "SAP & ERP projects delivered by our team", ar: "مشروعاً في SAP و ERP نفّذها فريقنا" },
+    years: { en: "Years in manufacturing & ERP", ar: "عاماً في التصنيع و ERP" },
+    weeks: { en: "Weeks to go-live at Star Trans", ar: "أسابيع حتى التشغيل في ستار ترانس" },
+    planning: { en: "Planning time at Star Trans", ar: "من وقت التخطيط في ستار ترانس" },
+    customers: { en: "Manufacturers working with us", ar: "مصانع تعمل معنا" },
+    partners: { en: "Technology partners", ar: "شركاء تقنيون" },
+  },
   trustedBy: { en: "Trusted by", ar: "موثوق من" },
-  trustFacts: {
-    en: ["Cairo-based", "24 years' experience", "55+ SAP projects"],
-    ar: ["مقرنا القاهرة", "خبرة 24 عاماً", "أكثر من 55 مشروع SAP"],
-  } as L10n<string[]>,
   problem: {
     eyebrow: { en: "The pain you already know", ar: "الألم الذي تعرفه جيداً" },
     title: { en: "Your plant runs on yesterday's information.", ar: "مصنعك يُدار بمعلومات الأمس." },

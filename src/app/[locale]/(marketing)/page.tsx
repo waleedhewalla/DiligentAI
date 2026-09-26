@@ -12,7 +12,8 @@ import { overviewVideoUrl } from "@/lib/site";
 import { formatDate } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { HeroVisual } from "@/components/site/hero-visual";
+import { HeroScreenshot } from "@/components/site/hero-screenshot";
+import { StatsBand } from "@/components/site/stats-band";
 import { FinalCta, MetricsBar, SectionHeading } from "@/components/site/sections";
 import { TrackedLink } from "@/components/site/tracked-link";
 import { Variant } from "@/components/experiments/variant";
@@ -86,7 +87,11 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
               {(["a", "b"] as const).map((v) => (
                 <Variant key={v} exp="hero" v={v}>
                   {(v === "a" ? home.h1 : home.h1B)[locale].map((line, i) => (
-                    <span key={line} className={i === 0 ? "block" : i === 1 ? "block text-brand-teal" : "block text-brand-orange"}>
+                    <span
+                      key={line}
+                      className={`rise ${i === 0 ? "block" : i === 1 ? "block text-brand-teal" : "block text-brand-orange"}`}
+                      style={{ animationDelay: `${i * 120}ms` }}
+                    >
                       {line}
                     </span>
                   ))}
@@ -119,16 +124,14 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
               <Link href={href(locale, "/case-studies/star-trans")} className="font-bold text-white hover:underline" dir="ltr">
                 STAR TRANS
               </Link>
-              {home.trustFacts[locale].map((f) => (
-                <span key={f} className="before:me-4 before:content-['·']">
-                  {f}
-                </span>
-              ))}
             </div>
           </div>
-          <HeroVisual locale={locale} />
+          <HeroScreenshot locale={locale} />
         </div>
       </section>
+
+      {/* NUMBERS — verifiable figures only (home.stats); count up on scroll. */}
+      <StatsBand locale={locale} />
 
       {/* A/B test "homeorder": version B moves the product showcase (#product) above the picker. */}
       <div className="flex flex-col">
@@ -287,7 +290,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
           </div>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {posts.map((p) => (
-              <Link key={p.slug} href={href(locale, `/blog/${p.slug}`)} className="group rounded-2xl border p-6 hover:shadow-md">
+              <Link key={p.slug} href={href(locale, `/blog/${p.slug}`)} className="lift group rounded-2xl border p-6">
                 <p className="text-xs text-muted-foreground">
                   {p.category[locale]} · {formatDate(p.publishedAt, locale)}
                 </p>
