@@ -26,8 +26,8 @@ export const home = {
   } as L10n<string[]>,
   // Three coloured headline lines (white / teal / orange), same visual as before.
   h1: {
-    en: ["AI-Powered Manufacturing Intelligence.", "Built on Your Data.", "Inside Your ERP."],
-    ar: ["تصنيع ذكي مدعوم بالذكاء الاصطناعي.", "مبني على بياناتك.", "داخل نظام ERP."],
+    en: ["AI-Powered Manufacturing Intelligence.", "Connected to Your ERP.", "Embedded Across Your Factory Systems."],
+    ar: ["تصنيع ذكي مدعوم بالذكاء الاصطناعي.", "متصل بنظام ERP لديك.", "مدمج في جميع أنظمة مصنعك."],
   } as L10n<string[]>,
   h2: {
     en: "We consult, build and integrate AI for manufacturers in Egypt and the Gulf — from production planning and quality to supply chain and the boardroom.",

@@ -34,8 +34,8 @@ export default function OgImage({ params }: { params: { locale: Locale } }) {
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           <div style={{ fontSize: 54, fontWeight: 800, lineHeight: 1.1 }}>AI-Powered Manufacturing Intelligence.</div>
-          <div style={{ fontSize: 64, fontWeight: 800, lineHeight: 1.1, color: "#2CA6A4" }}>Built on Your Data.</div>
-          <div style={{ fontSize: 64, fontWeight: 800, lineHeight: 1.1, color: "#E97730" }}>Inside Your ERP.</div>
+          <div style={{ fontSize: 54, fontWeight: 800, lineHeight: 1.1, color: "#2CA6A4" }}>Connected to Your ERP.</div>
+          <div style={{ fontSize: 54, fontWeight: 800, lineHeight: 1.1, color: "#E97730" }}>Embedded Across Your Factory Systems.</div>
         </div>
         <div style={{ display: "flex", fontSize: 28, color: "rgba(255,255,255,0.75)" }}>{`${tagline} — Consult · Build · Integrate`}</div>
       </div>

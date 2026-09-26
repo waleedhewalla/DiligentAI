@@ -74,7 +74,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
         <div className="grid-pattern absolute inset-0 -z-10" aria-hidden />
         <HeroLights />
         <div className="container relative pb-20 pt-10 md:pb-24 md:pt-12 lg:pb-28 lg:pt-14">
-          <div className="mx-auto max-w-4xl text-center">
+          <div className="mx-auto max-w-5xl text-center">
             <ul className="flex flex-wrap justify-center gap-2">
               {home.badges[locale].map((b, i) => (
                 <li key={b}>
@@ -92,7 +92,8 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                   {(v === "a" ? home.h1 : home.h1B)[locale].map((line, i) => (
                     <span
                       key={line}
-                      className={`rise ${i === 0 ? "block" : i === 1 ? "block text-brand-teal" : "block text-brand-orange"}`}
+                      // Line 1 is the statement; lines 2–3 are supporting lines at ~70% size.
+                      className={`rise block ${i === 0 ? "" : i === 1 ? "mt-2 text-[0.7em] text-brand-teal" : "text-[0.7em] text-brand-orange"}`}
                       style={{ animationDelay: `${i * 120}ms` }}
                     >
                       {line}
