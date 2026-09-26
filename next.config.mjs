@@ -18,7 +18,7 @@ const csp = [
   "style-src 'self' 'unsafe-inline' https://*.hotjar.com https://assets.calendly.com",
   "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.hotjar.com https://assets.calendly.com https://challenges.cloudflare.com",
   `connect-src 'self' https://${supabaseHost} wss://${supabaseHost} https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.hotjar.com https://*.hotjar.io wss://*.hotjar.com https://calendly.com`,
-  "frame-src https://calendly.com https://*.hotjar.com https://challenges.cloudflare.com https://www.youtube-nocookie.com https://player.vimeo.com",
+  "frame-src https://cal.com https://app.cal.com https://calendly.com https://*.hotjar.com https://challenges.cloudflare.com https://www.youtube-nocookie.com https://player.vimeo.com",
   "worker-src 'self' blob:",
 ].join("; ");
 

@@ -10,7 +10,7 @@ export type AnalyticsEvent =
   | { name: "cta_click"; params: { cta: string; location: string; solution?: string; interest?: string } }
   | { name: "generate_lead"; params: { form: "demo_request" | "contact"; interest: string; area?: string; industry?: string } }
   | { name: "mql"; params: { interest: string; area?: string; industry?: string } }
-  | { name: "demo_booked"; params: { source: "calendly"; interest?: string; area?: string } }
+  | { name: "demo_booked"; params: { source: "calendly" | "cal"; interest?: string; area?: string } }
   | { name: "case_study_download"; params: { case_study: string } }
   | { name: "tech_brief_download"; params: { solution: string } }
   | { name: "nexus_generate"; params: { content_type: string } }
@@ -22,7 +22,9 @@ export type AnalyticsEvent =
   | { name: "partner_apply"; params: { track: string; country?: string } }
   // Assessment Track 1: sharing and form attribution.
   | { name: "share"; params: { network: string } }
-  | { name: "department_pick"; params: { department: string } };
+  | { name: "department_pick"; params: { department: string } }
+  // Track 3 lead magnets.
+  | { name: "tool_complete"; params: { tool: string; score: number; band?: string } };
 
 type Gtag = (...args: unknown[]) => void;
 type Hotjar = (...args: unknown[]) => void;

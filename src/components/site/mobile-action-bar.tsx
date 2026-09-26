@@ -34,7 +34,8 @@ export function MobileActionBar({
   }, []);
   if (pathname?.includes("/demo") || pathname?.includes("/contact")) return null;
   return (
-    <div
+    <aside
+      aria-label={bookLabel}
       aria-hidden={!visible}
       className={cn(
         "fixed inset-x-0 bottom-0 z-30 border-t bg-background/95 p-3 shadow-[0_-8px_24px_rgba(0,0,0,0.08)] backdrop-blur transition-transform duration-300 md:hidden print:hidden",
@@ -62,6 +63,6 @@ export function MobileActionBar({
           </Button>
         ) : null}
       </div>
-    </div>
+    </aside>
   );
 }

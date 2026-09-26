@@ -18,7 +18,8 @@ const buttonVariants = cva(
         portal: "bg-brand-purple text-white rounded-md font-medium hover:bg-brand-purple/90",
         destructive: "bg-brand-red text-white rounded-md font-medium hover:bg-brand-red/90",
         outline: "border border-input bg-background hover:bg-muted",
-        whatsapp: "bg-[#128C4B] text-white hover:bg-[#0E7A40]",
+        // WhatsApp green darkened for 4.5:1 contrast with white text.
+        whatsapp: "bg-[#0E7A40] text-white hover:bg-[#0B6535]",
       },
       size: {
         default: "h-12 px-6 text-base",

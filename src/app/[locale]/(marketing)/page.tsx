@@ -5,6 +5,7 @@ import { getDictionary } from "@/i18n/dictionaries";
 import { home } from "@/content/home";
 import { getOffering, listDepartments, maturityOf, offeringsForDepartment } from "@/content/catalog";
 import { starTransMetrics } from "@/content/proof";
+import { tools } from "@/content/tools";
 import { getPosts } from "@/content/blog";
 import { href, pageMetadata } from "@/lib/seo";
 import { overviewVideoUrl } from "@/lib/site";
@@ -196,6 +197,19 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
               </Button>
             </div>
           </div>
+          <ul className="mt-8 grid gap-4 md:grid-cols-2">
+            {tools.map((t) => (
+              <li key={t.slug}>
+                <Link href={href(locale, `/tools/${t.slug}`)} className="group flex h-full items-start justify-between gap-4 rounded-2xl border bg-card p-5 hover:shadow-md">
+                  <span>
+                    <span className="font-bold text-brand-navy group-hover:underline">{t.title[locale]}</span>
+                    <span className="mt-1 block text-sm text-muted-foreground">{t.summary[locale]}</span>
+                  </span>
+                  <ArrowRight className="btn-icon mt-1 h-5 w-5 shrink-0 text-brand-teal-dark" aria-hidden />
+                </Link>
+              </li>
+            ))}
+          </ul>
           <p className="mt-8 text-center">
             <Link href={href(locale, "/solutions")} className="inline-flex items-center gap-1 font-semibold text-brand-teal-dark hover:underline">
               {home.catalog.title[locale]} — {dict.nav.allSolutions} <ArrowRight className="btn-icon h-4 w-4" aria-hidden />

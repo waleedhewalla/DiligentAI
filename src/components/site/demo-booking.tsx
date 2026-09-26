@@ -5,6 +5,7 @@ import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { interests } from "@/lib/validation";
 import { CalendlyEmbed } from "./calendly";
+import { CalEmbed } from "./cal-embed";
 import { DemoForm, type AreaOptionGroup } from "./demo-form";
 
 /**
@@ -17,12 +18,15 @@ export function DemoBooking({
   dict,
   calendlyUrl,
   calendlyCeoUrl,
+  bookingUrl = "",
   areaOptions,
 }: {
   locale: Locale;
   dict: Dictionary;
   calendlyUrl: string;
   calendlyCeoUrl: string;
+  /** Public Cal.com event link; takes precedence over Calendly when set. */
+  bookingUrl?: string;
   areaOptions: AreaOptionGroup[];
 }) {
   const params = useSearchParams();
@@ -36,7 +40,11 @@ export function DemoBooking({
 
   return (
     <div className="grid gap-8">
-      {url ? <CalendlyEmbed url={url} locale={locale} interest={interest} area={area} /> : null}
+      {bookingUrl ? (
+        <CalEmbed url={bookingUrl} locale={locale} interest={interest} area={area} title={dict.nav.bookDemo} />
+      ) : url ? (
+        <CalendlyEmbed url={url} locale={locale} interest={interest} area={area} />
+      ) : null}
       <div className="rounded-2xl border bg-card p-6 md:p-8">
         <h2 className="text-xl font-bold text-brand-navy">{dict.demoForm.title}</h2>
         <p className="mt-1 text-sm text-muted-foreground">{dict.demoForm.subtitle}</p>

@@ -50,7 +50,7 @@ export function generateMetadata({ params }: { params: { locale: Locale } }) {
 export default function DemoPage({ params }: { params: { locale: Locale } }) {
   const locale = params.locale;
   const dict = getDictionary(locale);
-  const wa = whatsappHref(locale === "ar" ? "مرحباً وليد، أود حجز عرض توضيحي" : "Hi Waleed, I'd like to book a demo");
+  const wa = whatsappHref(locale === "ar" ? "مرحباً وليد، أود حجز مراجعة لمصنعي" : "Hi Waleed, I'd like to book a plant review");
   return (
     <section className="bg-surface-subtle">
       <div className="container py-12 md:py-16">
@@ -74,6 +74,7 @@ export default function DemoPage({ params }: { params: { locale: Locale } }) {
               dict={dict}
               calendlyUrl={site.calendly}
               calendlyCeoUrl={site.calendlyCeo}
+              bookingUrl={site.booking}
               areaOptions={demoAreaOptions(locale, dict)}
             />
           </Suspense>

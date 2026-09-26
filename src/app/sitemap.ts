@@ -3,6 +3,7 @@ import { locales } from "@/i18n/config";
 import { listCapabilities, listDepartments, listOfferings } from "@/content/catalog";
 import { caseStudies } from "@/content/case-studies";
 import { getPosts } from "@/content/blog";
+import { tools } from "@/content/tools";
 import { href, languageAlternates } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/utils";
 
@@ -23,6 +24,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: "/trust", priority: 0.6, changeFrequency: "monthly" },
     { path: "/ksa", priority: 0.7, changeFrequency: "monthly" },
     { path: "/partners", priority: 0.5, changeFrequency: "monthly" },
+    { path: "/tools", priority: 0.7, changeFrequency: "monthly" },
+    ...tools.map((t) => ({ path: `/tools/${t.slug}`, priority: 0.7, changeFrequency: "monthly" as const })),
     ...listOfferings().map((o) => ({ path: `/solutions/${o.slug}`, priority: 0.8, changeFrequency: "monthly" as const })),
     ...listCapabilities().map((c) => ({ path: `/capabilities/${c.slug}`, priority: 0.8, changeFrequency: "monthly" as const })),
     { path: "/case-studies", priority: 0.8, changeFrequency: "monthly" },

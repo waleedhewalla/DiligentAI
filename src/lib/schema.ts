@@ -24,8 +24,20 @@ export function organizationSchema(locale: Locale) {
     address: { "@type": "PostalAddress", addressLocality: "Cairo", addressCountry: "EG" },
     areaServed: ["EG", "SA", "AE", "QA", "KW", "BH", "OM"].map((c) => ({ "@type": "Country", name: c })),
     founder: { "@type": "Person", name: founderName[locale], sameAs: [site.linkedin] },
-    sameAs: [site.linkedin],
+    sameAs: [site.linkedin, site.social.linkedinCompany, site.social.youtube, site.social.x].filter(Boolean),
     knowsLanguage: ["ar", "en"],
+    ...(site.whatsapp
+      ? {
+          contactPoint: {
+            "@type": "ContactPoint",
+            contactType: "sales",
+            telephone: `+${site.whatsapp.replace(/\D/g, "")}`,
+            email: site.email,
+            availableLanguage: ["Arabic", "English"],
+            areaServed: ["EG", "SA", "AE"],
+          },
+        }
+      : {}),
   };
 }
 

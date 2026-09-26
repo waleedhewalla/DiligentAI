@@ -5,6 +5,7 @@ import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getPost, getPosts, type Block } from "@/content/blog";
 import { getOffering } from "@/content/catalog";
+import { tools } from "@/content/tools";
 import { getCaseStudy } from "@/content/case-studies";
 import { href, pageMetadata } from "@/lib/seo";
 import { articleSchema } from "@/lib/schema";
@@ -55,6 +56,23 @@ function RenderBlock({ block, locale }: { block: Block; locale: Locale }) {
       );
     case "quote":
       return <blockquote>{block.text}</blockquote>;
+    case "tool": {
+      const t = tools.find((x) => x.slug === block.tool);
+      if (!t) return null;
+      return (
+        <aside className="not-prose my-10 rounded-2xl border-2 border-brand-teal-dark/30 bg-brand-teal/5 p-6">
+          <p className="text-xs font-bold uppercase tracking-wide text-brand-teal-dark">{locale === "ar" ? "أداة مجانية" : "Free tool"}</p>
+          <p className="mt-1 text-xl font-bold text-brand-navy">{t.title[locale]}</p>
+          <p className="mt-2 text-muted-foreground">{t.summary[locale]}</p>
+          <Button asChild variant="teal" className="mt-4">
+            <Link href={href(locale, `/tools/${t.slug}`)}>
+              {locale === "ar" ? "ابدأ الآن" : "Start now"}
+              <ArrowRight className="btn-icon" />
+            </Link>
+          </Button>
+        </aside>
+      );
+    }
     case "cta": {
       // Inline CTA for any catalog offering; silently skipped if the slug was removed.
       const o = getOffering(block.offering);
@@ -64,7 +82,14 @@ function RenderBlock({ block, locale }: { block: Block; locale: Locale }) {
           <p className="text-sm font-semibold text-brand-teal-light">{o.brand ? <span className="ltr-run">{o.brand}</span> : o.title[locale]}</p>
           <p className="mt-2 text-xl font-bold">{o.summary[locale]}</p>
           <p className="mt-2 text-white/80">
-            {locale === "ar" ? "نطبّق هذا في ستار ترانس — احجز مراجعة لمصنعك مدتها 30 دقيقة." : "We deploy this at Star Trans — book a 30-min plant review."}
+            {/* Only claim the Star Trans deployment for offerings its case study covers. */}
+            {getCaseStudy("star-trans")?.offerings.includes(o.slug)
+              ? locale === "ar"
+                ? "نطبّق هذا في ستار ترانس — احجز مراجعة لمصنعك مدتها 30 دقيقة."
+                : "We deploy this at Star Trans — book a 30-min plant review."
+              : locale === "ar"
+                ? "احجز مراجعة لمصنعك مدتها 30 دقيقة لنرى كيف يناسب هذا مصنعك."
+                : "Book a 30-min plant review to see how this fits your plant."}
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
             <Button asChild>

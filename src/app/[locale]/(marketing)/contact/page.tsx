@@ -2,7 +2,7 @@ import { Mail, MapPin } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { pageMetadata } from "@/lib/seo";
-import { site, whatsappHref } from "@/lib/site";
+import { site, whatsappDisplay, whatsappHref } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { Breadcrumbs, PageHero } from "@/components/site/sections";
 import { DemoForm } from "@/components/site/demo-form";
@@ -66,6 +66,11 @@ export default function ContactPage({ params }: { params: { locale: Locale } }) 
                   {dict.cta.whatsapp}
                 </TrackedAnchor>
               </Button>
+            ) : null}
+            {wa ? (
+              <p className="text-center text-sm text-muted-foreground">
+                WhatsApp · <span dir="ltr" className="font-semibold text-foreground">{whatsappDisplay()}</span>
+              </p>
             ) : null}
             <a href={`mailto:${site.email}`} className="flex items-center gap-3 rounded-xl border p-4 hover:bg-muted">
               <Mail className="h-5 w-5 text-brand-teal-dark" aria-hidden />

@@ -54,6 +54,7 @@ export function buildNav(locale: Locale, dict: Dictionary): NavModel {
   // Cross-cutting pages added for the competitive gaps (pricing, trust, partners, KSA, integrations).
   const quickLinks: NavLink[] = [
     { href: href(locale, "/pricing"), label: dict.nav.pricing },
+    { href: href(locale, "/tools"), label: dict.nav.tools },
     { href: href(locale, "/integrations"), label: dict.nav.integrations },
     { href: href(locale, "/trust"), label: dict.nav.trust },
     { href: href(locale, "/ksa"), label: dict.nav.ksa },

@@ -82,6 +82,10 @@ Optional offering fields added for the competitive gaps: `packages` (fixed-price
 - `roadmap` items in `departments.ts` — move each into `offerings` when the product goes live.
 - Company social URLs (`NEXT_PUBLIC_LINKEDIN_COMPANY_URL`, `NEXT_PUBLIC_YOUTUBE_URL`, `NEXT_PUBLIC_X_URL`) and `NEXT_PUBLIC_WHATSAPP_NUMBER` (enables the WhatsApp button in the mobile action bar).
 
+**Free tools (lead magnets):** `src/content/tools.ts` holds the S&OP Maturity Scorecard and the CBAM Readiness Checklist (bilingual questions, bands, advice). They render at `/tools/*`, run fully in the browser, fire `tool_complete`, and link to the booking page with `?area=…&intent=<tool>` so the lead's source is recorded. Blog posts can embed a tool with `{ type: "tool", tool: "<slug>" }`; a department page shows the tool whose `department` matches.
+
+**Booking & WhatsApp:** `site.booking` (Cal.com, `NEXT_PUBLIC_BOOKING_URL`) is embedded on `/demo` and takes precedence over Calendly; `site.whatsapp` (`NEXT_PUBLIC_WHATSAPP_NUMBER`) enables WhatsApp buttons and the Organization `contactPoint`.
+
 **Lead attribution:** `lib/attribution.ts` keeps first/last touch (UTM, referrer, landing page) and the last 10 pages viewed in `localStorage`; the demo form sends it with the request, and it is stored in `demo_requests.attribution` (migration `20260928000000_lead_attribution.sql`) and forwarded to `DEMO_REQUEST_WEBHOOK_URL`.
 
 **To add a use case:** append to `capabilities.ts`, then reference its slug from the relevant offerings.

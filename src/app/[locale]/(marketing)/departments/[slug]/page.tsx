@@ -5,6 +5,7 @@ import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { accentClasses, getCapability, getDepartment, listDepartments, offeringsForDepartment, type Capability } from "@/content/catalog";
 import { caseStudies } from "@/content/case-studies";
+import { tools } from "@/content/tools";
 import { href, pageMetadata } from "@/lib/seo";
 import { departmentSchema } from "@/lib/schema";
 import { cn } from "@/lib/utils";
@@ -41,6 +42,8 @@ const t = {
   },
   join: { en: "Join the pilot", ar: "انضم للتجربة" },
   other: { en: "Other departments", ar: "إدارات أخرى" },
+  freeTool: { en: "Free tool · 3 minutes", ar: "أداة مجانية · 3 دقائق" },
+  startTool: { en: "Start", ar: "ابدأ" },
 };
 
 export default function DepartmentPage({ params }: { params: { locale: Locale; slug: string } }) {
@@ -53,6 +56,7 @@ export default function DepartmentPage({ params }: { params: { locale: Locale; s
   const useCases = d.capabilities.map(getCapability).filter((x): x is Capability => Boolean(x));
   const stories = caseStudies.filter((cs) => cs.capabilities.some((s) => d.capabilities.includes(s)));
   const others = listDepartments().filter((x) => x.slug !== d.slug);
+  const tool = tools.find((x) => x.department === d.slug);
 
   return (
     <>
@@ -113,6 +117,21 @@ export default function DepartmentPage({ params }: { params: { locale: Locale; s
           </div>
         </div>
       </section>
+
+      {tool ? (
+        <section className="pb-4">
+          <div className="container">
+            <Link href={href(locale, `/tools/${tool.slug}`)} className="group flex flex-wrap items-center justify-between gap-4 rounded-2xl border-2 border-brand-teal-dark/30 bg-brand-teal/5 p-6 hover:shadow-md">
+              <span>
+                <span className="text-xs font-bold uppercase tracking-wide text-brand-teal-dark">{t.freeTool[locale]}</span>
+                <span className="mt-1 block text-lg font-bold text-brand-navy group-hover:underline">{tool.title[locale]}</span>
+                <span className="mt-1 block text-sm text-muted-foreground">{tool.summary[locale]}</span>
+              </span>
+              <span className="font-semibold text-brand-teal-dark">{t.startTool[locale]} →</span>
+            </Link>
+          </div>
+        </section>
+      ) : null}
 
       {solutions.length ? (
         <section className="section bg-surface-subtle">

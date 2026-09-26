@@ -16,7 +16,9 @@ export type Block =
   | { type: "ul"; items: string[] }
   | { type: "quote"; text: string }
   /** Inline call-to-action for a catalog offering (slug from catalog/offerings.ts). */
-  | { type: "cta"; offering: string };
+  | { type: "cta"; offering: string }
+  /** Inline card for a free tool (slug from content/tools.ts). */
+  | { type: "tool"; tool: string };
 
 export type Post = {
   slug: string;
@@ -110,6 +112,7 @@ const posts: Post[] = [
         { type: "h2", text: "Where AI actually helps" },
         { type: "ul", items: ["A forecast baseline that learns seasonality and promotions, so sales adjusts instead of starting from zero.", "Scenario answers in minutes: +20% demand, a line down for two weeks, a late supplier.", "A production schedule that is regenerated from the approved plan, not re-typed."] },
         { type: "quote", text: "If the meeting spends its time agreeing the numbers, it has no time left to decide." },
+        { type: "tool", tool: "sop-scorecard" },
         { type: "cta", offering: "ai-production-scheduling" },
       ],
       ar: [
@@ -120,6 +123,7 @@ const posts: Post[] = [
         { type: "h2", text: "أين يساعد الذكاء الاصطناعي فعلاً" },
         { type: "ul", items: ["توقع أساسي يتعلم الموسمية والعروض، فتعدّل المبيعات بدل البدء من الصفر.", "إجابات للسيناريوهات في دقائق: زيادة الطلب 20%، توقف خط لأسبوعين، تأخر مورد.", "جدول إنتاج يُعاد توليده من الخطة المعتمدة، لا يُعاد كتابته."] },
         { type: "quote", text: "إن قضى الاجتماع وقته في الاتفاق على الأرقام، فلن يبقى له وقت ليقرر." },
+        { type: "tool", tool: "sop-scorecard" },
         { type: "cta", offering: "ai-production-scheduling" },
       ],
     },
@@ -154,6 +158,7 @@ const posts: Post[] = [
         { type: "h2", text: "What to do in the next 90 days" },
         { type: "ul", items: ["List which products and customers fall under CBAM.", "Map where energy, fuel and material data lives today — meters, SCADA, ERP, Excel.", "Automate the capture for one installation first, then extend."] },
         { type: "quote", text: "Verified data is the difference between your real footprint and someone else's assumption." },
+        { type: "tool", tool: "cbam-checklist" },
         { type: "cta", offering: "cbam-emissions-reporting" },
       ],
       ar: [
@@ -165,6 +170,7 @@ const posts: Post[] = [
         { type: "h2", text: "ما الذي تفعله خلال 90 يوماً" },
         { type: "ul", items: ["حدد المنتجات والعملاء الخاضعين لآلية CBAM.", "ارسم خريطة لمكان بيانات الطاقة والوقود والخامات اليوم — العدادات وSCADA وERP وExcel.", "أتمت الالتقاط لمنشأة واحدة أولاً، ثم وسّع."] },
         { type: "quote", text: "البيانات الموثقة هي الفرق بين بصمتك الحقيقية وافتراضات غيرك." },
+        { type: "tool", tool: "cbam-checklist" },
         { type: "cta", offering: "cbam-emissions-reporting" },
       ],
     },
