@@ -4,6 +4,9 @@ import { cbamChecklist as t } from "@/content/tools";
 import { toolsCopy } from "@/content/tools";
 import { href, pageMetadata } from "@/lib/seo";
 import { Breadcrumbs, PageHero } from "@/components/site/sections";
+import { DemoForm } from "@/components/site/demo-form";
+import { demoAreaOptions } from "@/lib/demo-options";
+import { reviewCopy } from "@/content/tools";
 import { CbamChecklist } from "@/components/site/cbam-checklist";
 
 const labels = {
@@ -58,6 +61,17 @@ export default function CbamChecklistPage({ params }: { params: { locale: Locale
             bookHref={href(locale, "/demo") + `?area=cbam-emissions-reporting&intent=${t.slug}`}
           />
           <p className="mt-8 text-sm text-muted-foreground">{t.disclaimer[locale]}</p>
+        </div>
+      </section>
+      <section className="section bg-surface-subtle print:hidden">
+        <div className="container grid gap-8 lg:grid-cols-[1fr_1.3fr]">
+          <div>
+            <h2 className="text-2xl font-bold text-brand-navy">{reviewCopy.title[locale]}</h2>
+            <p className="mt-3 text-muted-foreground">{reviewCopy.body[locale]}</p>
+          </div>
+          <div className="rounded-2xl border bg-card p-6">
+            <DemoForm locale={locale} dict={dict} areaOptions={demoAreaOptions(locale, dict)} defaultInterest="consult" defaultArea="cbam-emissions-reporting" source={`tool:${t.slug}`} />
+          </div>
         </div>
       </section>
     </>

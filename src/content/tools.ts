@@ -202,6 +202,15 @@ export const cbamChecklist = {
   ] satisfies ChecklistGroup[],
 };
 
+/** Lead capture shown under each tool (the form's source records which tool). */
+export const reviewCopy = {
+  title: { en: "Get a written review of your result", ar: "احصل على مراجعة مكتوبة لنتيجتك" },
+  body: {
+    en: "Send us your details and a senior consultant will reply within two business days with the three changes we would make first in your plant. No obligation.",
+    ar: "أرسل بياناتك وسيرد عليك استشاري أول خلال يومي عمل بأهم ثلاثة تغييرات نبدأ بها في مصنعك. دون أي التزام.",
+  },
+};
+
 /** Tools hub copy. */
 export const toolsCopy = {
   title: { en: "Free tools for plant leaders", ar: "أدوات مجانية لقادة المصانع" },

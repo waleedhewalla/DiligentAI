@@ -6,6 +6,8 @@ import { getDictionary } from "@/i18n/dictionaries";
 import { accentClasses, getCapability, getDepartment, listDepartments, offeringsForDepartment, type Capability } from "@/content/catalog";
 import { caseStudies } from "@/content/case-studies";
 import { tools } from "@/content/tools";
+import { getPosts } from "@/content/blog";
+import { formatDate } from "@/lib/utils";
 import { href, pageMetadata } from "@/lib/seo";
 import { departmentSchema } from "@/lib/schema";
 import { cn } from "@/lib/utils";
@@ -43,10 +45,11 @@ const t = {
   join: { en: "Join the pilot", ar: "انضم للتجربة" },
   other: { en: "Other departments", ar: "إدارات أخرى" },
   freeTool: { en: "Free tool · 3 minutes", ar: "أداة مجانية · 3 دقائق" },
+  articles: { en: "Insights for this department", ar: "رؤى لهذه الإدارة" },
   startTool: { en: "Start", ar: "ابدأ" },
 };
 
-export default function DepartmentPage({ params }: { params: { locale: Locale; slug: string } }) {
+export default async function DepartmentPage({ params }: { params: { locale: Locale; slug: string } }) {
   const d = getDepartment(params.slug);
   if (!d) notFound();
   const locale = params.locale;
@@ -57,6 +60,10 @@ export default function DepartmentPage({ params }: { params: { locale: Locale; s
   const stories = caseStudies.filter((cs) => cs.capabilities.some((s) => d.capabilities.includes(s)));
   const others = listDepartments().filter((x) => x.slug !== d.slug);
   const tool = tools.find((x) => x.department === d.slug);
+  // Articles that share an offering or use case with this department (SEO silo).
+  const articles = (await getPosts())
+    .filter((p) => p.related.offerings.some((o) => d.offerings.includes(o)) || p.related.capabilities.some((c) => d.capabilities.includes(c)))
+    .slice(0, 3);
 
   return (
     <>
@@ -193,6 +200,25 @@ export default function DepartmentPage({ params }: { params: { locale: Locale; s
                 <Link key={cs.slug} href={href(locale, `/case-studies/${cs.slug}`)} className="rounded-2xl border bg-background p-6 hover:shadow-md">
                   <p className="text-sm font-semibold text-brand-teal-dark">{locale === "ar" ? cs.clientAr : cs.client}</p>
                   <p className="mt-1 text-lg font-bold text-brand-navy">{cs.title[locale]}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {articles.length ? (
+        <section className="section border-t">
+          <div className="container">
+            <SectionHeading title={t.articles[locale]} align="start" />
+            <div className="mt-8 grid gap-6 md:grid-cols-3">
+              {articles.map((p) => (
+                <Link key={p.slug} href={href(locale, `/blog/${p.slug}`)} className="group rounded-2xl border p-6 hover:shadow-md">
+                  <p className="text-xs text-muted-foreground">
+                    {p.category[locale]} · {formatDate(p.publishedAt, locale)}
+                  </p>
+                  <h3 className="mt-2 font-bold text-brand-navy group-hover:text-brand-teal-dark">{p.title[locale]}</h3>
+                  <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{p.excerpt[locale]}</p>
                 </Link>
               ))}
             </div>

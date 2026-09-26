@@ -107,6 +107,11 @@ export type Offering = {
    * inferred by maturityOf() when omitted; set it to override.
    */
   maturity?: Maturity;
+  /**
+   * 90-second walkthrough video (YouTube "nocookie" or Vimeo embed URL). Hidden until set.
+   * TODO(Waleed): add the IPE, CEO OS and Nexus AI walkthroughs once recorded (content kit scripts).
+   */
+  video?: { embedUrl: string; title: L10n };
   /** Real product screenshots (under /public/images/products) shown in a gallery on the page. */
   media?: { src: string; width: number; height: number; alt: L10n; caption?: L10n }[];
   /** Optional product brand shown as a badge (e.g. "IPE"). Leave out for services. */

@@ -3,6 +3,12 @@ import { starTransMetrics, type Metric } from "./proof";
 
 export type CaseStudy = {
   slug: string;
+  /**
+   * Publish gate. Drafts (false) never render, never enter the sitemap and are
+   * never linked — flip to true only when the customer has signed off the
+   * text and every number (see the pilot measurement sheet in the content kit).
+   */
+  published: boolean;
   client: string;
   clientAr: string;
   industry: L10n;
@@ -23,9 +29,10 @@ export type CaseStudy = {
   results: { period: L10n; body: L10n }[];
 };
 
-export const caseStudies: CaseStudy[] = [
+const allCaseStudies: CaseStudy[] = [
   {
     slug: "star-trans",
+    published: true,
     client: "Star Trans",
     clientAr: "ستار ترانس",
     industry: { en: "Logistics & Transport", ar: "اللوجستيات والنقل" },
@@ -103,7 +110,65 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
   },
+  // ─── Pilot drafts (Track 3) — hidden until published: true ───────────────
+  // TODO(Waleed): replace the bracketed fields with signed pilot data at day 90.
+  {
+    slug: "pilot-vision-quality",
+    published: false,
+    client: "[Pilot customer — quality]",
+    clientAr: "[عميل تجريبي — الجودة]",
+    industry: { en: "[Industry]", ar: "[القطاع]" },
+    location: { en: "Egypt", ar: "مصر" },
+    offerings: ["vision-quality-control"],
+    capabilities: ["quality-control"],
+    title: { en: "[How <customer> raised first-pass yield on <line> in 90 days]", ar: "[كيف رفعت <العميل> نسبة النجاح من أول مرة على <الخط> خلال 90 يوماً]" },
+    summary: { en: "[One sentence: the line, the defect, the result.]", ar: "[جملة واحدة: الخط والعيب والنتيجة.]" },
+    publishedAt: "2026-12-20",
+    updatedAt: "2026-12-20",
+    metrics: [
+      { id: "fpy", value: null, label: { en: "First-pass yield", ar: "نسبة النجاح من أول مرة" } },
+      { id: "scrap", value: null, label: { en: "Scrap rate", ar: "نسبة الهالك" } },
+      { id: "golive", value: null, label: { en: "Weeks to go-live", ar: "أسابيع حتى التشغيل" } },
+    ],
+    challenge: { en: ["[Baseline and pain, from the pilot sheet.]"], ar: ["[الخط الأساسي والمشكلة من ورقة القياس.]"] },
+    solution: [{ offering: "vision-quality-control", body: { en: "[What was installed and connected.]", ar: "[ما الذي رُكّب ورُبط.]" } }],
+    results: [
+      { period: { en: "Day 30", ar: "اليوم 30" }, body: { en: "[Signed day-30 result.]", ar: "[نتيجة اليوم 30 الموقّعة.]" } },
+      { period: { en: "Day 90", ar: "اليوم 90" }, body: { en: "[Signed day-90 result.]", ar: "[نتيجة اليوم 90 الموقّعة.]" } },
+    ],
+  },
+  {
+    slug: "pilot-cost-margin",
+    published: false,
+    client: "[Pilot customer — costing]",
+    clientAr: "[عميل تجريبي — التكاليف]",
+    industry: { en: "[Industry]", ar: "[القطاع]" },
+    location: { en: "Egypt", ar: "مصر" },
+    offerings: ["erp-ai-integration", "executive-intelligence"],
+    capabilities: ["executive-decision-intelligence"],
+    title: { en: "[How <customer> found the margin hidden in its standard costs]", ar: "[كيف وجدت <العميل> الهامش المختفي في تكاليفها المعيارية]" },
+    summary: { en: "[One sentence: products covered, the gap found, the decision taken.]", ar: "[جملة واحدة: المنتجات والفجوة والقرار.]" },
+    publishedAt: "2026-12-20",
+    updatedAt: "2026-12-20",
+    metrics: [
+      { id: "gap", value: null, label: { en: "Cost-per-unit gap found", ar: "فجوة تكلفة الوحدة المكتشفة" } },
+      { id: "skus", value: null, label: { en: "Products costed on actuals", ar: "منتجات بتكلفة فعلية" } },
+      { id: "close", value: null, label: { en: "Days to close", ar: "أيام الإقفال" } },
+    ],
+    challenge: { en: ["[Baseline and pain, from the pilot sheet.]"], ar: ["[الخط الأساسي والمشكلة من ورقة القياس.]"] },
+    solution: [{ offering: "erp-ai-integration", body: { en: "[Data connected and how actual cost is computed.]", ar: "[البيانات المربوطة وطريقة حساب التكلفة الفعلية.]" } }],
+    results: [
+      { period: { en: "Day 30", ar: "اليوم 30" }, body: { en: "[Signed day-30 result.]", ar: "[نتيجة اليوم 30 الموقّعة.]" } },
+      { period: { en: "Day 90", ar: "اليوم 90" }, body: { en: "[Signed day-90 result.]", ar: "[نتيجة اليوم 90 الموقّعة.]" } },
+    ],
+  },
 ];
+
+/** Published case studies only — the single list every page, link and sitemap uses. */
+export const caseStudies: CaseStudy[] = allCaseStudies.filter((c) => c.published);
+
+/** Drafts waiting for customer sign-off (for the team; never rendered). */
+export const draftCaseStudies: CaseStudy[] = allCaseStudies.filter((c) => !c.published);
 
 export function getCaseStudy(slug: string) {
   return caseStudies.find((c) => c.slug === slug);

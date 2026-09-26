@@ -100,7 +100,7 @@ export async function OfferingPage({ offering: o, locale }: { offering: Offering
                   <ArrowRight className="btn-icon" />
                 </TrackedLink>
               </Button>
-              {o.media?.length && !o.demo ? (
+              {(o.media?.length || o.video) && !o.demo ? (
                 <Button asChild size="lg" variant="inverse">
                   <a href="#product">{dict.common.seeTheProduct}</a>
                 </Button>
@@ -128,12 +128,24 @@ export async function OfferingPage({ offering: o, locale }: { offering: Offering
       </section>
 
       {/* PRODUCT SCREENSHOTS (optional) — real UI, sample data. */}
-      {o.media?.length ? (
+      {o.media?.length || o.video ? (
         <section id="product" className="section scroll-mt-20">
           <div className="container max-w-5xl">
             <SectionHeading eyebrow={o.brand ?? o.title[locale]} title={dict.common.seeTheProduct} />
+            {o.video ? (
+              <div className="mt-10 aspect-video max-w-full overflow-hidden rounded-2xl border shadow-xl">
+                <iframe
+                  src={o.video.embedUrl}
+                  title={o.video.title[locale]}
+                  loading="lazy"
+                  allow="accelerometer; encrypted-media; picture-in-picture"
+                  allowFullScreen
+                  className="h-full w-full"
+                />
+              </div>
+            ) : null}
             <div className="mt-10">
-              <ProductGallery media={o.media} locale={locale} note={dict.common.sampleData} />
+              {o.media?.length ? <ProductGallery media={o.media} locale={locale} note={dict.common.sampleData} /> : null}
             </div>
           </div>
         </section>

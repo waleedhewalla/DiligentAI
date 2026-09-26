@@ -84,6 +84,8 @@ Optional offering fields added for the competitive gaps: `packages` (fixed-price
 
 **Free tools (lead magnets):** `src/content/tools.ts` holds the S&OP Maturity Scorecard and the CBAM Readiness Checklist (bilingual questions, bands, advice). They render at `/tools/*`, run fully in the browser, fire `tool_complete`, and link to the booking page with `?area=…&intent=<tool>` so the lead's source is recorded. Blog posts can embed a tool with `{ type: "tool", tool: "<slug>" }`; a department page shows the tool whose `department` matches.
 
+**Case studies:** every entry in `src/content/case-studies.ts` has `published`. Drafts (`published: false`, e.g. the two pilot templates) never render, link or enter the sitemap; fill them from the signed pilot measurement sheet and flip the flag. **Walkthrough videos:** set `video: { embedUrl, title }` on an offering (YouTube "nocookie" or Vimeo) and it appears in the "See the product" section.
+
 **Booking & WhatsApp:** `site.booking` (Cal.com, `NEXT_PUBLIC_BOOKING_URL`) is embedded on `/demo` and takes precedence over Calendly; `site.whatsapp` (`NEXT_PUBLIC_WHATSAPP_NUMBER`) enables WhatsApp buttons and the Organization `contactPoint`.
 
 **Lead attribution:** `lib/attribution.ts` keeps first/last touch (UTM, referrer, landing page) and the last 10 pages viewed in `localStorage`; the demo form sends it with the request, and it is stored in `demo_requests.attribution` (migration `20260928000000_lead_attribution.sql`) and forwarded to `DEMO_REQUEST_WEBHOOK_URL`.
