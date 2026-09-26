@@ -181,7 +181,7 @@ Mark `generate_lead`, `demo_booked` and `case_study_download` as key events in G
 
 ## Motion
 
-`components/site/motion-provider.tsx` (scroll reveals, set up when the browser is idle) plus CSS in `globals.css`: aurora drift on navy heroes, hero headline rise, floating hero screenshot, count-up numbers (`count-up.tsx`), button shine, card lift and a reading-progress line under the header. Transform-only (no fading, no layout shift), and everything switches off for visitors with "reduce motion". The numbers band (`stats-band.tsx`, copy in `home.stats`) shows only verifiable figures; customers and partners appear automatically past the thresholds in `proof.ts`.
+`components/site/motion-provider.tsx` (scroll reveals, set up when the browser is idle) plus CSS in `globals.css`: aurora drift on navy heroes, hero headline rise, count-up numbers (`count-up.tsx`), button shine, card lift and a reading-progress line under the header. Transform-only (no fading, no layout shift), and everything switches off for visitors with "reduce motion". The numbers band (`stats-band.tsx`, copy in `home.stats`) shows only verifiable figures; customers and partners appear automatically past the thresholds in `proof.ts`.
 
 ## A/B tests (Track 5)
 

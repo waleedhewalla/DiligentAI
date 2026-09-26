@@ -12,7 +12,6 @@ import { overviewVideoUrl } from "@/lib/site";
 import { formatDate } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { HeroScreenshot } from "@/components/site/hero-screenshot";
 import { StatsBand } from "@/components/site/stats-band";
 import { FinalCta, MetricsBar, SectionHeading } from "@/components/site/sections";
 import { TrackedLink } from "@/components/site/tracked-link";
@@ -70,9 +69,10 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
       {/* HERO — same design as before; copy repositioned to "AI for manufacturing". */}
       <section className="hero-bg relative overflow-hidden text-white">
         <div className="grid-pattern absolute inset-0" aria-hidden />
-        <div className="container relative grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[1.15fr_1fr]">
-          <div>
-            <ul className="flex flex-wrap gap-2">
+        {/* Single centred column: the hero leads with the message; product screens live in "See the product". */}
+        <div className="container relative py-16 md:py-24">
+          <div className="mx-auto max-w-4xl text-center">
+            <ul className="flex flex-wrap justify-center gap-2">
               {home.badges[locale].map((b, i) => (
                 <li key={b}>
                   <Badge variant="glass" className="animate-fade-up" style={{ animationDelay: `${i * 80}ms` }}>
@@ -98,8 +98,8 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                 </Variant>
               ))}
             </h1>
-            <p className="mt-6 max-w-xl text-lg text-white/80 md:text-xl">{home.h2[locale]}</p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80 md:text-xl">{home.h2[locale]}</p>
+            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <Button asChild size="lg">
                 <TrackedLink href={href(locale, "/demo")} event={{ name: "cta_click", params: { cta: "book_demo", location: "home_hero" } }}>
                   <CtaLabel locale={locale} />
@@ -119,14 +119,13 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                 </Button>
               )}
             </div>
-            <div className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-white/10 pt-6 text-sm text-white/70">
+            <div className="mx-auto mt-10 flex max-w-xl flex-wrap items-center justify-center gap-x-4 gap-y-2 border-t border-white/10 pt-6 text-sm text-white/70">
               <span className="font-medium text-white/50">{home.trustedBy[locale]}</span>
               <Link href={href(locale, "/case-studies/star-trans")} className="font-bold text-white hover:underline" dir="ltr">
                 STAR TRANS
               </Link>
             </div>
           </div>
-          <HeroScreenshot locale={locale} />
         </div>
       </section>
 

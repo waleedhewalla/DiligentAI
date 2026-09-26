@@ -156,9 +156,6 @@
   .rise {
     animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   }
-  .float-soft {
-    animation: float-soft 7s ease-in-out infinite;
-  }
 }
 
 @keyframes aurora {
@@ -169,10 +166,6 @@
 @keyframes rise {
   from { transform: translateY(18px); }
   to { transform: none; }
-}
-@keyframes float-soft {
-  0%, 100% { transform: translateY(0) rotate(-0.4deg); }
-  50% { transform: translateY(-10px) rotate(0.4deg); }
 }
 @keyframes shine {
   from { transform: translateX(-120%) skewX(-20deg); }
@@ -218,7 +211,7 @@ html.motion main section[data-reveal] :is(.grid, ul, ol) > :nth-child(n + 6) { t
 @keyframes progress { to { transform: scaleX(1); } }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-bg::before, .float-soft, .rise, .scroll-progress { animation: none !important; }
+  .hero-bg::before, .rise, .scroll-progress { animation: none !important; }
   .btn-shine::after { display: none; }
   .lift:hover { transform: none; }
 }
