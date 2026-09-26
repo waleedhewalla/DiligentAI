@@ -179,6 +179,19 @@ Mark `generate_lead`, `demo_booked` and `case_study_download` as key events in G
 - **CI** — `.github/workflows/ci.yml` runs lint, type-check and build on every push.
 - Lighthouse (mobile, simulated slow 4G, local build, Sep 2026): accessibility 100, SEO 100, best practices 96, performance 86–91 across the home, product, pricing, department, tool and article pages.
 
+## A/B tests (Track 5)
+
+Tests live in `src/content/experiments.ts` (`hero`, `cta`, `homeorder`, `toolcta`). Wrap each version in `<Variant exp="<id>" v="a|b">`; both ship while a test is live, a tiny script in `<head>` picks the version before first paint (no flicker, static-page friendly) and CSS hides the other.
+
+| Status | What happens |
+| --- | --- |
+| `off` | Only version A is rendered |
+| `preview` | Everyone sees A; check B with `?exp_<id>=b` (e.g. `/en?exp_hero=b&exp_cta=b`) |
+| `running` | Visitors split by `weights`; the choice sticks per browser |
+| `ended` | Only `winner` is rendered — then move the winning copy into the page |
+
+Results: GA4 user properties `exp_<id>` on every event plus `experiment_impression`; lead counts per version in the `lead_experiments` view (migration `20260930000000_lead_experiments.sql`). Run one test at a time for at least 4 weeks or ~1,000 visitors per version; `npm run launch:check` warns if more than one is running.
+
 ## Deployment (Vercel + Cloudflare)
 
 1. Click **Deploy with Vercel** above (or import the repo at vercel.com/new), choose branch `claude/great-maxwell-0ue8bi`, set `NEXT_PUBLIC_SITE_URL`, deploy. Functions run in `fra1` (Frankfurt, next to the EU Supabase region) per `vercel.json`. Add the remaining variables from `.env.example` as each service goes live.

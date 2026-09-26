@@ -5,7 +5,9 @@ import { ArrowRight, Printer } from "lucide-react";
 import { track } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { TrackedLink } from "./tracked-link";
+import { TrackedAnchor, TrackedLink } from "./tracked-link";
+import { WhatsAppIcon } from "./icons";
+import { Variant } from "@/components/experiments/variant";
 
 export type ScorecardData = {
   questions: { id: string; title: string; levels: string[]; advice: string }[];
@@ -21,13 +23,14 @@ type Labels = {
   print: string;
   reset: string;
   answerAll: string;
+  whatsapp: string;
 };
 
 /**
  * S&OP maturity self-assessment. Pure client-side: answers never leave the
  * browser. Shows a maturity band and the two weakest areas with advice.
  */
-export function SopScorecard({ data, labels, bookHref }: { data: ScorecardData; labels: Labels; bookHref: string }) {
+export function SopScorecard({ data, labels, bookHref, whatsappNumber }: { data: ScorecardData; labels: Labels; bookHref: string; whatsappNumber: string }) {
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const tracked = useRef(false);
   const done = Object.keys(answers).length === data.questions.length;
@@ -109,12 +112,32 @@ export function SopScorecard({ data, labels, bookHref }: { data: ScorecardData; 
                 ))}
               </ul>
               <div className="mt-6 grid gap-2 print:hidden">
-                <Button asChild>
-                  <TrackedLink href={bookHref} event={{ name: "cta_click", params: { cta: "book_demo", location: "tool_sop_scorecard" } }}>
-                    {labels.book}
-                    <ArrowRight className="btn-icon" />
-                  </TrackedLink>
-                </Button>
+                {/* A/B test "toolcta": B sends the result to an expert on WhatsApp. */}
+                <Variant exp="toolcta" v="a" as="div">
+                  <Button asChild className="w-full">
+                    <TrackedLink href={bookHref} event={{ name: "cta_click", params: { cta: "book_demo", location: "tool_sop_scorecard" } }}>
+                      {labels.book}
+                      <ArrowRight className="btn-icon" />
+                    </TrackedLink>
+                  </Button>
+                </Variant>
+                {whatsappNumber ? (
+                  <Variant exp="toolcta" v="b" as="div">
+                    <Button asChild variant="whatsapp" className="w-full">
+                      <TrackedAnchor
+                        href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+                          `${labels.result}: ${result.band.title} (${result.avg.toFixed(1)}/4). ${labels.focus}: ${result.weakest.map((q) => q.title).join(" · ")}`,
+                        )}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        event={{ name: "whatsapp_click", params: { location: "tool_sop_scorecard" } }}
+                      >
+                        <WhatsAppIcon className="h-5 w-5" />
+                        {labels.whatsapp}
+                      </TrackedAnchor>
+                    </Button>
+                  </Variant>
+                ) : null}
                 <div className="flex gap-2">
                   <Button type="button" variant="inverse" size="sm" className="flex-1" onClick={() => window.print()}>
                     <Printer className="h-4 w-4" aria-hidden />

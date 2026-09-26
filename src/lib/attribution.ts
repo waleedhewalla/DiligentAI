@@ -16,7 +16,8 @@ export type Touch = {
   landing?: string;
   at?: string;
 };
-export type Attribution = { first?: Touch; last?: Touch; pages?: string[] };
+/** `experiments` = A/B test versions this visitor saw (content/experiments.ts). */
+export type Attribution = { first?: Touch; last?: Touch; pages?: string[]; experiments?: Record<string, "a" | "b"> };
 
 const KEY = "da_attr";
 const UTM = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"] as const;
@@ -56,5 +57,8 @@ export function recordTouch(pathname: string) {
 }
 
 export function getAttribution(): Attribution {
-  return typeof window === "undefined" ? {} : read();
+  if (typeof window === "undefined") return {};
+  const a = read();
+  const exp = (window as Window & { __daExp?: Record<string, "a" | "b"> }).__daExp;
+  return exp && Object.keys(exp).length ? { ...a, experiments: exp } : a;
 }

@@ -4,14 +4,16 @@ import { useRef, useState } from "react";
 import { ArrowRight, Printer } from "lucide-react";
 import { track } from "@/lib/analytics";
 import { Button } from "@/components/ui/button";
-import { TrackedLink } from "./tracked-link";
+import { TrackedAnchor, TrackedLink } from "./tracked-link";
+import { WhatsAppIcon } from "./icons";
+import { Variant } from "@/components/experiments/variant";
 
 export type ChecklistData = { groups: { title: string; items: { id: string; text: string }[] }[] };
 
-type Labels = { ready: string; gaps: string; allSet: string; book: string; print: string; levels: [string, string, string] };
+type Labels = { ready: string; gaps: string; allSet: string; book: string; print: string; whatsapp: string; levels: [string, string, string] };
 
 /** CBAM readiness checklist — client-side only; shows open gaps and a readiness level. */
-export function CbamChecklist({ data, labels, bookHref }: { data: ChecklistData; labels: Labels; bookHref: string }) {
+export function CbamChecklist({ data, labels, bookHref, whatsappNumber }: { data: ChecklistData; labels: Labels; bookHref: string; whatsappNumber: string }) {
   const [checked, setChecked] = useState<Record<string, boolean>>({});
   const tracked = useRef(false);
   const all = data.groups.flatMap((g) => g.items);
@@ -70,12 +72,30 @@ export function CbamChecklist({ data, labels, bookHref }: { data: ChecklistData;
             <p className="mt-2 text-sm text-white/85">{labels.allSet}</p>
           )}
           <div className="mt-6 grid gap-2 print:hidden">
-            <Button asChild>
-              <TrackedLink href={bookHref} event={{ name: "cta_click", params: { cta: "book_demo", location: "tool_cbam_checklist" } }}>
-                {labels.book}
-                <ArrowRight className="btn-icon" />
-              </TrackedLink>
-            </Button>
+            {/* A/B test "toolcta": B sends the result to an expert on WhatsApp. */}
+            <Variant exp="toolcta" v="a" as="div">
+              <Button asChild className="w-full">
+                <TrackedLink href={bookHref} event={{ name: "cta_click", params: { cta: "book_demo", location: "tool_cbam_checklist" } }}>
+                  {labels.book}
+                  <ArrowRight className="btn-icon" />
+                </TrackedLink>
+              </Button>
+            </Variant>
+            {whatsappNumber ? (
+              <Variant exp="toolcta" v="b" as="div">
+                <Button asChild variant="whatsapp" className="w-full">
+                  <TrackedAnchor
+                    href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`CBAM ${labels.ready}: ${pct}% — ${level}. ${labels.gaps}: ${gaps.length}`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    event={{ name: "whatsapp_click", params: { location: "tool_cbam_checklist" } }}
+                  >
+                    <WhatsAppIcon className="h-5 w-5" />
+                    {labels.whatsapp}
+                  </TrackedAnchor>
+                </Button>
+              </Variant>
+            ) : null}
             <Button type="button" variant="inverse" size="sm" onClick={() => window.print()}>
               <Printer className="h-4 w-4" aria-hidden />
               {labels.print}

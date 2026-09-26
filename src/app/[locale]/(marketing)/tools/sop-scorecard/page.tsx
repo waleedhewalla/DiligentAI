@@ -2,6 +2,7 @@ import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { sopScorecard as t } from "@/content/tools";
 import { toolsCopy } from "@/content/tools";
+import { site } from "@/lib/site";
 import { href, pageMetadata } from "@/lib/seo";
 import { Breadcrumbs, PageHero } from "@/components/site/sections";
 import { DemoForm } from "@/components/site/demo-form";
@@ -17,6 +18,7 @@ const labels = {
   book: { en: "Review my result with an expert", ar: "راجع نتيجتي مع خبير" },
   print: { en: "Print / save PDF", ar: "اطبع / احفظ PDF" },
   reset: { en: "Start again", ar: "ابدأ من جديد" },
+  whatsapp: { en: "WhatsApp my result to an expert", ar: "أرسل نتيجتي لخبير عبر واتساب" },
   answerAll: { en: "Answer all eight questions to see your maturity level and where to start.", ar: "أجب عن الأسئلة الثمانية لترى مستوى النضج ومن أين تبدأ." },
 };
 
@@ -55,6 +57,7 @@ export default function SopScorecardPage({ params }: { params: { locale: Locale 
             }}
             labels={L}
             bookHref={href(locale, "/demo") + `?area=${t.department}&intent=${t.slug}`}
+            whatsappNumber={site.whatsapp.replace(/\D/g, "")}
           />
         </div>
       </section>

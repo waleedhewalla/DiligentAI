@@ -7,6 +7,8 @@ import { Analytics } from "@/components/analytics/analytics";
 import { ConsentBanner } from "@/components/analytics/consent-banner";
 import { AttributionTracker } from "@/components/analytics/attribution-tracker";
 import { WebVitals } from "@/components/analytics/web-vitals";
+import { ExperimentTracker } from "@/components/analytics/experiment-tracker";
+import { ExperimentHead } from "@/components/experiments/experiment-head";
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
@@ -60,13 +62,17 @@ export default function LocaleLayout({ children, params }: { children: React.Rea
   if (!isLocale(params.locale)) notFound();
   const locale = params.locale;
   return (
-    <html lang={htmlLang[locale]} dir={dir(locale)} className={`${inter.variable} ${notoArabic.variable}`}>
+    <html lang={htmlLang[locale]} dir={dir(locale)} className={`${inter.variable} ${notoArabic.variable}`} suppressHydrationWarning>
+      <head>
+        <ExperimentHead />
+      </head>
       <body className="min-h-screen font-sans">
         {children}
         <ConsentBanner locale={locale} />
         <Analytics />
         <AttributionTracker />
         <WebVitals />
+        <ExperimentTracker />
       </body>
     </html>
   );

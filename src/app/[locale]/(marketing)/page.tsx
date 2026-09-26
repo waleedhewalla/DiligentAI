@@ -15,6 +15,8 @@ import { Badge } from "@/components/ui/badge";
 import { HeroVisual } from "@/components/site/hero-visual";
 import { FinalCta, MetricsBar, SectionHeading } from "@/components/site/sections";
 import { TrackedLink } from "@/components/site/tracked-link";
+import { Variant } from "@/components/experiments/variant";
+import { CtaLabel } from "@/components/experiments/cta-label";
 import { FounderSection } from "@/components/site/founder";
 import { ServiceModelGrid } from "@/components/site/catalog";
 import { DepartmentPicker, type PickerDepartment } from "@/components/site/department-picker";
@@ -79,18 +81,23 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                 </li>
               ))}
             </ul>
+            {/* A/B test "hero" (content/experiments.ts): version B is home.h1B. */}
             <h1 className="h-display mt-6">
-              {home.h1[locale].map((line, i) => (
-                <span key={line} className={i === 0 ? "block" : i === 1 ? "block text-brand-teal" : "block text-brand-orange"}>
-                  {line}
-                </span>
+              {(["a", "b"] as const).map((v) => (
+                <Variant key={v} exp="hero" v={v}>
+                  {(v === "a" ? home.h1 : home.h1B)[locale].map((line, i) => (
+                    <span key={line} className={i === 0 ? "block" : i === 1 ? "block text-brand-teal" : "block text-brand-orange"}>
+                      {line}
+                    </span>
+                  ))}
+                </Variant>
               ))}
             </h1>
             <p className="mt-6 max-w-xl text-lg text-white/80 md:text-xl">{home.h2[locale]}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg">
                 <TrackedLink href={href(locale, "/demo")} event={{ name: "cta_click", params: { cta: "book_demo", location: "home_hero" } }}>
-                  {dict.cta.bookDemo}
+                  <CtaLabel locale={locale} />
                   <ArrowRight className="btn-icon" />
                 </TrackedLink>
               </Button>
@@ -123,6 +130,8 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
         </div>
       </section>
 
+      {/* A/B test "homeorder": version B moves the product showcase (#product) above the picker. */}
+      <div className="flex flex-col">
       {/* PROBLEM → DEPARTMENT PICKER — "what's your problem?" */}
       <section className="section">
         <div className="container">
@@ -160,6 +169,8 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
           </div>
         </section>
       ) : null}
+
+      </div>
 
       {/* SERVICE MODELS — primary offer: Consult / Build / Integrate. */}
       <section className="section bg-surface-subtle" id="services">

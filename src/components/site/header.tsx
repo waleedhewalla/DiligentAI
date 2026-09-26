@@ -15,6 +15,7 @@ import { Logo } from "./logo";
 import { Icon } from "./icons";
 import { LocaleSwitcher } from "./locale-switcher";
 import { TrackedLink } from "./tracked-link";
+import { CtaLabel } from "@/components/experiments/cta-label";
 
 // The static GitHub Pages preview has no auth pages.
 const showLogin = process.env.NEXT_PUBLIC_PREVIEW !== "1";
@@ -193,7 +194,7 @@ export function Header({ locale, dict, nav }: { locale: Locale; dict: Dictionary
                   params: { cta: "book_demo", location: "header" },
                 }}
               >
-                {dict.nav.bookDemo}
+                <CtaLabel locale={locale} size="short" />
               </TrackedLink>
             </Button>
           </div>
@@ -262,7 +263,7 @@ export function Header({ locale, dict, nav }: { locale: Locale; dict: Dictionary
                     params: { cta: "book_demo", location: "mobile_menu" },
                   }}
                 >
-                  {dict.cta.bookDemo}
+                  <CtaLabel locale={locale} />
                   <ArrowRight className="btn-icon" />
                 </TrackedLink>
               </Button>

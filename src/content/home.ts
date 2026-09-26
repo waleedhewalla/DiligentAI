@@ -33,6 +33,11 @@ export const home = {
     en: "We consult, build and integrate AI for manufacturers in Egypt and the Gulf — from production planning and quality to supply chain and the boardroom.",
     ar: "نقدم الاستشارات ونبني ونُكامل حلول الذكاء الاصطناعي للمصانع في مصر والخليج — من تخطيط الإنتاج والجودة إلى سلاسل الإمداد ومجلس الإدارة.",
   },
+  /** Version B of the "hero" A/B test (content/experiments.ts). Same three-colour layout. */
+  h1B: {
+    en: ["One plan for the whole plant.", "In Arabic.", "Live in 8 weeks."],
+    ar: ["خطة واحدة للمصنع كله.", "بالعربية.", "تعمل خلال 8 أسابيع."],
+  } as L10n<string[]>,
   trustedBy: { en: "Trusted by", ar: "موثوق من" },
   trustFacts: {
     en: ["Cairo-based", "24 years' experience", "55+ SAP projects"],

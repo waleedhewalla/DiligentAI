@@ -2,6 +2,7 @@ import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { cbamChecklist as t } from "@/content/tools";
 import { toolsCopy } from "@/content/tools";
+import { site } from "@/lib/site";
 import { href, pageMetadata } from "@/lib/seo";
 import { Breadcrumbs, PageHero } from "@/components/site/sections";
 import { DemoForm } from "@/components/site/demo-form";
@@ -15,6 +16,7 @@ const labels = {
   allSet: { en: "Everything ticked — worth confirming with your verifier.", ar: "كل البنود مكتملة — يستحسن التأكيد مع جهة التحقق." },
   book: { en: "Close my gaps with an expert", ar: "أغلق الفجوات مع خبير" },
   print: { en: "Print / save PDF", ar: "اطبع / احفظ PDF" },
+  whatsapp: { en: "WhatsApp my result to an expert", ar: "أرسل نتيجتي لخبير عبر واتساب" },
 };
 const levels = {
   en: ["Early — start with scope and metering", "In progress — focus on method and evidence", "Nearly ready — plan verification"],
@@ -56,9 +58,11 @@ export default function CbamChecklistPage({ params }: { params: { locale: Locale
               allSet: labels.allSet[locale],
               book: labels.book[locale],
               print: labels.print[locale],
+              whatsapp: labels.whatsapp[locale],
               levels: [...levels[locale]] as [string, string, string],
             }}
             bookHref={href(locale, "/demo") + `?area=cbam-emissions-reporting&intent=${t.slug}`}
+            whatsappNumber={site.whatsapp.replace(/\D/g, "")}
           />
           <p className="mt-8 text-sm text-muted-foreground">{t.disclaimer[locale]}</p>
         </div>

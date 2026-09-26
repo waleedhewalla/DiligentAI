@@ -33,6 +33,7 @@ export const attributionSchema = z
     first: touchSchema.optional(),
     last: touchSchema.optional(),
     pages: z.array(z.string().max(200)).max(10).optional(),
+    experiments: z.record(z.string().regex(/^[a-z0-9-]{1,40}$/), z.enum(["a", "b"])).optional(),
   })
   .strip();
 

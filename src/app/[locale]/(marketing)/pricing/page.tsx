@@ -11,6 +11,7 @@ import { Icon } from "@/components/site/icons";
 import { Button } from "@/components/ui/button";
 import { TrackedLink } from "@/components/site/tracked-link";
 import { MaturityLegend } from "@/components/site/maturity-badge";
+import { CtaLabel } from "@/components/experiments/cta-label";
 
 // Gap 1 — every offering with `packages` in catalog/offerings.ts appears here automatically.
 const copy = {
@@ -61,7 +62,7 @@ export default function PricingPage({ params }: { params: { locale: Locale } }) 
       >
         <Button asChild size="lg" className="mt-8">
           <TrackedLink href={href(locale, "/demo") + "?interest=build&intent=quote"} event={{ name: "cta_click", params: { cta: "book_demo", location: "pricing_hero" } }}>
-            {dict.cta.bookDemo}
+            <CtaLabel locale={locale} />
             <ArrowRight className="btn-icon" />
           </TrackedLink>
         </Button>

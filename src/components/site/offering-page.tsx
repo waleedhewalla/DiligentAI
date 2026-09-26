@@ -28,6 +28,7 @@ import { TrackedLink } from "./tracked-link";
 import { StickyCta } from "./sticky-cta";
 import { MaturityBadge } from "./maturity-badge";
 import { ProductGallery } from "./product-gallery";
+import { CtaLabel } from "@/components/experiments/cta-label";
 import { DownloadButton } from "./download-button";
 import { NexusWidget } from "./nexus-widget";
 import { RoiCalculator } from "./roi-calculator";
@@ -96,7 +97,7 @@ export async function OfferingPage({ offering: o, locale }: { offering: Offering
                   href={demoHref}
                   event={{ name: "cta_click", params: { cta: "book_demo", location: "offering_hero", solution: o.slug, interest: primaryModel } }}
                 >
-                  {dict.cta.bookDemo}
+                  <CtaLabel locale={locale} />
                   <ArrowRight className="btn-icon" />
                 </TrackedLink>
               </Button>

@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Icon, WhatsAppIcon } from "./icons";
 import { MaturityBadge } from "./maturity-badge";
+import { CtaLabel } from "@/components/experiments/cta-label";
 import { TrackedAnchor, TrackedLink } from "./tracked-link";
 import { JsonLd } from "@/components/seo/json-ld";
 import { breadcrumbSchema } from "@/lib/schema";
@@ -253,7 +254,7 @@ export function FinalCta({
               href={href(locale, "/demo") + qs}
               event={{ name: "cta_click", params: { cta: "book_demo", location, solution: query?.area, interest: query?.interest } }}
             >
-              {dict.cta.bookDemo}
+              <CtaLabel locale={locale} />
               <ArrowRight className="btn-icon" />
             </TrackedLink>
           </Button>

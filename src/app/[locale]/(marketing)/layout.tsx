@@ -21,6 +21,7 @@ export default function MarketingLayout({ children, params }: { children: React.
       {/* Keeps the footer clear of the mobile action bar. */}
       <div className="h-20 md:hidden" aria-hidden />
       <MobileActionBar
+        locale={params.locale}
         bookHref={href(params.locale, "/demo")}
         bookLabel={dict.cta.bookDemoShort}
         whatsappHref={whatsappHref(params.locale === "ar" ? "مرحباً، أود حجز مراجعة لمصنعي" : "Hi, I'd like to book a plant review")}

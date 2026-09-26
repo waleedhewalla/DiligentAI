@@ -24,7 +24,9 @@ export type AnalyticsEvent =
   | { name: "share"; params: { network: string } }
   | { name: "department_pick"; params: { department: string } }
   // Track 3 lead magnets.
-  | { name: "tool_complete"; params: { tool: string; score: number; band?: string } };
+  | { name: "tool_complete"; params: { tool: string; score: number; band?: string } }
+  // Track 5 A/B tests.
+  | { name: "experiment_impression"; params: { experiment: string; variant: string } };
 
 type Gtag = (...args: unknown[]) => void;
 type Hotjar = (...args: unknown[]) => void;

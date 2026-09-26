@@ -82,6 +82,12 @@ if (nullMetrics) warnings.push(`${nullMetrics} proof metric(s) still null (e.g. 
 for (const d of ["public/downloads/star-trans-case-study.pdf", "public/downloads/ipe-technical-brief.pdf"])
   if (!existsSync(join(root, d))) warnings.push(`${d} missing — button falls back to print / request`);
 
+const exps = readFileSync(join(src, "content/experiments.ts"), "utf8");
+const running = (exps.match(/status:\s*"running"/g) ?? []).length;
+const preview = (exps.match(/status:\s*"preview"/g) ?? []).length;
+if (running > 1) warnings.push(`${running} A/B tests are running at once — run one at a time so results are readable`);
+ok.push(`A/B tests: ${running} running, ${preview} in preview`);
+
 // ── Report ───────────────────────────────────────────────────────────────
 const line = (s) => console.log(s);
 line(`\nDiligent AI — launch check\n`);

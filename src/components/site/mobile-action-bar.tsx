@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { TrackedAnchor, TrackedLink } from "./tracked-link";
 import { WhatsAppIcon } from "./icons";
+import { CtaLabel } from "@/components/experiments/cta-label";
+import type { Locale } from "@/i18n/config";
 
 /**
  * Phone-only bottom bar: the primary CTA plus WhatsApp (when a number is set),
@@ -14,11 +16,13 @@ import { WhatsAppIcon } from "./icons";
  * Desktop uses the per-offering StickyCta instead.
  */
 export function MobileActionBar({
+  locale,
   bookHref,
   bookLabel,
   whatsappHref,
   whatsappLabel,
 }: {
+  locale: Locale;
   bookHref: string;
   bookLabel: string;
   whatsappHref: string | null;
@@ -45,7 +49,7 @@ export function MobileActionBar({
       <div className="flex gap-2">
         <Button asChild size="default" className="flex-1" tabIndex={visible ? 0 : -1}>
           <TrackedLink href={bookHref} event={{ name: "cta_click", params: { cta: "book_demo", location: "mobile_bar" } }}>
-            {bookLabel}
+            <CtaLabel locale={locale} size="short" />
             <ArrowRight className="btn-icon" />
           </TrackedLink>
         </Button>
