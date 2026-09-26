@@ -73,7 +73,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
         <div className="hero-home__spot absolute inset-0 -z-10" aria-hidden />
         <div className="grid-pattern absolute inset-0 -z-10" aria-hidden />
         <HeroLights />
-        <div className="container relative py-20 md:py-28 lg:py-32">
+        <div className="container relative pb-20 pt-10 md:pb-24 md:pt-12 lg:pb-28 lg:pt-14">
           <div className="mx-auto max-w-4xl text-center">
             <ul className="flex flex-wrap justify-center gap-2">
               {home.badges[locale].map((b, i) => (
