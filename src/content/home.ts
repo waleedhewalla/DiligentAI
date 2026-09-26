@@ -54,7 +54,6 @@ export const home = {
     customers: { en: "Manufacturers working with us", ar: "مصانع تعمل معنا" },
     partners: { en: "Technology partners", ar: "شركاء تقنيون" },
   },
-  trustedBy: { en: "Trusted by", ar: "موثوق من" },
   problem: {
     eyebrow: { en: "The pain you already know", ar: "الألم الذي تعرفه جيداً" },
     title: { en: "Your plant runs on yesterday's information.", ar: "مصنعك يُدار بمعلومات الأمس." },

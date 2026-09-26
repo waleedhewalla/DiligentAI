@@ -119,12 +119,6 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                 </Button>
               )}
             </div>
-            <div className="mx-auto mt-10 flex max-w-xl flex-wrap items-center justify-center gap-x-4 gap-y-2 border-t border-white/10 pt-6 text-sm text-white/70">
-              <span className="font-medium text-white/50">{home.trustedBy[locale]}</span>
-              <Link href={href(locale, "/case-studies/star-trans")} className="font-bold text-white hover:underline" dir="ltr">
-                STAR TRANS
-              </Link>
-            </div>
           </div>
         </div>
       </section>
