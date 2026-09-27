@@ -5,16 +5,10 @@ import { listDepartments, listServiceModels } from "@/content/catalog";
 import { href } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { Logo } from "./logo";
-import { LinkedInIcon, XIcon, YouTubeIcon } from "./icons";
+import { SocialLinks } from "./social-links";
 
 export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const year = new Date().getFullYear();
-  // Company channels only; each icon appears once its URL is set.
-  const socials = [
-    { href: site.social.linkedinCompany, label: "Diligent AI on LinkedIn", icon: <LinkedInIcon className="h-5 w-5" /> },
-    { href: site.social.youtube, label: "Diligent AI on YouTube", icon: <YouTubeIcon className="h-5 w-5" /> },
-    { href: site.social.x, label: "Diligent AI on X", icon: <XIcon className="h-5 w-5" /> },
-  ].filter((s) => s.href);
   const columns = [
     // Dynamic: solution categories and service models come from the catalog.
     {
@@ -64,16 +58,11 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <Logo />
           <p className="mt-4 max-w-sm text-sm text-muted-foreground">{dict.footer.blurb}</p>
           <p className="mt-4 text-sm font-medium">{site.city[locale]}</p>
-          <div className="mt-4 flex flex-wrap items-center gap-1">
-            {socials.map((s) => (
-              <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} className="rounded-md p-2 text-brand-navy hover:bg-muted">
-                {s.icon}
-              </a>
-            ))}
-            <a href={`mailto:${site.email}`} className="text-sm text-muted-foreground hover:text-foreground">
-              {site.email}
-            </a>
-          </div>
+          <a href={`mailto:${site.email}`} className="mt-2 inline-block text-sm text-muted-foreground hover:text-foreground" dir="ltr">
+            {site.email}
+          </a>
+          <p className="mt-6 text-sm font-semibold text-brand-navy">{locale === "ar" ? "تابعنا" : "Follow us"}</p>
+          <SocialLinks locale={locale} className="mt-3" />
         </div>
         {columns.map((col) => (
           <div key={col.title}>

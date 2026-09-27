@@ -80,7 +80,7 @@ Optional offering fields added for the competitive gaps: `packages` (fixed-price
 - `customerLogos` / `videoTestimonials` in `proof.ts` (the logo strip needs 3 approved logos; videos need `approved: true`).
 - `certifications[].target` and service commitments in `content/trust.ts`.
 - `roadmap` items in `departments.ts` — move each into `offerings` when the product goes live.
-- Company social URLs (`NEXT_PUBLIC_LINKEDIN_COMPANY_URL`, `NEXT_PUBLIC_YOUTUBE_URL`, `NEXT_PUBLIC_X_URL`) and `NEXT_PUBLIC_WHATSAPP_NUMBER` (enables the WhatsApp button in the mobile action bar).
+- Company social URLs (`NEXT_PUBLIC_LINKEDIN_COMPANY_URL`, `NEXT_PUBLIC_FACEBOOK_URL`, `NEXT_PUBLIC_INSTAGRAM_URL`, `NEXT_PUBLIC_X_URL`, `NEXT_PUBLIC_TIKTOK_URL`, `NEXT_PUBLIC_YOUTUBE_URL`; until set, sample `@diligentai` links are shown) and `NEXT_PUBLIC_WHATSAPP_NUMBER` (enables the WhatsApp button in the mobile action bar).
 
 **Free tools (lead magnets):** `src/content/tools.ts` holds the S&OP Maturity Scorecard and the CBAM Readiness Checklist (bilingual questions, bands, advice). They render at `/tools/*`, run fully in the browser, fire `tool_complete`, and link to the booking page with `?area=…&intent=<tool>` so the lead's source is recorded. Blog posts can embed a tool with `{ type: "tool", tool: "<slug>" }`; a department page shows the tool whose `department` matches.
 

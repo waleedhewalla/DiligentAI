@@ -5,11 +5,16 @@ import { home } from "@/content/home";
 import { site, whatsappHref } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { WhatsAppIcon } from "./icons";
+import { SocialLinks } from "./social-links";
 
 /** "Who you call if something goes wrong": the delivery team behind every engagement. */
 export function TeamSection({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const f = home.founder;
-  const wa = whatsappHref(locale === "ar" ? "مرحباً فريق Diligent AI، أود التحدث مع أحد المستشارين" : "Hello Diligent AI team, I'd like to speak with a consultant");
+  const wa = whatsappHref(
+    locale === "ar"
+      ? "مرحباً فريق Diligent AI، أود التحدث مع أحد المستشارين"
+      : "Hello Diligent AI team, I'd like to speak with a consultant",
+  );
   return (
     <section className="section bg-surface-subtle">
       <div className="container grid items-center gap-10 md:grid-cols-[280px_1fr] md:gap-16">
@@ -23,12 +28,16 @@ export function TeamSection({ locale, dict }: { locale: Locale; dict: Dictionary
             <span className="relative grid h-24 w-24 place-items-center rounded-full bg-white/10 ring-1 ring-white/20">
               <Users className="h-11 w-11 text-brand-teal-light" aria-hidden />
             </span>
-            <span className="relative text-lg font-bold" dir="ltr">Diligent AI</span>
+            <span className="relative text-lg font-bold" dir="ltr">
+              Diligent AI
+            </span>
           </div>
         </div>
         <div>
           <p className="eyebrow">{f.eyebrow[locale]}</p>
-          <blockquote className="mt-3 text-2xl font-bold leading-snug text-brand-navy md:text-3xl">“{f.quote[locale]}”</blockquote>
+          <blockquote className="mt-3 text-2xl font-bold leading-snug text-brand-navy md:text-3xl">
+            “{f.quote[locale]}”
+          </blockquote>
           <p className="mt-4 font-semibold">
             {f.team[locale]} <span className="font-normal text-muted-foreground">· {f.role[locale]}</span>
           </p>
@@ -40,19 +49,22 @@ export function TeamSection({ locale, dict }: { locale: Locale; dict: Dictionary
               </li>
             ))}
           </ul>
-          <Button asChild variant="secondary" className="mt-8">
-            {wa ? (
-              <a href={wa} target="_blank" rel="noopener noreferrer">
-                <WhatsAppIcon className="h-4 w-4" />
-                {dict.cta.whatsapp}
-              </a>
-            ) : (
-              <a href={`mailto:${site.email}`}>
-                <Mail className="h-4 w-4" />
-                {site.email}
-              </a>
-            )}
-          </Button>
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <Button asChild variant="secondary">
+              {wa ? (
+                <a href={wa} target="_blank" rel="noopener noreferrer">
+                  <WhatsAppIcon className="h-4 w-4" />
+                  {dict.cta.whatsapp}
+                </a>
+              ) : (
+                <a href={`mailto:${site.email}`}>
+                  <Mail className="h-4 w-4" />
+                  {site.email}
+                </a>
+              )}
+            </Button>
+            <SocialLinks locale={locale} />
+          </div>
         </div>
       </div>
     </section>

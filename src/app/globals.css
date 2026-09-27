@@ -93,6 +93,14 @@
   .h-display {
     @apply text-4xl font-bold leading-[1.1] tracking-tight md:text-5xl lg:text-6xl;
   }
+  /* Home hero statement: one line on desktop, shrinking just enough to fit the
+     viewport (19.2em = measured width of the English line plus a margin). */
+  @media (min-width: 1024px) {
+    .hero-line-1 {
+      white-space: nowrap;
+      font-size: min(1em, calc((100vw - 4rem) / 19.2));
+    }
+  }
   .h-section {
     @apply text-3xl font-bold tracking-tight md:text-4xl;
   }

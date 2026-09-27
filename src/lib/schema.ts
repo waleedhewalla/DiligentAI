@@ -1,6 +1,6 @@
 import type { Locale } from "@/i18n/config";
 import { absoluteUrl } from "@/lib/utils";
-import { founderName, site } from "@/lib/site";
+import { founderName, site, socialProfiles } from "@/lib/site";
 import { href } from "@/lib/seo";
 import type { Capability, Department, Offering } from "@/content/catalog";
 import type { Post } from "@/content/blog";
@@ -24,7 +24,8 @@ export function organizationSchema(locale: Locale) {
     address: { "@type": "PostalAddress", addressLocality: "Cairo", addressCountry: "EG" },
     areaServed: ["EG", "SA", "AE", "QA", "KW", "BH", "OM"].map((c) => ({ "@type": "Country", name: c })),
     founder: { "@type": "Person", name: founderName[locale], sameAs: [site.linkedin] },
-    sameAs: [site.linkedin, site.social.linkedinCompany, site.social.youtube, site.social.x].filter(Boolean),
+    // Only live (env-confirmed) profiles; sample URLs are never sent to search engines.
+    sameAs: socialProfiles().filter((p) => p.confirmed).map((p) => p.url),
     knowsLanguage: ["ar", "en"],
     ...(site.whatsapp
       ? {

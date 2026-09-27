@@ -7,7 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Breadcrumbs, PageHero } from "@/components/site/sections";
 import { DemoForm } from "@/components/site/demo-form";
 import { demoAreaOptions } from "@/lib/demo-options";
-import { LinkedInIcon, WhatsAppIcon } from "@/components/site/icons";
+import { WhatsAppIcon } from "@/components/site/icons";
+import { SocialLinks } from "@/components/site/social-links";
 import { TrackedAnchor } from "@/components/site/tracked-link";
 
 const copy = {
@@ -76,14 +77,14 @@ export default function ContactPage({ params }: { params: { locale: Locale } }) 
               <Mail className="h-5 w-5 text-brand-teal-dark" aria-hidden />
               <span dir="ltr">{site.email}</span>
             </a>
-            <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 rounded-xl border p-4 hover:bg-muted">
-              <LinkedInIcon className="h-5 w-5 text-brand-navy" />
-              LinkedIn
-            </a>
             <p className="flex items-center gap-3 rounded-xl border p-4">
               <MapPin className="h-5 w-5 text-brand-orange" aria-hidden />
               {site.city[locale]}
             </p>
+            <div className="pt-2">
+              <h3 className="text-sm font-semibold text-brand-navy">{locale === "ar" ? "تابعنا على منصات التواصل" : "Follow us"}</h3>
+              <SocialLinks locale={locale} variant="cards" className="mt-3" />
+            </div>
           </aside>
         </div>
       </section>

@@ -51,7 +51,10 @@ want("NEXT_PUBLIC_HOTJAR_ID", "heatmaps after consent");
 want("DEMO_REQUEST_WEBHOOK_URL", "sends each lead to the CRM (HubSpot, Make, Zapier)");
 want("NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION", "Google Search Console (or verify by DNS)");
 want("NEXT_PUBLIC_BING_SITE_VERIFICATION", "Bing Webmaster Tools");
-want("NEXT_PUBLIC_LINKEDIN_COMPANY_URL", "company page icon in the footer and Organization schema");
+// Without these the footer, contact page and team section show sample @diligentai links.
+for (const v of ["LINKEDIN_COMPANY", "FACEBOOK", "INSTAGRAM", "X", "TIKTOK", "YOUTUBE"]) {
+  want(`NEXT_PUBLIC_${v}_URL`, "live social profile (sample link shown until set; also added to Organization schema)");
+}
 const booking = env.NEXT_PUBLIC_BOOKING_URL ?? "https://cal.com/waleed-hewalla-trzjna/15min (default)";
 if (/15min/.test(booking)) warnings.push(`NEXT_PUBLIC_BOOKING_URL — ${booking} is a 15-minute event but the site offers a 30-minute review`);
 

@@ -6,11 +6,16 @@ export const site = {
   city: { en: "Cairo, Egypt", ar: "القاهرة، مصر" },
   founder: "Waleed Hewalla",
   linkedin: process.env.NEXT_PUBLIC_LINKEDIN_URL ?? "https://www.linkedin.com/in/waleedhewalla",
-  // Company channels – each icon appears only once its URL is set (TODO(Waleed): create the company page).
+  // Company channels. Until the real pages exist these default to the planned
+  // @diligentai handles (brand/SOCIAL-MEDIA-SETUP-GUIDE.md); set the env vars to
+  // the live URLs at go-live. TODO(Waleed): replace with the real page URLs.
   social: {
-    linkedinCompany: process.env.NEXT_PUBLIC_LINKEDIN_COMPANY_URL ?? "",
-    youtube: process.env.NEXT_PUBLIC_YOUTUBE_URL ?? "",
-    x: process.env.NEXT_PUBLIC_X_URL ?? "",
+    linkedinCompany: process.env.NEXT_PUBLIC_LINKEDIN_COMPANY_URL || "https://www.linkedin.com/company/diligentai",
+    facebook: process.env.NEXT_PUBLIC_FACEBOOK_URL || "https://www.facebook.com/diligentai",
+    instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/diligentai",
+    x: process.env.NEXT_PUBLIC_X_URL || "https://x.com/diligentai",
+    tiktok: process.env.NEXT_PUBLIC_TIKTOK_URL || "https://www.tiktok.com/@diligentai",
+    youtube: process.env.NEXT_PUBLIC_YOUTUBE_URL || "https://www.youtube.com/@diligentai",
   },
   // Business WhatsApp (international format). Override per environment with NEXT_PUBLIC_WHATSAPP_NUMBER.
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "201065307007",
@@ -38,4 +43,24 @@ export function whatsappHref(text?: string) {
   if (!site.whatsapp) return null;
   const q = text ? `?text=${encodeURIComponent(text)}` : "";
   return `https://wa.me/${site.whatsapp.replace(/\D/g, "")}${q}`;
+}
+
+export type SocialNetwork = "linkedin" | "facebook" | "instagram" | "x" | "tiktok" | "youtube";
+
+/** Company social profiles in display order. `confirmed` is false while a sample URL is in use. */
+export function socialProfiles(): { network: SocialNetwork; name: string; url: string; confirmed: boolean }[] {
+  return [
+    { network: "linkedin", name: "LinkedIn", url: site.social.linkedinCompany, confirmed: !!process.env.NEXT_PUBLIC_LINKEDIN_COMPANY_URL },
+    { network: "facebook", name: "Facebook", url: site.social.facebook, confirmed: !!process.env.NEXT_PUBLIC_FACEBOOK_URL },
+    { network: "instagram", name: "Instagram", url: site.social.instagram, confirmed: !!process.env.NEXT_PUBLIC_INSTAGRAM_URL },
+    { network: "x", name: "X", url: site.social.x, confirmed: !!process.env.NEXT_PUBLIC_X_URL },
+    { network: "tiktok", name: "TikTok", url: site.social.tiktok, confirmed: !!process.env.NEXT_PUBLIC_TIKTOK_URL },
+    { network: "youtube", name: "YouTube", url: site.social.youtube, confirmed: !!process.env.NEXT_PUBLIC_YOUTUBE_URL },
+  ];
+}
+
+/** "@diligentai"-style handle for display, taken from the profile URL. */
+export function socialHandle(url: string) {
+  const last = url.replace(/\/+$/, "").split("/").pop() ?? "";
+  return last.startsWith("@") ? last : `@${last}`;
 }
