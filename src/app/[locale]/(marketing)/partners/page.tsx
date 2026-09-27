@@ -7,18 +7,18 @@ import { Breadcrumbs, PageHero, SectionHeading } from "@/components/site/section
 import { Icon } from "@/components/site/icons";
 import { PartnerForm } from "@/components/site/partner-form";
 
-// Gap 4 & 7 — partner programme. Tracks and signed partners come from catalog/partners.ts;
+// Gap 4 & 7 – partner programme. Tracks and signed partners come from catalog/partners.ts;
 // signed partners render only when that list is non-empty (never list unsigned names).
 const copy = {
-  title: { en: "Partner Programme — ERP, Automation, Cloud & Hardware Partners", ar: "برنامج الشركاء — شركاء ERP والأتمتة والسحابة والأجهزة" },
+  title: { en: "Partner Programme – ERP, Automation, Cloud & Hardware Partners", ar: "برنامج الشركاء – شركاء ERP والأتمتة والسحابة والأجهزة" },
   description: {
     en: "Partner with Diligent AI to bring AI to your manufacturing customers in Egypt and the Gulf: referral, white-label and joint delivery models.",
     ar: "شارك Diligent AI لتقديم الذكاء الاصطناعي لعملائك من المصانع في مصر والخليج: نماذج الإحالة والعلامة البيضاء والتنفيذ المشترك.",
   },
   h1: { en: "You own the relationship. We add the AI.", ar: "أنت تملك العلاقة. ونحن نضيف الذكاء الاصطناعي." },
   lead: {
-    en: "ERP implementers, automation vendors, cloud providers and hardware suppliers: your manufacturing customers are being asked about AI. Partner with us to answer — in Arabic, integrated with the systems you already deliver.",
-    ar: "منفذو ERP وموردو الأتمتة ومزودو السحابة وموردو الأجهزة: عملاؤك من المصانع يُسألون عن الذكاء الاصطناعي. شاركنا لتقديم الإجابة — بالعربية، ومتكاملة مع الأنظمة التي تقدمها بالفعل.",
+    en: "ERP implementers, automation vendors, cloud providers and hardware suppliers: your manufacturing customers are being asked about AI. Partner with us to answer – in Arabic, integrated with the systems you already deliver.",
+    ar: "منفذو ERP وموردو الأتمتة ومزودو السحابة وموردو الأجهزة: عملاؤك من المصانع يُسألون عن الذكاء الاصطناعي. شاركنا لتقديم الإجابة – بالعربية، ومتكاملة مع الأنظمة التي تقدمها بالفعل.",
   },
   current: { en: "Current partners", ar: "الشركاء الحاليون" },
 };

@@ -8,15 +8,15 @@ import { Badge } from "@/components/ui/badge";
 import { Breadcrumbs, PageHero } from "@/components/site/sections";
 
 const copy = {
-  title: { en: "Insights — AI for MENA Manufacturing & Leadership", ar: "رؤى — الذكاء الاصطناعي للصناعة والقيادة في المنطقة" },
+  title: { en: "Insights – AI for MENA Manufacturing & Leadership", ar: "رؤى – الذكاء الاصطناعي للصناعة والقيادة في المنطقة" },
   description: {
     en: "Practical articles on production planning, executive intelligence and Arabic marketing for manufacturers in Egypt and the Gulf.",
     ar: "مقالات عملية عن تخطيط الإنتاج والذكاء التنفيذي والتسويق بالعربية لشركات التصنيع في مصر والخليج.",
   },
   h1: { en: "Insights", ar: "رؤى" },
   lead: {
-    en: "Field notes on planning, leadership and Arabic content — from 24 years inside MENA enterprises.",
-    ar: "ملاحظات ميدانية عن التخطيط والقيادة والمحتوى العربي — من 24 عاماً داخل مؤسسات المنطقة.",
+    en: "Field notes on planning, leadership and Arabic content – from 24 years inside MENA enterprises.",
+    ar: "ملاحظات ميدانية عن التخطيط والقيادة والمحتوى العربي – من 24 عاماً داخل مؤسسات المنطقة.",
   },
 };
 

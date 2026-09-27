@@ -1,5 +1,5 @@
 /**
- * CONFIGURABLE — how the catalog is grouped in the menu, the homepage and /solutions.
+ * CONFIGURABLE – how the catalog is grouped in the menu, the homepage and /solutions.
  * `source` decides whether a category lists offerings or capabilities.
  */
 import type { Category } from "./types";
@@ -35,8 +35,8 @@ export const categories: Category[] = [
     accent: "navy",
     title: { en: "Manufacturing Capabilities", ar: "قدرات قطاع التصنيع" },
     summary: {
-      en: "Supply chain, forecasting, quality, demand and maintenance — the problems we solve on the floor.",
-      ar: "سلاسل الإمداد والتنبؤ والجودة والطلب والصيانة — المشكلات التي نحلها في أرض المصنع.",
+      en: "Supply chain, forecasting, quality, demand and maintenance – the problems we solve on the floor.",
+      ar: "سلاسل الإمداد والتنبؤ والجودة والطلب والصيانة – المشكلات التي نحلها في أرض المصنع.",
     },
     source: "capabilities",
     href: "/capabilities",

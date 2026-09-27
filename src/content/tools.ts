@@ -18,8 +18,8 @@ export const sopScorecard = {
   seo: {
     title: { en: "Free S&OP Maturity Scorecard for Manufacturers", ar: "مقياس مجاني لنضج تخطيط المبيعات والعمليات للمصانع" },
     description: {
-      en: "Score your sales and operations planning in 3 minutes across forecasting, capacity, data, finance and KPIs — with practical next steps.",
-      ar: "قيّم تخطيط المبيعات والعمليات في 3 دقائق عبر التوقع والطاقة والبيانات والمالية والمؤشرات — مع خطوات عملية تالية.",
+      en: "Score your sales and operations planning in 3 minutes across forecasting, capacity, data, finance and KPIs – with practical next steps.",
+      ar: "قيّم تخطيط المبيعات والعمليات في 3 دقائق عبر التوقع والطاقة والبيانات والمالية والمؤشرات – مع خطوات عملية تالية.",
     },
   },
   questions: [
@@ -131,7 +131,7 @@ export const sopScorecard = {
         { en: "KPIs reviewed in S&OP with root causes", ar: "مؤشرات تُراجع في S&OP مع الأسباب الجذرية" },
       ],
       advice: {
-        en: "Track on-time delivery, forecast accuracy and plan adherence together, and review the misses in the S&OP meeting — not just the averages.",
+        en: "Track on-time delivery, forecast accuracy and plan adherence together, and review the misses in the S&OP meeting – not just the averages.",
         ar: "تابع التسليم في الموعد ودقة التوقع والالتزام بالخطة معاً، وراجع الإخفاقات في اجتماع S&OP لا المتوسطات فقط.",
       },
     },
@@ -215,8 +215,8 @@ export const reviewCopy = {
 export const toolsCopy = {
   title: { en: "Free tools for plant leaders", ar: "أدوات مجانية لقادة المصانع" },
   lead: {
-    en: "Self-assessments you can finish in minutes. They run in your browser — nothing is stored unless you choose to book a review.",
-    ar: "تقييمات ذاتية تنهيها في دقائق. تعمل في متصفحك — لا يُخزّن شيء إلا إذا اخترت حجز مراجعة.",
+    en: "Self-assessments you can finish in minutes. They run in your browser – nothing is stored unless you choose to book a review.",
+    ar: "تقييمات ذاتية تنهيها في دقائق. تعمل في متصفحك – لا يُخزّن شيء إلا إذا اخترت حجز مراجعة.",
   },
   roi: { en: "Planning savings calculator", ar: "حاسبة وفر التخطيط" },
   roiBody: { en: "Estimate the hours and money automated scheduling could return.", ar: "قدّر الساعات والأموال التي قد توفرها الجدولة الآلية." },

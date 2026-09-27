@@ -2,7 +2,7 @@ import type { L10n } from "@/i18n/config";
 
 /**
  * Homepage copy. Structural lists (service models, categories, capabilities)
- * are NOT here — the homepage renders them straight from the catalog, so new
+ * are NOT here – the homepage renders them straight from the catalog, so new
  * offerings appear without touching this file. Only editorial copy lives here.
  */
 export const home = {
@@ -12,8 +12,8 @@ export const home = {
       ar: "Diligent AI | حلول الذكاء الاصطناعي وتكامل الأنظمة للمصانع في مصر والخليج",
     },
     description: {
-      en: "AI consulting, pre-built AI tools, custom models and ERP integration for manufacturers — production planning, forecasting, quality and supply chain. Arabic-first. Book a 30-minute call.",
-      ar: "استشارات وأدوات ذكاء اصطناعي جاهزة ونماذج مخصصة وتكامل مع ERP للمصانع — تخطيط الإنتاج والتنبؤ والجودة وسلاسل الإمداد. بالعربية أولاً. احجز مكالمة مدتها 30 دقيقة.",
+      en: "AI consulting, pre-built AI tools, custom models and ERP integration for manufacturers – production planning, forecasting, quality and supply chain. Arabic-first. Book a 30-minute call.",
+      ar: "استشارات وأدوات ذكاء اصطناعي جاهزة ونماذج مخصصة وتكامل مع ERP للمصانع – تخطيط الإنتاج والتنبؤ والجودة وسلاسل الإمداد. بالعربية أولاً. احجز مكالمة مدتها 30 دقيقة.",
     },
     keywords: {
       en: ["AI manufacturing software Egypt", "AI consulting manufacturing", "ERP AI integration", "production planning AI", "AI quality control"],
@@ -30,8 +30,8 @@ export const home = {
     ar: ["تصنيع ذكي مدعوم بالذكاء الاصطناعي.", "مبني على بياناتك.", "مدمج في نظام ERP وأنظمة مصنعك."],
   } as L10n<string[]>,
   h2: {
-    en: "We consult, build and integrate AI for manufacturers in Egypt and the Gulf — from production planning and quality to supply chain and the boardroom.",
-    ar: "نقدم الاستشارات ونبني ونُكامل حلول الذكاء الاصطناعي للمصانع في مصر والخليج — من تخطيط الإنتاج والجودة إلى سلاسل الإمداد ومجلس الإدارة.",
+    en: "We consult, build and integrate AI for manufacturers in Egypt and the Gulf – from production planning and quality to supply chain and the boardroom.",
+    ar: "نقدم الاستشارات ونبني ونُكامل حلول الذكاء الاصطناعي للمصانع في مصر والخليج – من تخطيط الإنتاج والجودة إلى سلاسل الإمداد ومجلس الإدارة.",
   },
   /** Version B of the "hero" A/B test (content/experiments.ts). Same three-colour layout. */
   h1B: {
@@ -82,7 +82,7 @@ export const home = {
   },
   tryIt: {
     eyebrow: { en: "Try it now", ar: "جرّبه الآن" },
-    title: { en: "Estimate your savings, or generate Arabic content — no sign-up", ar: "احسب وفرك أو أنشئ محتوى عربياً — دون تسجيل" },
+    title: { en: "Estimate your savings, or generate Arabic content – no sign-up", ar: "احسب مقدار التوفير، أو أنشئ محتوى باللغة العربية – دون تسجيل" },
     lead: {
       en: "Two tools you can use right now, no sign-up. The savings calculator runs entirely in your browser.",
       ar: "أداتان يمكنك استخدامهما الآن دون تسجيل. حاسبة الوفر تعمل بالكامل في متصفحك.",
@@ -138,8 +138,8 @@ export const home = {
       {
         title: { en: "Integration is our home ground", ar: "التكامل هو ملعبنا" },
         body: {
-          en: "55+ SAP projects behind the team. We connect AI to the systems you run — we don't rip and replace.",
-          ar: "خلف الفريق أكثر من 55 مشروع SAP. نربط الذكاء الاصطناعي بأنظمتك — ولا نستبدلها.",
+          en: "55+ SAP projects behind the team. We connect AI to the systems you run – we don't rip and replace.",
+          ar: "خلف الفريق أكثر من 55 مشروع SAP. نربط الذكاء الاصطناعي بأنظمتك – ولا نستبدلها.",
         },
       },
       {
@@ -154,14 +154,15 @@ export const home = {
   founder: {
     eyebrow: { en: "Who you call if something goes wrong", ar: "من تتصل به إذا حدثت مشكلة" },
     creds: {
-      en: ["24 years in enterprise transformation", "55+ SAP projects", "PMP", "SAP Activate"],
-      ar: ["24 عاماً في التحول المؤسسي", "أكثر من 55 مشروع SAP", "PMP", "SAP Activate"],
+      en: ["24 years of enterprise transformation", "55+ SAP projects delivered", "PMP-certified project leadership", "SAP Activate methodology"],
+      ar: ["24 عاماً من التحول المؤسسي", "أكثر من 55 مشروع SAP منفّذ", "قيادة مشاريع معتمدة PMP", "منهجية SAP Activate"],
     } as L10n<string[]>,
     quote: {
       en: "We are not an agency, and not just a platform. We are your operating partner.",
       ar: "لسنا وكالة، ولسنا مجرد منصة. نحن شريكك في التشغيل.",
     },
-    role: { en: "Founder & CEO", ar: "المؤسس والرئيس التنفيذي" },
+    team: { en: "The Diligent AI team", ar: "فريق Diligent AI" },
+    role: { en: "Senior consultants and delivery leads", ar: "مستشارون أوائل وقادة تنفيذ" },
   },
   finalCta: {
     title: { en: "Tell us the problem. We'll show you the AI.", ar: "أخبرنا بالمشكلة. وسنريك الحل." },

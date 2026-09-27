@@ -68,7 +68,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "server_error" }, { status: 500 });
     }
   } else {
-    console.warn("Supabase not configured — demo request not persisted", { company: data.company, interest: data.interest });
+    console.warn("Supabase not configured – demo request not persisted", { company: data.company, interest: data.interest });
   }
 
   const webhook = process.env.DEMO_REQUEST_WEBHOOK_URL;
@@ -78,7 +78,7 @@ export async function POST(request: Request) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        text: `New demo request: ${data.name} — ${data.company} (${data.industry}) · ${data.interest}${data.area ? ` / ${data.area}` : ""} · ${data.language.toUpperCase()}`,
+        text: `New demo request: ${data.name} – ${data.company} (${data.industry}) · ${data.interest}${data.area ? ` / ${data.area}` : ""} · ${data.language.toUpperCase()}`,
         ...data,
         website: undefined,
         is_mql: isMql,

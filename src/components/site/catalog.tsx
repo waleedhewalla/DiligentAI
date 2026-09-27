@@ -72,7 +72,7 @@ export function CategorySection({
   );
 }
 
-/** All categories stacked — the core of /solutions and the homepage. */
+/** All categories stacked – the core of /solutions and the homepage. */
 export function CatalogShowcase({ locale, dict, limit, headingLevel }: { locale: Locale; dict: Dictionary; limit?: number; headingLevel?: "h2" | "h3" }) {
   return (
     <div className="grid gap-16">

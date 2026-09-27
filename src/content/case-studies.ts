@@ -5,7 +5,7 @@ export type CaseStudy = {
   slug: string;
   /**
    * Publish gate. Drafts (false) never render, never enter the sitemap and are
-   * never linked — flip to true only when the customer has signed off the
+   * never linked – flip to true only when the customer has signed off the
    * text and every number (see the pilot measurement sheet in the content kit).
    */
   published: boolean;
@@ -13,7 +13,7 @@ export type CaseStudy = {
   clientAr: string;
   industry: L10n;
   location: L10n;
-  /** Offering slugs used (CONFIGURABLE — must exist in catalog/offerings.ts). */
+  /** Offering slugs used (CONFIGURABLE – must exist in catalog/offerings.ts). */
   offerings: string[];
   /** Capability slugs this story demonstrates; drives links from /capabilities pages. */
   capabilities: string[];
@@ -44,8 +44,8 @@ const allCaseStudies: CaseStudy[] = [
       ar: "كيف تخلّصت ستار ترانس من التخطيط اليدوي خلال 8 أسابيع",
     },
     summary: {
-      en: "From a 3-day manual planning cycle in Excel to automated schedules, a live executive view and an Arabic content engine — three Diligent AI solutions live in one company.",
-      ar: "من دورة تخطيط يدوية على Excel تستغرق 3 أيام إلى جداول تلقائية، ورؤية تنفيذية لحظية، ومحرك محتوى عربي — ثلاثة حلول من Diligent AI تعمل في شركة واحدة.",
+      en: "From a 3-day manual planning cycle in Excel to automated schedules, a live executive view and an Arabic content engine – three Diligent AI solutions live in one company.",
+      ar: "من دورة تخطيط يدوية على Excel تستغرق 3 أيام إلى جداول تلقائية، ورؤية تنفيذية لحظية، ومحرك محتوى عربي – ثلاثة حلول من Diligent AI تعمل في شركة واحدة.",
     },
     publishedAt: "2026-09-20",
     updatedAt: "2026-09-25",
@@ -67,8 +67,8 @@ const allCaseStudies: CaseStudy[] = [
       {
         offering: "ai-production-scheduling",
         body: {
-          en: "IPE was connected to Star Trans' manufacturing orders, materials and work-centre data and modelled their real constraints — core and coil assembly, tank fabrication and the test bay. The planning team now generates a full schedule in under a minute and re-plans on the spot when something changes.",
-          ar: "رُبط IPE بأوامر التصنيع والخامات ومراكز العمل في ستار ترانس ونُمذجت قيودهم الفعلية — تجميع القلب والملفات وتصنيع الخزانات ومحطة الاختبار. أصبح فريق التخطيط يُنتج جدولاً كاملاً في أقل من دقيقة، ويعيد التخطيط فوراً عند أي تغيير.",
+          en: "IPE was connected to Star Trans' manufacturing orders, materials and work-centre data and modelled their real constraints – core and coil assembly, tank fabrication and the test bay. The planning team now generates a full schedule in under a minute and re-plans on the spot when something changes.",
+          ar: "رُبط IPE بأوامر التصنيع والخامات ومراكز العمل في ستار ترانس ونُمذجت قيودهم الفعلية – تجميع القلب والملفات وتصنيع الخزانات ومحطة الاختبار. أصبح فريق التخطيط يُنتج جدولاً كاملاً في أقل من دقيقة، ويعيد التخطيط فوراً عند أي تغيير.",
         },
       },
       {
@@ -110,13 +110,13 @@ const allCaseStudies: CaseStudy[] = [
       },
     ],
   },
-  // ─── Pilot drafts (Track 3) — hidden until published: true ───────────────
+  // ─── Pilot drafts (Track 3) – hidden until published: true ───────────────
   // TODO(Waleed): replace the bracketed fields with signed pilot data at day 90.
   {
     slug: "pilot-vision-quality",
     published: false,
-    client: "[Pilot customer — quality]",
-    clientAr: "[عميل تجريبي — الجودة]",
+    client: "[Pilot customer – quality]",
+    clientAr: "[عميل تجريبي – الجودة]",
     industry: { en: "[Industry]", ar: "[القطاع]" },
     location: { en: "Egypt", ar: "مصر" },
     offerings: ["vision-quality-control"],
@@ -140,8 +140,8 @@ const allCaseStudies: CaseStudy[] = [
   {
     slug: "pilot-cost-margin",
     published: false,
-    client: "[Pilot customer — costing]",
-    clientAr: "[عميل تجريبي — التكاليف]",
+    client: "[Pilot customer – costing]",
+    clientAr: "[عميل تجريبي – التكاليف]",
     industry: { en: "[Industry]", ar: "[القطاع]" },
     location: { en: "Egypt", ar: "مصر" },
     offerings: ["erp-ai-integration", "executive-intelligence"],
@@ -164,7 +164,7 @@ const allCaseStudies: CaseStudy[] = [
   },
 ];
 
-/** Published case studies only — the single list every page, link and sitemap uses. */
+/** Published case studies only – the single list every page, link and sitemap uses. */
 export const caseStudies: CaseStudy[] = allCaseStudies.filter((c) => c.published);
 
 /** Drafts waiting for customer sign-off (for the team; never rendered). */

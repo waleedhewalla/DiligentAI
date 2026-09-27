@@ -1,6 +1,6 @@
 /**
  * Catalog access layer. Pages and components import ONLY from here, never
- * from the data files directly — so the data source can move to a CMS or
+ * from the data files directly – so the data source can move to a CMS or
  * Supabase later by changing these functions alone.
  */
 import { capabilities } from "./capabilities";
@@ -36,7 +36,7 @@ export function listPackagedOfferings() {
   return listOfferings().filter((o) => o.packages?.length);
 }
 
-/** Offerings specific to a market (explicit `regions` only) — drives region pages like /ksa. */
+/** Offerings specific to a market (explicit `regions` only) – drives region pages like /ksa. */
 export function regionalOfferings(region: Region) {
   return listOfferings().filter((o) => o.regions?.includes(region) || o.fundingRoutes?.length);
 }

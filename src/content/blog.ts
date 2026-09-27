@@ -1,11 +1,10 @@
 import type { L10n } from "@/i18n/config";
-import { founderName } from "@/lib/site";
 
 /**
  * Blog content layer.
  *
  * Posts are typed data so the site builds with zero external dependencies.
- * `getPosts()` / `getPost()` are the only access points — swap their bodies
+ * `getPosts()` / `getPost()` are the only access points – swap their bodies
  * for a Sanity or Supabase query when the CMS goes live and nothing else
  * changes.
  */
@@ -35,7 +34,7 @@ export type Post = {
   body: L10n<Block[]>;
 };
 
-const author = founderName;
+const author = { en: "Diligent AI Team", ar: "فريق Diligent AI" };
 
 const posts: Post[] = [
   {
@@ -107,7 +106,7 @@ const posts: Post[] = [
         { type: "h2", text: "Choose where to start" },
         { type: "ul", items: ["List unplanned stops from the last 12 months and rank machines by hours lost, not by count.", "Pick two or three bottleneck machines where one stop delays the whole plan.", "Check what already exists: PLC tags, motor drives, energy meters, maintenance logs."] },
         { type: "h2", text: "Add signals cheaply" },
-        { type: "ul", items: ["Vibration and temperature sensors on bearings and gearboxes, retrofitted without changing the machine.", "Motor current from the drive or a clamp meter — often the earliest sign of wear.", "An edge gateway that reads old PLCs and sends data out read-only."] },
+        { type: "ul", items: ["Vibration and temperature sensors on bearings and gearboxes, retrofitted without changing the machine.", "Motor current from the drive or a clamp meter – often the earliest sign of wear.", "An edge gateway that reads old PLCs and sends data out read-only."] },
         { type: "p", text: "The value comes from linking the warning to the production plan: a bearing that will fail in two weeks matters more if the machine is fully booked next week. Plan the repair into the schedule instead of around a breakdown." },
         { type: "quote", text: "Predict the failures that stop the plan, not every failure you can measure." },
         { type: "cta", offering: "machine-health" },
@@ -117,7 +116,7 @@ const posts: Post[] = [
         { type: "h2", text: "اختر من أين تبدأ" },
         { type: "ul", items: ["اجمع التوقفات غير المخططة في آخر 12 شهراً ورتّب الماكينات حسب الساعات الضائعة لا عدد المرات.", "اختر ماكينتين أو ثلاثاً من ماكينات عنق الزجاجة التي يؤخر توقفها الخطة كلها.", "راجع ما هو موجود: إشارات PLC ومحركات السرعة وعدادات الطاقة وسجلات الصيانة."] },
         { type: "h2", text: "أضف الإشارات بتكلفة قليلة" },
-        { type: "ul", items: ["حساسات اهتزاز وحرارة على المحامل وصناديق التروس، تُركّب دون تعديل الماكينة.", "تيار المحرك من وحدة التحكم أو بمقياس مشبكي — وغالباً ما يكون أول علامة على التآكل.", "بوابة طرفية تقرأ وحدات PLC القديمة وترسل البيانات بصلاحية قراءة فقط."] },
+        { type: "ul", items: ["حساسات اهتزاز وحرارة على المحامل وصناديق التروس، تُركّب دون تعديل الماكينة.", "تيار المحرك من وحدة التحكم أو بمقياس مشبكي – وغالباً ما يكون أول علامة على التآكل.", "بوابة طرفية تقرأ وحدات PLC القديمة وترسل البيانات بصلاحية قراءة فقط."] },
         { type: "p", text: "تأتي القيمة من ربط الإنذار بخطة الإنتاج: محمل سيتعطل بعد أسبوعين أهم إذا كانت الماكينة محجوزة بالكامل الأسبوع المقبل. خطّط الإصلاح داخل الجدول بدل الالتفاف حول العطل." },
         { type: "quote", text: "توقّع الأعطال التي توقف الخطة، لا كل عطل يمكنك قياسه." },
         { type: "cta", offering: "machine-health" },
@@ -192,7 +191,7 @@ const posts: Post[] = [
         { type: "p", text: "In many plants, min/max levels were set years ago and never revisited. The result is familiar: too much of the items that sell steadily, and shortages of the ones that don't." },
         { type: "h2", text: "Four steps" },
         { type: "ul", items: ["Measure forecast error per item: compare last months' forecast with actual demand.", "Measure real lead times from purchase orders and receipts, including how much they vary.", "Choose a service level per item class: high for items that stop the line, lower for the rest.", "Set safety stock from forecast error over the lead time and the chosen service level, then review it every quarter."] },
-        { type: "p", text: "The standard formula multiplies a service-level factor by the variability of demand over the lead time. The formula is simple; the hard part is clean data on forecasts, orders and receipts — which usually sits in the ERP and a few spreadsheets." },
+        { type: "p", text: "The standard formula multiplies a service-level factor by the variability of demand over the lead time. The formula is simple; the hard part is clean data on forecasts, orders and receipts – which usually sits in the ERP and a few spreadsheets." },
         { type: "h2", text: "Start small" },
         { type: "p", text: "Apply it to the 50 items that cause the most shortages or hold the most cash. Compare stock and shortages after one quarter before rolling it out." },
         { type: "quote", text: "Safety stock should come from how wrong your forecast is, not from how nervous the buyer feels." },
@@ -237,7 +236,7 @@ const posts: Post[] = [
         { type: "p", text: "Most plants we visit set standard costs once a year and reconcile variances at month-end. That worked when input prices were stable. With energy tariffs, imported materials and the exchange rate all moving within a quarter, the standard cost is often out of date before it is used." },
         { type: "h2", text: "Where the margin hides" },
         { type: "ul", items: ["Energy is allocated by floor area or headcount instead of by machine hours per product.", "Scrap and rework are booked to overhead, so high-defect products look cheaper than they are.", "Changeovers and small batches are not charged to the customers who order them."] },
-        { type: "p", text: "None of this needs new accounting rules. It needs the production data you already have — machine hours, scrap, energy meters, batch sizes — joined to the ERP cost records every week instead of once a year." },
+        { type: "p", text: "None of this needs new accounting rules. It needs the production data you already have – machine hours, scrap, energy meters, batch sizes – joined to the ERP cost records every week instead of once a year." },
         { type: "h2", text: "A practical first step" },
         { type: "ul", items: ["Pick your top 20 products by revenue.", "Pull actual machine hours, scrap and energy for the last 3 months.", "Compare actual cost per unit with the standard, and rank the gaps by margin impact."] },
         { type: "quote", text: "Price the product you actually make, not the one you planned to make last January." },
@@ -248,7 +247,7 @@ const posts: Post[] = [
         { type: "p", text: "معظم المصانع التي نزورها تحدد التكاليف المعيارية مرة في العام وتسوي الانحرافات في نهاية الشهر. كان ذلك مناسباً حين كانت أسعار المدخلات مستقرة. أما مع تغير تعريفة الطاقة والخامات المستوردة وسعر الصرف خلال ربع واحد، فكثيراً ما تتقادم التكلفة المعيارية قبل استخدامها." },
         { type: "h2", text: "أين يختبئ الهامش" },
         { type: "ul", items: ["توزيع الطاقة حسب المساحة أو عدد العاملين بدل ساعات تشغيل الماكينة لكل منتج.", "تسجيل الهالك وإعادة التشغيل كمصروفات عامة، فتبدو المنتجات كثيرة العيوب أرخص مما هي.", "عدم تحميل وقت التغيير والدفعات الصغيرة على العملاء الذين يطلبونها."] },
-        { type: "p", text: "لا يحتاج أي من ذلك قواعد محاسبية جديدة، بل يحتاج بيانات الإنتاج الموجودة لديك — ساعات الماكينات والهالك وعدادات الطاقة وأحجام الدفعات — مربوطة بسجلات التكلفة في ERP كل أسبوع بدل مرة في العام." },
+        { type: "p", text: "لا يحتاج أي من ذلك قواعد محاسبية جديدة، بل يحتاج بيانات الإنتاج الموجودة لديك – ساعات الماكينات والهالك وعدادات الطاقة وأحجام الدفعات – مربوطة بسجلات التكلفة في ERP كل أسبوع بدل مرة في العام." },
         { type: "h2", text: "خطوة أولى عملية" },
         { type: "ul", items: ["اختر أعلى 20 منتجاً من حيث الإيراد.", "اجمع ساعات الماكينات الفعلية والهالك والطاقة لآخر 3 أشهر.", "قارن التكلفة الفعلية للوحدة بالمعيارية، ورتّب الفروق حسب أثرها على الهامش."] },
         { type: "quote", text: "سعّر المنتج الذي تصنعه فعلاً، لا الذي خططت لصنعه في يناير الماضي." },
@@ -279,9 +278,9 @@ const posts: Post[] = [
     },
     body: {
       en: [
-        { type: "p", text: "In many plants the S&OP meeting is where three spreadsheets meet for the first time. Most of the hour goes to reconciling numbers, and the decisions — what to build, what to buy, which orders to delay — are made afterwards in corridors." },
+        { type: "p", text: "In many plants the S&OP meeting is where three spreadsheets meet for the first time. Most of the hour goes to reconciling numbers, and the decisions – what to build, what to buy, which orders to delay – are made afterwards in corridors." },
         { type: "h2", text: "Five steps, one number" },
-        { type: "ul", items: ["Demand review: start from a statistical baseline built from order history, then let sales adjust it with named reasons.", "Supply review: run a rough-cut capacity check of that demand against lines, shifts and materials.", "Gap review: list only the months and products where demand and supply disagree.", "Financial view: price the gaps — revenue at risk, overtime, inventory.", "Executive decision: approve one plan and record who owns each action."] },
+        { type: "ul", items: ["Demand review: start from a statistical baseline built from order history, then let sales adjust it with named reasons.", "Supply review: run a rough-cut capacity check of that demand against lines, shifts and materials.", "Gap review: list only the months and products where demand and supply disagree.", "Financial view: price the gaps – revenue at risk, overtime, inventory.", "Executive decision: approve one plan and record who owns each action."] },
         { type: "p", text: "The technology matters less than the discipline, but it removes the reconciling. When demand, capacity and cost come from the same data every month, the meeting can start at step three." },
         { type: "h2", text: "Where AI actually helps" },
         { type: "ul", items: ["A forecast baseline that learns seasonality and promotions, so sales adjusts instead of starting from zero.", "Scenario answers in minutes: +20% demand, a line down for two weeks, a late supplier.", "A production schedule that is regenerated from the approved plan, not re-typed."] },
@@ -290,9 +289,9 @@ const posts: Post[] = [
         { type: "cta", offering: "ai-production-scheduling" },
       ],
       ar: [
-        { type: "p", text: "في كثير من المصانع يكون اجتماع تخطيط المبيعات والعمليات هو المكان الذي تلتقي فيه ثلاثة جداول لأول مرة. يذهب معظم الوقت في مطابقة الأرقام، وتُتخذ القرارات — ماذا ننتج وماذا نشتري وأي الطلبات نؤجل — لاحقاً في الممرات." },
+        { type: "p", text: "في كثير من المصانع يكون اجتماع تخطيط المبيعات والعمليات هو المكان الذي تلتقي فيه ثلاثة جداول لأول مرة. يذهب معظم الوقت في مطابقة الأرقام، وتُتخذ القرارات – ماذا ننتج وماذا نشتري وأي الطلبات نؤجل – لاحقاً في الممرات." },
         { type: "h2", text: "خمس خطوات ورقم واحد" },
-        { type: "ul", items: ["مراجعة الطلب: ابدأ من توقع أساسي إحصائي مبني على تاريخ الطلبات، ثم دع المبيعات تعدّله بأسباب واضحة.", "مراجعة الإمداد: فحص مبدئي لطاقة الخطوط والورديات والخامات مقابل هذا الطلب.", "مراجعة الفجوات: اعرض فقط الأشهر والمنتجات التي يختلف فيها الطلب عن الإمداد.", "الرؤية المالية: سعّر الفجوات — الإيراد المعرض للخطر والعمل الإضافي والمخزون.", "القرار التنفيذي: اعتمد خطة واحدة وسجّل مسؤول كل إجراء."] },
+        { type: "ul", items: ["مراجعة الطلب: ابدأ من توقع أساسي إحصائي مبني على تاريخ الطلبات، ثم دع المبيعات تعدّله بأسباب واضحة.", "مراجعة الإمداد: فحص مبدئي لطاقة الخطوط والورديات والخامات مقابل هذا الطلب.", "مراجعة الفجوات: اعرض فقط الأشهر والمنتجات التي يختلف فيها الطلب عن الإمداد.", "الرؤية المالية: سعّر الفجوات – الإيراد المعرض للخطر والعمل الإضافي والمخزون.", "القرار التنفيذي: اعتمد خطة واحدة وسجّل مسؤول كل إجراء."] },
         { type: "p", text: "الانضباط أهم من التقنية، لكن التقنية تلغي المطابقة. حين يأتي الطلب والطاقة والتكلفة من البيانات نفسها كل شهر، يبدأ الاجتماع من الخطوة الثالثة." },
         { type: "h2", text: "أين يساعد الذكاء الاصطناعي فعلاً" },
         { type: "ul", items: ["توقع أساسي يتعلم الموسمية والعروض، فتعدّل المبيعات بدل البدء من الصفر.", "إجابات للسيناريوهات في دقائق: زيادة الطلب 20%، توقف خط لأسبوعين، تأخر مورد.", "جدول إنتاج يُعاد توليده من الخطة المعتمدة، لا يُعاد كتابته."] },
@@ -325,24 +324,24 @@ const posts: Post[] = [
     body: {
       en: [
         { type: "p", text: "The EU Carbon Border Adjustment Mechanism (CBAM) moved from its transitional reporting phase into its definitive period on 1 January 2026. It covers iron and steel, cement, aluminium, fertilisers, electricity and hydrogen imported into the EU." },
-        { type: "p", text: "The obligation sits with the EU importer, but the data has to come from you: the emissions embedded in each product you ship. Where actual, verified plant data is not available, default values can be used — and defaults are designed to be conservative." },
+        { type: "p", text: "The obligation sits with the EU importer, but the data has to come from you: the emissions embedded in each product you ship. Where actual, verified plant data is not available, default values can be used – and defaults are designed to be conservative." },
         { type: "h2", text: "Why this is a plant-data problem, not a paperwork problem" },
         { type: "ul", items: ["Emissions depend on the production route, fuel mix and electricity use of each installation.", "Buyers need numbers per product and per shipment, not a yearly company total.", "Verifiers need an audit trail back to meters and production records."] },
-        { type: "p", text: "Egyptian producers often run cleaner routes than the defaults assume — for example, direct-reduced iron with electric-arc furnaces in steel. Proving that requires data captured continuously from meters, SCADA and the ERP, not estimated once a year in a spreadsheet." },
+        { type: "p", text: "Egyptian producers often run cleaner routes than the defaults assume – for example, direct-reduced iron with electric-arc furnaces in steel. Proving that requires data captured continuously from meters, SCADA and the ERP, not estimated once a year in a spreadsheet." },
         { type: "h2", text: "What to do in the next 90 days" },
-        { type: "ul", items: ["List which products and customers fall under CBAM.", "Map where energy, fuel and material data lives today — meters, SCADA, ERP, Excel.", "Automate the capture for one installation first, then extend."] },
+        { type: "ul", items: ["List which products and customers fall under CBAM.", "Map where energy, fuel and material data lives today – meters, SCADA, ERP, Excel.", "Automate the capture for one installation first, then extend."] },
         { type: "quote", text: "Verified data is the difference between your real footprint and someone else's assumption." },
         { type: "tool", tool: "cbam-checklist" },
         { type: "cta", offering: "cbam-emissions-reporting" },
       ],
       ar: [
         { type: "p", text: "انتقلت آلية تعديل حدود الكربون الأوروبية (CBAM) من مرحلة الإبلاغ الانتقالية إلى مرحلتها النهائية في 1 يناير 2026. وهي تشمل الحديد والصلب والأسمنت والألومنيوم والأسمدة والكهرباء والهيدروجين المستوردة إلى الاتحاد الأوروبي." },
-        { type: "p", text: "الالتزام يقع على المستورد الأوروبي، لكن البيانات يجب أن تأتي منك: الانبعاثات المضمنة في كل منتج تشحنه. وحين لا تتوفر بيانات فعلية موثقة من المصنع، يمكن استخدام قيم افتراضية — وهي مصممة لتكون متحفظة." },
+        { type: "p", text: "الالتزام يقع على المستورد الأوروبي، لكن البيانات يجب أن تأتي منك: الانبعاثات المضمنة في كل منتج تشحنه. وحين لا تتوفر بيانات فعلية موثقة من المصنع، يمكن استخدام قيم افتراضية – وهي مصممة لتكون متحفظة." },
         { type: "h2", text: "لماذا هي مشكلة بيانات مصنع لا مشكلة أوراق" },
         { type: "ul", items: ["الانبعاثات تعتمد على مسار الإنتاج ومزيج الوقود واستهلاك الكهرباء لكل منشأة.", "المشترون يحتاجون أرقاماً لكل منتج ولكل شحنة، لا إجمالياً سنوياً للشركة.", "جهات التحقق تحتاج سجل تدقيق يعود إلى العدادات وسجلات الإنتاج."] },
-        { type: "p", text: "كثيراً ما يستخدم المنتجون المصريون مسارات أنظف مما تفترضه القيم الافتراضية — مثل الاختزال المباشر للحديد مع أفران القوس الكهربائي في الصلب. وإثبات ذلك يحتاج بيانات تُلتقط باستمرار من العدادات وSCADA وERP، لا تقديراً سنوياً على جدول بيانات." },
+        { type: "p", text: "كثيراً ما يستخدم المنتجون المصريون مسارات أنظف مما تفترضه القيم الافتراضية – مثل الاختزال المباشر للحديد مع أفران القوس الكهربائي في الصلب. وإثبات ذلك يحتاج بيانات تُلتقط باستمرار من العدادات وSCADA وERP، لا تقديراً سنوياً على جدول بيانات." },
         { type: "h2", text: "ما الذي تفعله خلال 90 يوماً" },
-        { type: "ul", items: ["حدد المنتجات والعملاء الخاضعين لآلية CBAM.", "ارسم خريطة لمكان بيانات الطاقة والوقود والخامات اليوم — العدادات وSCADA وERP وExcel.", "أتمت الالتقاط لمنشأة واحدة أولاً، ثم وسّع."] },
+        { type: "ul", items: ["حدد المنتجات والعملاء الخاضعين لآلية CBAM.", "ارسم خريطة لمكان بيانات الطاقة والوقود والخامات اليوم – العدادات وSCADA وERP وExcel.", "أتمت الالتقاط لمنشأة واحدة أولاً، ثم وسّع."] },
         { type: "quote", text: "البيانات الموثقة هي الفرق بين بصمتك الحقيقية وافتراضات غيرك." },
         { type: "tool", tool: "cbam-checklist" },
         { type: "cta", offering: "cbam-emissions-reporting" },
@@ -401,7 +400,7 @@ const posts: Post[] = [
     category: { en: "Operations", ar: "العمليات" },
     related: { offerings: ["ai-production-scheduling"], capabilities: ["production-scheduling"], caseStudies: ["star-trans"] },
     title: {
-      en: "Why Egyptian Factories Miss On-Time Delivery — and It Isn't the Machines",
+      en: "Why Egyptian Factories Miss On-Time Delivery – and It Isn't the Machines",
       ar: "لماذا تتأخر المصانع المصرية في التسليم؟ المشكلة ليست في الماكينات",
     },
     excerpt: {
@@ -417,26 +416,26 @@ const posts: Post[] = [
         { type: "p", text: "Ask an operations head in Cairo or 10th of Ramadan why on-time delivery (OTD) is below target, and you will hear about machine breakdowns, late raw materials and last-minute customer changes. All real. But none of them is the root cause." },
         { type: "p", text: "The root cause is the planning cycle itself. When building a weekly schedule takes two to three days of Excel work, the schedule is already out of date the moment it is published. The first disruption breaks it, and there is no time to rebuild it until next week." },
         { type: "h2", text: "The three-day trap" },
-        { type: "ul", items: ["Day 1–3: planners gather orders, capacity and material status and build the plan by hand.", "Day 4: the plan is published — and a machine goes down.", "Day 5–7: supervisors improvise. OTD slips. The cycle repeats."] },
+        { type: "ul", items: ["Day 1–3: planners gather orders, capacity and material status and build the plan by hand.", "Day 4: the plan is published – and a machine goes down.", "Day 5–7: supervisors improvise. OTD slips. The cycle repeats."] },
         { type: "p", text: "Top-quartile manufacturers globally have moved to Advanced Planning & Scheduling (APS): software that generates a feasible, optimised schedule from real constraints in seconds, and regenerates it whenever reality changes. In MENA this shift is running three to five years behind." },
         { type: "h2", text: "What changes when the plan takes 60 seconds" },
         { type: "p", text: "When a schedule takes under a minute to produce, re-planning stops being an emergency and becomes routine. Planners stop building schedules and start managing exceptions. That is the change we measured at Star Trans: an 80% reduction in planning time within eight weeks of go-live." },
         { type: "quote", text: "Your schedule: built in 3 days, wrong by Tuesday. It doesn't have to be." },
         { type: "h2", text: "Where to start" },
-        { type: "ul", items: ["Measure your current planning cycle in hours, honestly.", "List the top five disruptions that broke last month's schedules.", "Check whether your ERP holds routings and capacities accurately — that is the data an APS engine needs."] },
+        { type: "ul", items: ["Measure your current planning cycle in hours, honestly.", "List the top five disruptions that broke last month's schedules.", "Check whether your ERP holds routings and capacities accurately – that is the data an APS engine needs."] },
         { type: "cta", offering: "ai-production-scheduling" },
       ],
       ar: [
         { type: "p", text: "اسأل أي مدير عمليات في القاهرة أو العاشر من رمضان عن سبب انخفاض نسبة التسليم في الموعد، وستسمع عن أعطال الماكينات وتأخر الخامات وتغييرات العملاء في اللحظة الأخيرة. كلها حقيقية، لكن أياً منها ليس السبب الجذري." },
         { type: "p", text: "السبب الجذري هو دورة التخطيط نفسها. حين يستغرق بناء الجدول الأسبوعي يومين أو ثلاثة على Excel، يكون الجدول متقادماً لحظة نشره. أول عطل يكسره، ولا وقت لإعادة بنائه حتى الأسبوع التالي." },
         { type: "h2", text: "فخ الأيام الثلاثة" },
-        { type: "ul", items: ["الأيام 1–3: يجمع المخططون الطلبيات والطاقة وحالة الخامات ويبنون الخطة يدوياً.", "اليوم 4: تُنشر الخطة — وتتعطل ماكينة.", "الأيام 5–7: يرتجل المشرفون، وتنخفض نسبة التسليم، وتتكرر الدورة."] },
+        { type: "ul", items: ["الأيام 1–3: يجمع المخططون الطلبيات والطاقة وحالة الخامات ويبنون الخطة يدوياً.", "اليوم 4: تُنشر الخطة – وتتعطل ماكينة.", "الأيام 5–7: يرتجل المشرفون، وتنخفض نسبة التسليم، وتتكرر الدورة."] },
         { type: "p", text: "انتقلت أفضل المصانع عالمياً إلى أنظمة التخطيط والجدولة المتقدمة (APS): برمجيات تُنتج جدولاً ممكناً ومُحسّناً من القيود الفعلية في ثوانٍ، وتعيد إنتاجه كلما تغيّر الواقع. وفي منطقتنا يتأخر هذا التحول من ثلاث إلى خمس سنوات." },
         { type: "h2", text: "ما الذي يتغير حين تستغرق الخطة 60 ثانية" },
         { type: "p", text: "حين يُنتج الجدول في أقل من دقيقة، تتحول إعادة التخطيط من حالة طوارئ إلى عمل روتيني. يتوقف المخططون عن بناء الجداول ويبدؤون بإدارة الاستثناءات. هذا ما قسناه في ستار ترانس: انخفاض وقت التخطيط بنسبة 80% خلال ثمانية أسابيع من التشغيل." },
         { type: "quote", text: "جدولك: يُبنى في 3 أيام، ويصبح خاطئاً يوم الثلاثاء. لا يجب أن يكون الأمر كذلك." },
         { type: "h2", text: "من أين تبدأ" },
-        { type: "ul", items: ["قِس دورة التخطيط الحالية بالساعات، بصدق.", "اكتب أكثر خمسة أعطال كسرت جداول الشهر الماضي.", "تحقق من دقة مسارات التشغيل والطاقات في نظام ERP — فهذه هي البيانات التي يحتاجها محرك APS."] },
+        { type: "ul", items: ["قِس دورة التخطيط الحالية بالساعات، بصدق.", "اكتب أكثر خمسة أعطال كسرت جداول الشهر الماضي.", "تحقق من دقة مسارات التشغيل والطاقات في نظام ERP – فهذه هي البيانات التي يحتاجها محرك APS."] },
         { type: "cta", offering: "ai-production-scheduling" },
       ],
     },
@@ -463,18 +462,18 @@ const posts: Post[] = [
     },
     body: {
       en: [
-        { type: "p", text: "Most CEOs in Egypt and the Gulf learn how their company performed last week from a PDF on Monday morning. By then, the decisions that mattered have already been made — or missed." },
+        { type: "p", text: "Most CEOs in Egypt and the Gulf learn how their company performed last week from a PDF on Monday morning. By then, the decisions that mattered have already been made – or missed." },
         { type: "h2", text: "Three questions every CEO should answer in under a minute" },
-        { type: "ul", items: ["Are we on plan this month — revenue, margin, cash?", "Which site, product or customer is drifting, and why?", "What will I tell the board, and can I back every number?"] },
+        { type: "ul", items: ["Are we on plan this month – revenue, margin, cash?", "Which site, product or customer is drifting, and why?", "What will I tell the board, and can I back every number?"] },
         { type: "p", text: "Generic BI tools can answer these, eventually, after months of setup and a team to maintain them. A CEO operating system arrives configured for exactly these questions, in Arabic, with every figure linked to its source." },
         { type: "h2", text: "Board reporting is the fastest ROI" },
         { type: "p", text: "The board pack is the most expensive document most CEOs produce: two days of collecting, reconciling and formatting each quarter. Generating it in under five minutes is the quickest, most visible proof of AI value you can give your board." },
         { type: "cta", offering: "executive-intelligence" },
       ],
       ar: [
-        { type: "p", text: "يعرف معظم الرؤساء التنفيذيين في مصر والخليج أداء شركاتهم في الأسبوع الماضي من ملف PDF صباح الاثنين. وحينها تكون القرارات المهمة قد اتُخذت بالفعل — أو فاتت." },
+        { type: "p", text: "يعرف معظم الرؤساء التنفيذيين في مصر والخليج أداء شركاتهم في الأسبوع الماضي من ملف PDF صباح الاثنين. وحينها تكون القرارات المهمة قد اتُخذت بالفعل – أو فاتت." },
         { type: "h2", text: "ثلاثة أسئلة يجب أن يجيب عنها كل رئيس تنفيذي في أقل من دقيقة" },
-        { type: "ul", items: ["هل نحن على الخطة هذا الشهر — الإيرادات والهامش والسيولة؟", "أي موقع أو منتج أو عميل ينحرف، ولماذا؟", "ماذا سأقول لمجلس الإدارة، وهل أستطيع إثبات كل رقم؟"] },
+        { type: "ul", items: ["هل نحن على الخطة هذا الشهر – الإيرادات والهامش والسيولة؟", "أي موقع أو منتج أو عميل ينحرف، ولماذا؟", "ماذا سأقول لمجلس الإدارة، وهل أستطيع إثبات كل رقم؟"] },
         { type: "p", text: "يمكن لأدوات BI العامة الإجابة عن هذه الأسئلة في النهاية، بعد شهور من الإعداد وفريق لصيانتها. أما نظام تشغيل الرئيس التنفيذي فيصل مهيأً لهذه الأسئلة تحديداً، بالعربية، مع ربط كل رقم بمصدره." },
         { type: "h2", text: "تقارير المجلس هي أسرع عائد" },
         { type: "p", text: "حزمة مجلس الإدارة هي أغلى وثيقة يُعدّها معظم الرؤساء التنفيذيين: يومان من التجميع والمطابقة والتنسيق كل ربع سنة. إعدادها في أقل من خمس دقائق هو أسرع وأوضح دليل على قيمة الذكاء الاصطناعي يمكنك تقديمه لمجلسك." },
@@ -504,19 +503,19 @@ const posts: Post[] = [
     },
     body: {
       en: [
-        { type: "p", text: "Most Arabic B2B content in the region starts life in English. It is then translated, reviewed, corrected and approved — a two-week loop that costs tens of thousands of pounds and still reads like a translation." },
+        { type: "p", text: "Most Arabic B2B content in the region starts life in English. It is then translated, reviewed, corrected and approved – a two-week loop that costs tens of thousands of pounds and still reads like a translation." },
         { type: "h2", text: "Why translated Arabic underperforms" },
-        { type: "ul", items: ["Sentence structure follows English rhythm, not Arabic rhetoric.", "Idioms and examples are foreign to the reader.", "Register is wrong — too formal for LinkedIn, too casual for a proposal."] },
-        { type: "p", text: "Content conceived in Arabic, with the right register for the audience — Modern Standard, Egyptian or Gulf — earns attention that translated copy cannot." },
+        { type: "ul", items: ["Sentence structure follows English rhythm, not Arabic rhetoric.", "Idioms and examples are foreign to the reader.", "Register is wrong – too formal for LinkedIn, too casual for a proposal."] },
+        { type: "p", text: "Content conceived in Arabic, with the right register for the audience – Modern Standard, Egyptian or Gulf – earns attention that translated copy cannot." },
         { type: "h2", text: "Scaling without scaling the agency budget" },
         { type: "p", text: "The goal is not to remove humans. It is to move your team from writing first drafts to reviewing and sharpening them. That shift is where the cost per piece drops by around 90%." },
         { type: "cta", offering: "arabic-commercial-content" },
       ],
       ar: [
-        { type: "p", text: "يبدأ معظم محتوى الشركات العربي في المنطقة حياته بالإنجليزية، ثم يُترجم ويُراجع ويُصحح ويُعتمد — دورة مدتها أسبوعان تكلّف عشرات الآلاف من الجنيهات، ويبقى النص في النهاية مترجماً." },
+        { type: "p", text: "يبدأ معظم محتوى الشركات العربي في المنطقة حياته بالإنجليزية، ثم يُترجم ويُراجع ويُصحح ويُعتمد – دورة مدتها أسبوعان تكلّف عشرات الآلاف من الجنيهات، ويبقى النص في النهاية مترجماً." },
         { type: "h2", text: "لماذا يضعف المحتوى المترجم" },
-        { type: "ul", items: ["بنية الجملة تتبع إيقاع الإنجليزية لا بلاغة العربية.", "التعبيرات والأمثلة غريبة عن القارئ.", "مستوى اللغة غير مناسب — رسمي أكثر من اللازم على لينكدإن، أو عامي أكثر من اللازم في عرض سعر."] },
-        { type: "p", text: "المحتوى الذي يُكتب بالعربية من البداية، وبالمستوى اللغوي المناسب للجمهور — فصحى أو مصري أو خليجي — ينال انتباهاً لا يناله النص المترجم." },
+        { type: "ul", items: ["بنية الجملة تتبع إيقاع الإنجليزية لا بلاغة العربية.", "التعبيرات والأمثلة غريبة عن القارئ.", "مستوى اللغة غير مناسب – رسمي أكثر من اللازم على لينكدإن، أو عامي أكثر من اللازم في عرض سعر."] },
+        { type: "p", text: "المحتوى الذي يُكتب بالعربية من البداية، وبالمستوى اللغوي المناسب للجمهور – فصحى أو مصري أو خليجي – ينال انتباهاً لا يناله النص المترجم." },
         { type: "h2", text: "التوسع دون مضاعفة ميزانية الوكالة" },
         { type: "p", text: "الهدف ليس الاستغناء عن البشر، بل نقل فريقك من كتابة المسودات الأولى إلى مراجعتها وصقلها. في هذا التحول تنخفض تكلفة القطعة الواحدة بنحو 90%." },
         { type: "cta", offering: "arabic-commercial-content" },

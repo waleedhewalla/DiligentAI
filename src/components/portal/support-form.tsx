@@ -33,7 +33,7 @@ export function SupportForm({
         <div className="grid gap-2">
           <Label htmlFor="product">{s.product}</Label>
           <NativeSelect id="product" name="product" defaultValue={defaultProduct ?? "general"}>
-            <option value="general">—</option>
+            <option value="general">–</option>
             {products.map((o) => (
               <option key={o.value} value={o.value}>
                 {o.label}

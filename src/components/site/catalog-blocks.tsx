@@ -19,7 +19,7 @@ import { TrackedLink } from "./tracked-link";
 
 /**
  * Reusable, data-driven page blocks for the catalog. Each renders only from
- * config (catalog/*.ts) — edit the data, not these components.
+ * config (catalog/*.ts) – edit the data, not these components.
  */
 
 function formatEgp(n: number, locale: Locale) {
@@ -43,7 +43,7 @@ export function PackagePrice({ pkg, locale, dict }: { pkg: Package; locale: Loca
   );
 }
 
-/** Gap 1 & 8 — fixed-price packages (from `offering.packages`). */
+/** Gap 1 & 8 – fixed-price packages (from `offering.packages`). */
 export function PackagesSection({ offering: o, locale, dict }: { offering: Offering; locale: Locale; dict: Dictionary }) {
   if (!o.packages?.length) return null;
   const s = dict.sections;
@@ -97,7 +97,7 @@ export function PackagesSection({ offering: o, locale, dict }: { offering: Offer
   );
 }
 
-/** Gap 2 — the Pilot-to-Production commitment (from commitment.ts). */
+/** Gap 2 – the Pilot-to-Production commitment (from commitment.ts). */
 export function CommitmentBlock({ locale, dict, tone = "light" }: { locale: Locale; dict: Dictionary; tone?: "light" | "subtle" }) {
   const s = dict.sections;
   const fee =
@@ -118,7 +118,7 @@ export function CommitmentBlock({ locale, dict, tone = "light" }: { locale: Loca
             <Button asChild variant="teal">
               <Link href={href(locale, "/solutions/pilot-to-production")}>
                 {dict.common.learnMore}
-                <span className="sr-only"> — {commitment.title[locale]}</span>
+                <span className="sr-only"> – {commitment.title[locale]}</span>
                 <ArrowRight className="btn-icon" />
               </Link>
             </Button>
@@ -151,7 +151,7 @@ function StatusChip({ status, dict }: { status: "available" | "on-request"; dict
   );
 }
 
-/** Gap 5 (and PDPL in gap 3) — model and hosting choice (from models.ts). */
+/** Gap 5 (and PDPL in gap 3) – model and hosting choice (from models.ts). */
 export function ModelChoiceBlock({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const s = dict.sections;
   return (
@@ -200,7 +200,7 @@ export function ModelChoiceBlock({ locale, dict }: { locale: Locale; dict: Dicti
   );
 }
 
-/** Gap 6 — funding programmes (from funding.ts, referenced by `offering.fundingRoutes`). */
+/** Gap 6 – funding programmes (from funding.ts, referenced by `offering.fundingRoutes`). */
 export function FundingBlock({ ids, locale, dict }: { ids: string[]; locale: Locale; dict: Dictionary }) {
   const routes = ids.map(getFundingRoute).filter((r): r is NonNullable<typeof r> => Boolean(r));
   if (!routes.length) return null;
@@ -225,7 +225,7 @@ export function FundingBlock({ ids, locale, dict }: { ids: string[]; locale: Loc
   );
 }
 
-/** Gap 3 — live regulatory deadlines band (from compliance.ts). */
+/** Gap 3 – live regulatory deadlines band (from compliance.ts). */
 export function ComplianceBand({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const s = dict.sections;
   return (
@@ -250,7 +250,7 @@ export function ComplianceBand({ locale, dict }: { locale: Locale; dict: Diction
   );
 }
 
-/** Cross-cutting — category comparison vs. global planning suites (no named competitors). */
+/** Cross-cutting – category comparison vs. global planning suites (no named competitors). */
 export function ComparisonSection({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const s = dict.sections;
   // CONFIGURABLE: ranges for global suites come from public third-party sources (see research report).
@@ -270,7 +270,7 @@ export function ComparisonSection({ locale, dict }: { locale: Locale; dict: Dict
             <thead className="bg-brand-navy text-white">
               <tr>
                 <th scope="col" className="p-4 text-start font-semibold">
-                  <span className="sr-only">—</span>
+                  <span className="sr-only">–</span>
                 </th>
                 <th scope="col" className="p-4 text-start font-semibold">
                   {s.them}

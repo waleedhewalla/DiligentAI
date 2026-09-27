@@ -1,5 +1,5 @@
 /**
- * CONFIGURABLE — public funding programmes an offering can be financed through (gap 6).
+ * CONFIGURABLE – public funding programmes an offering can be financed through (gap 6).
  * Describe programmes, never promise eligibility; link to the official source.
  */
 import type { L10n } from "@/i18n/config";

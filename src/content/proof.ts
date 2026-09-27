@@ -65,7 +65,7 @@ export function visibleMetrics(metrics: Metric[]) {
 /**
  * Customer / pilot logos for the proof strip. Add a logo only with written
  * permission (`approved: true`). The strip stays hidden until at least
- * MIN_LOGOS are approved — one logo alone reads as thin proof.
+ * MIN_LOGOS are approved – one logo alone reads as thin proof.
  * `src` is optional: without it the name is shown as a wordmark.
  */
 export type CustomerLogo = { name: string; src?: string; approved: boolean; label?: L10n };

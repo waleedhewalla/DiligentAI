@@ -19,23 +19,23 @@ const copy = {
   },
   h1: { en: "Book Your 30-Minute Plant Review", ar: "احجز مراجعة لمصنعك في 30 دقيقة" },
   lead: {
-    en: "Bring the problem — scheduling, forecasting, quality, supply chain or integration. We'll show you what AI can do about it. No sales pitch.",
-    ar: "أحضر المشكلة — الجدولة أو التنبؤ أو الجودة أو سلاسل الإمداد أو التكامل. وسنريك ما يمكن للذكاء الاصطناعي فعله. بلا عرض بيعي.",
+    en: "Bring the problem – scheduling, forecasting, quality, supply chain or integration. We'll show you what AI can do about it. No sales pitch.",
+    ar: "أحضر المشكلة – الجدولة أو التنبؤ أو الجودة أو سلاسل الإمداد أو التكامل. وسنريك ما يمكن للذكاء الاصطناعي فعله. بلا عرض بيعي.",
   },
   expect: { en: "What to expect", ar: "ماذا تتوقع" },
   points: {
     en: [
       "We tailor the session to your plant and your systems",
       "You'll see your own data scenarios if you share them in advance",
-      "Waleed or a senior consultant leads every session",
-      "Arabic or English — your choice",
+      "A senior consultant from our team leads every session",
+      "Arabic or English – your choice",
       "No contract required afterwards",
     ],
     ar: [
       "نُفصّل الجلسة حسب مصنعك وأنظمتك",
       "سترى سيناريوهات من بياناتك إذا شاركتها معنا مسبقاً",
-      "وليد أو أحد كبار المستشارين يقود كل جلسة",
-      "بالعربية أو الإنجليزية — حسب اختيارك",
+      "يقود كل جلسة مستشار أول من فريقنا",
+      "بالعربية أو الإنجليزية – حسب اختيارك",
       "لا يوجد أي التزام تعاقدي بعدها",
     ],
   },
@@ -50,7 +50,7 @@ export function generateMetadata({ params }: { params: { locale: Locale } }) {
 export default function DemoPage({ params }: { params: { locale: Locale } }) {
   const locale = params.locale;
   const dict = getDictionary(locale);
-  const wa = whatsappHref(locale === "ar" ? "مرحباً وليد، أود حجز مراجعة لمصنعي" : "Hi Waleed, I'd like to book a plant review");
+  const wa = whatsappHref(locale === "ar" ? "مرحباً فريق Diligent AI، أود حجز مراجعة لمصنعي" : "Hello Diligent AI team, I'd like to book a plant review");
   return (
     <section className="bg-surface-subtle">
       <div className="container py-12 md:py-16">

@@ -24,11 +24,12 @@ const copy = {
     generate: "Generate Arabic content",
     generating: "Writing in Arabic…",
     output: "Generated content",
-    sample: "Sample output — live generation is available in your free trial.",
+    sample: "Sample output – live generation is available in your free trial.",
     copy: "Copy",
     copied: "Copied",
     error: "Couldn't generate right now. Please try again in a minute.",
     limited: "You've reached the demo limit. Start a free trial for unlimited generation.",
+    preview: "Preview site: this shows a fixed sample. Live Arabic generation runs on the production site.",
   },
   ar: {
     title: "جرّبه الآن",
@@ -41,11 +42,12 @@ const copy = {
     generate: "ولّد المحتوى العربي",
     generating: "جارٍ الكتابة بالعربية…",
     output: "المحتوى المولّد",
-    sample: "مثال توضيحي — التوليد المباشر متاح في التجربة المجانية.",
+    sample: "مثال توضيحي – التوليد المباشر متاح في التجربة المجانية.",
     copy: "نسخ",
     copied: "تم النسخ",
     error: "تعذّر التوليد الآن. حاول مرة أخرى بعد دقيقة.",
     limited: "وصلت إلى حد التجربة. ابدأ التجربة المجانية للتوليد غير المحدود.",
+    preview: "نسخة المعاينة: يظهر هنا مثال ثابت. التوليد العربي المباشر يعمل على الموقع الرسمي.",
   },
 };
 
@@ -158,7 +160,7 @@ export function NexusWidget({ locale }: { locale: Locale }) {
             <p dir="rtl" lang="ar" className="mt-4 flex-1 whitespace-pre-line font-arabic text-base leading-loose text-foreground">
               {result.text}
             </p>
-            {!result.live ? <p className="mt-4 text-xs text-muted-foreground">{c.sample}</p> : null}
+            {!result.live ? <p className="mt-4 text-xs text-muted-foreground">{isPreview ? c.preview : c.sample}</p> : null}
           </>
         ) : null}
       </div>

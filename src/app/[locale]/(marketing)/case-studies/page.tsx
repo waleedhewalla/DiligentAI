@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Breadcrumbs, FinalCta, PageHero } from "@/components/site/sections";
 
 const copy = {
-  title: { en: "Case Studies — Measured Results from MENA Companies", ar: "دراسات الحالة — نتائج مُقاسة من شركات المنطقة" },
+  title: { en: "Case Studies – Measured Results from MENA Companies", ar: "دراسات الحالة – نتائج مُقاسة من شركات المنطقة" },
   h1: { en: "Results you can verify", ar: "نتائج يمكنك التحقق منها" },
   lead: {
     en: "Real deployments, real numbers. Every metric on this page is measured at the customer, not estimated.",

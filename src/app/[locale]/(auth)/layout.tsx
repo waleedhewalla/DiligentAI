@@ -28,8 +28,8 @@ export default function AuthLayout({ children, params }: { children: React.React
           <p className="text-sm font-semibold text-brand-teal-light">{dict.brand.tagline}</p>
           <p className="mt-3 max-w-md text-3xl font-bold leading-snug">
             {params.locale === "ar"
-              ? "دخول واحد إلى IPE وCEO OS وNexus AI — بأمان مؤسسي."
-              : "One sign-in for IPE, CEO OS and Nexus AI — with enterprise-grade security."}
+              ? "دخول واحد إلى IPE وCEO OS وNexus AI – بأمان مؤسسي."
+              : "One sign-in for IPE, CEO OS and Nexus AI – with enterprise-grade security."}
           </p>
           <p className="mt-4 text-sm text-white/70">
             {params.locale === "ar"

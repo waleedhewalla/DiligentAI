@@ -3,10 +3,10 @@ import { getDictionary } from "@/i18n/dictionaries";
 import { pageMetadata } from "@/lib/seo";
 import { Breadcrumbs, FinalCta, PageHero, SectionHeading } from "@/components/site/sections";
 import { ServiceModelGrid } from "@/components/site/catalog";
-import { FounderSection } from "@/components/site/founder";
+import { TeamSection } from "@/components/site/founder";
 
 const copy = {
-  title: { en: "About Diligent AI — AI Solutions for Manufacturing", ar: "عن Diligent AI — حلول الذكاء الاصطناعي للتصنيع" },
+  title: { en: "About Diligent AI – AI Solutions for Manufacturing", ar: "عن Diligent AI – حلول الذكاء الاصطناعي للتصنيع" },
   description: {
     en: "Diligent AI is a Cairo-based AI solutions and system-integration company for manufacturers in Egypt and the Gulf: consulting, pre-built AI tools, custom models and ERP integration.",
     ar: "Diligent AI شركة مقرها القاهرة لحلول الذكاء الاصطناعي وتكامل الأنظمة للمصانع في مصر والخليج: استشارات، وأدوات جاهزة، ونماذج مخصصة، وتكامل مع ERP.",
@@ -22,8 +22,8 @@ const copy = {
   },
   missionTitle: { en: "Our mission", ar: "رسالتنا" },
   mission: {
-    en: "Give every manufacturer in Egypt and the Gulf the planning, executive and commercial intelligence that global leaders take for granted — in Arabic, deployed in weeks, supported locally.",
-    ar: "أن نمنح كل شركة تصنيع في مصر والخليج ذكاء التخطيط والقرار التنفيذي والتسويق الذي تعتبره الشركات العالمية أمراً مسلّماً به — بالعربية، وخلال أسابيع، وبدعم محلي.",
+    en: "Give every manufacturer in Egypt and the Gulf the planning, executive and commercial intelligence that global leaders take for granted – in Arabic, deployed in weeks, supported locally.",
+    ar: "أن نمنح كل شركة تصنيع في مصر والخليج ذكاء التخطيط والقرار التنفيذي والتسويق الذي تعتبره الشركات العالمية أمراً مسلّماً به – بالعربية، وخلال أسابيع، وبدعم محلي.",
   },
   principlesTitle: { en: "What we believe", ar: "ما نؤمن به" },
   principles: [
@@ -51,8 +51,8 @@ const copy = {
     {
       t: { en: "Your data stays yours", ar: "بياناتك تبقى ملكك" },
       b: {
-        en: "Row-level isolation per customer, an Egypt-hosted option and contracts that protect you — including if we ever part ways.",
-        ar: "عزل على مستوى الصف لكل عميل، وخيار استضافة داخل مصر، وعقود تحميك — حتى إن افترقنا يوماً.",
+        en: "Row-level isolation per customer, an Egypt-hosted option and contracts that protect you – including if we ever part ways.",
+        ar: "عزل على مستوى الصف لكل عميل، وخيار استضافة داخل مصر، وعقود تحميك – حتى إن افترقنا يوماً.",
       },
     },
   ],
@@ -103,7 +103,7 @@ export default function AboutPage({ params }: { params: { locale: Locale } }) {
           </div>
         </div>
       </section>
-      <FounderSection locale={locale} dict={dict} />
+      <TeamSection locale={locale} dict={dict} />
       <section className="section">
         <div className="container">
           <SectionHeading title={copy.ecosystem[locale]} />

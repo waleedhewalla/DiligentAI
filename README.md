@@ -103,7 +103,6 @@ Every word on the site lives in `src/content/*` and `src/i18n/dictionaries.ts`, 
 - **Proof numbers** — `src/content/proof.ts` is the single source of truth. A metric with `value: null` is hidden everywhere (the Star Trans OTD figure is waiting for the verified number). Testimonials render only when `approved: true`; **no quotes are published yet.**
 - **Blog** — `src/content/blog.ts`. `getPosts()`/`getPost()` are the only access points; replace their bodies with a Sanity or Supabase query when the CMS goes live.
 - **Downloads** — drop `public/downloads/star-trans-case-study.pdf` and `public/downloads/ipe-technical-brief.pdf` in place and the buttons switch from “print to PDF” / “request brief” to direct, tracked downloads automatically.
-- **Founder photo** — add `public/images/waleed.jpg` and set `founderPhoto` in `src/lib/site.ts`.
 
 ## Internationalisation & RTL
 
@@ -207,7 +206,8 @@ Results: GA4 user properties `exp_<id>` on every event plus `experiment_impressi
 
 - [ ] Real Star Trans metrics + written permission (`src/content/proof.ts`); OTD number filled in
 - [ ] Approved quotes from Eng. Mohamed / Eng. Hamdy (`approved: true`)
-- [ ] Founder photo; Arabic spelling of the founder's name (`src/lib/site.ts`)
+- [ ] Payment links for each package (Access, Starter, Scale, Vision QC) after site testing
+- [ ] Cal.com: a team/company booking link (the current link shows a personal username)
 - [ ] Case-study PDF and IPE technical brief in `public/downloads/`
 - [ ] Privacy Policy & Terms reviewed by counsel (`src/content/legal.ts` is a draft)
 - [ ] Calendly URLs, WhatsApp number, GA4 & Hotjar IDs, verification tokens

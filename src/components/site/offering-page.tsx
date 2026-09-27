@@ -39,7 +39,7 @@ import { CommitmentBlock, FundingBlock, ModelChoiceBlock, PackagesSection } from
  *
  * Sections render only when the offering provides the data, so a new service
  * with just problems + features gets a clean page, and a mature product with
- * metrics, ROI, FAQs and a case study gets the full treatment — same template.
+ * metrics, ROI, FAQs and a case study gets the full treatment – same template.
  */
 export async function OfferingPage({ offering: o, locale }: { offering: Offering; locale: Locale }) {
   const dict = getDictionary(locale);
@@ -128,7 +128,7 @@ export async function OfferingPage({ offering: o, locale }: { offering: Offering
         </div>
       </section>
 
-      {/* PRODUCT SCREENSHOTS (optional) — real UI, sample data. */}
+      {/* PRODUCT SCREENSHOTS (optional) – real UI, sample data. */}
       {o.media?.length || o.video ? (
         <section id="product" className="section scroll-mt-20">
           <div className="container max-w-5xl">
@@ -152,7 +152,7 @@ export async function OfferingPage({ offering: o, locale }: { offering: Offering
         </section>
       ) : null}
 
-      {/* OPTIONAL INTERACTIVE DEMO — registry of widgets keyed by `offering.demo`. */}
+      {/* OPTIONAL INTERACTIVE DEMO – registry of widgets keyed by `offering.demo`. */}
       {o.demo ? (
         <section id="try" className="section scroll-mt-20">
           <div className="container">
@@ -162,7 +162,7 @@ export async function OfferingPage({ offering: o, locale }: { offering: Offering
         </section>
       ) : null}
 
-      {/* PROBLEMS FIRST — manufacturing pain this offering removes. */}
+      {/* PROBLEMS FIRST – manufacturing pain this offering removes. */}
       <section className="section">
         <div className="container">
           <SectionHeading eyebrow={dict.common.symptoms} title={dict.common.problemsWeSolve} />
@@ -213,7 +213,7 @@ export async function OfferingPage({ offering: o, locale }: { offering: Offering
         </div>
       </section>
 
-      {/* PACKAGES (optional, gap 1 & 8) — fixed-scope, fixed-price EGP packages. */}
+      {/* PACKAGES (optional, gap 1 & 8) – fixed-scope, fixed-price EGP packages. */}
       <PackagesSection offering={o} locale={locale} dict={dict} />
 
       {/* BEFORE / AFTER (optional) */}
@@ -226,7 +226,7 @@ export async function OfferingPage({ offering: o, locale }: { offering: Offering
                 <thead className="bg-brand-navy text-white">
                   <tr>
                     <th scope="col" className="p-4 text-start font-semibold">
-                      <span className="sr-only">—</span>
+                      <span className="sr-only">–</span>
                     </th>
                     <th scope="col" className="p-4 text-start font-semibold">
                       {dict.common.before}

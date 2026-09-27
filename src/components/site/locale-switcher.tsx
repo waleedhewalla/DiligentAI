@@ -6,6 +6,7 @@ import { Languages } from "lucide-react";
 import { LOCALE_COOKIE, type Locale } from "@/i18n/config";
 import { track } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
+import { saveLocaleScroll } from "./locale-scroll";
 
 export function LocaleSwitcher({ locale, label, className }: { locale: Locale; label: string; className?: string }) {
   const pathname = usePathname() ?? `/${locale}`;
@@ -14,11 +15,13 @@ export function LocaleSwitcher({ locale, label, className }: { locale: Locale; l
   return (
     <Link
       href={target}
+      scroll={false}
       hrefLang={other}
       lang={other}
       className={cn("inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium hover:bg-muted", className)}
       onClick={() => {
         document.cookie = `${LOCALE_COOKIE}=${other}; path=/; max-age=31536000; samesite=lax`;
+        saveLocaleScroll(target);
         track("language_switch", { to: other });
       }}
     >

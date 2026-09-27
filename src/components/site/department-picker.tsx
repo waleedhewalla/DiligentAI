@@ -25,7 +25,7 @@ export type PickerDepartment = {
 };
 
 /**
- * "What's your problem?" — the visitor picks a department and sees the pains
+ * "What's your problem?" – the visitor picks a department and sees the pains
  * we remove and the 2–3 most relevant solutions, then books with the
  * department pre-filled. Accessible tabs (arrow keys move between tabs).
  */

@@ -1,7 +1,7 @@
 import type { Department } from "./types";
 
 /**
- * Solutions by department — the primary way into the catalog.
+ * Solutions by department – the primary way into the catalog.
  * Order = menu order. Every slug is validated at build time (see index.ts).
  * TODO(Waleed): move roadmap items into `offerings` as each product goes live.
  */
@@ -181,8 +181,8 @@ export const departments: Department[] = [
     title: { en: "Finance & Costing", ar: "المالية والتكاليف" },
     owner: { en: "CFO · Cost accountant", ar: "المدير المالي · محاسب التكاليف" },
     summary: {
-      en: "Know the real cost and margin of every product, order and line — and the carbon cost EU customers now ask for.",
-      ar: "اعرف التكلفة والهامش الحقيقي لكل منتج وطلب وخط — وتكلفة الكربون التي يطلبها عملاء أوروبا الآن.",
+      en: "Know the real cost and margin of every product, order and line – and the carbon cost EU customers now ask for.",
+      ar: "اعرف التكلفة والهامش الحقيقي لكل منتج وطلب وخط – وتكلفة الكربون التي يطلبها عملاء أوروبا الآن.",
     },
     pains: {
       en: ["Standard costs are months out of date", "Margin by customer or order is guessed, not measured", "Month-end close is a spreadsheet marathon"],

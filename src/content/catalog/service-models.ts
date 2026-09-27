@@ -1,5 +1,5 @@
 /**
- * CONFIGURABLE — the three primary ways clients engage us.
+ * CONFIGURABLE – the three primary ways clients engage us.
  * Order here is the order shown on the homepage and /services.
  */
 import type { ServiceModel } from "./types";
@@ -15,8 +15,8 @@ export const serviceModels: ServiceModel[] = [
       ar: "حدّد حالات استخدام الذكاء الاصطناعي الأسرع عائداً.",
     },
     description: {
-      en: "We walk your plant, map your data and systems, and rank AI opportunities by value and feasibility — so the first project pays for the next.",
-      ar: "نزور مصنعك، ونرسم خريطة بياناتك وأنظمتك، ونرتّب فرص الذكاء الاصطناعي حسب القيمة وقابلية التنفيذ — ليموّل المشروع الأول ما بعده.",
+      en: "We walk your plant, map your data and systems, and rank AI opportunities by value and feasibility – so the first project pays for the next.",
+      ar: "نزور مصنعك، ونرسم خريطة بياناتك وأنظمتك، ونرتّب فرص الذكاء الاصطناعي حسب القيمة وقابلية التنفيذ – ليموّل المشروع الأول ما بعده.",
     },
     deliverables: {
       en: ["AI readiness & data assessment", "Ranked use-case roadmap with business cases", "Architecture and integration plan", "Board-ready summary in Arabic and English"],
@@ -37,12 +37,12 @@ export const serviceModels: ServiceModel[] = [
     accent: "orange",
     title: { en: "Build", ar: "البناء" },
     tagline: {
-      en: "Deploy proven AI tools — or build models on your own data.",
-      ar: "طبّق أدوات ذكاء اصطناعي مجرّبة — أو ابنِ نماذج على بياناتك.",
+      en: "Deploy proven AI tools – or build models on your own data.",
+      ar: "طبّق أدوات ذكاء اصطناعي مجرّبة – أو ابنِ نماذج على بياناتك.",
     },
     description: {
-      en: "Start from our pre-built tools for scheduling, executive intelligence and content, or have us build custom models for forecasting, quality and maintenance — Arabic-first and production-grade.",
-      ar: "ابدأ من أدواتنا الجاهزة للجدولة والذكاء التنفيذي والمحتوى، أو دعنا نبني نماذج مخصصة للتنبؤ والجودة والصيانة — بالعربية أولاً وبجودة إنتاجية.",
+      en: "Start from our pre-built tools for scheduling, executive intelligence and content, or have us build custom models for forecasting, quality and maintenance – Arabic-first and production-grade.",
+      ar: "ابدأ من أدواتنا الجاهزة للجدولة والذكاء التنفيذي والمحتوى، أو دعنا نبني نماذج مخصصة للتنبؤ والجودة والصيانة – بالعربية أولاً وبجودة إنتاجية.",
     },
     deliverables: {
       en: ["Configured pre-built tool or custom model", "Arabic-native user interface and reports", "User training and hand-over", "Measured baseline and 30/60/90-day review"],
@@ -67,8 +67,8 @@ export const serviceModels: ServiceModel[] = [
       ar: "اربط الذكاء الاصطناعي بأنظمة ERP وMES والأنظمة القديمة لديك.",
     },
     description: {
-      en: "AI is only as good as the data it sees and the systems it can act on. We connect SAP, Oracle, Dynamics, shop-floor systems and spreadsheets into reliable data pipelines — your ERP stays the system of record.",
-      ar: "الذكاء الاصطناعي لا يكون أفضل من البيانات التي يراها والأنظمة التي يعمل عليها. نربط SAP وOracle وDynamics وأنظمة أرض المصنع والجداول في مسارات بيانات موثوقة — ويبقى نظام ERP هو المرجع.",
+      en: "AI is only as good as the data it sees and the systems it can act on. We connect SAP, Oracle, Dynamics, shop-floor systems and spreadsheets into reliable data pipelines – your ERP stays the system of record.",
+      ar: "الذكاء الاصطناعي لا يكون أفضل من البيانات التي يراها والأنظمة التي يعمل عليها. نربط SAP وOracle وDynamics وأنظمة أرض المصنع والجداول في مسارات بيانات موثوقة – ويبقى نظام ERP هو المرجع.",
     },
     deliverables: {
       en: ["ERP / MES connectors (read and write-back)", "Governed data pipelines and a clean data layer", "Monitoring, alerting and runbooks", "Documentation your IT team can own"],

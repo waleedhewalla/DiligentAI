@@ -9,12 +9,11 @@ import { LinkedInIcon, XIcon, YouTubeIcon } from "./icons";
 
 export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const year = new Date().getFullYear();
-  // Company channels first; the founder's LinkedIn stays as a personal contact.
+  // Company channels only; each icon appears once its URL is set.
   const socials = [
     { href: site.social.linkedinCompany, label: "Diligent AI on LinkedIn", icon: <LinkedInIcon className="h-5 w-5" /> },
     { href: site.social.youtube, label: "Diligent AI on YouTube", icon: <YouTubeIcon className="h-5 w-5" /> },
     { href: site.social.x, label: "Diligent AI on X", icon: <XIcon className="h-5 w-5" /> },
-    { href: site.linkedin, label: locale === "ar" ? "وليد حوالة على LinkedIn" : "Waleed Hewalla on LinkedIn", icon: <LinkedInIcon className="h-5 w-5 opacity-70" /> },
   ].filter((s) => s.href);
   const columns = [
     // Dynamic: solution categories and service models come from the catalog.

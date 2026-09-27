@@ -41,7 +41,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "server_error" }, { status: 500 });
     }
   } else {
-    console.warn("Supabase not configured — partner application not persisted", { company: data.company, track: data.track });
+    console.warn("Supabase not configured – partner application not persisted", { company: data.company, track: data.track });
   }
 
   const webhook = process.env.DEMO_REQUEST_WEBHOOK_URL;
@@ -49,7 +49,7 @@ export async function POST(request: Request) {
     fetch(webhook, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text: `New partner application: ${data.company} (${data.track}, ${data.country}) — ${data.name}`, ...data, website: undefined }),
+      body: JSON.stringify({ text: `New partner application: ${data.company} (${data.track}, ${data.country}) – ${data.name}`, ...data, website: undefined }),
       signal: AbortSignal.timeout(4000),
     }).catch((e) => console.error("partner webhook failed", e));
   }

@@ -13,9 +13,9 @@ import { TrackedLink } from "@/components/site/tracked-link";
 import { MaturityLegend } from "@/components/site/maturity-badge";
 import { CtaLabel } from "@/components/experiments/cta-label";
 
-// Gap 1 — every offering with `packages` in catalog/offerings.ts appears here automatically.
+// Gap 1 – every offering with `packages` in catalog/offerings.ts appears here automatically.
 const copy = {
-  title: { en: "Pricing — Fixed-Scope AI Packages in EGP", ar: "الأسعار — باقات ذكاء اصطناعي بنطاق محدد بالجنيه" },
+  title: { en: "Pricing – Fixed-Scope AI Packages in EGP", ar: "الأسعار – باقات ذكاء اصطناعي بنطاق محدد بالجنيه" },
   description: {
     en: "Fixed-scope, fixed-price AI packages for manufacturers, priced in Egyptian pounds: starter packs, vision quality control and machine health.",
     ar: "باقات ذكاء اصطناعي بنطاق وسعر ثابتين للمصانع، بالجنيه المصري: باقات البداية والفحص البصري للجودة وصحة الماكينات.",
@@ -25,8 +25,8 @@ const copy = {
   h1: { en: "Fixed scope. Fixed price. In Egyptian pounds.", ar: "نطاق ثابت. سعر ثابت. بالجنيه المصري." },
   h1Quoted: { en: "Transparent pricing in Egyptian pounds.", ar: "تسعير واضح بالجنيه المصري." },
   leadQuoted: {
-    en: "Every package has a defined scope and timeline. We confirm the EGP price within two business days of a 30-minute call — no six-figure dollar licences and no open-ended consulting.",
-    ar: "لكل باقة نطاق وجدول زمني محددان. نؤكد السعر بالجنيه خلال يومي عمل من مكالمة مدتها 30 دقيقة — لا تراخيص بمئات الآلاف من الدولارات ولا استشارات مفتوحة.",
+    en: "Every package has a defined scope and timeline. We confirm the EGP price within two business days of a 30-minute call – no six-figure dollar licences and no open-ended consulting.",
+    ar: "لكل باقة نطاق وجدول زمني محددان. نؤكد السعر بالجنيه خلال يومي عمل من مكالمة مدتها 30 دقيقة – لا تراخيص بمئات الآلاف من الدولارات ولا استشارات مفتوحة.",
   },
   lead: {
     en: "No six-figure dollar licences and no open-ended consulting. Every package has a defined scope, a timeline and a price agreed before we start. Larger programmes are quoted per project.",
@@ -91,7 +91,7 @@ export default function PricingPage({ params }: { params: { locale: Locale } }) 
                 </div>
                 <Link href={href(locale, `/solutions/${o.slug}`)} className="inline-flex items-center gap-1 text-sm font-semibold text-brand-teal-dark hover:underline">
                   {dict.common.learnMore}
-                  <span className="sr-only"> — {o.title[locale]}</span>
+                  <span className="sr-only"> – {o.title[locale]}</span>
                   <ArrowRight className="btn-icon h-4 w-4" aria-hidden />
                 </Link>
               </div>

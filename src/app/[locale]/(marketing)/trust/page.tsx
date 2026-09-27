@@ -10,10 +10,10 @@ import { certifications, serviceCommitments } from "@/content/trust";
 import { site } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 
-// Gap 3 (PDPL) & gap 5 — where data lives and how it is protected. Controls listed
+// Gap 3 (PDPL) & gap 5 – where data lives and how it is protected. Controls listed
 // here mirror what the platform actually implements (see README → Security).
 const copy = {
-  title: { en: "Trust & Data Residency — Egypt-Hosted and On-Premise AI", ar: "الثقة وإقامة البيانات — ذكاء اصطناعي مستضاف في مصر أو داخل المصنع" },
+  title: { en: "Trust & Data Residency – Egypt-Hosted and On-Premise AI", ar: "الثقة وإقامة البيانات – ذكاء اصطناعي مستضاف في مصر أو داخل المصنع" },
   description: {
     en: "Where your data lives and how it is protected: EU, Egypt-hosted, in-Kingdom or on-premise AI, tenant isolation, encryption, audit logs and SSO.",
     ar: "أين تعيش بياناتك وكيف تُحمى: ذكاء اصطناعي في الاتحاد الأوروبي أو مستضاف في مصر أو داخل المملكة أو داخل المصنع، مع عزل البيانات والتشفير وسجلات التدقيق والدخول الموحد.",
@@ -35,8 +35,8 @@ const copy = {
   regsTitle: { en: "Regulations we design for", ar: "اللوائح التي نصمم وفقها" },
   certTitle: { en: "Certifications roadmap", ar: "خارطة طريق الشهادات" },
   certLead: {
-    en: "What we hold today and what is in progress — stated plainly, so your procurement team doesn't have to ask.",
-    ar: "ما لدينا اليوم وما هو قيد التنفيذ — بوضوح، حتى لا يضطر فريق المشتريات للسؤال.",
+    en: "What we hold today and what is in progress – stated plainly, so your procurement team doesn't have to ask.",
+    ar: "ما لدينا اليوم وما هو قيد التنفيذ – بوضوح، حتى لا يضطر فريق المشتريات للسؤال.",
   },
   status: {
     planned: { en: "Planned", ar: "مخطط" },

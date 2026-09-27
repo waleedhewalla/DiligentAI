@@ -6,7 +6,7 @@ import { CountUp } from "./count-up";
 
 type Stat = { key: string; value: number; prefix?: string; suffix?: string; label: string };
 
-/** "Diligent AI in numbers" — verifiable figures only (see home.stats). */
+/** "Diligent AI in numbers" – verifiable figures only (see home.stats). */
 export function StatsBand({ locale }: { locale: Locale }) {
   const t = home.stats;
   const customers = customerLogos.filter((c) => c.approved).length;

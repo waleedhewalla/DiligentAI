@@ -60,7 +60,7 @@ export default function ServicesPage({ params }: { params: { locale: Locale } })
         </nav>
       </PageHero>
 
-      {/* One section per service model — all content from catalog/service-models.ts. */}
+      {/* One section per service model – all content from catalog/service-models.ts. */}
       {models.map((m, idx) => {
         const c = accentClasses[m.accent];
         const delivered = listOfferings({ serviceModel: m.id });

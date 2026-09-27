@@ -41,7 +41,7 @@ export function SectionHeading({
 
 /**
  * Generic catalog card. Renders ANY offering (product or service) from
- * catalog/offerings.ts — colour, icon, brand badge and copy all come from data.
+ * catalog/offerings.ts – colour, icon, brand badge and copy all come from data.
  * `featured` gives the navy treatment the CEO OS card used to have.
  */
 export function OfferingCard({
@@ -98,7 +98,7 @@ export function OfferingCard({
               featured ? "bg-white/10 text-white/90" : "bg-muted text-muted-foreground",
             )}
           >
-            {dict.demoForm.interests[m].split(" — ")[0]}
+            {dict.demoForm.interests[m].split(" – ")[0]}
           </li>
         ))}
       </ul>
@@ -110,7 +110,7 @@ export function OfferingCard({
   );
 }
 
-/** Primary service-model card (Consult / Build / Integrate) — data from catalog/service-models.ts. */
+/** Primary service-model card (Consult / Build / Integrate) – data from catalog/service-models.ts. */
 export function ServiceModelCard({ model: m, locale, dict, index }: { model: ServiceModel; locale: Locale; dict: Dictionary; index: number }) {
   const c = accentClasses[m.accent];
   return (
@@ -149,14 +149,14 @@ export function ServiceModelCard({ model: m, locale, dict, index }: { model: Ser
         </Button>
         <Link href={href(locale, `/services#${m.id}`)} className="text-sm font-medium text-brand-teal-dark hover:underline">
           {dict.common.learnMore}
-          <span className="sr-only"> — {m.title[locale]}</span>
+          <span className="sr-only"> – {m.title[locale]}</span>
         </Link>
       </div>
     </article>
   );
 }
 
-/** Manufacturing use-case card — data from catalog/capabilities.ts. */
+/** Manufacturing use-case card – data from catalog/capabilities.ts. */
 export function CapabilityCard({ capability: cap, locale, dict }: { capability: Capability; locale: Locale; dict: Dictionary }) {
   const c = accentClasses[cap.accent];
   return (
@@ -241,7 +241,7 @@ export function FinalCta({
   location: string;
 }) {
   const qs = query ? "?" + new URLSearchParams(Object.entries(query).filter(([, v]) => v) as [string, string][]).toString() : "";
-  const wa = whatsappHref(locale === "ar" ? "مرحباً وليد، أود معرفة المزيد عن Diligent AI" : "Hi Waleed, I'd like to learn more about Diligent AI");
+  const wa = whatsappHref(locale === "ar" ? "مرحباً فريق Diligent AI، أود معرفة المزيد عن حلولكم" : "Hello Diligent AI team, I'd like to learn more about your solutions");
   return (
     <section className="hero-bg relative overflow-hidden text-white">
       <div className="grid-pattern absolute inset-0" aria-hidden />

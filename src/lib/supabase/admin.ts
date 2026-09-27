@@ -3,7 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 import { supabaseUrl } from "./config";
 
 /**
- * Service-role client. Bypasses RLS — use only in trusted server code for
+ * Service-role client. Bypasses RLS – use only in trusted server code for
  * writes that anonymous visitors trigger (demo requests) and audit logging.
  */
 export function createAdminClient() {

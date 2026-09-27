@@ -1,41 +1,36 @@
-import Image from "next/image";
-import { Check } from "lucide-react";
+import { Check, Mail, Users } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { home } from "@/content/home";
-import { founderName, founderPhoto, site } from "@/lib/site";
+import { site, whatsappHref } from "@/lib/site";
 import { Button } from "@/components/ui/button";
-import { LinkedInIcon } from "./icons";
+import { WhatsAppIcon } from "./icons";
 
-export function FounderSection({ locale, dict }: { locale: Locale; dict: Dictionary }) {
+/** "Who you call if something goes wrong": the delivery team behind every engagement. */
+export function TeamSection({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const f = home.founder;
+  const wa = whatsappHref(locale === "ar" ? "مرحباً فريق Diligent AI، أود التحدث مع أحد المستشارين" : "Hello Diligent AI team, I'd like to speak with a consultant");
   return (
     <section className="section bg-surface-subtle">
       <div className="container grid items-center gap-10 md:grid-cols-[280px_1fr] md:gap-16">
         <div className="mx-auto w-56 md:w-full">
-          {founderPhoto ? (
-            <Image
-              src={founderPhoto}
-              alt={locale === "ar" ? `صورة ${founderName.ar}، مؤسس Diligent AI` : `${founderName.en}, founder of Diligent AI`}
-              width={560}
-              height={640}
-              className="aspect-[7/8] w-full rounded-2xl object-cover shadow-lg"
-            />
-          ) : (
-            <div
-              role="img"
-              aria-label={founderName[locale]}
-              className="flex aspect-[7/8] w-full items-center justify-center rounded-2xl bg-brand-navy text-6xl font-bold text-white shadow-lg"
-            >
-              <span dir="ltr">WH</span>
-            </div>
-          )}
+          <div
+            role="img"
+            aria-label={f.team[locale]}
+            className="relative flex aspect-[7/8] w-full flex-col items-center justify-center gap-4 overflow-hidden rounded-2xl bg-brand-navy text-white shadow-lg"
+          >
+            <div className="grid-pattern absolute inset-0 opacity-60" aria-hidden />
+            <span className="relative grid h-24 w-24 place-items-center rounded-full bg-white/10 ring-1 ring-white/20">
+              <Users className="h-11 w-11 text-brand-teal-light" aria-hidden />
+            </span>
+            <span className="relative text-lg font-bold" dir="ltr">Diligent AI</span>
+          </div>
         </div>
         <div>
           <p className="eyebrow">{f.eyebrow[locale]}</p>
           <blockquote className="mt-3 text-2xl font-bold leading-snug text-brand-navy md:text-3xl">“{f.quote[locale]}”</blockquote>
           <p className="mt-4 font-semibold">
-            {founderName[locale]} <span className="font-normal text-muted-foreground">· {f.role[locale]}</span>
+            {f.team[locale]} <span className="font-normal text-muted-foreground">· {f.role[locale]}</span>
           </p>
           <ul className="mt-6 grid gap-2 sm:grid-cols-2">
             {f.creds[locale].map((c) => (
@@ -46,10 +41,17 @@ export function FounderSection({ locale, dict }: { locale: Locale; dict: Diction
             ))}
           </ul>
           <Button asChild variant="secondary" className="mt-8">
-            <a href={site.linkedin} target="_blank" rel="noopener noreferrer">
-              <LinkedInIcon className="h-4 w-4" />
-              {dict.cta.connectLinkedIn}
-            </a>
+            {wa ? (
+              <a href={wa} target="_blank" rel="noopener noreferrer">
+                <WhatsAppIcon className="h-4 w-4" />
+                {dict.cta.whatsapp}
+              </a>
+            ) : (
+              <a href={`mailto:${site.email}`}>
+                <Mail className="h-4 w-4" />
+                {site.email}
+              </a>
+            )}
           </Button>
         </div>
       </div>

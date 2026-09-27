@@ -73,7 +73,7 @@ export function Header({ locale, dict, nav }: { locale: Locale; dict: Dictionary
           {dict.nav.skip}
         </a>
         <div className="container flex h-16 items-center justify-between gap-4">
-          <Link href={href(locale)} aria-label={`${dict.brand.name} — ${dict.nav.home}`}>
+          <Link href={href(locale)} aria-label={`${dict.brand.name} – ${dict.nav.home}`}>
             <Logo />
           </Link>
 
@@ -91,7 +91,7 @@ export function Header({ locale, dict, nav }: { locale: Locale; dict: Dictionary
               </button>
               {menuOpen ? (
                 // Mega menu: one column per catalog category, then the service models.
-                // Content is data-driven (see lib/nav.ts) — nothing here is hardcoded.
+                // Content is data-driven (see lib/nav.ts) – nothing here is hardcoded.
                 <div
                   id="solutions-menu"
                   className="fixed inset-x-0 top-[calc(100%+0.5rem)] mx-auto grid w-[min(1100px,calc(100vw-2rem))] grid-cols-4 gap-4 rounded-xl border bg-background p-5 shadow-xl animate-fade-up"

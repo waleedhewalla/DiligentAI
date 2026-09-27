@@ -35,7 +35,7 @@ export default async function AccountPage({ params }: { params: { locale: Locale
         </h2>
         <dl className="mt-4 grid gap-2 text-sm sm:grid-cols-[160px_1fr]">
           <dt className="text-muted-foreground">{dict.auth.fullName}</dt>
-          <dd>{ctx.profile?.full_name ?? "—"}</dd>
+          <dd>{ctx.profile?.full_name ?? "–"}</dd>
           <dt className="text-muted-foreground">{dict.auth.email}</dt>
           <dd dir="ltr" className="text-start">
             {ctx.user.email}
@@ -79,12 +79,12 @@ export default async function AccountPage({ params }: { params: { locale: Locale
               <tbody>
                 {users.data.map((u) => (
                   <tr key={u.id} className={u.is_active ? "border-b" : "border-b opacity-50"}>
-                    <td className="py-2">{u.full_name ?? "—"}</td>
+                    <td className="py-2">{u.full_name ?? "–"}</td>
                     <td className="py-2" dir="ltr">
                       {u.email}
                     </td>
                     <td className="py-2">{u.role}</td>
-                    <td className="py-2">{u.last_login ? fmt.format(new Date(u.last_login)) : "—"}</td>
+                    <td className="py-2">{u.last_login ? fmt.format(new Date(u.last_login)) : "–"}</td>
                   </tr>
                 ))}
               </tbody>

@@ -1,5 +1,5 @@
 /**
- * CONFIGURABLE — regulatory deadlines shown on the homepage band and /trust (gap 3).
+ * CONFIGURABLE – regulatory deadlines shown on the homepage band and /trust (gap 3).
  * Keep dates factual; use "expected" wording where timing depends on regulators.
  */
 import type { L10n } from "@/i18n/config";
@@ -10,10 +10,10 @@ export const complianceItems: ComplianceItem[] = [
   {
     id: "cbam",
     when: { en: "Since 1 Jan 2026", ar: "منذ 1 يناير 2026" },
-    title: { en: "EU CBAM — definitive period", ar: "آلية تعديل حدود الكربون الأوروبية — المرحلة النهائية" },
+    title: { en: "EU CBAM – definitive period", ar: "آلية تعديل حدود الكربون الأوروبية – المرحلة النهائية" },
     body: {
-      en: "Exporters of steel, cement, aluminium and fertilisers to the EU need verified plant emissions — or face costly default values.",
-      ar: "مصدّرو الصلب والأسمنت والألومنيوم والأسمدة إلى الاتحاد الأوروبي يحتاجون انبعاثات موثقة لمصانعهم — أو يواجهون قيماً افتراضية مكلفة.",
+      en: "Exporters of steel, cement, aluminium and fertilisers to the EU need verified plant emissions – or face costly default values.",
+      ar: "مصدّرو الصلب والأسمنت والألومنيوم والأسمدة إلى الاتحاد الأوروبي يحتاجون انبعاثات موثقة لمصانعهم – أو يواجهون قيماً افتراضية مكلفة.",
     },
     href: "/capabilities/energy-carbon-reporting",
   },

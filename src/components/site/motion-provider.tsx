@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { restoreLocaleScroll } from "./locale-scroll";
 
 /**
  * Scroll reveals for every <main> section. Sections already on screen are
@@ -11,6 +12,10 @@ import { usePathname } from "next/navigation";
  */
 export function MotionProvider() {
   const pathname = usePathname();
+  // Keep the visitor's place after a language switch (runs before reveals set up).
+  useEffect(() => {
+    if (pathname) restoreLocaleScroll(pathname);
+  }, [pathname]);
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
     let io: IntersectionObserver | undefined;

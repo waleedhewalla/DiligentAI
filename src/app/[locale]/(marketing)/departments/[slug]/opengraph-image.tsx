@@ -3,7 +3,7 @@ import { ogSize, renderOg } from "@/lib/og";
 
 export const size = ogSize;
 export const contentType = "image/png";
-export const alt = "Diligent AI — solutions by department";
+export const alt = "Diligent AI – solutions by department";
 
 export function generateStaticParams() {
   return listDepartments().map((d) => ({ slug: d.slug }));

@@ -10,7 +10,7 @@ const tone: Record<Maturity, { light: string; dark: string; dot: string }> = {
   service: { light: "bg-muted text-foreground/80", dark: "bg-white/15 text-white", dot: "bg-white/70" },
 };
 
-/** Live / Pilot / Assessment / Service — shown on every offering so buyers know what exists today. */
+/** Live / Pilot / Assessment / Service – shown on every offering so buyers know what exists today. */
 export function MaturityBadge({ maturity, dict, dark = false, className }: { maturity: Maturity; dict: Dictionary; dark?: boolean; className?: string }) {
   const t = tone[maturity];
   return (

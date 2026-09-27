@@ -85,8 +85,8 @@ function RenderBlock({ block, locale }: { block: Block; locale: Locale }) {
             {/* Only claim the Star Trans deployment for offerings its case study covers. */}
             {getCaseStudy("star-trans")?.offerings.includes(o.slug)
               ? locale === "ar"
-                ? "نطبّق هذا في ستار ترانس — احجز مراجعة لمصنعك مدتها 30 دقيقة."
-                : "We deploy this at Star Trans — book a 30-min plant review."
+                ? "نطبّق هذا في ستار ترانس – احجز مراجعة لمصنعك مدتها 30 دقيقة."
+                : "We deploy this at Star Trans – book a 30-min plant review."
               : locale === "ar"
                 ? "احجز مراجعة لمصنعك مدتها 30 دقيقة لنرى كيف يناسب هذا مصنعك."
                 : "Book a 30-min plant review to see how this fits your plant."}

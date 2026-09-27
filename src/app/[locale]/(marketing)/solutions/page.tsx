@@ -12,12 +12,12 @@ import { Breadcrumbs, FinalCta, PageHero } from "@/components/site/sections";
 import { CatalogShowcase } from "@/components/site/catalog";
 import { ComparisonSection } from "@/components/site/catalog-blocks";
 
-// Editorial copy only — the page body is generated from the catalog.
+// Editorial copy only – the page body is generated from the catalog.
 const copy = {
   title: { en: "AI Solutions & System Integration for Manufacturing", ar: "حلول الذكاء الاصطناعي وتكامل الأنظمة للتصنيع" },
   description: {
-    en: "AI consulting, pre-built AI tools, custom models, ERP and shop-floor integration, and manufacturing use cases — all in one place.",
-    ar: "استشارات الذكاء الاصطناعي، والأدوات الجاهزة، والنماذج المخصصة، والتكامل مع ERP وأرض المصنع، وحالات الاستخدام في التصنيع — في مكان واحد.",
+    en: "AI consulting, pre-built AI tools, custom models, ERP and shop-floor integration, and manufacturing use cases – all in one place.",
+    ar: "استشارات الذكاء الاصطناعي، والأدوات الجاهزة، والنماذج المخصصة، والتكامل مع ERP وأرض المصنع، وحالات الاستخدام في التصنيع – في مكان واحد.",
   },
   h1: { en: "Everything we deliver for manufacturers", ar: "كل ما نقدمه للمصانع" },
   lead: {
@@ -59,7 +59,7 @@ export default function SolutionsPage({ params }: { params: { locale: Locale } }
           />
         }
       />
-      {/* Browse by department first — the primary way in (see catalog/departments.ts). */}
+      {/* Browse by department first – the primary way in (see catalog/departments.ts). */}
       <section className="border-b bg-surface-subtle py-8">
         <div className="container">
           <p className="text-sm font-bold text-brand-navy">{dict.nav.departments}</p>

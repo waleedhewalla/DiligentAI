@@ -6,7 +6,7 @@ export const site = {
   city: { en: "Cairo, Egypt", ar: "القاهرة، مصر" },
   founder: "Waleed Hewalla",
   linkedin: process.env.NEXT_PUBLIC_LINKEDIN_URL ?? "https://www.linkedin.com/in/waleedhewalla",
-  // Company channels — each icon appears only once its URL is set (TODO(Waleed): create the company page).
+  // Company channels – each icon appears only once its URL is set (TODO(Waleed): create the company page).
   social: {
     linkedinCompany: process.env.NEXT_PUBLIC_LINKEDIN_COMPANY_URL ?? "",
     youtube: process.env.NEXT_PUBLIC_YOUTUBE_URL ?? "",
@@ -15,7 +15,7 @@ export const site = {
   // Business WhatsApp (international format). Override per environment with NEXT_PUBLIC_WHATSAPP_NUMBER.
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "201065307007",
   // Booking: public Cal.com event (preferred over Calendly). Override per environment with NEXT_PUBLIC_BOOKING_URL.
-  // TODO(Waleed): the site promises a 30-minute review — switch this to the 30-min Cal.com event once created.
+  // TODO(Waleed): the site promises a 30-minute review – switch this to the 30-min Cal.com event once created.
   booking: process.env.NEXT_PUBLIC_BOOKING_URL || "https://cal.com/waleed-hewalla-trzjna/15min",
   calendly: process.env.NEXT_PUBLIC_CALENDLY_URL ?? "",
   calendlyCeo: process.env.NEXT_PUBLIC_CALENDLY_CEO_URL ?? process.env.NEXT_PUBLIC_CALENDLY_URL ?? "",
@@ -23,9 +23,6 @@ export const site = {
 
 // TODO(Waleed): confirm the Arabic spelling of your name.
 export const founderName = { en: "Waleed Hewalla", ar: "وليد حوالة" };
-
-// TODO(Waleed): add a professional photo at /public/images/waleed.jpg (no stock photos), then set this path.
-export const founderPhoto: string | null = null;
 
 // Optional 3-minute overview video (YouTube/Vimeo/hosted). Hidden until set.
 export const overviewVideoUrl = process.env.NEXT_PUBLIC_OVERVIEW_VIDEO_URL ?? "";

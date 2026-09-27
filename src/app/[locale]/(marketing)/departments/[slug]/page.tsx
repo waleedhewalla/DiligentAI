@@ -37,7 +37,7 @@ const t = {
   kpis: { en: "KPIs we report against", ar: "مؤشرات الأداء التي نقيس عليها" },
   solutions: { en: "Solutions for this department", ar: "حلول لهذه الإدارة" },
   useCases: { en: "Related use cases", ar: "حالات استخدام ذات صلة" },
-  roadmap: { en: "On the roadmap — co-develop it with us", ar: "على خارطة الطريق — طوّره معنا" },
+  roadmap: { en: "On the roadmap – co-develop it with us", ar: "على خارطة الطريق – طوّره معنا" },
   roadmapBody: {
     en: "Pilot customers shape these products and get founding-customer terms. Tell us your case.",
     ar: "العملاء التجريبيون يشكّلون هذه المنتجات ويحصلون على شروط العملاء المؤسسين. أخبرنا بحالتك.",

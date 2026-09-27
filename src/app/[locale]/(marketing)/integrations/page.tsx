@@ -5,10 +5,10 @@ import { pageMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 import { Breadcrumbs, FinalCta, OfferingCard, PageHero, SectionHeading } from "@/components/site/sections";
 
-// Gap 7 — integrations hub. Systems and support levels come from catalog/integrations.ts;
+// Gap 7 – integrations hub. Systems and support levels come from catalog/integrations.ts;
 // integration services from offerings in the "system-integration" category.
 const copy = {
-  title: { en: "Integrations — SAP, Oracle, Dynamics, Odoo, MES/SCADA & AI Platforms", ar: "التكاملات — SAP وOracle وDynamics وOdoo وMES/SCADA ومنصات الذكاء الاصطناعي" },
+  title: { en: "Integrations – SAP, Oracle, Dynamics, Odoo, MES/SCADA & AI Platforms", ar: "التكاملات – SAP وOracle وDynamics وOdoo وMES/SCADA ومنصات الذكاء الاصطناعي" },
   description: {
     en: "The ERP, shop-floor, cloud and AI-agent systems Diligent AI connects to, and how: standard interfaces, packaged connectors and connectors in pilot.",
     ar: "أنظمة ERP وأرض المصنع والسحابة ووكلاء الذكاء الاصطناعي التي تتصل بها Diligent AI، وكيف: واجهات قياسية وموصلات جاهزة وموصلات تجريبية.",

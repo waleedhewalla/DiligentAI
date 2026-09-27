@@ -13,14 +13,14 @@ import { CbamChecklist } from "@/components/site/cbam-checklist";
 const labels = {
   ready: { en: "Readiness", ar: "الجاهزية" },
   gaps: { en: "Open gaps", ar: "الفجوات المفتوحة" },
-  allSet: { en: "Everything ticked — worth confirming with your verifier.", ar: "كل البنود مكتملة — يستحسن التأكيد مع جهة التحقق." },
+  allSet: { en: "Everything ticked – worth confirming with your verifier.", ar: "كل البنود مكتملة – يستحسن التأكيد مع جهة التحقق." },
   book: { en: "Close my gaps with an expert", ar: "أغلق الفجوات مع خبير" },
   print: { en: "Print / save PDF", ar: "اطبع / احفظ PDF" },
   whatsapp: { en: "WhatsApp my result to an expert", ar: "أرسل نتيجتي لخبير عبر واتساب" },
 };
 const levels = {
-  en: ["Early — start with scope and metering", "In progress — focus on method and evidence", "Nearly ready — plan verification"],
-  ar: ["مبكر — ابدأ بالنطاق والقياس", "قيد التقدم — ركّز على الطريقة والأدلة", "شبه جاهز — خطط للتحقق"],
+  en: ["Early – start with scope and metering", "In progress – focus on method and evidence", "Nearly ready – plan verification"],
+  ar: ["مبكر – ابدأ بالنطاق والقياس", "قيد التقدم – ركّز على الطريقة والأدلة", "شبه جاهز – خطط للتحقق"],
 } as const;
 
 export function generateMetadata({ params }: { params: { locale: Locale } }) {

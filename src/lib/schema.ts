@@ -72,7 +72,7 @@ export function breadcrumbSchema(items: { name: string; path: string }[], locale
 export function offeringSchema(o: Offering, locale: Locale) {
   const base = {
     "@context": "https://schema.org",
-    name: o.brand ? `${o.brand} — ${o.title[locale]}` : o.title[locale],
+    name: o.brand ? `${o.brand} – ${o.title[locale]}` : o.title[locale],
     description: o.seo.description[locale],
     url: absoluteUrl(href(locale, `/solutions/${o.slug}`)),
     provider: { "@id": ORG_ID },
@@ -95,7 +95,7 @@ export function offeringSchema(o: Offering, locale: Locale) {
       availability: "https://schema.org/InStock",
       url: absoluteUrl(href(locale, "/demo")),
       priceCurrency: "EGP",
-      description: locale === "ar" ? "التسعير حسب الطلب — احجز مراجعة لمصنعك" : "Pricing on request — book a plant review",
+      description: locale === "ar" ? "التسعير حسب الطلب – احجز مراجعة لمصنعك" : "Pricing on request – book a plant review",
     },
   };
 }

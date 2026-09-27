@@ -12,7 +12,7 @@ export type ChecklistData = { groups: { title: string; items: { id: string; text
 
 type Labels = { ready: string; gaps: string; allSet: string; book: string; print: string; whatsapp: string; levels: [string, string, string] };
 
-/** CBAM readiness checklist — client-side only; shows open gaps and a readiness level. */
+/** CBAM readiness checklist – client-side only; shows open gaps and a readiness level. */
 export function CbamChecklist({ data, labels, bookHref, whatsappNumber }: { data: ChecklistData; labels: Labels; bookHref: string; whatsappNumber: string }) {
   const [checked, setChecked] = useState<Record<string, boolean>>({});
   const tracked = useRef(false);
@@ -85,7 +85,7 @@ export function CbamChecklist({ data, labels, bookHref, whatsappNumber }: { data
               <Variant exp="toolcta" v="b" as="div">
                 <Button asChild variant="whatsapp" className="w-full">
                   <TrackedAnchor
-                    href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`CBAM ${labels.ready}: ${pct}% — ${level}. ${labels.gaps}: ${gaps.length}`)}`}
+                    href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`CBAM ${labels.ready}: ${pct}% – ${level}. ${labels.gaps}: ${gaps.length}`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     event={{ name: "whatsapp_click", params: { location: "tool_cbam_checklist" } }}

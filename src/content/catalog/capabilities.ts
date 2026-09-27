@@ -1,5 +1,5 @@
 /**
- * CONFIGURABLE — manufacturing use cases, written problem-first.
+ * CONFIGURABLE – manufacturing use cases, written problem-first.
  *
  * Each capability gets its own page at /capabilities/[slug] and is cross-linked
  * automatically to every offering that lists its slug in `offering.capabilities`.
@@ -14,8 +14,8 @@ export const capabilities: Capability[] = [
     accent: "teal",
     title: { en: "Energy, Carbon & CBAM Reporting", ar: "تقارير الطاقة والكربون وآلية CBAM" },
     summary: {
-      en: "Turn meter, MES and ERP data into verified plant emissions — for EU CBAM, ESG filings and lower energy bills.",
-      ar: "حوّل بيانات العدادات وMES وERP إلى انبعاثات موثقة للمصنع — لآلية CBAM الأوروبية وتقارير الاستدامة وخفض فواتير الطاقة.",
+      en: "Turn meter, MES and ERP data into verified plant emissions – for EU CBAM, ESG filings and lower energy bills.",
+      ar: "حوّل بيانات العدادات وMES وERP إلى انبعاثات موثقة للمصنع – لآلية CBAM الأوروبية وتقارير الاستدامة وخفض فواتير الطاقة.",
     },
     problem: {
       en: "Your EU customers now need verified emissions per shipment, and your data lives in meters and spreadsheets.",
@@ -39,7 +39,7 @@ export const capabilities: Capability[] = [
     },
     serviceModels: ["consult", "build", "integrate"],
     seo: {
-      title: { en: "CBAM & Carbon Reporting for Egyptian Exporters — Steel, Cement, Fertiliser", ar: "تقارير CBAM والكربون للمصدّرين المصريين — الصلب والأسمنت والأسمدة" },
+      title: { en: "CBAM & Carbon Reporting for Egyptian Exporters – Steel, Cement, Fertiliser", ar: "تقارير CBAM والكربون للمصدّرين المصريين – الصلب والأسمنت والأسمدة" },
       description: {
         en: "Capture verified plant emissions from meters, SCADA and ERP for EU CBAM, FRA ESG disclosures and energy savings. Arabic and English reporting.",
         ar: "التقط انبعاثات موثقة للمصنع من العدادات وSCADA وERP لآلية CBAM الأوروبية وإفصاحات الاستدامة وتوفير الطاقة. تقارير بالعربية والإنجليزية.",
@@ -53,8 +53,8 @@ export const capabilities: Capability[] = [
     accent: "orange",
     title: { en: "Production Scheduling & Capacity", ar: "جدولة الإنتاج والطاقة" },
     summary: {
-      en: "Feasible, optimised schedules in minutes — and re-planned the moment reality changes.",
-      ar: "جداول ممكنة ومُحسّنة في دقائق — ويُعاد تخطيطها لحظة تغيّر الواقع.",
+      en: "Feasible, optimised schedules in minutes – and re-planned the moment reality changes.",
+      ar: "جداول ممكنة ومُحسّنة في دقائق – ويُعاد تخطيطها لحظة تغيّر الواقع.",
     },
     problem: {
       en: "Your schedule takes days to build in Excel and is wrong by Tuesday.",
@@ -92,8 +92,8 @@ export const capabilities: Capability[] = [
     accent: "teal",
     title: { en: "Demand Planning", ar: "تخطيط الطلب" },
     summary: {
-      en: "Forecast demand by SKU, customer and region — including Ramadan, seasonality and promotions.",
-      ar: "تنبؤ بالطلب حسب الصنف والعميل والمنطقة — مع رمضان والمواسم والعروض.",
+      en: "Forecast demand by SKU, customer and region – including Ramadan, seasonality and promotions.",
+      ar: "تنبؤ بالطلب حسب الصنف والعميل والمنطقة – مع رمضان والمواسم والعروض.",
     },
     problem: {
       en: "Sales forecasts live in spreadsheets, and you find out they were wrong from the warehouse.",
@@ -119,8 +119,8 @@ export const capabilities: Capability[] = [
     seo: {
       title: { en: "AI Demand Planning & Forecasting for MENA Manufacturers", ar: "تخطيط الطلب والتنبؤ بالذكاء الاصطناعي لمصانع المنطقة" },
       description: {
-        en: "Machine-learning demand forecasts that understand Ramadan, seasonality and promotions — feeding one plan to production and procurement.",
-        ar: "توقعات طلب بالتعلم الآلي تفهم رمضان والمواسم والعروض — وتغذي خطة واحدة للإنتاج والمشتريات.",
+        en: "Machine-learning demand forecasts that understand Ramadan, seasonality and promotions – feeding one plan to production and procurement.",
+        ar: "توقعات طلب بالتعلم الآلي تفهم رمضان والمواسم والعروض – وتغذي خطة واحدة للإنتاج والمشتريات.",
       },
       keywords: { en: ["demand planning AI", "sales forecasting Egypt", "S&OP"], ar: ["تخطيط الطلب", "التنبؤ بالمبيعات", "تخطيط المبيعات والعمليات"] },
     },
@@ -131,8 +131,8 @@ export const capabilities: Capability[] = [
     accent: "navy",
     title: { en: "Production Forecasting", ar: "التنبؤ بالإنتاج" },
     summary: {
-      en: "Know output, yield and capacity gaps weeks ahead — not at month-end.",
-      ar: "اعرف الإنتاج والعائد وفجوات الطاقة قبلها بأسابيع — لا في نهاية الشهر.",
+      en: "Know output, yield and capacity gaps weeks ahead – not at month-end.",
+      ar: "اعرف الإنتاج والعائد وفجوات الطاقة قبلها بأسابيع – لا في نهاية الشهر.",
     },
     problem: {
       en: "You discover you'll miss the monthly plan when it's already too late to recover.",
@@ -170,8 +170,8 @@ export const capabilities: Capability[] = [
     accent: "teal",
     title: { en: "Quality Control", ar: "ضبط الجودة" },
     summary: {
-      en: "Catch defects on the line and trace them to their root cause — before customers do.",
-      ar: "اكتشف العيوب على الخط وتتبعها إلى سببها الجذري — قبل أن يكتشفها العميل.",
+      en: "Catch defects on the line and trace them to their root cause – before customers do.",
+      ar: "اكتشف العيوب على الخط وتتبعها إلى سببها الجذري – قبل أن يكتشفها العميل.",
     },
     problem: {
       en: "Defects are found at final inspection or by the customer, long after the cause has moved on.",
@@ -287,8 +287,8 @@ export const capabilities: Capability[] = [
     accent: "navy",
     title: { en: "Executive Decision Intelligence", ar: "ذكاء القرار التنفيذي" },
     summary: {
-      en: "Plant, finance and commercial KPIs in one Arabic view — board packs in minutes.",
-      ar: "مؤشرات المصنع والمالية والتجارية في رؤية عربية واحدة — وحزم مجلس الإدارة في دقائق.",
+      en: "Plant, finance and commercial KPIs in one Arabic view – board packs in minutes.",
+      ar: "مؤشرات المصنع والمالية والتجارية في رؤية عربية واحدة – وحزم مجلس الإدارة في دقائق.",
     },
     problem: {
       en: "Leadership runs the company on a PDF that arrives every Monday, already out of date.",

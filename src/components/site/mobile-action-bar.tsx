@@ -41,6 +41,7 @@ export function MobileActionBar({
     <aside
       aria-label={bookLabel}
       aria-hidden={!visible}
+      data-bottom-bar
       className={cn(
         "fixed inset-x-0 bottom-0 z-30 border-t bg-background/95 p-3 shadow-[0_-8px_24px_rgba(0,0,0,0.08)] backdrop-blur transition-transform duration-300 md:hidden print:hidden",
         visible ? "translate-y-0" : "translate-y-full",

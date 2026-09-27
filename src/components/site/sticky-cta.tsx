@@ -30,6 +30,7 @@ export function StickyCta({
   return (
     <div
       aria-hidden={!visible}
+      data-bottom-bar
       className={cn(
         "fixed inset-x-0 bottom-0 z-30 hidden border-t md:block bg-background/95 shadow-[0_-8px_24px_rgba(0,0,0,0.06)] backdrop-blur transition-transform duration-300 print:hidden",
         visible ? "translate-y-0" : "translate-y-full",

@@ -3,7 +3,7 @@ import { renderedVariants, type Variant as V } from "@/content/experiments";
 /**
  * One version of an A/B test. Both versions are in the HTML while a test is
  * live; a tiny script in <head> marks <html data-exp-<id>="a|b"> before first
- * paint and CSS hides the other version — no flicker, works on static pages.
+ * paint and CSS hides the other version – no flicker, works on static pages.
  * When the test is off or ended, only the control / winner is rendered.
  * Hook-free, so it works in server and client components.
  */

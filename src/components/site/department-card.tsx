@@ -17,7 +17,7 @@ export const departmentCopy = {
   explore: { en: "Explore", ar: "استكشف" },
 };
 
-/** Department tile — used on the hub, the home picker fallback and cross-links. */
+/** Department tile – used on the hub, the home picker fallback and cross-links. */
 export function DepartmentCard({ department: d, locale }: { department: Department; locale: Locale }) {
   const c = accentClasses[d.accent];
   const count = offeringsForDepartment(d).length;

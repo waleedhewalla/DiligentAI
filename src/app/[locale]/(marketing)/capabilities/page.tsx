@@ -9,8 +9,8 @@ import { Breadcrumbs, CapabilityCard, FinalCta, PageHero } from "@/components/si
 const copy = {
   title: { en: "Manufacturing AI Use Cases: Scheduling, Forecasting, Quality, Supply Chain", ar: "حالات استخدام الذكاء الاصطناعي في التصنيع: الجدولة والتنبؤ والجودة وسلاسل الإمداد" },
   description: {
-    en: "How AI solves the problems manufacturers in Egypt and the Gulf face every week — production scheduling, demand planning, forecasting, quality control, supply chain and maintenance.",
-    ar: "كيف يحل الذكاء الاصطناعي المشكلات التي تواجهها المصانع في مصر والخليج كل أسبوع — جدولة الإنتاج وتخطيط الطلب والتنبؤ وضبط الجودة وسلاسل الإمداد والصيانة.",
+    en: "How AI solves the problems manufacturers in Egypt and the Gulf face every week – production scheduling, demand planning, forecasting, quality control, supply chain and maintenance.",
+    ar: "كيف يحل الذكاء الاصطناعي المشكلات التي تواجهها المصانع في مصر والخليج كل أسبوع – جدولة الإنتاج وتخطيط الطلب والتنبؤ وضبط الجودة وسلاسل الإمداد والصيانة.",
   },
   cta: { en: "See your use case on your own data.", ar: "شاهد حالة استخدامك على بياناتك." },
 };

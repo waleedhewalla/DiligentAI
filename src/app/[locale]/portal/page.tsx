@@ -96,7 +96,7 @@ export default async function PortalDashboard({ params }: { params: { locale: Lo
                 <li key={a.id} className="flex items-center justify-between gap-4 py-3 text-sm">
                   <span>
                     {ACTION_LABELS[a.action]?.[locale] ?? a.action}
-                    {a.resource ? <span className="text-muted-foreground"> — {a.resource}</span> : null}
+                    {a.resource ? <span className="text-muted-foreground"> – {a.resource}</span> : null}
                   </span>
                   <time className="shrink-0 text-muted-foreground" dateTime={a.created_at}>
                     {fmt.format(new Date(a.created_at))}

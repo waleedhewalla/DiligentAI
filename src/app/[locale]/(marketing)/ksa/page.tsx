@@ -5,18 +5,18 @@ import { pageMetadata } from "@/lib/seo";
 import { Breadcrumbs, FinalCta, OfferingCard, PageHero, SectionHeading } from "@/components/site/sections";
 import { FundingBlock, ModelChoiceBlock } from "@/components/site/catalog-blocks";
 
-// Gap 6 — Saudi Arabia landing page. Offerings come from the catalog (`regions` /
+// Gap 6 – Saudi Arabia landing page. Offerings come from the catalog (`regions` /
 // `fundingRoutes`); programmes from catalog/funding.ts. No eligibility promises.
 const copy = {
-  title: { en: "AI for Saudi Manufacturers — Future Factories & SIRI", ar: "الذكاء الاصطناعي للمصانع السعودية — مصانع المستقبل وSIRI" },
+  title: { en: "AI for Saudi Manufacturers – Future Factories & SIRI", ar: "الذكاء الاصطناعي للمصانع السعودية – مصانع المستقبل وSIRI" },
   description: {
-    en: "SIRI-aligned smart-factory assessments, AI planning, quality and maintenance for Saudi factories — with Arabic delivery and in-Kingdom hosting options.",
-    ar: "تقييمات للمصنع الذكي متوافقة مع SIRI، وذكاء اصطناعي للتخطيط والجودة والصيانة للمصانع السعودية — بتنفيذ عربي وخيارات استضافة داخل المملكة.",
+    en: "SIRI-aligned smart-factory assessments, AI planning, quality and maintenance for Saudi factories – with Arabic delivery and in-Kingdom hosting options.",
+    ar: "تقييمات للمصنع الذكي متوافقة مع SIRI، وذكاء اصطناعي للتخطيط والجودة والصيانة للمصانع السعودية – بتنفيذ عربي وخيارات استضافة داخل المملكة.",
   },
   h1: { en: "From readiness assessment to a running smart factory", ar: "من تقييم الجاهزية إلى مصنع ذكي يعمل" },
   lead: {
-    en: "The Kingdom plans to grow from about 12,000 factories to 36,000 by 2035, and its programmes are moving thousands of them toward automation. We help you take the first step — and deliver the AI that follows.",
-    ar: "تخطط المملكة للنمو من نحو 12 ألف مصنع إلى 36 ألفاً بحلول 2035، وبرامجها تنقل الآلاف منها نحو الأتمتة. نساعدك في الخطوة الأولى — ونسلّم الذكاء الاصطناعي الذي يليها.",
+    en: "The Kingdom plans to grow from about 12,000 factories to 36,000 by 2035, and its programmes are moving thousands of them toward automation. We help you take the first step – and deliver the AI that follows.",
+    ar: "تخطط المملكة للنمو من نحو 12 ألف مصنع إلى 36 ألفاً بحلول 2035، وبرامجها تنقل الآلاف منها نحو الأتمتة. نساعدك في الخطوة الأولى – ونسلّم الذكاء الاصطناعي الذي يليها.",
   },
   start: { en: "Start here", ar: "ابدأ من هنا" },
   alsoAvailable: { en: "Also available in Saudi Arabia", ar: "متاح أيضاً في المملكة" },

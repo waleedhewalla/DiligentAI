@@ -1,6 +1,6 @@
 import type { L10n } from "@/i18n/config";
 
-// DRAFT — must be reviewed by counsel before launch (spec §10.1, owner: Omar).
+// DRAFT – must be reviewed by counsel before launch (spec §10.1, owner: Omar).
 // Written against Egypt's Personal Data Protection Law (No. 151 of 2020) and GDPR.
 
 export type LegalDoc = {
@@ -29,12 +29,12 @@ export const privacyPolicy: LegalDoc = {
       h: { en: "What we collect", ar: "ما الذي نجمعه" },
       p: {
         en: [
-          "Demo and contact requests: your name, work email, company, industry, product interest and preferred language — plus, when you submit, how you found us (campaign tags, referring site and up to 10 pages you viewed here), which your browser keeps locally until then.",
+          "Demo and contact requests: your name, work email, company, industry, product interest and preferred language – plus, when you submit, how you found us (campaign tags, referring site and up to 10 pages you viewed here), which your browser keeps locally until then.",
           "Portal accounts: name, work email, organisation, role, language preference, authentication events (time, IP address) and product usage required to operate the service.",
           "Analytics: with your consent, pseudonymous usage data via Google Analytics 4 and Hotjar. Without consent, GA4 receives only cookieless, aggregated signals.",
         ],
         ar: [
-          "طلبات العروض والتواصل: الاسم، والبريد الإلكتروني للعمل، والشركة، والقطاع، والمنتج المطلوب، واللغة المفضلة — وعند الإرسال، كيف وصلت إلينا (وسوم الحملات والموقع المُحيل وحتى 10 صفحات شاهدتها هنا)، ويحتفظ بها متصفحك محلياً حتى ذلك الحين.",
+          "طلبات العروض والتواصل: الاسم، والبريد الإلكتروني للعمل، والشركة، والقطاع، والمنتج المطلوب، واللغة المفضلة – وعند الإرسال، كيف وصلت إلينا (وسوم الحملات والموقع المُحيل وحتى 10 صفحات شاهدتها هنا)، ويحتفظ بها متصفحك محلياً حتى ذلك الحين.",
           "حسابات البوابة: الاسم، والبريد الإلكتروني للعمل، والمؤسسة، والدور، واللغة المفضلة، وأحداث المصادقة (الوقت وعنوان IP)، واستخدام المنتجات اللازم لتشغيل الخدمة.",
           "التحليلات: بموافقتك، بيانات استخدام مستعارة عبر Google Analytics 4 وHotjar. ودون موافقتك، لا يتلقى GA4 سوى إشارات مجمّعة دون ملفات تعريف ارتباط.",
         ],

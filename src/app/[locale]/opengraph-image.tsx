@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { locales, type Locale } from "@/i18n/config";
 
-export const alt = "Diligent AI — AI solutions for manufacturing";
+export const alt = "Diligent AI – AI solutions for manufacturing";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -37,7 +37,7 @@ export default function OgImage({ params }: { params: { locale: Locale } }) {
           <div style={{ fontSize: 54, fontWeight: 800, lineHeight: 1.1, color: "#2CA6A4" }}>Built on Your Data.</div>
           <div style={{ fontSize: 54, fontWeight: 800, lineHeight: 1.1, color: "#E97730" }}>Embedded in Your ERP and Factory Systems.</div>
         </div>
-        <div style={{ display: "flex", fontSize: 28, color: "rgba(255,255,255,0.75)" }}>{`${tagline} — Consult · Build · Integrate`}</div>
+        <div style={{ display: "flex", fontSize: 28, color: "rgba(255,255,255,0.75)" }}>{`${tagline} – Consult · Build · Integrate`}</div>
       </div>
     ),
     size,

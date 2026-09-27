@@ -35,7 +35,7 @@ type PageMeta = {
 
 export function pageMetadata(m: PageMeta): Metadata {
   const url = absoluteUrl(href(m.locale, m.path));
-  // Per-page cards (a sibling opengraph-image.tsx) exist on the real deployment only — the
+  // Per-page cards (a sibling opengraph-image.tsx) exist on the real deployment only – the
   // static preview strips them. Next injects their hashed URL itself, so we set no image then.
   const perPage = m.ogImage && process.env.NEXT_PUBLIC_PREVIEW !== "1";
   const ogImage = absoluteUrl(`/${m.locale}/opengraph-image`);

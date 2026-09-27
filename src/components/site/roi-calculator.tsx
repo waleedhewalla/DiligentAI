@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 /**
- * Gap 1 — planning-savings estimator. Pure client-side arithmetic on the
+ * Gap 1 – planning-savings estimator. Pure client-side arithmetic on the
  * visitor's own inputs; nothing is sent anywhere. Defaults are editable.
  */
 export function RoiCalculator({ locale, dict }: { locale: Locale; dict: Dictionary }) {

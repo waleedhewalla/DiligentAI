@@ -51,7 +51,7 @@ export function recordTouch(pathname: string) {
     if (!a.first) a.first = touch;
     if (hasUtm || ref) a.last = touch;
   }
-  // Last 10 distinct pages viewed — what the lead read before converting.
+  // Last 10 distinct pages viewed – what the lead read before converting.
   a.pages = [...(a.pages ?? []).filter((p) => p !== pathname), clip(pathname, 200)!].slice(-10);
   write(a);
 }

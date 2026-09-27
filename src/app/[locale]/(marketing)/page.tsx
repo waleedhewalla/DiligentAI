@@ -18,7 +18,7 @@ import { FinalCta, MetricsBar, SectionHeading } from "@/components/site/sections
 import { TrackedLink } from "@/components/site/tracked-link";
 import { Variant } from "@/components/experiments/variant";
 import { CtaLabel } from "@/components/experiments/cta-label";
-import { FounderSection } from "@/components/site/founder";
+import { TeamSection } from "@/components/site/founder";
 import { ServiceModelGrid } from "@/components/site/catalog";
 import { DepartmentPicker, type PickerDepartment } from "@/components/site/department-picker";
 import { ProductGallery } from "@/components/site/product-gallery";
@@ -67,7 +67,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
 
   return (
     <>
-      {/* HERO — centred message on a deep-navy stage: spotlight glow, fading grid,
+      {/* HERO – centred message on a deep-navy stage: spotlight glow, fading grid,
           twinkling light groups (HeroLights) and a soft blend into the numbers band. */}
       <section className="hero-home relative isolate overflow-hidden text-white">
         <div className="hero-home__spot absolute inset-0 -z-10" aria-hidden />
@@ -127,12 +127,12 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
         </div>
       </section>
 
-      {/* NUMBERS — verifiable figures only (home.stats); count up on scroll. */}
+      {/* NUMBERS – verifiable figures only (home.stats); count up on scroll. */}
       <StatsBand locale={locale} />
 
       {/* A/B test "homeorder": version B moves the product showcase (#product) above the picker. */}
       <div className="flex flex-col">
-      {/* PROBLEM → DEPARTMENT PICKER — "what's your problem?" */}
+      {/* PROBLEM → DEPARTMENT PICKER – "what's your problem?" */}
       <section className="section">
         <div className="container">
           <SectionHeading eyebrow={home.problem.eyebrow[locale]} title={home.problem.title[locale]} lead={home.problem.lead[locale]} />
@@ -142,7 +142,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
         </div>
       </section>
 
-      {/* PRODUCT SHOWCASE — real screens from IPE and CEO OS. */}
+      {/* PRODUCT SHOWCASE – real screens from IPE and CEO OS. */}
       {showcase.length ? (
         <section className="section bg-surface-subtle" id="product">
           <div className="container">
@@ -158,7 +158,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                       </p>
                       <Link href={href(locale, `/solutions/${o.slug}`)} className="inline-flex items-center gap-1 text-sm font-semibold text-brand-teal-dark hover:underline">
                         {dict.common.learnMore}
-                        <span className="sr-only"> — {o.title[locale]}</span>
+                        <span className="sr-only"> – {o.title[locale]}</span>
                         <ArrowRight className="btn-icon h-4 w-4" aria-hidden />
                       </Link>
                     </div>
@@ -172,7 +172,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
 
       </div>
 
-      {/* SERVICE MODELS — primary offer: Consult / Build / Integrate. */}
+      {/* SERVICE MODELS – primary offer: Consult / Build / Integrate. */}
       <section className="section bg-surface-subtle" id="services">
         <div className="container">
           <SectionHeading eyebrow={home.services.eyebrow[locale]} title={home.services.title[locale]} lead={home.services.lead[locale]} />
@@ -185,10 +185,10 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
       {/* PILOT-TO-PRODUCTION COMMITMENT (gap 2) */}
       <CommitmentBlock locale={locale} dict={dict} />
 
-      {/* COMPLIANCE DEADLINES (gap 3) — from catalog/compliance.ts */}
+      {/* COMPLIANCE DEADLINES (gap 3) – from catalog/compliance.ts */}
       <ComplianceBand locale={locale} dict={dict} />
 
-      {/* TRY IT NOW — interactive tools, no sign-up. */}
+      {/* TRY IT NOW – interactive tools, no sign-up. */}
       <section className="section" id="try">
         <div className="container">
           <SectionHeading eyebrow={home.tryIt.eyebrow[locale]} title={home.tryIt.title[locale]} lead={home.tryIt.lead[locale]} />
@@ -225,7 +225,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
           </ul>
           <p className="mt-8 text-center">
             <Link href={href(locale, "/solutions")} className="inline-flex items-center gap-1 font-semibold text-brand-teal-dark hover:underline">
-              {home.catalog.title[locale]} — {dict.nav.allSolutions} <ArrowRight className="btn-icon h-4 w-4" aria-hidden />
+              {home.catalog.title[locale]} – {dict.nav.allSolutions} <ArrowRight className="btn-icon h-4 w-4" aria-hidden />
             </Link>
           </p>
         </div>
@@ -252,7 +252,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
         </div>
       </section>
 
-      {/* PROOF — logos and approved testimonials; renders nothing until data exists (content/proof.ts). */}
+      {/* PROOF – logos and approved testimonials; renders nothing until data exists (content/proof.ts). */}
       <ProofStrip locale={locale} />
 
       {/* WHY */}
@@ -273,7 +273,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
         </div>
       </section>
 
-      <FounderSection locale={locale} dict={dict} />
+      <TeamSection locale={locale} dict={dict} />
 
       {/* LATEST INSIGHTS */}
       <section className="section">
@@ -282,7 +282,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
             <SectionHeading title={home.insightsTitle[locale]} align="start" />
             <Link href={href(locale, "/blog")} className="shrink-0 text-sm font-semibold text-brand-teal-dark hover:underline">
               {dict.cta.readMore}
-              <span className="sr-only"> — {home.insightsTitle[locale]}</span>
+              <span className="sr-only"> – {home.insightsTitle[locale]}</span>
             </Link>
           </div>
           <div className="mt-8 grid gap-6 md:grid-cols-3">

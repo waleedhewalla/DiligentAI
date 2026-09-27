@@ -1,8 +1,8 @@
 /**
- * CONFIGURABLE — Arabic model and hosting choices (gap 5, gap 3/PDPL).
+ * CONFIGURABLE – Arabic model and hosting choices (gap 5, gap 3/PDPL).
  * `status` must reflect what we can deliver today:
- *   "available"  — deployed for at least one customer or ready to deploy now
- *   "on-request" — supported by design, set up per project
+ *   "available"  – deployed for at least one customer or ready to deploy now
+ *   "on-request" – supported by design, set up per project
  */
 import type { L10n } from "@/i18n/config";
 

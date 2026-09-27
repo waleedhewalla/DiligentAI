@@ -6,7 +6,7 @@ import { href } from "@/lib/seo";
 /**
  * Serializable navigation model built on the server from the catalog.
  * The header (a client component) receives only this small object, so the
- * menu updates automatically when offerings/capabilities are added — without
+ * menu updates automatically when offerings/capabilities are added – without
  * shipping the whole catalog to the browser.
  */
 export type NavItem = { href: string; label: string; description?: string; icon: IconName; accent: Accent; badge?: string };

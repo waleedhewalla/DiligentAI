@@ -1,9 +1,9 @@
 /**
- * CONFIGURABLE — systems we connect to (gap 7, /integrations hub).
+ * CONFIGURABLE – systems we connect to (gap 7, /integrations hub).
  * support:
- *   "standard" — via the vendor's standard interfaces, delivered in projects today
- *   "packaged" — reusable, pre-built connector
- *   "pilot"    — packaged connector in pilot
+ *   "standard" – via the vendor's standard interfaces, delivered in projects today
+ *   "packaged" – reusable, pre-built connector
+ *   "pilot"    – packaged connector in pilot
  */
 import type { L10n } from "@/i18n/config";
 

@@ -4,7 +4,7 @@ import { getOffering, listOfferings } from "@/content/catalog";
 import { pageMetadata } from "@/lib/seo";
 import { OfferingPage } from "@/components/site/offering-page";
 
-// One static page per catalog offering — add an offering, get a page.
+// One static page per catalog offering – add an offering, get a page.
 export const dynamicParams = false;
 
 export function generateStaticParams() {

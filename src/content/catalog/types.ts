@@ -6,7 +6,7 @@
  *
  *   serviceModels  How we engage: Consult · Build · Integrate (primary).
  *   categories     How the catalog is grouped in navigation and on pages.
- *   offerings      Things we deliver — pre-built AI tools, custom AI,
+ *   offerings      Things we deliver – pre-built AI tools, custom AI,
  *                  consulting, and system-integration services.
  *   capabilities   Manufacturing problems/use cases (supply chain,
  *                  forecasting, quality, …) that offerings solve.
@@ -14,7 +14,7 @@
  * To add a new product or service: append one object to `offerings.ts`.
  * It automatically appears in the header menu, the /solutions hub, its
  * category section, related capability pages, the sitemap, JSON-LD and
- * the demo form — no component or page changes needed.
+ * the demo form – no component or page changes needed.
  */
 import type { L10n } from "@/i18n/config";
 import type { Metric } from "../proof";
@@ -41,7 +41,7 @@ export type ServiceModel = {
   description: L10n;
   /** What the client walks away with. */
   deliverables: L10n<string[]>;
-  /** Typical engagement length — TODO(Waleed): confirm against real engagements. */
+  /** Typical engagement length – TODO(Waleed): confirm against real engagements. */
   duration: L10n;
   /** Ordered engagement steps shown on /services. */
   steps: { title: L10n; body: L10n }[];
@@ -64,7 +64,7 @@ export type Category = {
 };
 
 // ─── Offerings (products & services) ────────────────────────────────────
-/** Portal launch keys — must match the `product_key` enum in Supabase. */
+/** Portal launch keys – must match the `product_key` enum in Supabase. */
 export type ProductKey = "ipe" | "ceo_os" | "nexus";
 
 /** Registry of optional interactive embeds an offering page can show. */
@@ -75,7 +75,7 @@ export type Region = "eg" | "sa" | "ae";
 
 /**
  * A fixed-scope, fixed-price package (gap 1 & 8: EGP starter packs, per-site pricing).
- * `priceFromEGP: null` renders "fixed price, quoted in EGP" — set real numbers when approved.
+ * `priceFromEGP: null` renders "fixed price, quoted in EGP" – set real numbers when approved.
  */
 export type Package = {
   id: string;
@@ -84,7 +84,7 @@ export type Package = {
   duration: L10n;
   /** TODO(Waleed): starting price in EGP; null until approved. */
   priceFromEGP: number | null;
-  /** Optional upper bound — renders a range ("EGP 250,000 – 400,000") instead of "from". */
+  /** Optional upper bound – renders a range ("EGP 250,000 – 400,000") instead of "from". */
   priceToEGP?: number | null;
   /** Price unit, e.g. per site, per line, one-off. */
   unit: L10n;
@@ -103,7 +103,7 @@ export type Offering = {
   icon: IconName;
   accent: Accent;
   /**
-   * Delivery maturity badge (Live / Pilot / Assessment / Service). Optional —
+   * Delivery maturity badge (Live / Pilot / Assessment / Service). Optional –
    * inferred by maturityOf() when omitted; set it to override.
    */
   maturity?: Maturity;
@@ -126,7 +126,7 @@ export type Offering = {
   serviceModels: ServiceModelId[];
   /** Capability slugs this offering addresses (drives cross-links both ways). */
   capabilities: string[];
-  /** The manufacturing problems it removes — shown before features, on purpose. */
+  /** The manufacturing problems it removes – shown before features, on purpose. */
   problems: L10n<string[]>;
   features: { icon: IconName; title: L10n; body: L10n }[];
 
@@ -169,7 +169,7 @@ export type Capability = {
   approach: L10n<string[]>;
   /** Qualitative outcomes. Put measured numbers in proof.ts, not here. */
   outcomes: L10n<string[]>;
-  /** Data we typically need — sets expectations for IT. */
+  /** Data we typically need – sets expectations for IT. */
   dataSources: L10n<string[]>;
   serviceModels: ServiceModelId[];
   seo: { title: L10n; description: L10n; keywords: L10n<string[]> };
@@ -186,14 +186,14 @@ export type Department = {
   icon: IconName;
   accent: Accent;
   title: L10n;
-  /** Who owns it in the plant — shown under the title. */
+  /** Who owns it in the plant – shown under the title. */
   owner: L10n;
   summary: L10n;
   /** Weekly pain, in the department's own words. */
   pains: L10n<string[]>;
   /** What changes when AI is in place (qualitative; numbers live in proof.ts). */
   outcomes: L10n<string[]>;
-  /** KPIs this department is measured on — we report against these. */
+  /** KPIs this department is measured on – we report against these. */
   kpis: L10n<string[]>;
   /** Offering slugs, most relevant first. */
   offerings: string[];
