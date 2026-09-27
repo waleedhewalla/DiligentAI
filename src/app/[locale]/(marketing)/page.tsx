@@ -3,7 +3,7 @@ import { ArrowRight, PlayCircle, Star } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { home } from "@/content/home";
-import { getOffering, listDepartments, maturityOf, offeringsForDepartment } from "@/content/catalog";
+import { getOffering, listDepartments, isProven, maturityOf, offeringsForDepartment } from "@/content/catalog";
 import { starTransMetrics } from "@/content/proof";
 import { tools } from "@/content/tools";
 import { getPosts } from "@/content/blog";
@@ -19,6 +19,7 @@ import { TrackedLink } from "@/components/site/tracked-link";
 import { Variant } from "@/components/experiments/variant";
 import { CtaLabel } from "@/components/experiments/cta-label";
 import { TeamSection } from "@/components/site/founder";
+import { proposalHref } from "@/components/site/proposal-cta";
 import { ServiceModelGrid } from "@/components/site/catalog";
 import { DepartmentPicker, type PickerDepartment } from "@/components/site/department-picker";
 import { ProductGallery } from "@/components/site/product-gallery";
@@ -52,6 +53,8 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
     accent: d.accent,
     href: href(locale, `/departments/${d.slug}`),
     bookHref: href(locale, "/demo") + `?area=${d.slug}`,
+    // Departments served (partly) by solutions scoped per client offer a custom proposal.
+    proposalHref: offeringsForDepartment(d).some((o) => !isProven(o)) || d.roadmap?.length ? proposalHref(locale, d.slug) : null,
     offerings: offeringsForDepartment(d)
       .slice(0, 3)
       .map((o) => ({
@@ -137,7 +140,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
         <div className="container">
           <SectionHeading eyebrow={home.problem.eyebrow[locale]} title={home.problem.title[locale]} lead={home.problem.lead[locale]} />
           <div className="mt-10">
-            <DepartmentPicker departments={picker} labels={{ ...home.picker, pains: home.picker.pains[locale], solutions: home.picker.solutions[locale], seeAll: home.picker.seeAll[locale], tablist: home.picker.tablist[locale], book: dict.cta.bookDemoShort }} />
+            <DepartmentPicker departments={picker} labels={{ ...home.picker, pains: home.picker.pains[locale], solutions: home.picker.solutions[locale], seeAll: home.picker.seeAll[locale], tablist: home.picker.tablist[locale], book: dict.cta.bookDemoShort, proposal: dict.proposal.roadmap, proposalCta: dict.proposal.cta }} />
           </div>
         </div>
       </section>

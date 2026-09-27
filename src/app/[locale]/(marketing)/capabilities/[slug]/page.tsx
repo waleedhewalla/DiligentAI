@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { AlertTriangle, ArrowRight, Check, Database, Sparkles } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
-import { accentClasses, getCapability, getServiceModel, listCapabilities, offeringsForCapability } from "@/content/catalog";
+import { accentClasses, getCapability, isCapabilityProven, getServiceModel, listCapabilities, offeringsForCapability } from "@/content/catalog";
 import { caseStudies } from "@/content/case-studies";
 import { href, pageMetadata } from "@/lib/seo";
 import { capabilitySchema } from "@/lib/schema";
@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { JsonLd } from "@/components/seo/json-ld";
 import { Breadcrumbs, FinalCta, OfferingCard, PageHero, SectionHeading } from "@/components/site/sections";
 import { Icon } from "@/components/site/icons";
+import { ProposalCta } from "@/components/site/proposal-cta";
 
 // One static page per capability in catalog/capabilities.ts.
 export const dynamicParams = false;
@@ -104,6 +105,15 @@ export default function CapabilityPage({ params }: { params: { locale: Locale; s
                 <OfferingCard key={o.slug} offering={o} locale={locale} dict={dict} />
               ))}
             </div>
+          </div>
+        </section>
+      ) : null}
+
+      {/* Use cases not yet delivered by a proven product are scoped per client. */}
+      {!isCapabilityProven(cap.slug) ? (
+        <section className="section">
+          <div className="container">
+            <ProposalCta locale={locale} dict={dict} area={cap.slug} location={`capability_${cap.slug}`} />
           </div>
         </section>
       ) : null}

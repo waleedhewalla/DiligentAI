@@ -7,6 +7,7 @@ import {
   capabilitiesForOffering,
   getCategory,
   getServiceModel,
+  isProven,
   maturityOf,
   listOfferings,
   type Offering,
@@ -32,6 +33,7 @@ import { CtaLabel } from "@/components/experiments/cta-label";
 import { DownloadButton } from "./download-button";
 import { NexusWidget } from "./nexus-widget";
 import { RoiCalculator } from "./roi-calculator";
+import { ProposalCta } from "./proposal-cta";
 import { CommitmentBlock, FundingBlock, ModelChoiceBlock, PackagesSection } from "./catalog-blocks";
 
 /**
@@ -123,6 +125,7 @@ export async function OfferingPage({ offering: o, locale }: { offering: Offering
                 </Button>
               ) : null}
             </div>
+            {!isProven(o) ? <ProposalCta locale={locale} dict={dict} area={o.slug} location="offering_hero" variant="hero" className="mt-5" /> : null}
           </div>
           {o.metrics ? <MetricsBar metrics={o.metrics} locale={locale} tone="dark" className="mt-12" /> : null}
         </div>
@@ -215,6 +218,15 @@ export async function OfferingPage({ offering: o, locale }: { offering: Offering
 
       {/* PACKAGES (optional, gap 1 & 8) – fixed-scope, fixed-price EGP packages. */}
       <PackagesSection offering={o} locale={locale} dict={dict} />
+
+      {/* CUSTOM PROPOSAL – solutions scoped per client (not the proven products). */}
+      {!isProven(o) ? (
+        <section className="section">
+          <div className="container">
+            <ProposalCta locale={locale} dict={dict} area={o.slug} location="offering_proposal" />
+          </div>
+        </section>
+      ) : null}
 
       {/* BEFORE / AFTER (optional) */}
       {o.roi ? (

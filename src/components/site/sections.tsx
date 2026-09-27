@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
-import { accentClasses, maturityOf, type Capability, type Offering, type ServiceModel } from "@/content/catalog";
+import { accentClasses, isCapabilityProven, isProven, maturityOf, type Capability, type Offering, type ServiceModel } from "@/content/catalog";
 import { visibleMetrics, type Metric, type Testimonial } from "@/content/proof";
 import { href } from "@/lib/seo";
 import { whatsappHref } from "@/lib/site";
@@ -12,6 +12,7 @@ import { Icon, WhatsAppIcon } from "./icons";
 import { MaturityBadge } from "./maturity-badge";
 import { CtaLabel } from "@/components/experiments/cta-label";
 import { TrackedAnchor, TrackedLink } from "./tracked-link";
+import { ProposalCta } from "./proposal-cta";
 import { JsonLd } from "@/components/seo/json-ld";
 import { breadcrumbSchema } from "@/lib/schema";
 
@@ -102,10 +103,23 @@ export function OfferingCard({
           </li>
         ))}
       </ul>
-      <span className={cn("mt-5 inline-flex items-center gap-1 text-sm font-semibold", featured ? "text-brand-teal-light" : c.text)}>
-        {dict.common.learnMore}
-        <ArrowRight className="btn-icon h-4 w-4" aria-hidden />
-      </span>
+      <div className="mt-5 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+        <span className={cn("inline-flex items-center gap-1 text-sm font-semibold", featured ? "text-brand-teal-light" : c.text)}>
+          {dict.common.learnMore}
+          <ArrowRight className="btn-icon h-4 w-4" aria-hidden />
+        </span>
+        {/* Scoped-per-client solutions invite a tailored proposal; proven products don't need it. */}
+        {!isProven(o) ? (
+          <ProposalCta
+            locale={locale}
+            dict={dict}
+            area={o.slug}
+            location="offering_card"
+            variant={featured ? "hero" : "link"}
+            className={featured ? "text-brand-orange-light" : undefined}
+          />
+        ) : null}
+      </div>
     </article>
   );
 }
@@ -171,10 +185,13 @@ export function CapabilityCard({ capability: cap, locale, dict }: { capability: 
       </h3>
       <p className="mt-2 text-sm font-medium text-brand-red/90">“{cap.problem[locale]}”</p>
       <p className="mt-2 flex-1 text-sm text-muted-foreground">{cap.summary[locale]}</p>
-      <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-teal-dark">
-        {dict.common.learnMore}
-        <ArrowRight className="btn-icon h-4 w-4" aria-hidden />
-      </span>
+      <div className="mt-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+        <span className="inline-flex items-center gap-1 text-sm font-semibold text-brand-teal-dark">
+          {dict.common.learnMore}
+          <ArrowRight className="btn-icon h-4 w-4" aria-hidden />
+        </span>
+        {!isCapabilityProven(cap.slug) ? <ProposalCta locale={locale} dict={dict} area={cap.slug} location="capability_card" variant="link" /> : null}
+      </div>
     </article>
   );
 }

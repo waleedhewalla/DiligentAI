@@ -116,6 +116,20 @@ export function departmentsForOffering(o: Offering): Department[] {
  * pilot status → "pilot", portal-launchable product → "live",
  * consult-only work → "assessment", everything else → "service".
  */
+/**
+ * Proven = a product already running at customers (IPE, CEO OS, Nexus AI –
+ * the portal-launchable offerings). Everything else is scoped per client, so
+ * the site offers a custom proposal alongside it.
+ */
+export function isProven(o: Offering) {
+  return Boolean(o.launch);
+}
+
+/** A use case is proven when one of the proven products delivers it. */
+export function isCapabilityProven(slug: string) {
+  return launchableOfferings().some((o) => o.capabilities.includes(slug));
+}
+
 export function maturityOf(o: Offering): Maturity {
   if (o.maturity) return o.maturity;
   if (o.status === "pilot") return "pilot";

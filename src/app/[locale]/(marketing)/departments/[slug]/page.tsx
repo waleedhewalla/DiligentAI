@@ -13,6 +13,7 @@ import { departmentSchema } from "@/lib/schema";
 import { cn } from "@/lib/utils";
 import { JsonLd } from "@/components/seo/json-ld";
 import { Breadcrumbs, CapabilityCard, FinalCta, OfferingCard, PageHero, SectionHeading } from "@/components/site/sections";
+import { ProposalCta } from "@/components/site/proposal-cta";
 import { MaturityLegend } from "@/components/site/maturity-badge";
 import { Icon } from "@/components/site/icons";
 import { departmentCopy } from "@/components/site/department-card";
@@ -42,7 +43,6 @@ const t = {
     en: "Pilot customers shape these products and get founding-customer terms. Tell us your case.",
     ar: "العملاء التجريبيون يشكّلون هذه المنتجات ويحصلون على شروط العملاء المؤسسين. أخبرنا بحالتك.",
   },
-  join: { en: "Join the pilot", ar: "انضم للتجربة" },
   other: { en: "Other departments", ar: "إدارات أخرى" },
   freeTool: { en: "Free tool · 3 minutes", ar: "أداة مجانية · 3 دقائق" },
   articles: { en: "Insights for this department", ar: "رؤى لهذه الإدارة" },
@@ -163,15 +163,11 @@ export default async function DepartmentPage({ params }: { params: { locale: Loc
                 <div key={r.title.en} className="w-full rounded-2xl border-2 border-dashed p-6 md:w-[26rem]">
                   <p className="text-lg font-bold text-brand-navy">{r.title[locale]}</p>
                   <p className="mt-2 text-sm text-muted-foreground">{r.body[locale]}</p>
-                  <Link
-                    href={href(locale, "/demo") + `?interest=build&area=${d.slug}`}
-                    className="mt-4 inline-flex text-sm font-semibold text-brand-teal-dark hover:underline"
-                  >
-                    {t.join[locale]} →
-                  </Link>
+                  <ProposalCta locale={locale} dict={dict} area={d.slug} location={`department_${d.slug}_roadmap`} variant="link" className="mt-4" />
                 </div>
               ))}
             </div>
+            <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-muted-foreground">{dict.proposal.roadmap}</p>
           </div>
         </section>
       ) : null}

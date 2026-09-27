@@ -222,4 +222,4 @@ A static, click-through copy of the marketing pages lives in `docs/` and is serv
 
 Regenerate after content changes with `npm run preview:export`, then commit `docs/`.
 The preview has no server: login/portal are omitted, the demo and contact forms can't submit,
-the Nexus generator shows sample output, and every page is `noindex` so it never competes with the real domain in search.
+the Nexus generator shows sample output (testers can open **Test mode** under it and paste an OpenRouter key, kept only in their browser, to generate live), and every page is `noindex` so it never competes with the real domain in search.

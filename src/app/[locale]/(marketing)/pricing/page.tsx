@@ -2,10 +2,11 @@ import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
-import { accentClasses, listPackagedOfferings } from "@/content/catalog";
+import { accentClasses, isProven, listPackagedOfferings } from "@/content/catalog";
 import { href, pageMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 import { Breadcrumbs, FinalCta, PageHero } from "@/components/site/sections";
+import { ProposalCta } from "@/components/site/proposal-cta";
 import { CommitmentBlock, ComparisonSection, PackagePrice } from "@/components/site/catalog-blocks";
 import { Icon } from "@/components/site/icons";
 import { Button } from "@/components/ui/button";
@@ -89,11 +90,14 @@ export default function PricingPage({ params }: { params: { locale: Locale } }) 
                     <p className="mt-1 max-w-2xl text-muted-foreground">{o.summary[locale]}</p>
                   </div>
                 </div>
-                <Link href={href(locale, `/solutions/${o.slug}`)} className="inline-flex items-center gap-1 text-sm font-semibold text-brand-teal-dark hover:underline">
-                  {dict.common.learnMore}
-                  <span className="sr-only"> – {o.title[locale]}</span>
-                  <ArrowRight className="btn-icon h-4 w-4" aria-hidden />
-                </Link>
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+                  {!isProven(o) ? <ProposalCta locale={locale} dict={dict} area={o.slug} location="pricing" variant="link" /> : null}
+                  <Link href={href(locale, `/solutions/${o.slug}`)} className="inline-flex items-center gap-1 text-sm font-semibold text-brand-teal-dark hover:underline">
+                    {dict.common.learnMore}
+                    <span className="sr-only"> – {o.title[locale]}</span>
+                    <ArrowRight className="btn-icon h-4 w-4" aria-hidden />
+                  </Link>
+                </div>
               </div>
               <div className="mt-8 grid gap-4 md:grid-cols-3">
                 {o.packages!.map((p) => (

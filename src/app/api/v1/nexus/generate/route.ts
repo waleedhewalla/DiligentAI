@@ -3,6 +3,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
 import { sampleOutput } from "@/content/nexus-samples";
+import { NEXUS_SYSTEM, NexusError, generateWithOpenRouter, nexusUserPrompt } from "@/lib/nexus";
 
 export const runtime = "nodejs";
 
@@ -11,23 +12,6 @@ const bodySchema = z.object({
   register: z.enum(["msa", "egyptian", "gulf"]).default("msa"),
   brief: z.string().trim().min(10).max(500),
 });
-
-const TYPE_LABEL = {
-  linkedin: "a LinkedIn post (120–180 words, 3–5 relevant Arabic hashtags at the end)",
-  email: "a short B2B outreach email with a subject line (under 150 words)",
-  proposal: "the executive-summary section of a sales proposal (150–220 words, with 3 bullet points)",
-} as const;
-
-const REGISTER_LABEL = {
-  msa: "Modern Standard Arabic suitable for business audiences across MENA",
-  egyptian: "professional Egyptian Arabic (light colloquial, still business-appropriate)",
-  gulf: "professional Gulf Arabic (Saudi/Emirati business tone)",
-} as const;
-
-const SYSTEM = `You are Nexus AI, an Arabic-first B2B marketing writer for companies in Egypt and the Gulf.
-Write directly in Arabic – compose it natively, never translate from English.
-Be specific and concrete; use numbers and timeframes when the brief provides them. Do not invent statistics, customer names or awards.
-Return only the finished content in Arabic, with no preamble, notes or English.`;
 
 export async function POST(request: Request) {
   const ip = clientIp(request.headers);
@@ -45,8 +29,31 @@ export async function POST(request: Request) {
   if (!parsed.success) return NextResponse.json({ error: "invalid_input" }, { status: 400 });
   const { type, register, brief } = parsed.data;
 
-  // Without an API key the widget still demonstrates the output format.
-  if (!process.env.ANTHROPIC_API_KEY) {
+  // Provider: NEXUS_PROVIDER wins; otherwise OpenRouter when its key is set, then Anthropic.
+  // Without any key the widget still demonstrates the output format.
+  const provider =
+    process.env.NEXUS_PROVIDER ?? (process.env.OPENROUTER_API_KEY ? "openrouter" : process.env.ANTHROPIC_API_KEY ? "anthropic" : "sample");
+
+  if (provider === "openrouter" && process.env.OPENROUTER_API_KEY) {
+    try {
+      const out = await generateWithOpenRouter({
+        apiKey: process.env.OPENROUTER_API_KEY,
+        type,
+        register,
+        brief,
+        model: process.env.NEXUS_OPENROUTER_MODEL,
+        referer: process.env.NEXT_PUBLIC_SITE_URL,
+        signal: AbortSignal.timeout(60_000),
+      });
+      return NextResponse.json({ text: out.text, live: true, model: out.model });
+    } catch (error) {
+      console.error("Nexus generate (OpenRouter) failed", error instanceof NexusError ? error.status : "", error);
+      if (error instanceof NexusError && error.status === 429) return NextResponse.json({ error: "busy" }, { status: 503 });
+      return NextResponse.json({ text: sampleOutput(type), live: false });
+    }
+  }
+
+  if (provider !== "anthropic" || !process.env.ANTHROPIC_API_KEY) {
     return NextResponse.json({ text: sampleOutput(type), live: false });
   }
 
@@ -58,13 +65,8 @@ export async function POST(request: Request) {
       betas: ["server-side-fallback-2026-07-01"],
       fallbacks: "default",
       output_config: { effort: "low" },
-      system: SYSTEM,
-      messages: [
-        {
-          role: "user",
-          content: `Write ${TYPE_LABEL[type]} in ${REGISTER_LABEL[register]}.\n\n<brief>\n${brief}\n</brief>`,
-        },
-      ],
+      system: NEXUS_SYSTEM,
+      messages: [{ role: "user", content: nexusUserPrompt(type, register, brief) }],
     });
 
     if (response.stop_reason === "refusal") {

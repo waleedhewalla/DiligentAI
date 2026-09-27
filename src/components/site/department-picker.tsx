@@ -21,6 +21,7 @@ export type PickerDepartment = {
   accent: Accent;
   href: string;
   bookHref: string;
+  proposalHref: string | null;
   offerings: { slug: string; title: string; summary: string; href: string; badge: string }[];
 };
 
@@ -34,7 +35,7 @@ export function DepartmentPicker({
   labels,
 }: {
   departments: PickerDepartment[];
-  labels: { pains: string; solutions: string; seeAll: string; book: string; tablist: string };
+  labels: { pains: string; solutions: string; seeAll: string; book: string; tablist: string; proposal: string; proposalCta: string };
 }) {
   const [active, setActive] = useState(0);
   const d = departments[active];
@@ -114,6 +115,19 @@ export function DepartmentPicker({
               </li>
             ))}
           </ul>
+          {d.proposalHref ? (
+            <p className="mt-4 text-sm text-muted-foreground">
+              {labels.proposal}{" "}
+              <TrackedLink
+                href={d.proposalHref}
+                event={{ name: "cta_click", params: { cta: "custom_proposal", location: "home_picker", solution: d.slug } }}
+                className="inline-flex items-center gap-1 font-semibold text-brand-orange-dark hover:underline"
+              >
+                {labels.proposalCta}
+                <ArrowRight className="btn-icon h-3.5 w-3.5" aria-hidden />
+              </TrackedLink>
+            </p>
+          ) : null}
         </div>
       </div>
     </div>

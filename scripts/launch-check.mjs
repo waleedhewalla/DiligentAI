@@ -45,7 +45,8 @@ for (const p of ["IPE", "CEO_OS", "NEXUS"]) {
   need(`${p}_SECRET_KEY`, "signs portal launch tokens");
   want(`${p}_APP_URL`, "portal launch target");
 }
-want("ANTHROPIC_API_KEY", "live Nexus AI demo (falls back to curated samples without it)");
+if (!has("OPENROUTER_API_KEY") && !has("ANTHROPIC_API_KEY"))
+  warnings.push("OPENROUTER_API_KEY or ANTHROPIC_API_KEY — live Nexus AI demo (falls back to curated samples without one)");
 want("NEXT_PUBLIC_GA_MEASUREMENT_ID", "analytics, conversions and Web Vitals");
 want("NEXT_PUBLIC_HOTJAR_ID", "heatmaps after consent");
 want("DEMO_REQUEST_WEBHOOK_URL", "sends each lead to the CRM (HubSpot, Make, Zapier)");
