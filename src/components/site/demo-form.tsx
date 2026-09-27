@@ -8,7 +8,7 @@ import { isWorkEmail } from "@/lib/validation";
 import { track } from "@/lib/analytics";
 import { getAttribution } from "@/lib/attribution";
 import { Button } from "@/components/ui/button";
-import { Input, NativeSelect } from "@/components/ui/input";
+import { Textarea, Input, NativeSelect } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -27,6 +27,7 @@ export function DemoForm({
   defaultInterest = "unsure",
   defaultArea = "",
   source,
+  mode = "review",
 }: {
   locale: Locale;
   dict: Dictionary;
@@ -34,8 +35,12 @@ export function DemoForm({
   defaultInterest?: string;
   defaultArea?: string;
   source?: string;
+  /** "proposal" adds a requirements field and proposal wording. */
+  mode?: "review" | "proposal";
 }) {
   const f = dict.demoForm;
+  const p = dict.proposal;
+  const proposal = mode === "proposal";
   const [status, setStatus] = useState<Status>("idle");
   const [emailError, setEmailError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
@@ -63,7 +68,7 @@ export function DemoForm({
         setStatus("error");
         return;
       }
-      track("generate_lead", { form: "demo_request", interest: payload.interest, area: payload.area, industry: payload.industry });
+      track("generate_lead", { form: proposal ? "proposal_request" : "demo_request", interest: payload.interest, area: payload.area, industry: payload.industry });
       if (json.mql) track("mql", { interest: payload.interest, area: payload.area, industry: payload.industry });
       setStatus("success");
     } catch {
@@ -76,7 +81,7 @@ export function DemoForm({
     return (
       <div role="status" className="flex flex-col items-center rounded-2xl border bg-brand-teal/5 p-8 text-center">
         <CheckCircle2 className="h-12 w-12 text-brand-teal-dark" aria-hidden />
-        <p className="mt-4 text-lg font-semibold text-brand-navy">{f.success}</p>
+        <p className="mt-4 text-lg font-semibold text-brand-navy">{proposal ? p.success : f.success}</p>
       </div>
     );
   }
@@ -160,6 +165,13 @@ export function DemoForm({
           </NativeSelect>
         </div>
       </div>
+      {proposal ? (
+        <div className="grid gap-2">
+          <Label htmlFor="df-requirements">{p.requirements} *</Label>
+          <Textarea id="df-requirements" name="requirements" required minLength={10} maxLength={2000} rows={4} placeholder={p.requirementsHint} />
+        </div>
+      ) : null}
+      <input type="hidden" name="requestType" value={mode} />
       {/* Honeypot */}
       <div className="hidden" aria-hidden>
         <label>
@@ -172,9 +184,9 @@ export function DemoForm({
         </p>
       ) : null}
       <Button type="submit" size="lg" disabled={status === "submitting"}>
-        {status === "submitting" ? f.submitting : f.submit}
+        {status === "submitting" ? f.submitting : proposal ? p.submit : f.submit}
       </Button>
-      <p className="text-xs text-muted-foreground">{f.privacy}</p>
+      <p className="text-xs text-muted-foreground">{proposal ? p.privacy : f.privacy}</p>
     </form>
   );
 }

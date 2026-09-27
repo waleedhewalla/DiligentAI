@@ -12,6 +12,7 @@ export function StickyCta({
   cta,
   href,
   solution,
+  ctaId = "book_demo",
 }: {
   label: string;
   text: string;
@@ -19,6 +20,8 @@ export function StickyCta({
   href: string;
   /** Catalog slug for analytics attribution. */
   solution: string;
+  /** Analytics `cta` value ("custom_proposal" on solutions scoped per client). */
+  ctaId?: string;
 }) {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
@@ -43,7 +46,7 @@ export function StickyCta({
           {text}
         </p>
         <Button asChild size="sm" className="w-full sm:w-auto" tabIndex={visible ? 0 : -1}>
-          <TrackedLink href={href} event={{ name: "cta_click", params: { cta: "book_demo", location: "sticky_bar", solution } }}>
+          <TrackedLink href={href} event={{ name: "cta_click", params: { cta: ctaId, location: "sticky_bar", solution } }}>
             {cta}
             <ArrowRight className="btn-icon" />
           </TrackedLink>

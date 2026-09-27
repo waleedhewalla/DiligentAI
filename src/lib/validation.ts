@@ -55,6 +55,10 @@ export const demoRequestSchema = z.object({
     .regex(/^[a-z0-9-]*$/)
     .optional(),
   language: z.enum(["ar", "en"]).default("ar"),
+  /** "review" = 30-min plant review; "proposal" = custom solution proposal request. */
+  requestType: z.enum(["review", "proposal"]).default("review"),
+  /** Proposal requests: what the visitor wants to achieve (plain text). */
+  requirements: z.string().trim().max(2000).optional(),
   source: z.string().max(200).optional(),
   /** First/last touch + pages viewed (lib/attribution.ts). Bounded; unknown keys dropped. */
   attribution: attributionSchema.optional(),

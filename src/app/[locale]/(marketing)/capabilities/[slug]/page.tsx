@@ -177,7 +177,7 @@ export default function CapabilityPage({ params }: { params: { locale: Locale; s
         </div>
       </section>
 
-      <FinalCta locale={locale} dict={dict} title={cap.title[locale]} body={cap.summary[locale]} query={{ area: cap.slug }} location={`capability_${cap.slug}`} />
+      <FinalCta locale={locale} dict={dict} title={cap.title[locale]} body={cap.summary[locale]} query={{ area: cap.slug }} location={`capability_${cap.slug}`} proposal={!isCapabilityProven(cap.slug)} />
     </>
   );
 }

@@ -8,7 +8,7 @@
 export type AnalyticsEvent =
   // `solution` = catalog offering/capability slug; `interest` = service model.
   | { name: "cta_click"; params: { cta: string; location: string; solution?: string; interest?: string } }
-  | { name: "generate_lead"; params: { form: "demo_request" | "contact"; interest: string; area?: string; industry?: string } }
+  | { name: "generate_lead"; params: { form: "demo_request" | "proposal_request" | "contact"; interest: string; area?: string; industry?: string } }
   | { name: "mql"; params: { interest: string; area?: string; industry?: string } }
   | { name: "demo_booked"; params: { source: "calendly" | "cal"; interest?: string; area?: string } }
   | { name: "case_study_download"; params: { case_study: string } }

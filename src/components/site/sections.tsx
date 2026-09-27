@@ -12,7 +12,7 @@ import { Icon, WhatsAppIcon } from "./icons";
 import { MaturityBadge } from "./maturity-badge";
 import { CtaLabel } from "@/components/experiments/cta-label";
 import { TrackedAnchor, TrackedLink } from "./tracked-link";
-import { ProposalCta } from "./proposal-cta";
+import { ProposalCta, proposalHref } from "./proposal-cta";
 import { JsonLd } from "@/components/seo/json-ld";
 import { breadcrumbSchema } from "@/lib/schema";
 
@@ -248,6 +248,7 @@ export function FinalCta({
   body,
   query,
   location,
+  proposal = false,
 }: {
   locale: Locale;
   dict: Dictionary;
@@ -256,6 +257,8 @@ export function FinalCta({
   /** Pre-fills the demo form, e.g. { area: "quality-control", interest: "build" }. */
   query?: { area?: string; interest?: string };
   location: string;
+  /** Solutions scoped per client lead to the custom-proposal request instead of the plant review. */
+  proposal?: boolean;
 }) {
   const qs = query ? "?" + new URLSearchParams(Object.entries(query).filter(([, v]) => v) as [string, string][]).toString() : "";
   const wa = whatsappHref(locale === "ar" ? "مرحباً فريق Diligent AI، أود معرفة المزيد عن حلولكم" : "Hello Diligent AI team, I'd like to learn more about your solutions");
@@ -267,13 +270,20 @@ export function FinalCta({
         {body ? <p className="mx-auto mt-5 max-w-2xl text-lg text-white/80">{body}</p> : null}
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Button asChild size="lg" className="w-full sm:w-auto">
-            <TrackedLink
-              href={href(locale, "/demo") + qs}
-              event={{ name: "cta_click", params: { cta: "book_demo", location, solution: query?.area, interest: query?.interest } }}
-            >
-              <CtaLabel locale={locale} />
-              <ArrowRight className="btn-icon" />
-            </TrackedLink>
+            {proposal ? (
+              <TrackedLink href={proposalHref(locale, query?.area)} event={{ name: "cta_click", params: { cta: "custom_proposal", location, solution: query?.area } }}>
+                {dict.proposal.cta}
+                <ArrowRight className="btn-icon" />
+              </TrackedLink>
+            ) : (
+              <TrackedLink
+                href={href(locale, "/demo") + qs}
+                event={{ name: "cta_click", params: { cta: "book_demo", location, solution: query?.area, interest: query?.interest } }}
+              >
+                <CtaLabel locale={locale} />
+                <ArrowRight className="btn-icon" />
+              </TrackedLink>
+            )}
           </Button>
           {wa ? (
             <Button asChild size="lg" variant="whatsapp" className="w-full sm:w-auto">

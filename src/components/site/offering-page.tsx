@@ -33,7 +33,7 @@ import { CtaLabel } from "@/components/experiments/cta-label";
 import { DownloadButton } from "./download-button";
 import { NexusWidget } from "./nexus-widget";
 import { RoiCalculator } from "./roi-calculator";
-import { ProposalCta } from "./proposal-cta";
+import { ProposalCta, proposalHref } from "./proposal-cta";
 import { CommitmentBlock, FundingBlock, ModelChoiceBlock, PackagesSection } from "./catalog-blocks";
 
 /**
@@ -55,6 +55,8 @@ export async function OfferingPage({ offering: o, locale }: { offering: Offering
   const caseStudy = o.caseStudy ? getCaseStudy(o.caseStudy) : undefined;
   const downloadFile = o.download && publicAssetExists(o.download.path) ? o.download.path : null;
   const displayName = o.brand ?? o.title[locale];
+  const proven = isProven(o);
+  const ctaHref = proven ? demoHref : proposalHref(locale, o.slug);
 
   return (
     <>
@@ -94,14 +96,22 @@ export async function OfferingPage({ offering: o, locale }: { offering: Offering
             <p className="mt-5 text-lg text-white/80 md:text-xl">{o.lead[locale]}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg" className={o.accent === "teal" ? c.button : undefined}>
-                {/* Primary CTA is the same everywhere; the service model travels as ?interest=. */}
-                <TrackedLink
-                  href={demoHref}
-                  event={{ name: "cta_click", params: { cta: "book_demo", location: "offering_hero", solution: o.slug, interest: primaryModel } }}
-                >
-                  <CtaLabel locale={locale} />
-                  <ArrowRight className="btn-icon" />
-                </TrackedLink>
+                {/* Proven products: the plant review (service model travels as ?interest=).
+                    Solutions scoped per client: the custom-proposal request. */}
+                {proven ? (
+                  <TrackedLink
+                    href={demoHref}
+                    event={{ name: "cta_click", params: { cta: "book_demo", location: "offering_hero", solution: o.slug, interest: primaryModel } }}
+                  >
+                    <CtaLabel locale={locale} />
+                    <ArrowRight className="btn-icon" />
+                  </TrackedLink>
+                ) : (
+                  <TrackedLink href={ctaHref} event={{ name: "cta_click", params: { cta: "custom_proposal", location: "offering_hero", solution: o.slug } }}>
+                    {dict.proposal.cta}
+                    <ArrowRight className="btn-icon" />
+                  </TrackedLink>
+                )}
               </Button>
               {(o.media?.length || o.video) && !o.demo ? (
                 <Button asChild size="lg" variant="inverse">
@@ -125,7 +135,6 @@ export async function OfferingPage({ offering: o, locale }: { offering: Offering
                 </Button>
               ) : null}
             </div>
-            {!isProven(o) ? <ProposalCta locale={locale} dict={dict} area={o.slug} location="offering_hero" variant="hero" className="mt-5" /> : null}
           </div>
           {o.metrics ? <MetricsBar metrics={o.metrics} locale={locale} tone="dark" className="mt-12" /> : null}
         </div>
@@ -220,7 +229,7 @@ export async function OfferingPage({ offering: o, locale }: { offering: Offering
       <PackagesSection offering={o} locale={locale} dict={dict} />
 
       {/* CUSTOM PROPOSAL – solutions scoped per client (not the proven products). */}
-      {!isProven(o) ? (
+      {!proven ? (
         <section className="section">
           <div className="container">
             <ProposalCta locale={locale} dict={dict} area={o.slug} location="offering_proposal" />
@@ -433,8 +442,9 @@ export async function OfferingPage({ offering: o, locale }: { offering: Offering
         body={o.summary[locale]}
         query={{ area: o.slug, interest: primaryModel }}
         location={`offering_${o.slug}_final`}
+        proposal={!proven}
       />
-      <StickyCta label={displayName} text={o.summary[locale]} cta={dict.nav.bookDemo} href={demoHref} solution={o.slug} />
+      <StickyCta label={displayName} text={o.summary[locale]} cta={proven ? dict.nav.bookDemo : dict.proposal.cta} href={ctaHref} solution={o.slug} ctaId={proven ? "book_demo" : "custom_proposal"} />
     </>
   );
 }

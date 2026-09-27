@@ -55,6 +55,8 @@ export async function POST(request: Request) {
       interest: data.interest,
       area: data.area || null,
       language: data.language,
+      request_type: data.requestType,
+      requirements: data.requirements || null,
       source: data.source ?? null,
       attribution: data.attribution ?? null,
       utm_source: data.attribution?.last?.utm_source ?? data.attribution?.first?.utm_source ?? null,
@@ -78,7 +80,7 @@ export async function POST(request: Request) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        text: `New demo request: ${data.name} – ${data.company} (${data.industry}) · ${data.interest}${data.area ? ` / ${data.area}` : ""} · ${data.language.toUpperCase()}`,
+        text: `New ${data.requestType === "proposal" ? "proposal request" : "plant review request"}: ${data.name} – ${data.company} (${data.industry}) · ${data.interest}${data.area ? ` / ${data.area}` : ""} · ${data.language.toUpperCase()}`,
         ...data,
         website: undefined,
         is_mql: isMql,

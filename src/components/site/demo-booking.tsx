@@ -44,19 +44,17 @@ export function DemoBooking({
 
   return (
     <div className="grid gap-8">
-      {proposal ? (
-        <p className="order-first flex gap-3 rounded-2xl border border-brand-orange/25 bg-brand-orange/[0.06] p-4 text-sm text-foreground">
-          <FileSignature className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange-dark" aria-hidden />
-          {dict.proposal.formNote}
-        </p>
-      ) : null}
-      {bookingUrl ? (
+      {/* Proposal requests are a separate path: the form only, no calendar. */}
+      {proposal ? null : bookingUrl ? (
         <CalEmbed url={bookingUrl} locale={locale} interest={interest} area={area} title={dict.nav.bookDemo} />
       ) : url ? (
         <CalendlyEmbed url={url} locale={locale} interest={interest} area={area} />
       ) : null}
-      <div className={`rounded-2xl border bg-card p-6 md:p-8 ${proposal ? "order-first" : ""}`}>
-        <h2 className="text-xl font-bold text-brand-navy">{proposal ? dict.proposal.title : dict.demoForm.title}</h2>
+      <div className={proposal ? "rounded-2xl border border-t-4 border-t-brand-orange bg-card p-6 md:p-8" : "rounded-2xl border bg-card p-6 md:p-8"}>
+        <h2 className="flex items-center gap-2 text-xl font-bold text-brand-navy">
+          {proposal ? <FileSignature className="h-5 w-5 text-brand-orange-dark" aria-hidden /> : null}
+          {proposal ? dict.proposal.title : dict.demoForm.title}
+        </h2>
         {proposal ? null : <p className="mt-1 text-sm text-muted-foreground">{dict.demoForm.subtitle}</p>}
         <div className="mt-6">
           <DemoForm
@@ -66,6 +64,7 @@ export function DemoBooking({
             defaultInterest={interest}
             defaultArea={area}
             source={params.get("intent") ? `demo:${params.get("intent")}` : "demo"}
+            mode={proposal ? "proposal" : "review"}
           />
         </div>
       </div>
