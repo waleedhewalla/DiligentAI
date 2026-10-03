@@ -30,7 +30,7 @@ PREVIEW_EXPORT=1 PREVIEW_BASE_PATH="$BASE" NEXT_PUBLIC_PREVIEW=1 \
 cat > out/index.html <<HTML
 <!doctype html><html lang="ar"><head><meta charset="utf-8"><meta name="robots" content="noindex">
 <meta http-equiv="refresh" content="0; url=${BASE}/ar/"><link rel="canonical" href="${BASE}/ar/">
-<title>Diligent AI</title></head><body><a href="${BASE}/ar/">Diligent AI</a></body></html>
+<title>VELIXI</title></head><body><a href="${BASE}/ar/">VELIXI</a></body></html>
 HTML
 touch out/.nojekyll   # serve the _next/ folder as-is
 

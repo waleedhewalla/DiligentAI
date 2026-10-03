@@ -1,10 +1,10 @@
-# Diligent AI — Website & Customer Portal
+# VELIXI — Website & Customer Portal
 
-Bilingual (Arabic-first / English) website and customer portal for **Diligent AI** — AI solutions and system integration for manufacturers in Egypt and the Gulf. The site is catalog-driven: **service models** (Consult · Build · Integrate), **AI products & solutions**, **system integration services** and **manufacturing capabilities** are all data, so new offerings need no page or component changes.
+Bilingual (Arabic-first / English) website and customer portal for **VELIXI** — AI solutions and system integration for manufacturers in Egypt and the Gulf. The site is catalog-driven: **service models** (Consult · Build · Integrate), **AI products & solutions**, **system integration services** and **manufacturing capabilities** are all data, so new offerings need no page or component changes.
 
 **Stack:** Next.js 14 (App Router) · TypeScript · Tailwind CSS + shadcn/ui · Supabase (Postgres, Auth, RLS) · Vercel + Cloudflare.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fwaleedhewalla%2FDiligentAI&project-name=diligent-ai&repository-name=diligent-ai&env=NEXT_PUBLIC_SITE_URL&envDescription=Public%20site%20URL%2C%20e.g.%20https%3A%2F%2Fdiligentai.com.%20All%20other%20variables%20are%20optional%20%E2%80%94%20see%20.env.example&envLink=https%3A%2F%2Fgithub.com%2Fwaleedhewalla%2FDiligentAI%2Fblob%2Fclaude%2Fgreat-maxwell-0ue8bi%2F.env.example)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fwaleedhewalla%2FDiligentAI&project-name=velixi&repository-name=velixi&env=NEXT_PUBLIC_SITE_URL&envDescription=Public%20site%20URL%2C%20e.g.%20https%3A%2F%2Fvelixi.ai.%20All%20other%20variables%20are%20optional%20%E2%80%94%20see%20.env.example&envLink=https%3A%2F%2Fgithub.com%2Fwaleedhewalla%2FDiligentAI%2Fblob%2Fclaude%2Fgreat-maxwell-0ue8bi%2F.env.example)
 
 ## Quick start
 
@@ -80,7 +80,7 @@ Optional offering fields added for the competitive gaps: `packages` (fixed-price
 - `customerLogos` / `videoTestimonials` in `proof.ts` (the logo strip needs 3 approved logos; videos need `approved: true`).
 - `certifications[].target` and service commitments in `content/trust.ts`.
 - `roadmap` items in `departments.ts` — move each into `offerings` when the product goes live.
-- Company social URLs (`NEXT_PUBLIC_LINKEDIN_COMPANY_URL`, `NEXT_PUBLIC_FACEBOOK_URL`, `NEXT_PUBLIC_INSTAGRAM_URL`, `NEXT_PUBLIC_X_URL`, `NEXT_PUBLIC_TIKTOK_URL`, `NEXT_PUBLIC_YOUTUBE_URL`; until set, sample `@diligentai` links are shown) and `NEXT_PUBLIC_WHATSAPP_NUMBER` (enables the WhatsApp button in the mobile action bar).
+- Company social URLs (`NEXT_PUBLIC_LINKEDIN_COMPANY_URL`, `NEXT_PUBLIC_FACEBOOK_URL`, `NEXT_PUBLIC_INSTAGRAM_URL`, `NEXT_PUBLIC_X_URL`, `NEXT_PUBLIC_TIKTOK_URL`, `NEXT_PUBLIC_YOUTUBE_URL`; until set, sample `@velixi` links are shown) and `NEXT_PUBLIC_WHATSAPP_NUMBER` (enables the WhatsApp button in the mobile action bar).
 
 **Free tools (lead magnets):** `src/content/tools.ts` holds the S&OP Maturity Scorecard and the CBAM Readiness Checklist (bilingual questions, bands, advice). They render at `/tools/*`, run fully in the browser, fire `tool_complete`, and link to the booking page with `?area=…&intent=<tool>` so the lead's source is recorded. Blog posts can embed a tool with `{ type: "tool", tool: "<slug>" }`; a department page shows the tool whose `department` matches.
 
@@ -145,7 +145,7 @@ Mark `generate_lead`, `demo_booked` and `case_study_download` as key events in G
    - Password: minimum length **12**, require lower/upper/digit/symbol; enable **leaked-password protection**.
    - MFA: enable **TOTP**; enable **Passkeys (WebAuthn)** with RP ID = your domain.
    - Rate limits: sign-in/verify and email sends per spec (§5.4); enable **CAPTCHA (Cloudflare Turnstile)**.
-   - Site URL `https://diligentai.com`; redirect allow-list `https://diligentai.com/auth/callback`.
+   - Site URL `https://velixi.ai`; redirect allow-list `https://velixi.ai/auth/callback`.
 5. **Email templates** — point links at the server callback so sessions stay in httpOnly cookies:
    - Invite: `{{ .SiteURL }}/auth/callback?token_hash={{ .TokenHash }}&type=invite&next=/ar/register`
    - Reset password: `{{ .SiteURL }}/auth/callback?token_hash={{ .TokenHash }}&type=recovery`
@@ -200,7 +200,7 @@ Results: GA4 user properties `exp_<id>` on every event plus `experiment_impressi
 1. Click **Deploy with Vercel** above (or import the repo at vercel.com/new), choose branch `claude/great-maxwell-0ue8bi`, set `NEXT_PUBLIC_SITE_URL`, deploy. Functions run in `fra1` (Frankfurt, next to the EU Supabase region) per `vercel.json`. Add the remaining variables from `.env.example` as each service goes live.
 2. Domain on Cloudflare → CNAME to Vercel, proxy on; SSL **Full (strict)**, **Always Use HTTPS**, min TLS 1.2 (1.3 enabled), HSTS.
 3. Cloudflare WAF managed rules + Bot Fight Mode; rate-limit rules for `/api/v1/*` and `/*/login`; Turnstile keys to Supabase CAPTCHA.
-4. Product apps (IPE, CEO OS, Nexus) each receive their own `*_SECRET_KEY` and verify launch tokens with `aud = diligentai:<product>`.
+4. Product apps (IPE, CEO OS, Nexus) each receive their own `*_SECRET_KEY` and verify launch tokens with `aud = velixi:<product>`.
 
 ## Launch checklist (from spec §10) — owner sign-off still required
 
@@ -219,6 +219,8 @@ Results: GA4 user properties `exp_<id>` on every event plus `experiment_impressi
 A static, click-through copy of the marketing pages lives in `docs/` and is served at
 **https://waleedhewalla.github.io/DiligentAI/** once Pages is enabled
 (*Settings → Pages → Deploy from a branch → `claude/great-maxwell-0ue8bi` / `/docs`*).
+The `/DiligentAI/` path is the GitHub repository's name, not the brand: after renaming the repository
+(e.g. to `velixi`), re-export with `PREVIEW_REPO_NAME=velixi npm run preview:export` so links use the new path.
 
 Regenerate after content changes with `npm run preview:export`, then commit `docs/`.
 The preview has no server: login/portal are omitted, the demo and contact forms can't submit,

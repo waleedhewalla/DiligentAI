@@ -1,21 +1,21 @@
 export const site = {
-  name: "Diligent AI",
-  legalName: "Diligent AI Transformation",
-  email: "hello@diligentai.com",
-  supportEmail: "support@diligentai.com",
+  name: "VELIXI",
+  legalName: "Velixi AI",
+  email: "hello@velixi.ai",
+  supportEmail: "support@velixi.ai",
   city: { en: "Cairo, Egypt", ar: "القاهرة، مصر" },
   founder: "Waleed Hewalla",
   linkedin: process.env.NEXT_PUBLIC_LINKEDIN_URL ?? "https://www.linkedin.com/in/waleedhewalla",
   // Company channels. Until the real pages exist these default to the planned
-  // @diligentai handles (brand/SOCIAL-MEDIA-SETUP-GUIDE.md); set the env vars to
+  // @velixi handles (brand/SOCIAL-MEDIA-SETUP-GUIDE.md); set the env vars to
   // the live URLs at go-live. TODO(Waleed): replace with the real page URLs.
   social: {
-    linkedinCompany: process.env.NEXT_PUBLIC_LINKEDIN_COMPANY_URL || "https://www.linkedin.com/company/diligentai",
-    facebook: process.env.NEXT_PUBLIC_FACEBOOK_URL || "https://www.facebook.com/diligentai",
-    instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/diligentai",
-    x: process.env.NEXT_PUBLIC_X_URL || "https://x.com/diligentai",
-    tiktok: process.env.NEXT_PUBLIC_TIKTOK_URL || "https://www.tiktok.com/@diligentai",
-    youtube: process.env.NEXT_PUBLIC_YOUTUBE_URL || "https://www.youtube.com/@diligentai",
+    linkedinCompany: process.env.NEXT_PUBLIC_LINKEDIN_COMPANY_URL || "https://www.linkedin.com/company/velixi",
+    facebook: process.env.NEXT_PUBLIC_FACEBOOK_URL || "https://www.facebook.com/velixi",
+    instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/velixi",
+    x: process.env.NEXT_PUBLIC_X_URL || "https://x.com/velixi",
+    tiktok: process.env.NEXT_PUBLIC_TIKTOK_URL || "https://www.tiktok.com/@velixi",
+    youtube: process.env.NEXT_PUBLIC_YOUTUBE_URL || "https://www.youtube.com/@velixi",
   },
   // Business WhatsApp (international format). Override per environment with NEXT_PUBLIC_WHATSAPP_NUMBER.
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "201065307007",
@@ -59,7 +59,7 @@ export function socialProfiles(): { network: SocialNetwork; name: string; url: s
   ];
 }
 
-/** "@diligentai"-style handle for display, taken from the profile URL. */
+/** "@velixi"-style handle for display, taken from the profile URL. */
 export function socialHandle(url: string) {
   const last = url.replace(/\/+$/, "").split("/").pop() ?? "";
   return last.startsWith("@") ? last : `@${last}`;

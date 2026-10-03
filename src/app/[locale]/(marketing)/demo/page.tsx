@@ -53,8 +53,8 @@ export default function DemoPage({ params }: { params: { locale: Locale } }) {
   const dict = getDictionary(locale);
   const wa = whatsappHref(
     locale === "ar"
-      ? "مرحباً فريق Diligent AI، أود حجز مراجعة لمصنعي"
-      : "Hello Diligent AI team, I'd like to book a plant review",
+      ? "مرحباً فريق VELIXI، أود حجز مراجعة لمصنعي"
+      : "Hello VELIXI team, I'd like to book a plant review",
   );
   const reviewIntro = (
     <Intro

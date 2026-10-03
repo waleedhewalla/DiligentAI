@@ -10,8 +10,8 @@ import { Breadcrumbs, FinalCta, OfferingCard, PageHero, SectionHeading } from "@
 const copy = {
   title: { en: "Integrations – SAP, Oracle, Dynamics, Odoo, MES/SCADA & AI Platforms", ar: "التكاملات – SAP وOracle وDynamics وOdoo وMES/SCADA ومنصات الذكاء الاصطناعي" },
   description: {
-    en: "The ERP, shop-floor, cloud and AI-agent systems Diligent AI connects to, and how: standard interfaces, packaged connectors and connectors in pilot.",
-    ar: "أنظمة ERP وأرض المصنع والسحابة ووكلاء الذكاء الاصطناعي التي تتصل بها Diligent AI، وكيف: واجهات قياسية وموصلات جاهزة وموصلات تجريبية.",
+    en: "The ERP, shop-floor, cloud and AI-agent systems VELIXI connects to, and how: standard interfaces, packaged connectors and connectors in pilot.",
+    ar: "أنظمة ERP وأرض المصنع والسحابة ووكلاء الذكاء الاصطناعي التي تتصل بها VELIXI، وكيف: واجهات قياسية وموصلات جاهزة وموصلات تجريبية.",
   },
   h1: { en: "AI that works inside the systems you already run", ar: "ذكاء اصطناعي يعمل داخل الأنظمة التي تستخدمها بالفعل" },
   lead: {

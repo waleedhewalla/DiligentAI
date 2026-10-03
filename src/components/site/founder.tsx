@@ -12,8 +12,8 @@ export function TeamSection({ locale, dict }: { locale: Locale; dict: Dictionary
   const f = home.founder;
   const wa = whatsappHref(
     locale === "ar"
-      ? "مرحباً فريق Diligent AI، أود التحدث مع أحد المستشارين"
-      : "Hello Diligent AI team, I'd like to speak with a consultant",
+      ? "مرحباً فريق VELIXI، أود التحدث مع أحد المستشارين"
+      : "Hello VELIXI team, I'd like to speak with a consultant",
   );
   return (
     <section className="section bg-surface-subtle">
@@ -28,8 +28,8 @@ export function TeamSection({ locale, dict }: { locale: Locale; dict: Dictionary
             <span className="relative grid h-24 w-24 place-items-center rounded-full bg-white/10 ring-1 ring-white/20">
               <Users className="h-11 w-11 text-brand-teal-light" aria-hidden />
             </span>
-            <span className="relative text-lg font-bold" dir="ltr">
-              Diligent AI
+            <span className="relative text-lg font-semibold tracking-[0.16em]" dir="ltr">
+              VELIXI
             </span>
           </div>
         </div>

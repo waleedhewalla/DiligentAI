@@ -1,6 +1,6 @@
-# Diligent AI – Social Media & Google Business Profile Setup Guide
+# VELIXI – Social Media & Google Business Profile Setup Guide
 
-A step-by-step guide to setting up professional, verified Diligent AI pages on **LinkedIn, Facebook, Instagram, TikTok, YouTube, X and Google Business Profile**, from sign-up to verification.
+A step-by-step guide to setting up professional, verified VELIXI pages on **LinkedIn, Facebook, Instagram, TikTok, YouTube, X and Google Business Profile**, from sign-up to verification.
 
 Everything you need to paste or upload is in this folder:
 
@@ -38,11 +38,11 @@ Do these steps first. They prevent the most common problems: accounts locked to 
 
 | # | Task | Why |
 |---|------|-----|
-| 1 | **Create a company email for social accounts**, e.g. `social@diligentai.com` (on the company domain, not Gmail). | Every account is owned by the company, not a person. Verification on LinkedIn, Meta and Google is easier with a domain email. |
+| 1 | **Create a company email for social accounts**, e.g. `social@velixi.ai` (on the company domain, not Gmail). | Every account is owned by the company, not a person. Verification on LinkedIn, Meta and Google is easier with a domain email. |
 | 2 | **Set up a password manager** (1Password, Bitwarden) with a shared "Social" vault. | Passwords are never kept in one person's head or phone. |
 | 3 | **Install an authenticator app** (Google Authenticator, Microsoft Authenticator or the password manager's built-in one). | Turn on two-factor login (2FA) everywhere. Use an app, not SMS. |
 | 4 | **Business phone number** – use the WhatsApp Business number **+20 106 530 7007**. | Needed for verification codes, Google Business and the WhatsApp button. |
-| 5 | **Scan the company documents** (clear PDF or photo): commercial register (السجل التجاري), tax card (البطاقة الضريبية), and a utility bill or lease in the company name. | Meta business verification, Google Business verification and X/TikTok organisation checks ask for these. The name must match exactly: **Diligent AI Transformation**. |
+| 5 | **Scan the company documents** (clear PDF or photo): commercial register (السجل التجاري), tax card (البطاقة الضريبية), and a utility bill or lease in the company name. | Meta business verification, Google Business verification and X/TikTok organisation checks ask for these. The name must match exactly: **Velixi AI**. |
 | 6 | **Website live on the final domain**, with the legal name, address/phone and email visible (footer + Contact page). | Meta and Google compare the page details with the website. |
 | 7 | **Check handle availability** on all platforms at once (e.g. namechk.com or namecheckr.com). | Reserve the same handle everywhere on the same day (see section 3). |
 | 8 | **Decide who the admins are** – at least **two people** per platform (you + one backup). | If one person loses access, the company still controls the page. |
@@ -57,15 +57,15 @@ Do these steps first. They prevent the most common problems: accounts locked to 
 
 | File | Use it for |
 |------|------------|
-| `diligentai-profile-1080.png` | **Profile picture on every platform** (LinkedIn, Facebook, Instagram, TikTok, YouTube, X, Google). Navy background, logo centered so it survives the circle crop. |
-| `diligentai-profile.svg` | Same as above, vector (for designers / print). |
-| `diligentai-mark-1024.png` | App-icon style logo (rounded square, transparent corners). Use in documents, slides, email signatures, and as the Google Business **logo**. |
-| `diligentai-mark.svg` | Same, vector. |
-| `diligentai-logo-horizontal-1824.png` | Full logo (icon + "Diligent AI") for **light backgrounds**: documents, proposals, letterheads. Transparent background. |
-| `diligentai-logo-horizontal.svg` | Same, vector (text converted to shapes – works in any design tool without installing fonts). |
-| `diligentai-logo-horizontal-white-1824.png` | Full logo for **dark backgrounds**: videos, slides, banners. Transparent background. |
-| `diligentai-logo-horizontal-white.svg` | Same, vector. |
-| `diligentai-watermark-150.png` | YouTube video watermark (150 × 150). |
+| `velixi-profile-1080.png` | **Profile picture on every platform** (LinkedIn, Facebook, Instagram, TikTok, YouTube, X, Google). Navy background, logo centered so it survives the circle crop. |
+| `velixi-profile.svg` | Same as above, vector (for designers / print). |
+| `velixi-mark-1024.png` | App-icon style logo (rounded square, transparent corners). Use in documents, slides, email signatures, and as the Google Business **logo**. |
+| `velixi-mark.svg` | Same, vector. |
+| `velixi-logo-horizontal-1560.png` | Full logo (icon + "VELIXI") for **light backgrounds**: documents, proposals, letterheads. Transparent background. |
+| `velixi-logo-horizontal.svg` | Same, vector (text converted to shapes – works in any design tool without installing fonts). |
+| `velixi-logo-horizontal-white-1560.png` | Full logo for **dark backgrounds**: videos, slides, banners. Transparent background. |
+| `velixi-logo-horizontal-white.svg` | Same, vector. |
+| `velixi-watermark-150.png` | YouTube video watermark (150 × 150). |
 
 ### Files in `brand/banners/`
 
@@ -85,7 +85,7 @@ Instagram and TikTok have no cover image – only the profile picture.
 |------|-----|-----|
 | Navy | `#1F3864` | Primary background, headlines on white |
 | Deep navy | `#0D1A33` | Dark backgrounds |
-| Teal | `#2CA6A4` | Accent, the "D" |
+| Teal | `#2CA6A4` | Accent, the rising stroke of the V |
 | Light teal | `#5CC8C6` | Accent text on navy |
 | Orange | `#E97730` | Call-to-action, highlights, the dot |
 | Light orange | `#F8A66A` | Accent text on navy |
@@ -96,8 +96,8 @@ Instagram and TikTok have no cover image – only the profile picture.
 
 ### Logo rules
 
-- Always write the name as **Diligent AI** (capital D, space, capital AI). Never "DiligentAI", "Diligent Ai" or "Diligent A.I." in text.
-- Don't stretch, recolor, rotate or add effects to the logo. Leave empty space around it at least the size of the orange dot.
+- Always write the brand as **VELIXI** (all capitals, one word). Use **Velixi AI** only where the legal company name is needed (contracts, invoices, business verification). Never "Velixi", "VeliXi" or "V.E.L.I.X.I" as the brand in text.
+- Don't stretch, recolor, rotate or add effects to the logo. Leave empty space around it at least the size of the orange signal node.
 - On photos, use the white logo on a dark area, or the profile image as a badge.
 
 ---
@@ -106,15 +106,15 @@ Instagram and TikTok have no cover image – only the profile picture.
 
 | Item | Value |
 |------|-------|
-| Display name | **Diligent AI** (Instagram/X/TikTok can add a keyword: `Diligent AI \| ذكاء اصطناعي للمصانع`) |
-| Preferred handle | **@diligentai** |
-| Fallbacks, in order | `@diligentai.eg` (where dots are allowed) → `@diligentai_eg` → `@diligent.ai` → `@diligentaihq` |
+| Display name | **VELIXI** (Instagram/X/TikTok can add a keyword: `VELIXI \| ذكاء اصطناعي للمصانع`) |
+| Preferred handle | **@velixi** |
+| Fallbacks, in order | `@velixi.ai` (where dots are allowed) → `@velixi_ai` → `@velixiai` → `@velixihq` |
 | Website link (with tracking) | See section 12 – each platform gets its own tracking link |
 
 Rules:
-- Use the **same handle on every platform**. If `@diligentai` is taken on one, pick the first fallback that is free on **all** platforms and use that everywhere.
+- Use the **same handle on every platform**. If `@velixi` is taken on one, pick the first fallback that is free on **all** platforms and use that everywhere.
 - Never use a personal name in the handle or page name.
-- Don't add keywords to the **Google Business** name – Google suspends profiles that do. Use exactly `Diligent AI`.
+- Don't add keywords to the **Google Business** name – Google suspends profiles that do. Use exactly `VELIXI`.
 
 ---
 
@@ -130,7 +130,7 @@ All claims below are already on the website. Don't add new numbers, customer nam
 ### 4.2 Long description – English (≈1,300 characters; use on LinkedIn "About")
 
 ```
-Diligent AI helps manufacturers in Egypt and the Gulf turn the data they already have into better decisions on the factory floor.
+VELIXI helps manufacturers in Egypt and the Gulf turn the data they already have into better decisions on the factory floor.
 
 We build and integrate AI for production planning and scheduling, demand forecasting, quality control, maintenance, supply chain and executive reporting – connected to the ERP and factory systems you already run, including SAP, Odoo and Microsoft Dynamics.
 
@@ -149,7 +149,7 @@ Book a 30-minute plant review: bring the problem – scheduling, forecasting, qu
 ### 4.3 Long description – Arabic
 
 ```
-تساعد Diligent AI المصانع في مصر والخليج على تحويل البيانات الموجودة لديها بالفعل إلى قرارات أفضل على أرض المصنع.
+تساعد VELIXI المصانع في مصر والخليج على تحويل البيانات الموجودة لديها بالفعل إلى قرارات أفضل على أرض المصنع.
 
 نبني حلول الذكاء الاصطناعي وندمجها في تخطيط وجدولة الإنتاج، والتنبؤ بالطلب، ومراقبة الجودة، والصيانة، وسلاسل الإمداد، وتقارير الإدارة العليا – متصلة بنظام ERP وأنظمة المصنع التي تعمل بها اليوم، بما فيها SAP وOdoo وMicrosoft Dynamics.
 
@@ -191,13 +191,13 @@ LinkedIn is the most important channel for B2B buyers (plant managers, supply ch
 
 | Field | Value |
 |-------|-------|
-| Name | `Diligent AI` |
-| LinkedIn public URL | `linkedin.com/company/diligentai` |
-| Website | `https://diligentai.com` (final domain) |
+| Name | `VELIXI` |
+| LinkedIn public URL | `linkedin.com/company/velixi` |
+| Website | `https://velixi.ai` (final domain) |
 | Industry | `IT Services and IT Consulting` (alternative: `Software Development`) |
 | Organization size | `2–10 employees` (update as the team grows) |
 | Organization type | `Privately held` |
-| Logo | `brand/logo/diligentai-profile-1080.png` |
+| Logo | `brand/logo/velixi-profile-1080.png` |
 | Tagline (max 120) | `AI-powered manufacturing intelligence for Egypt and the Gulf. Built on your data, embedded in your ERP.` |
 
 4. Tick the box confirming you're authorized to act on behalf of the company → **Create page**.
@@ -213,7 +213,7 @@ Open the Page → **Edit page**:
   `Artificial Intelligence, Manufacturing AI, Production Planning, Production Scheduling, Demand Forecasting, Quality Control, Computer Vision, Predictive Maintenance, Supply Chain Optimization, ERP Integration, SAP, Odoo, Microsoft Dynamics, Sales and Operations Planning, CBAM Reporting, Arabic AI, Digital Transformation, Industry 4.0`
 - **Details → Founded:** the year on the commercial register.
 - **Location:** add the Cairo office address → mark it as **Primary**.
-- **Languages:** in Page info, **add Arabic** as a second language → paste the Arabic name (`Diligent AI`), the Arabic tagline and the Arabic description (4.3). Arabic tagline:
+- **Languages:** in Page info, **add Arabic** as a second language → paste the Arabic name (`VELIXI`), the Arabic tagline and the Arabic description (4.3). Arabic tagline:
   `ذكاء تصنيع مدعوم بالذكاء الاصطناعي لمصانع مصر والخليج. مبني على بياناتك ومدمج في نظام ERP.`
 - **Hashtags** (if shown): `#ManufacturingAI`, `#Industry40`, `#Egypt`.
 
@@ -224,12 +224,12 @@ Open the Page → **Edit page**:
 
 ### 5.4 Verification
 
-- **Your own workplace:** on your personal profile → **Verifications** → verify your workplace with your `@diligentai.com` email. Ask each team member to do the same once they list Diligent AI as their employer.
+- **Your own workplace:** on your personal profile → **Verifications** → verify your workplace with your `@velixi.ai` email. Ask each team member to do the same once they list VELIXI as their employer.
 - **Page verification badge:** LinkedIn gives Pages a verified badge when it can confirm the organization. When the option appears, go to **Page admin → Settings → Verification** and follow the steps. It usually needs a complete Page, some activity history, and a Super admin with a verified company email. If you don't see the option yet, keep posting and check again in a few weeks.
 
 ### 5.5 Launch
 
-1. Ask the team to set **Diligent AI** as their current employer (links their profiles to the Page).
+1. Ask the team to set **VELIXI** as their current employer (links their profiles to the Page).
 2. Publish the first post (section 13), then **invite your connections** to follow the Page (Page admin → "Invite to follow").
 3. Pin the "What we do + book a plant review" post to the top.
 
@@ -243,7 +243,7 @@ Facebook, Instagram and WhatsApp are all managed together in **Meta Business Sui
 
 1. Log in to Facebook with your personal account (Meta requires a real person as the first admin).
 2. Go to **business.facebook.com** → **Create an account/portfolio**.
-3. Business portfolio name: `Diligent AI Transformation` (the legal name). Your name, business email: `social@diligentai.com`.
+3. Business portfolio name: `Velixi AI` (the legal name). Your name, business email: `social@velixi.ai`.
 4. Confirm the email Meta sends.
 
 ### 6.2 Create the Facebook Page
@@ -253,20 +253,20 @@ Facebook, Instagram and WhatsApp are all managed together in **Meta Business Sui
 
 | Field | Value |
 |-------|-------|
-| Page name | `Diligent AI` |
+| Page name | `VELIXI` |
 | Category (up to 3) | `Information Technology Company`, `Software Company`, `Business Consultant` |
 | Bio / Intro (max 101) | AR: `ذكاء اصطناعي لمصانع مصر والخليج – مبني على بياناتك ومدمج في نظام ERP.` |
-| Username | `@diligentai` → page URL `facebook.com/diligentai` |
+| Username | `@velixi` → page URL `facebook.com/velixi` |
 
 3. Images:
-   - Profile picture: `brand/logo/diligentai-profile-1080.png`
+   - Profile picture: `brand/logo/velixi-profile-1080.png`
    - Cover photo: `brand/banners/facebook-cover-1640x624.png`. Phones crop the sides; the text is centered, so it stays visible.
 4. **Edit details → About / Contact:**
-   - Website (with tracking link), email `hello@diligentai.com`, phone `+20 106 530 7007`, address (Cairo office; turn off "show address" if you don't receive visitors), hours (e.g. Sun–Thu 9:00–17:00).
+   - Website (with tracking link), email `hello@velixi.ai`, phone `+20 106 530 7007`, address (Cairo office; turn off "show address" if you don't receive visitors), hours (e.g. Sun–Thu 9:00–17:00).
    - Description: the Arabic long description (4.3) and the English one-liner.
 5. **Action button:** `Send WhatsApp message` (connect +20 106 530 7007), or `Book now` → link to `/demo`. WhatsApp usually works better in Egypt.
 6. **Settings → Page setup → Messaging:** turn on an **instant reply** (Arabic + English):
-   `شكراً لتواصلك مع Diligent AI. سيرد عليك أحد أعضاء الفريق في نفس يوم العمل. / Thanks for contacting Diligent AI – our team will reply the same business day.`
+   `شكراً لتواصلك مع VELIXI. سيرد عليك أحد أعضاء الفريق في نفس يوم العمل. / Thanks for contacting VELIXI – our team will reply the same business day.`
 
 ### 6.3 Security and roles
 
@@ -276,13 +276,13 @@ Facebook, Instagram and WhatsApp are all managed together in **Meta Business Sui
 ### 6.4 Verification
 
 **A. Domain verification** (needed for ads and link control):
-Business Settings → **Brand safety → Domains → Add** `diligentai.com` → choose **DNS TXT record** → add the TXT record in your domain's DNS → **Verify**. (Send me the TXT value if you'd like me to add it on the website side.)
+Business Settings → **Brand safety → Domains → Add** `velixi.ai` → choose **DNS TXT record** → add the TXT record in your domain's DNS → **Verify**. (Send me the TXT value if you'd like me to add it on the website side.)
 
 **B. Business verification** (proves the company is real; needed for WhatsApp Business API, higher ad limits and Meta Verified):
 1. Business Settings → **Security Center → Start verification** (appears after the portfolio has a Page/admin history).
-2. Enter the legal name **exactly as on the commercial register** (`Diligent AI Transformation`), address, phone, website.
+2. Enter the legal name **exactly as on the commercial register** (`Velixi AI`), address, phone, website.
 3. Upload the commercial register and tax card (and the utility bill if asked).
-4. Choose how to confirm: email to `@diligentai.com` (fastest), phone call/SMS, or domain.
+4. Choose how to confirm: email to `@velixi.ai` (fastest), phone call/SMS, or domain.
 5. Review usually takes from a few days to two weeks.
 
 **C. Meta Verified for Business** (the blue badge on Facebook/Instagram): a **paid monthly subscription**, only in some countries. After business verification is approved, check **Meta Business Suite → Meta Verified** (or Accounts Center). If it's available for Egypt, subscribe for the Page and Instagram together. If it isn't offered yet, the Page is still professional without it – check again every few months.
@@ -293,21 +293,21 @@ Business Settings → **Brand safety → Domains → Add** `diligentai.com` → 
 
 ### 7.1 Sign up
 
-1. Install Instagram → **Create new account** using `social@diligentai.com` (not a personal phone number).
-2. Username: `diligentai`.
+1. Install Instagram → **Create new account** using `social@velixi.ai` (not a personal phone number).
+2. Username: `velixi`.
 3. **Settings → Account type and tools → Switch to professional account → Business.**
 4. Category: `Information Technology Company` (or `Software Company`). Choose to show the category on the profile.
-5. **Connect to the Facebook Page:** Settings → **Accounts Center → Accounts → Add accounts** → add the Diligent AI Facebook Page. Then in Meta Business Suite → Settings → Accounts → **Instagram accounts → Add** to put it in the portfolio.
+5. **Connect to the Facebook Page:** Settings → **Accounts Center → Accounts → Add accounts** → add the VELIXI Facebook Page. Then in Meta Business Suite → Settings → Accounts → **Instagram accounts → Add** to put it in the portfolio.
 
 ### 7.2 Profile
 
 | Field | Value |
 |-------|-------|
-| Name (searchable, max 64) | `Diligent AI \| ذكاء اصطناعي للمصانع` |
-| Profile photo | `brand/logo/diligentai-profile-1080.png` |
+| Name (searchable, max 64) | `VELIXI \| ذكاء اصطناعي للمصانع` |
+| Profile photo | `brand/logo/velixi-profile-1080.png` |
 | Bio (max 150) – Arabic (recommended) | see below |
 | Links (up to 5) | 1) Book a plant review → `/demo` (tracking link) 2) Website → home (tracking link) 3) WhatsApp |
-| Contact options | Email `hello@diligentai.com`, phone/WhatsApp `+20 106 530 7007` |
+| Contact options | Email `hello@velixi.ai`, phone/WhatsApp `+20 106 530 7007` |
 | Action button | `Book` / `Reserve` (if offered) → `/demo` link |
 
 Arabic bio:
@@ -345,20 +345,20 @@ TikTok works in Egypt for short "problem → fix" videos from the factory floor 
 
 ### 8.1 Sign up
 
-1. Install TikTok → **Sign up** with `social@diligentai.com`.
-2. Username: `diligentai`.
+1. Install TikTok → **Sign up** with `social@velixi.ai`.
+2. Username: `velixi`.
 3. **Profile → ☰ → Settings and privacy → Account → Switch to Business Account** → category: `Software & Apps` or `Professional Services` (pick the closest one TikTok shows).
 
 ### 8.2 Profile
 
 | Field | Value |
 |-------|-------|
-| Name | `Diligent AI \| ذكاء اصطناعي للمصانع` |
-| Photo | `brand/logo/diligentai-profile-1080.png` |
+| Name | `VELIXI \| ذكاء اصطناعي للمصانع` |
+| Photo | `brand/logo/velixi-profile-1080.png` |
 | Bio (max 80) – AR | `ذكاء اصطناعي للمصانع • مبني على بياناتك ومدمج في ERP` |
 | Bio – EN alternative | `AI for factories in Egypt & the Gulf. Built on your data.` |
 | Website | `/demo` tracking link (Business accounts can add a link; if the field isn't there yet, TikTok unlocks it later) |
-| Email | `hello@diligentai.com` (Business accounts show a contact button) |
+| Email | `hello@velixi.ai` (Business accounts show a contact button) |
 
 ### 8.3 Security and verification
 
@@ -378,32 +378,32 @@ YouTube is where demos, webinars and the 3-minute overview video live. The websi
 
 ### 9.1 Sign up (use a Brand Account, not a personal channel)
 
-1. Sign in to Google with `social@diligentai.com` (create this Google account first if needed).
-2. Go to **youtube.com → profile icon → Create a channel**. Choose the option to use a **custom/business name**: `Diligent AI`. This creates a **Brand Account**, which can have several managers.
-3. Handle: `@diligentai`.
+1. Sign in to Google with `social@velixi.ai` (create this Google account first if needed).
+2. Go to **youtube.com → profile icon → Create a channel**. Choose the option to use a **custom/business name**: `VELIXI`. This creates a **Brand Account**, which can have several managers.
+3. Handle: `@velixi`.
 
 ### 9.2 Customize the channel (YouTube Studio → Customization)
 
 | Item | Value |
 |------|-------|
-| Profile picture | `brand/logo/diligentai-profile-1080.png` |
+| Profile picture | `brand/logo/velixi-profile-1080.png` |
 | Banner image | `brand/banners/youtube-banner-2560x1440.png` |
-| Video watermark | `brand/logo/diligentai-watermark-150.png` → "Entire video" |
-| Name | `Diligent AI` |
-| Handle | `@diligentai` |
+| Video watermark | `brand/logo/velixi-watermark-150.png` → "Entire video" |
+| Name | `VELIXI` |
+| Handle | `@velixi` |
 | Description (max 1,000) | see below |
 | Links | Website (tracking link), Book a plant review (`/demo`), LinkedIn, Instagram, X, TikTok |
-| Contact email | `hello@diligentai.com` |
+| Contact email | `hello@velixi.ai` |
 
 Channel description (English + Arabic, under 1,000 characters):
 ```
-Diligent AI builds AI-powered manufacturing intelligence for factories in Egypt and the Gulf – built on your data, embedded in your ERP and factory systems (SAP, Odoo, Microsoft Dynamics).
+VELIXI builds AI-powered manufacturing intelligence for factories in Egypt and the Gulf – built on your data, embedded in your ERP and factory systems (SAP, Odoo, Microsoft Dynamics).
 
 On this channel: product demos, short fixes for production planning, forecasting, quality and maintenance problems, and practical guides in Arabic and English.
 
 Book a 30-minute plant review – link below.
 
-تبني Diligent AI حلول ذكاء اصطناعي لمصانع مصر والخليج – مبنية على بياناتك ومدمجة في نظام ERP وأنظمة مصنعك. عروض للمنتجات، وحلول سريعة لمشاكل التخطيط والتنبؤ والجودة والصيانة، وأدلة عملية بالعربية والإنجليزية.
+تبني VELIXI حلول ذكاء اصطناعي لمصانع مصر والخليج – مبنية على بياناتك ومدمجة في نظام ERP وأنظمة مصنعك. عروض للمنتجات، وحلول سريعة لمشاكل التخطيط والتنبؤ والجودة والصيانة، وأدلة عملية بالعربية والإنجليزية.
 ```
 
 - **Settings → Channel → Basic info:** Country `Egypt`; keywords: `manufacturing AI, production planning, demand forecasting, quality control, ERP integration, SAP, Odoo, Egypt, ذكاء اصطناعي, تخطيط الإنتاج`.
@@ -430,16 +430,16 @@ Book a 30-minute plant review – link below.
 
 ### 10.1 Sign up
 
-1. Go to **x.com → Create account** with `social@diligentai.com`.
-2. Username: `@diligentai` (max 15 characters).
+1. Go to **x.com → Create account** with `social@velixi.ai`.
+2. Username: `@velixi` (max 15 characters).
 3. **Settings → Your account → Account information → Switch to Professional** → category `Information Technology Company` (or the closest match) → type **Business**.
 
 ### 10.2 Profile
 
 | Field | Value |
 |-------|-------|
-| Name (max 50) | `Diligent AI \| ذكاء اصطناعي للمصانع` |
-| Photo | `brand/logo/diligentai-profile-1080.png` (shown as a circle; X shows a square only for Verified Organizations) |
+| Name (max 50) | `VELIXI \| ذكاء اصطناعي للمصانع` |
+| Photo | `brand/logo/velixi-profile-1080.png` (shown as a circle; X shows a square only for Verified Organizations) |
 | Header | `brand/banners/x-header-1500x500.png` |
 | Bio (max 160) | `AI-powered manufacturing intelligence for Egypt & the Gulf. Built on your data. Embedded in your ERP and factory systems. Arabic-first \| ذكاء اصطناعي للمصانع` |
 | Location | `Cairo, Egypt` |
@@ -456,7 +456,7 @@ Book a 30-minute plant review – link below.
 
 ## 11. Google Business Profile
 
-This puts Diligent AI on Google Search and Maps (for example "AI company Cairo") with reviews, the phone number and the booking link.
+This puts VELIXI on Google Search and Maps (for example "AI company Cairo") with reviews, the phone number and the booking link.
 
 ### 11.1 Check you're eligible (important)
 
@@ -464,12 +464,12 @@ Google only allows a profile if you **meet customers in person**. Either:
 - **Office customers can visit** during staffed hours, with signage. Coworking spaces and virtual offices only count if staffed and signed. Or
 - **Service-area business:** you visit customers (the plant reviews and on-site work count). You then **hide the address** and list the areas you serve.
 
-For Diligent AI, **service-area business** is usually the right choice unless you have a staffed office with a sign.
+For VELIXI, **service-area business** is usually the right choice unless you have a staffed office with a sign.
 
 ### 11.2 Create the profile
 
-1. Go to **business.google.com** → sign in with `social@diligentai.com` → **Add business**.
-2. Business name: `Diligent AI`. No keywords – see section 3.
+1. Go to **business.google.com** → sign in with `social@velixi.ai` → **Add business**.
+2. Business name: `VELIXI`. No keywords – see section 3.
 3. Business category: primary `Software company`. Add up to 9 additional categories if Google offers them, e.g. `Business management consultant`, `Computer consultant`, `Information technology consultant` (pick the closest names from Google's list).
 4. Location:
    - If you have a staffed office, enter the address.
@@ -485,7 +485,7 @@ Google picks the method; you'll see one or more of these:
 |--------|------------|
 | **Video recording** (most common) | Record **one continuous video** (no cuts) on your phone showing: 1) the street/area or building outside, 2) the office sign or branded items (logo on the door, laptop sticker, rollup), 3) proof you run the business (open the Google Business dashboard or show the commercial register / tax card, staff ID or keys to the office). Upload in the app. Review takes up to about 5 business days. |
 | **Phone or SMS** | Enter the code sent to the business number. |
-| **Email** | Click the link sent to the `@diligentai.com` email. |
+| **Email** | Click the link sent to the `@velixi.ai` email. |
 | **Live video call** | A Google agent asks you to show the same things as in the video method. |
 | **Postcard** | A code arrives by post to the address (can take weeks; use only if offered alone). |
 
@@ -495,7 +495,7 @@ After verification, **don't change the name, address or category for a while** �
 
 | Section | Value |
 |---------|-------|
-| Logo | `brand/logo/diligentai-mark-1024.png` |
+| Logo | `brand/logo/velixi-mark-1024.png` |
 | Cover photo | `brand/banners/google-business-cover-1080x608.png` |
 | Description (max 750, no links) | see below |
 | Opening date | the date on the commercial register |
@@ -507,8 +507,8 @@ After verification, **don't change the name, address or category for a while** �
 
 Description (Arabic + English, 750 characters max):
 ```
-Diligent AI builds AI for manufacturers in Egypt and the Gulf: production planning and scheduling, demand forecasting, quality control, maintenance and supply chain – built on your data and embedded in your ERP (SAP, Odoo, Microsoft Dynamics). Arabic-first support, fixed-scope packages priced in Egyptian pounds, and an Egypt-hosted data option. Book a 30-minute plant review.
-تبني Diligent AI حلول ذكاء اصطناعي للمصانع في مصر والخليج: تخطيط الإنتاج، والتنبؤ بالطلب، والجودة، والصيانة، وسلاسل الإمداد – مبنية على بياناتك ومدمجة في نظام ERP. احجز مراجعة لمصنعك في 30 دقيقة.
+VELIXI builds AI for manufacturers in Egypt and the Gulf: production planning and scheduling, demand forecasting, quality control, maintenance and supply chain – built on your data and embedded in your ERP (SAP, Odoo, Microsoft Dynamics). Arabic-first support, fixed-scope packages priced in Egyptian pounds, and an Egypt-hosted data option. Book a 30-minute plant review.
+تبني VELIXI حلول ذكاء اصطناعي للمصانع في مصر والخليج: تخطيط الإنتاج، والتنبؤ بالطلب، والجودة، والصيانة، وسلاسل الإمداد – مبنية على بياناتك ومدمجة في نظام ERP. احجز مراجعة لمصنعك في 30 دقيقة.
 ```
 
 ### 11.5 Keep it active
@@ -527,13 +527,13 @@ The website already records where each visitor came from. Use a **different link
 
 | Platform | Link to use in bio / buttons |
 |----------|------------------------------|
-| LinkedIn | `https://diligentai.com/demo?utm_source=linkedin&utm_medium=social&utm_campaign=profile` |
-| Facebook | `https://diligentai.com/demo?utm_source=facebook&utm_medium=social&utm_campaign=profile` |
-| Instagram | `https://diligentai.com/demo?utm_source=instagram&utm_medium=social&utm_campaign=profile` |
-| TikTok | `https://diligentai.com/demo?utm_source=tiktok&utm_medium=social&utm_campaign=profile` |
-| YouTube | `https://diligentai.com/demo?utm_source=youtube&utm_medium=social&utm_campaign=profile` |
-| X | `https://diligentai.com/demo?utm_source=x&utm_medium=social&utm_campaign=profile` |
-| Google Business | `https://diligentai.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp` |
+| LinkedIn | `https://velixi.ai/demo?utm_source=linkedin&utm_medium=social&utm_campaign=profile` |
+| Facebook | `https://velixi.ai/demo?utm_source=facebook&utm_medium=social&utm_campaign=profile` |
+| Instagram | `https://velixi.ai/demo?utm_source=instagram&utm_medium=social&utm_campaign=profile` |
+| TikTok | `https://velixi.ai/demo?utm_source=tiktok&utm_medium=social&utm_campaign=profile` |
+| YouTube | `https://velixi.ai/demo?utm_source=youtube&utm_medium=social&utm_campaign=profile` |
+| X | `https://velixi.ai/demo?utm_source=x&utm_medium=social&utm_campaign=profile` |
+| Google Business | `https://velixi.ai/?utm_source=google&utm_medium=organic&utm_campaign=gbp` |
 
 For individual posts, change `utm_campaign=profile` to the post topic, e.g. `utm_campaign=otd_article`.
 
@@ -619,7 +619,7 @@ Also: the **free tools** (SOP scorecard, CBAM checklist, savings calculator) mak
 ## 15. Master checklist
 
 **Preparation**
-- [ ] `social@diligentai.com` created
+- [ ] `social@velixi.ai` created
 - [ ] Password manager + shared vault
 - [ ] Authenticator app installed
 - [ ] Commercial register, tax card, utility bill scanned
@@ -628,7 +628,7 @@ Also: the **free tools** (SOP scorecard, CBAM checklist, savings calculator) mak
 - [ ] Backup admin chosen
 
 **LinkedIn**
-- [ ] Page created, URL `/company/diligentai`
+- [ ] Page created, URL `/company/velixi`
 - [ ] Logo, cover, tagline, About (EN), specialties, location, button
 - [ ] Arabic language version added
 - [ ] Second Super admin added; 2FA on
@@ -650,7 +650,7 @@ Also: the **free tools** (SOP scorecard, CBAM checklist, savings calculator) mak
 - [ ] Business Center verified (before ads)
 
 **YouTube**
-- [ ] Brand Account channel, handle `@diligentai`
+- [ ] Brand Account channel, handle `@velixi`
 - [ ] Photo, banner, watermark, description (EN + AR), links, email
 - [ ] Phone-verified (youtube.com/verify)
 - [ ] Manager added; 2FA on

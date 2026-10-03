@@ -34,7 +34,7 @@ export type Post = {
   body: L10n<Block[]>;
 };
 
-const author = { en: "Diligent AI Team", ar: "فريق Diligent AI" };
+const author = { en: "VELIXI Team", ar: "فريق VELIXI" };
 
 const posts: Post[] = [
   {

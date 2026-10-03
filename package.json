@@ -1,8 +1,8 @@
 {
-  "name": "diligent-ai-web",
+  "name": "velixi-web",
   "version": "1.0.0",
   "private": true,
-  "description": "Diligent AI — bilingual (AR/EN) marketing site and customer portal",
+  "description": "VELIXI — bilingual (AR/EN) marketing site and customer portal",
   "scripts": {
     "dev": "next dev -p 3300",
     "build": "next build",

@@ -44,8 +44,8 @@ const allCaseStudies: CaseStudy[] = [
       ar: "كيف تخلّصت ستار ترانس من التخطيط اليدوي خلال 8 أسابيع",
     },
     summary: {
-      en: "From a 3-day manual planning cycle in Excel to automated schedules, a live executive view and an Arabic content engine – three Diligent AI solutions live in one company.",
-      ar: "من دورة تخطيط يدوية على Excel تستغرق 3 أيام إلى جداول تلقائية، ورؤية تنفيذية لحظية، ومحرك محتوى عربي – ثلاثة حلول من Diligent AI تعمل في شركة واحدة.",
+      en: "From a 3-day manual planning cycle in Excel to automated schedules, a live executive view and an Arabic content engine – three VELIXI solutions live in one company.",
+      ar: "من دورة تخطيط يدوية على Excel تستغرق 3 أيام إلى جداول تلقائية، ورؤية تنفيذية لحظية، ومحرك محتوى عربي – ثلاثة حلول من VELIXI تعمل في شركة واحدة.",
     },
     publishedAt: "2026-09-20",
     updatedAt: "2026-09-25",

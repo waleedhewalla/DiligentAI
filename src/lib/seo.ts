@@ -27,7 +27,7 @@ type PageMeta = {
   publishedTime?: string;
   modifiedTime?: string;
   noindex?: boolean;
-  /** Absolute title (skips the "| Diligent AI" template). */
+  /** Absolute title (skips the "| VELIXI" template). */
   absoluteTitle?: boolean;
   /** Per-page social card (a sibling opengraph-image route). Defaults to the locale card. */
   ogImage?: boolean;

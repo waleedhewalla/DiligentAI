@@ -12,8 +12,8 @@ import { PartnerForm } from "@/components/site/partner-form";
 const copy = {
   title: { en: "Partner Programme – ERP, Automation, Cloud & Hardware Partners", ar: "برنامج الشركاء – شركاء ERP والأتمتة والسحابة والأجهزة" },
   description: {
-    en: "Partner with Diligent AI to bring AI to your manufacturing customers in Egypt and the Gulf: referral, white-label and joint delivery models.",
-    ar: "شارك Diligent AI لتقديم الذكاء الاصطناعي لعملائك من المصانع في مصر والخليج: نماذج الإحالة والعلامة البيضاء والتنفيذ المشترك.",
+    en: "Partner with VELIXI to bring AI to your manufacturing customers in Egypt and the Gulf: referral, white-label and joint delivery models.",
+    ar: "شارك VELIXI لتقديم الذكاء الاصطناعي لعملائك من المصانع في مصر والخليج: نماذج الإحالة والعلامة البيضاء والتنفيذ المشترك.",
   },
   h1: { en: "You own the relationship. We add the AI.", ar: "أنت تملك العلاقة. ونحن نضيف الذكاء الاصطناعي." },
   lead: {

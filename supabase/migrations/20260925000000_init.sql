@@ -1,4 +1,4 @@
--- Diligent AI — core schema (spec §4.3) with Row-Level Security.
+-- VELIXI — core schema (spec §4.3) with Row-Level Security.
 --
 -- Tenancy model: one row in `organizations` per customer company. Every
 -- tenant-scoped table carries `org_id`, and RLS restricts reads/writes to the

@@ -88,7 +88,7 @@ export async function generateWithOpenRouter(opts: {
     headers: {
       Authorization: `Bearer ${opts.apiKey}`,
       "Content-Type": "application/json",
-      "X-Title": "Diligent AI - Nexus demo",
+      "X-Title": "VELIXI - Nexus demo",
       ...(opts.referer ? { "HTTP-Referer": opts.referer } : {}),
     },
     body: JSON.stringify({

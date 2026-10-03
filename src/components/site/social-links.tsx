@@ -22,7 +22,7 @@ const HOVER: Record<SocialNetwork, string> = {
   youtube: "hover:bg-[#FF0000] focus-visible:bg-[#FF0000]",
 };
 
-const label = (name: string, locale: Locale) => (locale === "ar" ? `Diligent AI على ${name}` : `Diligent AI on ${name}`);
+const label = (name: string, locale: Locale) => (locale === "ar" ? `VELIXI على ${name}` : `VELIXI on ${name}`);
 
 /**
  * Company social profiles. `icons`: a row of round buttons (footer, team

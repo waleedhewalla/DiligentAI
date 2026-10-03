@@ -43,10 +43,10 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   const locale = (isLocale(params.locale) ? params.locale : "ar") as Locale;
   return {
     metadataBase,
-    title: { default: "Diligent AI", template: "%s | Diligent AI" },
-    applicationName: "Diligent AI",
-    authors: [{ name: "Diligent AI Transformation" }],
-    creator: "Diligent AI Transformation",
+    title: { default: "VELIXI", template: "%s | VELIXI" },
+    applicationName: "VELIXI",
+    authors: [{ name: "Velixi AI" }],
+    creator: "Velixi AI",
     formatDetection: { telephone: false },
     verification,
     other: { "content-language": htmlLang[locale] },

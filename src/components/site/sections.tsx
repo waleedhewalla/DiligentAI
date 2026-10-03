@@ -261,7 +261,7 @@ export function FinalCta({
   proposal?: boolean;
 }) {
   const qs = query ? "?" + new URLSearchParams(Object.entries(query).filter(([, v]) => v) as [string, string][]).toString() : "";
-  const wa = whatsappHref(locale === "ar" ? "مرحباً فريق Diligent AI، أود معرفة المزيد عن حلولكم" : "Hello Diligent AI team, I'd like to learn more about your solutions");
+  const wa = whatsappHref(locale === "ar" ? "مرحباً فريق VELIXI، أود معرفة المزيد عن حلولكم" : "Hello VELIXI team, I'd like to learn more about your solutions");
   return (
     <section className="hero-bg relative overflow-hidden text-white">
       <div className="grid-pattern absolute inset-0" aria-hidden />

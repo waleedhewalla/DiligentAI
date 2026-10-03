@@ -1,7 +1,8 @@
 import { ImageResponse } from "next/og";
 import { locales, type Locale } from "@/i18n/config";
+import { OgMark } from "@/components/brand/mark";
 
-export const alt = "Diligent AI – AI solutions for manufacturing";
+export const alt = "VELIXI – AI solutions for manufacturing";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -29,8 +30,8 @@ export default function OgImage({ params }: { params: { locale: Locale } }) {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <div style={{ width: 64, height: 64, borderRadius: 16, background: "#2CA6A4", display: "flex" }} />
-          <div style={{ fontSize: 44, fontWeight: 700 }}>Diligent AI</div>
+          <OgMark size={68} />
+          <div style={{ fontSize: 42, fontWeight: 600, letterSpacing: 8 }}>VELIXI</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           <div style={{ fontSize: 54, fontWeight: 800, lineHeight: 1.1 }}>AI-Powered Manufacturing Intelligence.</div>

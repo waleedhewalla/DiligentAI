@@ -13,16 +13,16 @@ export type LegalDoc = {
 export const privacyPolicy: LegalDoc = {
   title: { en: "Privacy Policy", ar: "سياسة الخصوصية" },
   description: {
-    en: "How Diligent AI collects, uses and protects personal data on diligentai.com and in the customer portal.",
-    ar: "كيف تجمع Diligent AI البيانات الشخصية وتستخدمها وتحميها على موقعها وفي بوابة العملاء.",
+    en: "How VELIXI collects, uses and protects personal data on velixi.ai and in the customer portal.",
+    ar: "كيف تجمع VELIXI البيانات الشخصية وتستخدمها وتحميها على موقعها وفي بوابة العملاء.",
   },
   updated: "2026-09-25",
   sections: [
     {
       h: { en: "Who we are", ar: "من نحن" },
       p: {
-        en: ["Diligent AI Transformation (“Diligent AI”, “we”) is a company based in Cairo, Egypt. We are the controller of personal data collected through this website and the customer portal."],
-        ar: ["شركة Diligent AI Transformation (\"Diligent AI\" أو \"نحن\") شركة مقرها القاهرة، مصر. ونحن المسؤولون عن البيانات الشخصية التي تُجمع عبر هذا الموقع وبوابة العملاء."],
+        en: ["Velixi AI (“VELIXI”, “we”) is a company based in Cairo, Egypt. We are the controller of personal data collected through this website and the customer portal."],
+        ar: ["شركة Velixi AI (\"VELIXI\" أو \"نحن\") شركة مقرها القاهرة، مصر. ونحن المسؤولون عن البيانات الشخصية التي تُجمع عبر هذا الموقع وبوابة العملاء."],
       },
     },
     {
@@ -64,8 +64,8 @@ export const privacyPolicy: LegalDoc = {
     {
       h: { en: "Your rights", ar: "حقوقك" },
       p: {
-        en: ["You may request access to, correction or deletion of your personal data, or withdraw consent at any time, by emailing privacy@diligentai.com. We respond within 30 days."],
-        ar: ["يحق لك طلب الاطلاع على بياناتك الشخصية أو تصحيحها أو حذفها، أو سحب موافقتك في أي وقت، بمراسلة privacy@diligentai.com. نرد خلال 30 يوماً."],
+        en: ["You may request access to, correction or deletion of your personal data, or withdraw consent at any time, by emailing privacy@velixi.ai. We respond within 30 days."],
+        ar: ["يحق لك طلب الاطلاع على بياناتك الشخصية أو تصحيحها أو حذفها، أو سحب موافقتك في أي وقت، بمراسلة privacy@velixi.ai. نرد خلال 30 يوماً."],
       },
     },
   ],
@@ -74,8 +74,8 @@ export const privacyPolicy: LegalDoc = {
 export const termsOfService: LegalDoc = {
   title: { en: "Terms of Service", ar: "شروط الخدمة" },
   description: {
-    en: "The terms governing use of diligentai.com and the Diligent AI customer portal.",
-    ar: "الشروط التي تحكم استخدام موقع Diligent AI وبوابة العملاء.",
+    en: "The terms governing use of velixi.ai and the VELIXI customer portal.",
+    ar: "الشروط التي تحكم استخدام موقع VELIXI وبوابة العملاء.",
   },
   updated: "2026-09-25",
   sections: [

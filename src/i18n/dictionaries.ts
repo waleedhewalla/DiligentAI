@@ -1,7 +1,7 @@
 import type { Locale } from "./config";
 
 const en = {
-  brand: { name: "Diligent AI", tagline: "AI solutions for manufacturing" },
+  brand: { name: "VELIXI", tagline: "AI solutions for manufacturing" },
   nav: {
     solutions: "Solutions",
     departments: "By department",
@@ -127,7 +127,7 @@ const en = {
     privacy: "We use your details only to arrange your demo. See our privacy policy.",
   },
   auth: {
-    loginTitle: "Sign in to Diligent AI",
+    loginTitle: "Sign in to VELIXI",
     loginSubtitle: "Access IPE, CEO OS and Nexus AI from one account.",
     email: "Work email",
     password: "Password",
@@ -140,7 +140,7 @@ const en = {
     sso: "Continue with SSO",
     ssoHint: "Enterprise SSO (SAML / OIDC) is detected from your work email domain.",
     passkey: "Sign in with a passkey",
-    newHere: "New to Diligent AI? Accounts are created by invitation.",
+    newHere: "New to VELIXI? Accounts are created by invitation.",
     contactUs: "Contact us",
     mfaTitle: "Two-step verification",
     mfaSubtitle: "Enter the 6-digit code from your authenticator app.",
@@ -273,11 +273,11 @@ const en = {
     officialSite: "Official site",
     complianceEyebrow: "Deadlines that are already live",
     complianceTitle: "Compliance is now a production problem",
-    comparisonTitle: "Diligent AI vs. global planning suites",
+    comparisonTitle: "VELIXI vs. global planning suites",
     comparisonLead: "Built for mid-size manufacturers in Egypt and the Gulf. Figures for global suites are typical ranges from public sources.",
     comparisonRow: { time: "Time to first result", price: "Typical price", arabic: "Arabic AI & reports", team: "Delivery team", erp: "ERP stance" },
     them: "Global suites",
-    us: "Diligent AI",
+    us: "VELIXI",
     support: { standard: "Standard interface", packaged: "Packaged connector", pilot: "Connector in pilot" },
     roiTitle: "Estimate your planning savings",
     roiLead: "Enter your own numbers. This is an estimate, not a quote.",
@@ -308,7 +308,7 @@ const en = {
 export type Dictionary = typeof en;
 
 const ar: Dictionary = {
-  brand: { name: "Diligent AI", tagline: "حلول الذكاء الاصطناعي للتصنيع" },
+  brand: { name: "VELIXI", tagline: "حلول الذكاء الاصطناعي للتصنيع" },
   nav: {
     solutions: "الحلول",
     departments: "حسب الإدارة",
@@ -433,7 +433,7 @@ const ar: Dictionary = {
     privacy: "نستخدم بياناتك فقط لترتيب العرض. راجع سياسة الخصوصية.",
   },
   auth: {
-    loginTitle: "تسجيل الدخول إلى Diligent AI",
+    loginTitle: "تسجيل الدخول إلى VELIXI",
     loginSubtitle: "ادخل إلى IPE وCEO OS وNexus AI من حساب واحد.",
     email: "البريد الإلكتروني للعمل",
     password: "كلمة المرور",
@@ -446,7 +446,7 @@ const ar: Dictionary = {
     sso: "المتابعة عبر الدخول الموحد (SSO)",
     ssoHint: "يُكتشف الدخول الموحد للمؤسسات (SAML / OIDC) من نطاق بريدك الإلكتروني.",
     passkey: "الدخول بمفتاح المرور",
-    newHere: "جديد على Diligent AI؟ الحسابات تُنشأ بدعوة.",
+    newHere: "جديد على VELIXI؟ الحسابات تُنشأ بدعوة.",
     contactUs: "تواصل معنا",
     mfaTitle: "التحقق بخطوتين",
     mfaSubtitle: "أدخل الرمز المكوّن من 6 أرقام من تطبيق المصادقة.",
@@ -579,11 +579,11 @@ const ar: Dictionary = {
     officialSite: "الموقع الرسمي",
     complianceEyebrow: "مواعيد نهائية سارية بالفعل",
     complianceTitle: "الامتثال أصبح مشكلة إنتاج",
-    comparisonTitle: "Diligent AI مقابل أنظمة التخطيط العالمية",
+    comparisonTitle: "VELIXI مقابل أنظمة التخطيط العالمية",
     comparisonLead: "مصمم للمصانع متوسطة الحجم في مصر والخليج. أرقام الأنظمة العالمية نطاقات معتادة من مصادر عامة.",
     comparisonRow: { time: "الوقت حتى أول نتيجة", price: "السعر المعتاد", arabic: "ذكاء وتقارير بالعربية", team: "فريق التنفيذ", erp: "العلاقة مع ERP" },
     them: "الأنظمة العالمية",
-    us: "Diligent AI",
+    us: "VELIXI",
     support: { standard: "واجهة قياسية", packaged: "موصل جاهز", pilot: "موصل تجريبي" },
     roiTitle: "احسب وفورات التخطيط",
     roiLead: "أدخل أرقامك. هذا تقدير وليس عرض سعر.",

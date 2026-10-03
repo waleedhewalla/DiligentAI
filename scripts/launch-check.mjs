@@ -52,7 +52,7 @@ want("NEXT_PUBLIC_HOTJAR_ID", "heatmaps after consent");
 want("DEMO_REQUEST_WEBHOOK_URL", "sends each lead to the CRM (HubSpot, Make, Zapier)");
 want("NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION", "Google Search Console (or verify by DNS)");
 want("NEXT_PUBLIC_BING_SITE_VERIFICATION", "Bing Webmaster Tools");
-// Without these the footer, contact page and team section show sample @diligentai links.
+// Without these the footer, contact page and team section show sample @velixi links.
 for (const v of ["LINKEDIN_COMPANY", "FACEBOOK", "INSTAGRAM", "X", "TIKTOK", "YOUTUBE"]) {
   want(`NEXT_PUBLIC_${v}_URL`, "live social profile (sample link shown until set; also added to Organization schema)");
 }
@@ -94,7 +94,7 @@ ok.push(`A/B tests: ${running} running, ${preview} in preview`);
 
 // ── Report ───────────────────────────────────────────────────────────────
 const line = (s) => console.log(s);
-line(`\nDiligent AI — launch check\n`);
+line(`\nVELIXI — launch check\n`);
 line(`✔ ${ok.length} settings present`);
 if (warnings.length) {
   line(`\n⚠ ${warnings.length} warnings (site works; fill before or soon after launch):`);

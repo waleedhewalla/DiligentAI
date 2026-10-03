@@ -12,10 +12,10 @@ import { SocialLinks } from "@/components/site/social-links";
 import { TrackedAnchor } from "@/components/site/tracked-link";
 
 const copy = {
-  title: { en: "Contact Diligent AI – Cairo, Egypt", ar: "تواصل مع Diligent AI – القاهرة، مصر" },
+  title: { en: "Contact VELIXI – Cairo, Egypt", ar: "تواصل مع VELIXI – القاهرة، مصر" },
   description: {
-    en: "Talk to the Diligent AI team in Cairo about AI consulting, solutions and ERP integration for your plant. WhatsApp, email or a short form – we reply the same business day.",
-    ar: "تحدث مع فريق Diligent AI في القاهرة عن استشارات وحلول الذكاء الاصطناعي والتكامل مع ERP لمصنعك. واتساب أو بريد إلكتروني أو نموذج قصير – نرد في يوم العمل نفسه.",
+    en: "Talk to the VELIXI team in Cairo about AI consulting, solutions and ERP integration for your plant. WhatsApp, email or a short form – we reply the same business day.",
+    ar: "تحدث مع فريق VELIXI في القاهرة عن استشارات وحلول الذكاء الاصطناعي والتكامل مع ERP لمصنعك. واتساب أو بريد إلكتروني أو نموذج قصير – نرد في يوم العمل نفسه.",
   },
   h1: { en: "Talk to a person, not a ticket queue", ar: "تحدث مع شخص، لا مع قائمة انتظار" },
   lead: {
@@ -33,7 +33,7 @@ export function generateMetadata({ params }: { params: { locale: Locale } }) {
 export default function ContactPage({ params }: { params: { locale: Locale } }) {
   const locale = params.locale;
   const dict = getDictionary(locale);
-  const wa = whatsappHref(locale === "ar" ? "مرحباً، أود التواصل مع Diligent AI" : "Hello, I'd like to talk to Diligent AI");
+  const wa = whatsappHref(locale === "ar" ? "مرحباً، أود التواصل مع VELIXI" : "Hello, I'd like to talk to VELIXI");
   return (
     <>
       <PageHero

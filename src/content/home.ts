@@ -8,8 +8,8 @@ import type { L10n } from "@/i18n/config";
 export const home = {
   seo: {
     title: {
-      en: "Diligent AI | AI Solutions & System Integration for Manufacturers in Egypt & the Gulf",
-      ar: "Diligent AI | حلول الذكاء الاصطناعي وتكامل الأنظمة للمصانع في مصر والخليج",
+      en: "VELIXI | AI Solutions & System Integration for Manufacturers in Egypt & the Gulf",
+      ar: "VELIXI | حلول الذكاء الاصطناعي وتكامل الأنظمة للمصانع في مصر والخليج",
     },
     description: {
       en: "AI consulting, pre-built AI tools, custom models and ERP integration for manufacturers – production planning, forecasting, quality and supply chain. Arabic-first. Book a 30-minute call.",
@@ -44,7 +44,7 @@ export const home = {
    * in proof.ts. Star Trans figures come from its case study.
    */
   stats: {
-    title: { en: "Diligent AI in numbers", ar: "Diligent AI بالأرقام" },
+    title: { en: "VELIXI in numbers", ar: "VELIXI بالأرقام" },
     solutions: { en: "AI solutions & services", ar: "حلاً وخدمة ذكاء اصطناعي" },
     departments: { en: "Plant departments covered", ar: "إدارات في المصنع نغطيها" },
     erp: { en: "SAP & ERP projects delivered by our team", ar: "مشروعاً في SAP و ERP نفّذها فريقنا" },
@@ -118,7 +118,7 @@ export const home = {
     },
   },
   why: {
-    eyebrow: { en: "Why Diligent AI", ar: "لماذا Diligent AI" },
+    eyebrow: { en: "Why VELIXI", ar: "لماذا VELIXI" },
     title: { en: "Built for how MENA manufacturers actually work", ar: "مصمم لطريقة عمل مصانع المنطقة فعلاً" },
     items: [
       {
@@ -161,7 +161,7 @@ export const home = {
       en: "We are not an agency, and not just a platform. We are your operating partner.",
       ar: "لسنا وكالة، ولسنا مجرد منصة. نحن شريكك في التشغيل.",
     },
-    team: { en: "The Diligent AI team", ar: "فريق Diligent AI" },
+    team: { en: "The VELIXI team", ar: "فريق VELIXI" },
     role: { en: "Senior consultants and delivery leads", ar: "مستشارون أوائل وقادة تنفيذ" },
   },
   finalCta: {

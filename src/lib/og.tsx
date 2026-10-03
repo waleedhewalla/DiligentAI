@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { OgMark } from "@/components/brand/mark";
 
 export const ogSize = { width: 1200, height: 630 };
 
@@ -25,8 +26,8 @@ export function renderOg({ eyebrow, title, footer }: { eyebrow: string; title: s
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-          <div style={{ width: 52, height: 52, borderRadius: 14, background: "#2CA6A4", display: "flex" }} />
-          <div style={{ fontSize: 36, fontWeight: 700 }}>Diligent AI</div>
+          <OgMark size={56} />
+          <div style={{ fontSize: 34, fontWeight: 600, letterSpacing: 6 }}>VELIXI</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <div style={{ display: "flex", fontSize: 28, fontWeight: 700, color: "#F8A66A", textTransform: "uppercase", letterSpacing: 2 }}>{eyebrow}</div>

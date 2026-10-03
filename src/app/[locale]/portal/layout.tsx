@@ -66,7 +66,7 @@ export default async function PortalLayout({ children, params }: { children: Rea
         </main>
       </div>
       <footer className="border-t bg-background py-4 text-center text-xs text-muted-foreground">
-        Diligent AI · {site.supportEmail} · v1.0
+        VELIXI · {site.supportEmail} · v1.0
       </footer>
     </div>
   );

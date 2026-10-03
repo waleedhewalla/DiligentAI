@@ -6,10 +6,10 @@ import { ServiceModelGrid } from "@/components/site/catalog";
 import { TeamSection } from "@/components/site/founder";
 
 const copy = {
-  title: { en: "About Diligent AI – AI Solutions for Manufacturing", ar: "عن Diligent AI – حلول الذكاء الاصطناعي للتصنيع" },
+  title: { en: "About VELIXI – AI Solutions for Manufacturing", ar: "عن VELIXI – حلول الذكاء الاصطناعي للتصنيع" },
   description: {
-    en: "Diligent AI is a Cairo-based AI solutions and system-integration company for manufacturers in Egypt and the Gulf: consulting, pre-built AI tools, custom models and ERP integration.",
-    ar: "Diligent AI شركة مقرها القاهرة لحلول الذكاء الاصطناعي وتكامل الأنظمة للمصانع في مصر والخليج: استشارات، وأدوات جاهزة، ونماذج مخصصة، وتكامل مع ERP.",
+    en: "VELIXI is a Cairo-based AI solutions and system-integration company for manufacturers in Egypt and the Gulf: consulting, pre-built AI tools, custom models and ERP integration.",
+    ar: "VELIXI شركة مقرها القاهرة لحلول الذكاء الاصطناعي وتكامل الأنظمة للمصانع في مصر والخليج: استشارات، وأدوات جاهزة، ونماذج مخصصة، وتكامل مع ERP.",
   },
   eyebrow: { en: "AI for manufacturing", ar: "ذكاء اصطناعي للتصنيع" },
   h1: {
