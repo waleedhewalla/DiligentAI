@@ -13,5 +13,5 @@ Disallow: /en/forgot-password
 Disallow: /ar/reset-password
 Disallow: /en/reset-password
 
-Host: https://waleedhewalla.github.io/DiligentAI/
-Sitemap: https://waleedhewalla.github.io/DiligentAI/sitemap.xml
+Host: https://waleedhewalla.github.io/velixi/
+Sitemap: https://waleedhewalla.github.io/velixi/sitemap.xml

@@ -6,7 +6,7 @@
 #   npm run preview:export   →  commit docs/  →  Settings → Pages → branch /docs
 set -euo pipefail
 
-REPO_NAME="${PREVIEW_REPO_NAME:-DiligentAI}"
+REPO_NAME="${PREVIEW_REPO_NAME:-velixi}"
 OWNER="${PREVIEW_OWNER:-waleedhewalla}"
 BASE="/${REPO_NAME}"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"

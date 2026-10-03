@@ -4,7 +4,7 @@ Bilingual (Arabic-first / English) website and customer portal for **VELIXI** �
 
 **Stack:** Next.js 14 (App Router) · TypeScript · Tailwind CSS + shadcn/ui · Supabase (Postgres, Auth, RLS) · Vercel + Cloudflare.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fwaleedhewalla%2FDiligentAI&project-name=velixi&repository-name=velixi&env=NEXT_PUBLIC_SITE_URL&envDescription=Public%20site%20URL%2C%20e.g.%20https%3A%2F%2Fvelixi.ai.%20All%20other%20variables%20are%20optional%20%E2%80%94%20see%20.env.example&envLink=https%3A%2F%2Fgithub.com%2Fwaleedhewalla%2FDiligentAI%2Fblob%2Fclaude%2Fgreat-maxwell-0ue8bi%2F.env.example)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fwaleedhewalla%2Fvelixi&project-name=velixi&repository-name=velixi&env=NEXT_PUBLIC_SITE_URL&envDescription=Public%20site%20URL%2C%20e.g.%20https%3A%2F%2Fvelixi.ai.%20All%20other%20variables%20are%20optional%20%E2%80%94%20see%20.env.example&envLink=https%3A%2F%2Fgithub.com%2Fwaleedhewalla%2Fvelixi%2Fblob%2Fclaude%2Fgreat-maxwell-0ue8bi%2F.env.example)
 
 ## Quick start
 
@@ -217,10 +217,10 @@ Results: GA4 user properties `exp_<id>` on every event plus `experiment_impressi
 ## GitHub Pages preview
 
 A static, click-through copy of the marketing pages lives in `docs/` and is served at
-**https://waleedhewalla.github.io/DiligentAI/** once Pages is enabled
+**https://waleedhewalla.github.io/velixi/** once Pages is enabled
 (*Settings → Pages → Deploy from a branch → `claude/great-maxwell-0ue8bi` / `/docs`*).
-The `/DiligentAI/` path is the GitHub repository's name, not the brand: after renaming the repository
-(e.g. to `velixi`), re-export with `PREVIEW_REPO_NAME=velixi npm run preview:export` so links use the new path.
+Pages serves a project site under the repository name, so the export sets Next.js `basePath` to `/velixi`
+(`scripts/export-preview.sh`). If the repository is ever renamed, re-export with `PREVIEW_REPO_NAME=<new-name> npm run preview:export`.
 
 Regenerate after content changes with `npm run preview:export`, then commit `docs/`.
 The preview has no server: login/portal are omitted, the demo and contact forms can't submit,
